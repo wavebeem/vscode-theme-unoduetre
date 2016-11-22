@@ -25,13 +25,13 @@ module Theme
 
   TRE_1 = hsl(TRE, 95, 35)
 
-  FG = hsl(UNO,  8, 33)
-  BG = hsl(UNO, 16, 98)
-
   WHITE = "#ffffff"
   BLACK = "#000000"
   RED = "#cc0000"
   NO_ = "#ff00ff"
+
+  FG = hsl(UNO, 20, 20)
+  BG = WHITE
 
   THEME_NAME = "Uno Due Tre"
   FILE_NAME = "UnoDueTre"

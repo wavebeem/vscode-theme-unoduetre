@@ -8,6 +8,8 @@
     <string>Uno Due Tre</string>
     <key>colorSpaceName</key>
     <string>sRGB</string>
+    <key>comment</key>
+    <string>https://github.com/wavebeem/vscode-theme-unoduetre</string>
     <key>uuid</key>
     <string>d84a7e4e-3de9-4a5a-a2ef-db9169168f62</string>
     <key>settings</key>
@@ -16,19 +18,19 @@
         <key>settings</key>
         <dict>
           <key>background</key>
-          <string>#fbfaf9</string>
+          <string>#ffffff</string>
           <key>divider</key>
           <string>#c5ab87</string>
           <key>foreground</key>
-          <string>#5b554d</string>
+          <string>#3d3529</string>
           <key>invisible</key>
           <string>#c6b69f19</string>
           <key>caret</key>
           <string>#000000</string>
           <key>selection</key>
-          <string>#5b554d33</string>
+          <string>#3d352933</string>
           <key>guide</key>
-          <string>#5b554d19</string>
+          <string>#3d352919</string>
         </dict>
       </dict>
       <dict>
