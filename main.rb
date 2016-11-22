@@ -81,7 +81,7 @@ module Theme
       author: "Brian Mock <brian@mockbrian.com>",
       name: "#{THEME_NAME}",
       colorSpaceName: "sRGB",
-      # comment: "https://github.com/wavebeem/sublime-theme-foggy-morning",
+      comment: "https://github.com/wavebeem/vscode-theme-unoduetre",
       uuid: "d84a7e4e-3de9-4a5a-a2ef-db9169168f62",
       settings: [{settings: settings}, *scopes],
     }
@@ -96,7 +96,6 @@ module Theme
       caret: BLACK,
       # lineHighlight: dilute(UNO_4, 15),
       selection: dilute(FG, 20),
-      # gutter: WHITE,
       guide: dilute(FG, 10),
     }
   end
