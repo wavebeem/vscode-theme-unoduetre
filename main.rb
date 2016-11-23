@@ -282,7 +282,7 @@ module Theme
     "Units" => style(DUE_3),
     "Bold" => style(UNO_2, "bold"),
     "Italic" => style(UNO_2, "italic"),
-    "Code" => style(DUE_1),
+    "Code" => style(UNO_3),
     "Link Text" => style(UNO_4, "bold"),
     "Link Url" => style(DUE_1),
     "Lists" => style(DUE_3),
