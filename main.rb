@@ -9,21 +9,35 @@ module Theme
     Color::HSL.new(h, s, l).html
   end
 
-  UNO = 35
-  DUE = (UNO + 180) % 360
-  TRE = (UNO + 90) % 360
+  def rotate(hue, delta)
+    (hue + delta) + 360 % 360
+  end
 
-  UNO_1 = hsl(UNO, 95, 35)
-  UNO_2 = hsl(UNO, 75, 45)
-  UNO_3 = hsl(UNO, 55, 55)
-  UNO_4 = hsl(UNO, 35, 65)
-  UNO_5 = hsl(UNO, 25, 70)
+  def ramp(hue)
+    [
+      hsl(hue, 95, 35),
+      hsl(hue, 75, 45),
+      hsl(hue, 55, 55),
+      hsl(hue, 35, 65),
+      hsl(hue, 25, 70),
+    ]
+  end
 
-  DUE_1 = hsl(DUE, 95, 35)
-  DUE_2 = hsl(DUE, 75, 45)
-  DUE_3 = hsl(DUE, 55, 55)
+  UNO = 35 # orange
+  DUE = rotate(UNO, 180)
+  TRE = rotate(UNO, 90)
 
-  TRE_1 = hsl(TRE, 95, 35)
+  UNO_1,
+  UNO_2,
+  UNO_3,
+  UNO_4,
+  UNO_5, = ramp(UNO)
+
+  DUE_1,
+  DUE_2,
+  DUE_3, = ramp(DUE)
+
+  TRE_1, = ramp(TRE)
 
   WHITE = "#ffffff"
   BLACK = "#000000"
@@ -261,14 +275,14 @@ module Theme
     "Constants" => style(DUE_1),
     "Support" => style(UNO_2),
     "Tags" => style(DUE_1),
-    "Attributes" => style(UNO_5),
-    "Attribute IDs" => style(UNO_5),
+    "Attributes" => style(DUE_1),
+    "Attribute IDs" => style(DUE_1),
     "Selector" => style(UNO_2),
     "Headings" => style(DUE_1, "bold"),
     "Units" => style(DUE_3),
     "Bold" => style(UNO_2, "bold"),
     "Italic" => style(UNO_2, "italic"),
-    "Code" => style(UNO_5),
+    "Code" => style(DUE_1),
     "Link Text" => style(UNO_4, "bold"),
     "Link Url" => style(DUE_1),
     "Lists" => style(DUE_3),
@@ -278,17 +292,13 @@ module Theme
     "Deleted" => style(RED),
     "Changed" => style(UNO_4),
     "Colors" => style(DUE_3),
-    "Regular Expressions" => style(DUE_2),
-    "Escape Characters" => style(DUE_3),
+    "Regular Expressions" => style(UNO_3),
+    "Escape Characters" => style(UNO_3),
     "Embedded" => style(UNO_2),
     "Broken" => style(RED, "bold"),
     "Deprecated" => style(RED, "bold"),
     "Unimplemented" => style(RED, "bold"),
-    "Illegal" => {
-      foreground: WHITE,
-      background: RED,
-      fontStyle: "bold",
-    },
+    "Illegal" => style(RED, "bold"),
   }
 
   def named_scope_to_settings(name)
