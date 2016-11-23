@@ -1,13 +1,3 @@
-# README
-## This is the README for your extension "theme-sweetlight"
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+# Uno Due Tre
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+*Uno Due Tre* ("one two three" in Italian) is a color scheme inspired by Duotone, but featuring three colors instead of two. I really **really** like strings to stand out in my source code, so those get a special third color. Enjoy!
