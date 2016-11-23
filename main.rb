@@ -166,9 +166,8 @@ module Theme
         "punctuation.definition.string",
         "support.constant.property-value"
       ]],
-      ["Integers", "constant.numeric"],
+      ["Numbers", "constant.numeric"],
       ["Symbols", "constant.other.symbol"],
-      ["Floats", "none"],
       ["Boolean", "constant.language.boolean"],
       ["Constants", [
         "constant",
@@ -219,9 +218,6 @@ module Theme
         "punctuation.section.embedded",
         "variable.interpolation"
       ]],
-      ["SublimeLinter Warning", "sublimelinter.mark.warning"],
-      ["SublimeLinter Gutter", "sublimelinter.gutter-mark"],
-      ["SublimeLinter Error", "sublimelinter.mark.error"],
       ["Illegal", [
         "invalid",
         "invalid.illegal"
@@ -269,8 +265,7 @@ module Theme
     "Storage" => style(UNO_1, "bold"),
     "Strings" => style(TRE_1),
     "Symbols" => style(DUE_1),
-    "Integers" => style(DUE_1),
-    "Floats" => style(DUE_1),
+    "Numbers" => style(DUE_1),
     "Boolean" => style(DUE_1),
     "Constants" => style(DUE_1),
     "Support" => style(UNO_2),

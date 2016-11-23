@@ -230,7 +230,7 @@
       </dict>
       <dict>
         <key>name</key>
-        <string>Integers</string>
+        <string>Numbers</string>
         <key>scope</key>
         <string>constant.numeric</string>
         <key>settings</key>
@@ -246,19 +246,6 @@
         <string>Symbols</string>
         <key>scope</key>
         <string>constant.other.symbol</string>
-        <key>settings</key>
-        <dict>
-          <key>foreground</key>
-          <string>#044bae</string>
-          <key>fontStyle</key>
-          <string/>
-        </dict>
-      </dict>
-      <dict>
-        <key>name</key>
-        <string>Floats</string>
-        <key>scope</key>
-        <string>none</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
