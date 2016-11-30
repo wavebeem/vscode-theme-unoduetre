@@ -1,5 +1,5 @@
 {
-    "name": "theme-sweetlight",
+    "name": "theme-unoduetre",
     "displayName": "Uno Due Tre",
     "description": "A theme with three colors",
     "version": "0.0.1",
@@ -15,7 +15,7 @@
             {
                 "label": "Uno Due Tre",
                 "uiTheme": "vs",
-                "path": "./themes/UnoDueTre.tmTheme"
+                "path": "./themes/uno-due-tre.tmTheme"
             }
         ]
     }

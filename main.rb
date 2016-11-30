@@ -23,9 +23,9 @@ module Theme
     ]
   end
 
-  UNO = 35 # orange
-  DUE = rotate(UNO, 180)
-  TRE = rotate(UNO, 90)
+  UNO = 310 # purple
+  DUE = 215 # blue
+  TRE = 125 # green
 
   UNO_1,
   UNO_2,
@@ -48,7 +48,7 @@ module Theme
   BG = WHITE
 
   THEME_NAME = "Uno Due Tre"
-  FILE_NAME = "UnoDueTre"
+  FILE_NAME = "uno-due-tre"
 
   def dilute(color, percent)
     scaled = 255 * (percent / 100.0)
