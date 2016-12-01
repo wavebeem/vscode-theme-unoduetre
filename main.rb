@@ -156,7 +156,6 @@ module Theme
         "entity.name.type.class",
         "entity.name.type.module",
         "entity.other.inherited-class",
-        "meta.class"
       ]],
       ["Methods", "keyword.other.special-method"],
       ["Storage", "storage"],
