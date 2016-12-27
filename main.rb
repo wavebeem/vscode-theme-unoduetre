@@ -111,6 +111,19 @@ module Theme
       # lineHighlight: dilute(UNO_4, 15),
       selection: dilute(FG, 20),
       guide: dilute(FG, 10),
+
+      # rangeHighlight: Background color of range highlighted, like by Quick open and Find features.
+      # selectionHighlight: Background color of regions highlighted while selecting.
+      # inactiveSelection: Background color of selections when not in focus.
+      # wordHighlight: Background color of a symbol during read-access, like reading a variable.
+      # wordHighlightStrong: Background color of a symbol during write-access, like writing to a variable.
+      # findMatchHighlight: Background color of regions matching the search.
+      # currentFindMatchHighlight: Background color of the current region matching the search.
+      # findRangeHighlight: Background color of regions selected for search.
+      # activeLinkForeground: Color of active links.
+      # hoverHighlight: Background color when hovered.
+      # referenceHighlight: Background color of a reference when finding all references.
+      # guide: Color of the guides displayed to indicate nesting levels.
     }
   end
 
