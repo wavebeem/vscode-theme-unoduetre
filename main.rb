@@ -280,7 +280,7 @@ module Theme
     }
   end
 
- @_settings = {
+  @_settings = {
     "Call" => style(UNO_2),
     "Parameter" => style(DUE_3),
     "Comments" => style(UNO_5),
