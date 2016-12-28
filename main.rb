@@ -115,15 +115,15 @@ module Theme
       foreground: FG,
       invisible: dilute(UNO_5, 10),
       caret: BLACK,
-      # lineHighlight: dilute(UNO_4, 15),
-      selection: dilute(FG, 12),
-      inactiveSelection: dilute(FG, 8),
-      guide: dilute(FG, 10),
+      lineHighlight: dilute(YELLOW, 10),
+      selection: dilute(YELLOW, 30),
+      inactiveSelection: dilute(YELLOW, 25),
+      guide: dilute(FG, 20),
 
       # BG where variable is read
       wordHighlight: dilute(BLUE, 15),
       # BG where variable is defined/assigned
-      wordHighlightStrong: dilute(PURPLE, 30),
+      wordHighlightStrong: dilute(PURPLE, 20),
 
       # BG of current line during a Cmd-F search
       rangeHighlight: dilute(ORANGE, 10),

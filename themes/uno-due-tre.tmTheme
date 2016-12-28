@@ -27,16 +27,18 @@
           <string>#c69fb919</string>
           <key>caret</key>
           <string>#000000</string>
+          <key>lineHighlight</key>
+          <string>#f1c40f19</string>
           <key>selection</key>
-          <string>#3d29361e</string>
+          <string>#f1c40f4c</string>
           <key>inactiveSelection</key>
-          <string>#3d293614</string>
+          <string>#f1c40f3f</string>
           <key>guide</key>
-          <string>#3d293619</string>
+          <string>#3d293633</string>
           <key>wordHighlight</key>
           <string>#3498db26</string>
           <key>wordHighlightStrong</key>
-          <string>#9b59b64c</string>
+          <string>#9b59b633</string>
           <key>rangeHighlight</key>
           <string>#e67e2219</string>
           <key>selectionHighlight</key>
