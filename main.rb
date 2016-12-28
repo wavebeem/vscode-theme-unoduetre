@@ -23,7 +23,7 @@ module Theme
     ]
   end
 
-  UNO = 310 # purple
+  UNO = 320 # purple
   DUE = 215 # blue
   TRE = 125 # green
 
@@ -39,6 +39,10 @@ module Theme
 
   TRE_1, = ramp(TRE)
 
+  YELLOW = "#f1c40f"
+  ORANGE = "#e67e22"
+  BLUE = "#3498db"
+  PURPLE = "#9b59b6"
   WHITE = "#ffffff"
   BLACK = "#000000"
   RED = "#cc0000"
@@ -46,6 +50,9 @@ module Theme
 
   FG = hsl(UNO, 20, 20)
   BG = WHITE
+
+  CLEAR_ORANGE = "#F5790044"
+  BRIGHT_BLUE = "#0044FF"
 
   THEME_NAME = "Uno Due Tre"
   FILE_NAME = "uno-due-tre"
@@ -109,21 +116,34 @@ module Theme
       invisible: dilute(UNO_5, 10),
       caret: BLACK,
       # lineHighlight: dilute(UNO_4, 15),
-      selection: dilute(FG, 20),
+      selection: dilute(FG, 12),
+      inactiveSelection: dilute(FG, 8),
       guide: dilute(FG, 10),
 
-      # rangeHighlight: Background color of range highlighted, like by Quick open and Find features.
-      # selectionHighlight: Background color of regions highlighted while selecting.
-      # inactiveSelection: Background color of selections when not in focus.
-      # wordHighlight: Background color of a symbol during read-access, like reading a variable.
-      # wordHighlightStrong: Background color of a symbol during write-access, like writing to a variable.
-      # findMatchHighlight: Background color of regions matching the search.
-      # currentFindMatchHighlight: Background color of the current region matching the search.
+      # BG where variable is read
+      wordHighlight: dilute(BLUE, 15),
+      # BG where variable is defined/assigned
+      wordHighlightStrong: dilute(PURPLE, 30),
+
+      # BG of current line during a Cmd-F search
+      rangeHighlight: dilute(ORANGE, 10),
+      # BG of Cmd-F result when search field unfocused
+      selectionHighlight: dilute(BLACK, 0),
+      # BG of Cmd-F result
+      findMatchHighlight: dilute(YELLOW, 50),
+      # BG of current Cmd-F result
+      currentFindMatchHighlight: dilute(ORANGE, 50),
       # findRangeHighlight: Background color of regions selected for search.
+      # ???
+
       # activeLinkForeground: Color of active links.
+      activeLinkForeground: BRIGHT_BLUE,
+
       # hoverHighlight: Background color when hovered.
-      # referenceHighlight: Background color of a reference when finding all references.
-      # guide: Color of the guides displayed to indicate nesting levels.
+      # ???
+
+      # BG for "find all references"
+      referenceHighlight: dilute(YELLOW, 50),
     }
   end
 
