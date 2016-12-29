@@ -9,10 +9,6 @@ module Theme
     Color::HSL.new(h, s, l).html
   end
 
-  def rotate(hue, delta)
-    (hue + delta) + 360 % 360
-  end
-
   def ramp(hue)
     [
       hsl(hue, 95, 35),
@@ -51,8 +47,8 @@ module Theme
   FG = hsl(UNO, 20, 20)
   BG = WHITE
 
-  CLEAR_ORANGE = "#F5790044"
-  BRIGHT_BLUE = "#0044FF"
+  CLEAR_ORANGE = "#f5790044"
+  BRIGHT_BLUE = "#0044ff"
 
   THEME_NAME = "Uno Due Tre"
   FILE_NAME = "uno-due-tre"
@@ -331,17 +327,20 @@ module Theme
   def named_scope_to_settings(name)
     @_settings[name]
   end
+
+  def build
+    doc = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+      xml.doc.create_internal_subset(
+        "plist",
+        "-//Apple//DTD PLIST 1.0//EN",
+        "http://www.apple.com/DTDs/PropertyList-1.0.dtd"
+      )
+      xml.plist { plistify(xml, config) }
+    end
+    xml = doc.to_xml
+    puts "Saving theme! (#{Time.now})"
+    File.write("themes/#{FILE_NAME}.tmTheme", xml)
+  end
 end
 
-doc = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-  xml.doc.create_internal_subset(
-    "plist",
-    "-//Apple//DTD PLIST 1.0//EN",
-    "http://www.apple.com/DTDs/PropertyList-1.0.dtd"
-  )
-  xml.plist { Theme.plistify(xml, Theme.config) }
-end
-xml = doc.to_xml
-
-puts "Saving theme!"
-File.write("themes/#{Theme::FILE_NAME}.tmTheme", xml)
+Theme.build
