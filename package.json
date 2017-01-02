@@ -1,22 +1,22 @@
 {
-  "name": "theme-unoduetre",
-  "displayName": "Uno Due Tre",
-  "description": "A theme with three colors",
-  "version": "0.0.1",
-  "publisher": "wavebeem",
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "contributes": {
-    "themes": [
-      {
-        "label": "Uno Due Tre",
-        "uiTheme": "vs",
-        "path": "./themes/uno-due-tre.tmTheme"
-      }
-    ]
-  }
+    "name": "theme-unoduetre",
+    "displayName": "Uno Due Tre",
+    "description": "A theme with three colors",
+    "version": "1.0.0",
+    "publisher": "wavebeem",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Uno Due Tre",
+                "uiTheme": "vs",
+                "path": "./themes/uno-due-tre.tmTheme"
+            }
+        ]
+    }
 }
