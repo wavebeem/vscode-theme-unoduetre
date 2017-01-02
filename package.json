@@ -2,8 +2,11 @@
     "name": "theme-unoduetre",
     "displayName": "Uno Due Tre",
     "description": "A theme with three colors",
-    "version": "1.1.1",
-    "repository": "https://github.com/wavebeem/vscode-theme-unoduetre",
+    "version": "1.1.2",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git",
+    },
     "publisher": "wavebeem",
     "engines": {
         "vscode": "^1.5.0"
