@@ -48,7 +48,7 @@
           <key>currentFindMatchHighlight</key>
           <string>#e67e227f</string>
           <key>activeLinkForeground</key>
-          <string>#0044FF</string>
+          <string>#0044ff</string>
           <key>referenceHighlight</key>
           <string>#f1c40f7f</string>
         </dict>
