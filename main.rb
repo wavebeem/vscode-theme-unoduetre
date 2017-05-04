@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+
+### TODO: Generate new JSON format ###
+
 require "nokogiri"
 require "color"
 
