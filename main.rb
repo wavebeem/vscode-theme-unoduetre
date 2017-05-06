@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
-
-### TODO: Generate new JSON format ###
-
-require "nokogiri"
+require "json"
 require "color"
 
 module Theme
@@ -45,15 +42,13 @@ module Theme
   WHITE = "#ffffff"
   BLACK = "#000000"
   RED = "#cc0000"
+  TRANSPARENT = "#00000000"
   NO_ = "#ff00ff"
 
+  UI_FG = "#222222"
   FG = hsl(UNO, 20, 20)
   BG = WHITE
 
-  CLEAR_ORANGE = "#f5790044"
-  BRIGHT_BLUE = "#0044ff"
-
-  THEME_NAME = "Uno Due Tre"
   FILE_NAME = "uno-due-tre"
 
   def dilute(color, percent)
@@ -62,93 +57,101 @@ module Theme
     "#{color}#{alpha}"
   end
 
-  def plistify(xml, data)
-    case [data.class]
-    when [Hash]
-      plistify_dict(xml, data)
-    when [Array]
-      plistify_array(xml, data)
-    when [Fixnum], [String], [Symbol]
-      plistify_string(xml, data)
-    else
-      fail
-    end
-  end
-
-  def plistify_array(xml, list)
-    xml.array {
-      list.each {|x|
-        plistify(xml, x)
-      }
-    }
-  end
-
-  def plistify_dict(xml, hash)
-    xml.dict {
-      hash.each {|k, v|
-        xml.key(k)
-        plistify(xml, v)
-      }
-    }
-  end
-
-  def plistify_string(xml, str)
-    xml.string(str.to_s)
-  end
-
   def config
     {
-      author: "Brian Mock <brian@mockbrian.com>",
-      name: "#{THEME_NAME}",
-      colorSpaceName: "sRGB",
-      comment: "https://github.com/wavebeem/vscode-theme-unoduetre",
-      uuid: "d84a7e4e-3de9-4a5a-a2ef-db9169168f62",
-      settings: [{settings: settings}, *scopes],
+      type: "light",
+      colors: colors,
+      tokenColors: token_colors
     }
   end
 
-  def settings
+  def colors
     {
-      background: BG,
-      divider: UNO_4,
-      foreground: FG,
-      invisible: dilute(UNO_5, 10),
-      caret: BLACK,
-      lineHighlight: dilute(YELLOW, 10),
-      selection: dilute(YELLOW, 30),
-      inactiveSelection: dilute(YELLOW, 25),
-      guide: dilute(FG, 20),
+      "activityBar.background": "#e8e8e8",
+      "activityBar.foreground": UI_FG,
+      "editor.background": WHITE,
+      "editor.findMatchBackground": dilute(ORANGE, 50),
+      "editor.findMatchHighlightBackground": dilute(YELLOW, 50),
+      "editor.foreground": "#3d2936",
+      "editor.inactiveSelectionBackground": dilute(YELLOW, 25),
+      "editor.lineHighlightBackground": dilute(YELLOW, 10),
+      "editor.rangeHighlightBackground": dilute(ORANGE, 10),
+      "editor.selectionBackground": dilute(YELLOW, 30),
+      "editor.wordHighlightBackground": dilute(BLUE, 15),
+      "editor.wordHighlightStrongBackground": dilute(PURPLE, 20),
+      "editorCursor.foreground": BLACK,
+      "editorGroupHeader.tabsBackground": WHITE,
+      "editorIndentGuide.background": dilute(BLACK, 15),
+      "editorLineNumber.foreground": "#cccccc",
+      "foreground": UI_FG,
+      "notification.background": UI_FG,
+      "notification.foreground": WHITE,
+      "panel.background": WHITE,
+      "panel.border": "#dddddd",
+      "panelTitle.activeBorder": "#888888",
+      "panelTitle.activeForeground": BLACK,
+      "panelTitle.inactiveForeground": "#666666",
+      "peekViewEditor.matchHighlightBackground": dilute(YELLOW, 50),
+      "peekViewResult.matchHighlightBackground": dilute(YELLOW, 50),
+      "sideBar.background": "#f4f4f4",
+      "sideBarSectionHeader.background": "#e0e0e0",
+      "tab.activeBackground": "#cccedb",
+      "tab.activeForeground": BLACK,
+      "tab.border": TRANSPARENT,
+      "tab.inactiveBackground": TRANSPARENT,
+      "tab.inactiveForeground": "#666666",
+      "titleBar.activeBackground": WHITE,
+      "titleBar.activeForeground": BLACK,
+      "titleBar.inactiveBackground": WHITE,
+      "titleBar.inactiveForeground": "#888888",
+      "widget.shadow": "#00000066",
+      # "terminal.ansiBlack": "#ff00ff",
+      # "terminal.ansiBlue": "#ff00ff",
+      # "terminal.ansiBrightBlack": "#ff00ff",
+      # "terminal.ansiBrightBlue": "#ff00ff",
+      # "terminal.ansiBrightCyan": "#ff00ff",
+      # "terminal.ansiBrightGreen": "#ff00ff",
+      # "terminal.ansiBrightMagenta": "#ff00ff",
+      # "terminal.ansiBrightRed": "#ff00ff",
+      # "terminal.ansiBrightWhite": "#ff00ff",
+      # "terminal.ansiBrightYellow": "#ff00ff",
+      # "terminal.ansiCyan": "#ff00ff",
+      # "terminal.ansiGreen": "#ff00ff",
+      # "terminal.ansiMagenta": "#ff00ff",
+      # "terminal.ansiRed": "#ff00ff",
+      # "terminal.ansiWhite": "#ff00ff",
+      # "terminal.ansiYellow": "#ff00ff",
+    }
+  end
 
-      # BG where variable is read
-      wordHighlight: dilute(BLUE, 15),
-      # BG where variable is defined/assigned
-      wordHighlightStrong: dilute(PURPLE, 20),
+  def token_colors
+    scopes.map{|name, scope|
+      scope = scope.join(", ") if scope.is_a?(Array)
+      settings = named_scope_to_settings(name)
+      if settings
+        {
+          name: name,
+          scope: scope,
+          settings: named_scope_to_settings(name)
+        }
+      else
+        nil
+      end
+    }.compact
+  end
 
-      # BG of current line during a Cmd-F search
-      rangeHighlight: dilute(ORANGE, 10),
-      # BG of Cmd-F result when search field unfocused
-      selectionHighlight: dilute(BLACK, 0),
-      # BG of Cmd-F result
-      findMatchHighlight: dilute(YELLOW, 50),
-      # BG of current Cmd-F result
-      currentFindMatchHighlight: dilute(ORANGE, 50),
-      # findRangeHighlight: Background color of regions selected for search.
-      # ???
-
-      # activeLinkForeground: Color of active links.
-      activeLinkForeground: BRIGHT_BLUE,
-
-      # hoverHighlight: Background color when hovered.
-      # ???
-
-      # BG for "find all references"
-      referenceHighlight: dilute(YELLOW, 50),
+  def style(color, *font_style)
+    {
+      foreground: color,
+      fontStyle: font_style.join(" "),
     }
   end
 
   def scopes
-    scopes = [
-      ["Parameter", "variable.parameter.function"],
+    [
+      ["Parameter", [
+        "variable.parameter.function"
+      ]],
       ["Comments", [
         "comment",
         "punctuation.definition.comment"
@@ -168,15 +171,23 @@ module Theme
         "meta.brace",
         "meta.delimiter"
       ]],
-      ["Operators", "keyword.operator"],
-      ["Keywords", "keyword.control"],
+      ["Operators", [
+        "keyword.operator"
+      ]],
+      ["Keywords", [
+        "keyword.control"
+      ]],
       ["Variables", [
         "variable.declaration",
         "variable.parameter",
         "variable.other"
       ]],
-      ["Search", "entity.name.filename.find-in-files"],
-      ["Search Line", "constant.numeric.line-number.match.find-in-files"],
+      ["Search", [
+        "entity.name.filename.find-in-files"
+      ]],
+      ["Search Line", [
+        "constant.numeric.line-number.match.find-in-files"
+      ]],
       ["Functions", [
         "entity.name.function",
         "meta.require",
@@ -189,17 +200,29 @@ module Theme
         "entity.name.type.module",
         "entity.other.inherited-class",
       ]],
-      ["Methods", "keyword.other.special-method"],
-      ["Storage", "storage"],
-      ["Support", "support"],
+      ["Methods", [
+        "keyword.other.special-method"
+      ]],
+      ["Storage", [
+        "storage"
+      ]],
+      ["Support", [
+        "support"
+      ]],
       ["Strings", [
         "string",
         "punctuation.definition.string",
         "support.constant.property-value"
       ]],
-      ["Numbers", "constant.numeric"],
-      ["Symbols", "constant.other.symbol"],
-      ["Boolean", "constant.language.boolean"],
+      ["Numbers", [
+        "constant.numeric"
+      ]],
+      ["Symbols", [
+        "constant.other.symbol"
+      ]],
+      ["Boolean", [
+        "constant.language.boolean"
+      ]],
       ["Constants", [
         "constant",
         "support.constant",
@@ -222,7 +245,9 @@ module Theme
         "markup.heading punctuation.definition.heading",
         "entity.name.section"
       ]],
-      ["Units", "keyword.other.unit"],
+      ["Units", [
+        "keyword.other.unit"
+      ]],
       ["Bold", [
         "markup.bold",
         "punctuation.definition.bold"
@@ -231,17 +256,39 @@ module Theme
         "markup.italic",
         "punctuation.definition.italic"
       ]],
-      ["Code", "markup.raw.inline"],
-      ["Link Text", "string.other.link"],
-      ["Link Url", "meta.link"],
-      ["Lists", "markup.list"],
-      ["Quotes", "markup.quote"],
-      ["Separator", "meta.separator"],
-      ["Inserted", "markup.inserted"],
-      ["Deleted", "markup.deleted"],
-      ["Changed", "markup.changed"],
-      ["Colors", "constant.other.color"],
-      ["Regular Expressions", "string.regexp"],
+      ["Code", [
+        "markup.raw.inline"
+      ]],
+      ["Link Text", [
+        "string.other.link"
+      ]],
+      ["Link Url", [
+        "meta.link"
+      ]],
+      ["Lists", [
+        "markup.list"
+      ]],
+      ["Quotes", [
+        "markup.quote"
+      ]],
+      ["Separator", [
+        "meta.separator"
+      ]],
+      ["Inserted", [
+        "markup.inserted"
+      ]],
+      ["Deleted", [
+        "markup.deleted"
+      ]],
+      ["Changed", [
+        "markup.changed"
+      ]],
+      ["Colors", [
+        "constant.other.color"
+      ]],
+      ["Regular Expressions", [
+        "string.regexp"
+      ]],
       ["Escape Characters", [
         "constant.character.escape",
       ]],
@@ -253,30 +300,16 @@ module Theme
         "invalid",
         "invalid.illegal"
       ]],
-      ["Broken", "invalid.broken"],
-      ["Deprecated", "invalid.deprecated"],
-      ["Unimplemented", "invalid.unimplemented"],
+      ["Broken", [
+        "invalid.broken"
+      ]],
+      ["Deprecated", [
+        "invalid.deprecated"
+      ]],
+      ["Unimplemented", [
+        "invalid.unimplemented"
+      ]],
     ]
-    scopes.map {|name, scope|
-      scope = scope.join(", ") if scope.is_a?(Array)
-      settings = named_scope_to_settings(name)
-      if settings
-        {
-          name: name,
-          scope: scope,
-          settings: named_scope_to_settings(name)
-        }
-      else
-        nil
-      end
-    }.compact
-  end
-
-  def style(color, *font_style)
-    {
-      foreground: color,
-      fontStyle: font_style.join(" "),
-    }
   end
 
   @_settings = {
@@ -332,17 +365,9 @@ module Theme
   end
 
   def build
-    doc = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.doc.create_internal_subset(
-        "plist",
-        "-//Apple//DTD PLIST 1.0//EN",
-        "http://www.apple.com/DTDs/PropertyList-1.0.dtd"
-      )
-      xml.plist { plistify(xml, config) }
-    end
-    xml = doc.to_xml
+    json = JSON.pretty_generate(config)
     puts "Saving theme! (#{Time.now})"
-    File.write("themes/#{FILE_NAME}.tmTheme", xml)
+    File.write("themes/#{FILE_NAME}.json", json)
   end
 end
 
