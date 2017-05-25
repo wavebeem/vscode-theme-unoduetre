@@ -38,7 +38,23 @@
     "titleBar.activeForeground": "#000000",
     "titleBar.inactiveBackground": "#ffffff",
     "titleBar.inactiveForeground": "#888888",
-    "widget.shadow": "#00000066"
+    "widget.shadow": "#00000066",
+    "terminal.ansiBlack": "#5c668e",
+    "terminal.ansiBlue": "#39b898",
+    "terminal.ansiBrightBlack": "#5c668e",
+    "terminal.ansiBrightBlue": "#39b898",
+    "terminal.ansiBrightCyan": "#7f9608",
+    "terminal.ansiBrightGreen": "#00a337",
+    "terminal.ansiBrightMagenta": "#d95278",
+    "terminal.ansiBrightRed": "#a91b1c",
+    "terminal.ansiBrightWhite": "#fafafa",
+    "terminal.ansiBrightYellow": "#cc8410",
+    "terminal.ansiCyan": "#7f9608",
+    "terminal.ansiGreen": "#00a337",
+    "terminal.ansiMagenta": "#d95278",
+    "terminal.ansiRed": "#a91b1c",
+    "terminal.ansiWhite": "#fafafa",
+    "terminal.ansiYellow": "#cc8410"
   },
   "tokenColors": [
     {

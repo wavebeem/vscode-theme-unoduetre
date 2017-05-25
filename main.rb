@@ -45,6 +45,15 @@ module Theme
   TRANSPARENT = "#00000000"
   NO_ = "#ff00ff"
 
+  T_BLACK = "#5c668e"
+  T_RED = "#a91b1c"
+  T_GREEN = "#00a337"
+  T_YELLOW = "#cc8410"
+  T_BLUE = "#39b898"
+  T_MAGENTA = "#d95278"
+  T_CYAN = "#7f9608"
+  T_WHITE = "#fafafa"
+
   UI_FG = "#222222"
   FG = hsl(UNO, 20, 20)
   BG = WHITE
@@ -105,22 +114,22 @@ module Theme
       "titleBar.inactiveBackground": WHITE,
       "titleBar.inactiveForeground": "#888888",
       "widget.shadow": "#00000066",
-      # "terminal.ansiBlack": "#ff00ff",
-      # "terminal.ansiBlue": "#ff00ff",
-      # "terminal.ansiBrightBlack": "#ff00ff",
-      # "terminal.ansiBrightBlue": "#ff00ff",
-      # "terminal.ansiBrightCyan": "#ff00ff",
-      # "terminal.ansiBrightGreen": "#ff00ff",
-      # "terminal.ansiBrightMagenta": "#ff00ff",
-      # "terminal.ansiBrightRed": "#ff00ff",
-      # "terminal.ansiBrightWhite": "#ff00ff",
-      # "terminal.ansiBrightYellow": "#ff00ff",
-      # "terminal.ansiCyan": "#ff00ff",
-      # "terminal.ansiGreen": "#ff00ff",
-      # "terminal.ansiMagenta": "#ff00ff",
-      # "terminal.ansiRed": "#ff00ff",
-      # "terminal.ansiWhite": "#ff00ff",
-      # "terminal.ansiYellow": "#ff00ff",
+      "terminal.ansiBlack": T_BLACK,
+      "terminal.ansiBlue": T_BLUE,
+      "terminal.ansiBrightBlack": T_BLACK,
+      "terminal.ansiBrightBlue": T_BLUE,
+      "terminal.ansiBrightCyan": T_CYAN,
+      "terminal.ansiBrightGreen": T_GREEN,
+      "terminal.ansiBrightMagenta": T_MAGENTA,
+      "terminal.ansiBrightRed": T_RED,
+      "terminal.ansiBrightWhite": T_WHITE,
+      "terminal.ansiBrightYellow": T_YELLOW,
+      "terminal.ansiCyan": T_CYAN,
+      "terminal.ansiGreen": T_GREEN,
+      "terminal.ansiMagenta": T_MAGENTA,
+      "terminal.ansiRed": T_RED,
+      "terminal.ansiWhite": T_WHITE,
+      "terminal.ansiYellow": T_YELLOW,
     }
   end
 
