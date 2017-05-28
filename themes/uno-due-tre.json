@@ -39,6 +39,8 @@
     "titleBar.inactiveBackground": "#ffffff",
     "titleBar.inactiveForeground": "#888888",
     "widget.shadow": "#00000066",
+    "terminal.foreground": "#222222",
+    "terminal.background": "#ffffff",
     "terminal.ansiBlack": "#5c668e",
     "terminal.ansiBlue": "#39b898",
     "terminal.ansiBrightBlack": "#5c668e",

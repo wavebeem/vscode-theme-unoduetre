@@ -114,6 +114,8 @@ module Theme
       "titleBar.inactiveBackground": WHITE,
       "titleBar.inactiveForeground": "#888888",
       "widget.shadow": "#00000066",
+      "terminal.foreground": UI_FG,
+      "terminal.background": WHITE,
       "terminal.ansiBlack": T_BLACK,
       "terminal.ansiBlue": T_BLUE,
       "terminal.ansiBrightBlack": T_BLACK,
