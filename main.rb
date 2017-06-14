@@ -76,7 +76,7 @@ module Theme
 
   def colors
     {
-      "activityBar.background": "#e0e0e0",
+      "activityBar.background": "#f4f4f4",
       "activityBar.foreground": UI_FG,
       "activityBarBadge.background": RED,
       "activityBarBadge.foreground": WHITE,
@@ -106,7 +106,7 @@ module Theme
       "peekViewEditor.matchHighlightBackground": dilute(YELLOW, 50),
       "peekViewResult.matchHighlightBackground": dilute(YELLOW, 50),
       "sideBar.background": "#e8e8e8",
-      "sideBarSectionHeader.background": "#d8d8d8",
+      "sideBarSectionHeader.background": "#efefef",
       "tab.activeBackground": "#cccedb",
       "tab.activeForeground": BLACK,
       "tab.border": TRANSPARENT,

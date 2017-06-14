@@ -1,7 +1,7 @@
 {
   "type": "light",
   "colors": {
-    "activityBar.background": "#e0e0e0",
+    "activityBar.background": "#f4f4f4",
     "activityBar.foreground": "#222222",
     "activityBarBadge.background": "#cc0000",
     "activityBarBadge.foreground": "#ffffff",
@@ -30,7 +30,7 @@
     "peekViewEditor.matchHighlightBackground": "#f1c40f7f",
     "peekViewResult.matchHighlightBackground": "#f1c40f7f",
     "sideBar.background": "#e8e8e8",
-    "sideBarSectionHeader.background": "#d8d8d8",
+    "sideBarSectionHeader.background": "#efefef",
     "tab.activeBackground": "#cccedb",
     "tab.activeForeground": "#000000",
     "tab.border": "#00000000",
