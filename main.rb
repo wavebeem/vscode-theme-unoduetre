@@ -110,7 +110,7 @@ module Theme
       "editor.wordHighlightBackground": dilute(BLUE, 15),
       "editor.wordHighlightStrongBackground": dilute(PURPLE, 20),
       "editorCursor.foreground": RED,
-      "editorGutter.background": gray(98),
+      # "editorGutter.background": gray(98),
       "editorGroupHeader.tabsBackground": WHITE,
       "editorIndentGuide.background": dilute(BLACK, 10),
       "editorRuler.foreground": dilute(BLACK, 10),
