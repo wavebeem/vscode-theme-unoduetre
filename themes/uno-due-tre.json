@@ -1,10 +1,10 @@
 {
   "type": "light",
   "colors": {
-    "focusBorder": "#cc0000",
+    "focusBorder": "#1fad2b",
     "widget.shadow": "#0000004c",
     "input.border": "#e0e0e0",
-    "progressBar.background": "#cc0000",
+    "progressBar.background": "#1fad2b",
     "list.activeSelectionBackground": "#808080",
     "list.inactiveSelectionBackground": "#cccccc",
     "list.focusBackground": "#cccccc",
@@ -12,7 +12,7 @@
     "statusBar.background": "#4d4d4d",
     "activityBar.background": "#d9d9d9",
     "activityBar.foreground": "#000000",
-    "activityBarBadge.background": "#cc0000",
+    "activityBarBadge.background": "#1fad2b",
     "activityBarBadge.foreground": "#ffffff",
     "editorWidget.background": "#fafafa",
     "editorWidgetBorder": "#cccccc",

@@ -59,6 +59,7 @@ module Theme
   T_WHITE = "#fafafa"
 
   UI_FG = "#222222"
+  UI_ACCENT = hsl(TRE, 70, 40)
   FG = hsl(UNO, 20, 20)
   BG = WHITE
 
@@ -80,10 +81,10 @@ module Theme
 
   def colors
     {
-      "focusBorder": RED,
+      "focusBorder": UI_ACCENT,
       "widget.shadow": dilute(BLACK, 30),
       "input.border": gray(88),
-      "progressBar.background": RED,
+      "progressBar.background": UI_ACCENT,
       "list.activeSelectionBackground": gray(50),
       "list.inactiveSelectionBackground": gray(80),
       "list.focusBackground": gray(80),
@@ -91,7 +92,7 @@ module Theme
       "statusBar.background": gray(30),
       "activityBar.background": gray(85),
       "activityBar.foreground": BLACK,
-      "activityBarBadge.background": RED,
+      "activityBarBadge.background": UI_ACCENT,
       "activityBarBadge.foreground": WHITE,
       "editorWidget.background": gray(98),
       "editorWidgetBorder": gray(80),
