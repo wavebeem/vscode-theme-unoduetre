@@ -1,3 +1,6 @@
+# [v1.4.0]
+- Workbench theme overhaul
+
 # [v1.3.0]
 - Adds terminal colors
 
