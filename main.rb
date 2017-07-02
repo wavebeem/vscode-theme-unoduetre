@@ -46,6 +46,7 @@ module Theme
   WHITE = "#ffffff"
   BLACK = "#000000"
   RED = "#cc0000"
+  CYAN = "#00bcd4"
   TRANSPARENT = "#00000000"
   NO_ = "#ff00ff"
 
@@ -100,17 +101,19 @@ module Theme
       "editorWidget.background": gray(98),
       "editorWidgetBorder": gray(80),
       "editor.background": WHITE,
+      "editorBracketMatch.background": dilute(CYAN, 20),
+      "editorBracketMatch.border": TRANSPARENT,
       "editor.findMatchBackground": dilute(ORANGE, 50),
       "editor.findMatchHighlightBackground": dilute(YELLOW, 50),
-      "editor.foreground": "#3d2936",
-      "editor.inactiveSelectionBackground": dilute(YELLOW, 25),
+      "editor.findRangeHighlightBackground": dilute(NO_, 50),
+      "editor.foreground": FG,
       "editor.lineHighlightBackground": dilute(YELLOW, 10),
       "editor.rangeHighlightBackground": dilute(ORANGE, 10),
       "editor.selectionBackground": dilute(YELLOW, 30),
+      "editor.inactiveSelectionBackground": dilute(YELLOW, 25),
       "editor.wordHighlightBackground": dilute(BLUE, 15),
       "editor.wordHighlightStrongBackground": dilute(PURPLE, 20),
       "editorCursor.foreground": RED,
-      # "editorGutter.background": gray(98),
       "editorGroupHeader.tabsBackground": WHITE,
       "editorIndentGuide.background": dilute(BLACK, 10),
       "editorRuler.foreground": dilute(BLACK, 10),
@@ -133,10 +136,10 @@ module Theme
       "tab.inactiveBackground": TRANSPARENT,
       "tab.inactiveForeground": gray(50),
       "tab.border": TRANSPARENT,
-      "titleBar.activeBackground": WHITE,
+      "titleBar.activeBackground": gray(90),
       "titleBar.activeForeground": BLACK,
-      "titleBar.inactiveBackground": WHITE,
-      "titleBar.inactiveForeground": gray(55),
+      "titleBar.inactiveBackground": gray(100),
+      "titleBar.inactiveForeground": gray(50),
       "terminal.foreground": T_BLACK,
       "terminal.background": WHITE,
       "terminal.ansiBlack": T_BLACK,
