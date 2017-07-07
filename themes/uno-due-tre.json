@@ -9,7 +9,7 @@
     "list.inactiveSelectionBackground": "#b8e0bb",
     "list.focusBackground": "#b3e6b7",
     "list.hoverBackground": "#fafafa",
-    "statusBar.border": "#ffffff",
+    "statusBar.border": "#1a1a1a",
     "statusBar.background": "#333333",
     "statusBar.foreground": "#ffffff",
     "activityBar.border": "#cccccc",

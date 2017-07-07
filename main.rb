@@ -90,7 +90,7 @@ module Theme
       "list.inactiveSelectionBackground": hsl(TRE, 40, 80),
       "list.focusBackground": hsl(TRE, 50, 80),
       "list.hoverBackground": gray(98),
-      "statusBar.border": WHITE,
+      "statusBar.border": gray(10),
       "statusBar.background": gray(20),
       "statusBar.foreground": WHITE,
       "activityBar.border": gray(80),
