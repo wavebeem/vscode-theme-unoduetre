@@ -50,14 +50,15 @@ module Theme
   TRANSPARENT = "#00000000"
   NO_ = "#ff00ff"
 
-  T_BLACK = "#5c668e"
+  T_FG = "#5c668e"
+  T_BLACK = "#31364a"
   T_RED = "#a91b1c"
   T_GREEN = "#00a337"
   T_YELLOW = "#cc8410"
   T_BLUE = "#39b898"
   T_MAGENTA = "#d95278"
   T_CYAN = "#7f9608"
-  T_WHITE = "#fafafa"
+  T_WHITE = "#e6e6e6"
 
   UI_FG = "#222222"
   UI_ACCENT = hsl(TRE, 70, 40)
@@ -121,7 +122,7 @@ module Theme
       "foreground": UI_FG,
       "notification.background": UI_FG,
       "notification.foreground": WHITE,
-      "panel.background": WHITE,
+      "panel.background": gray(98),
       "panel.border": gray(85),
       "panelTitle.activeBorder": gray(50),
       "panelTitle.activeForeground": BLACK,
@@ -141,8 +142,8 @@ module Theme
       "titleBar.inactiveBackground": gray(96),
       "titleBar.inactiveForeground": gray(50),
       "titleBar.border": gray(74),
-      "terminal.foreground": T_BLACK,
-      "terminal.background": WHITE,
+      "terminal.foreground": T_FG,
+      "terminal.background": gray(98),
       "terminal.ansiBlack": T_BLACK,
       "terminal.ansiBlue": T_BLUE,
       "terminal.ansiBrightBlack": T_BLACK,
