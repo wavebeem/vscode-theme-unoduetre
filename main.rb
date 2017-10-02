@@ -23,6 +23,12 @@ module Theme
     ]
   end
 
+  def dilute(color, percent)
+    scaled = 255 * (percent / 100.0)
+    alpha = format("%02x", scaled)
+    "#{color}#{alpha}"
+  end
+
   UNO = 320 # purple
   DUE = 215 # blue
   TRE = 125 # green
@@ -64,15 +70,12 @@ module Theme
   UI_FG = "#222222"
   UI_ACCENT = hsl(TRE, 70, 40)
   FG = hsl(UNO, 20, 20)
-  BG = WHITE
+  BG = gray(98)
+  BORDER_SOFT = dilute(BLACK, 5)
+  BORDER_HARD = dilute(BLACK, 10)
 
   FILE_NAME = "uno-due-tre"
 
-  def dilute(color, percent)
-    scaled = 255 * (percent / 100.0)
-    alpha = format("%02x", scaled)
-    "#{color}#{alpha}"
-  end
 
   def config
     {
@@ -91,24 +94,24 @@ module Theme
       "list.activeSelectionBackground": hsl(TRE, 50, 50),
       "list.inactiveSelectionBackground": hsl(TRE, 40, 80),
       "list.focusBackground": hsl(TRE, 50, 80),
-      "list.hoverBackground": gray(94),
-      "statusBar.border": dilute(BLACK, 20),
-      "statusBar.background": gray(20),
+      "list.hoverBackground": dilute(BLACK, 5),
+      "statusBar.border": BORDER_HARD,
+      "statusBar.background": gray(25),
       "statusBar.foreground": WHITE,
-      "activityBar.border": gray(88),
-      "activityBar.background": gray(96),
+      "activityBar.border": BORDER_SOFT,
+      "activityBar.background": BG,
       "activityBar.foreground": BLACK,
       "activityBarBadge.background": UI_ACCENT,
       "activityBarBadge.foreground": WHITE,
       "editorWidget.background": gray(98),
       "editorWidgetBorder": gray(80),
-      "editor.background": WHITE,
       "editorBracketMatch.background": dilute(CYAN, 20),
       "editorBracketMatch.border": TRANSPARENT,
       "editor.findMatchBackground": dilute(ORANGE, 50),
       "editor.findMatchHighlightBackground": dilute(YELLOW, 50),
       "editor.findRangeHighlightBackground": dilute(NO_, 50),
       "editor.foreground": FG,
+      "editor.background": BG,
       "editor.lineHighlightBackground": dilute(YELLOW, 10),
       "editor.rangeHighlightBackground": dilute(ORANGE, 10),
       "editor.selectionBackground": dilute(YELLOW, 30),
@@ -116,33 +119,33 @@ module Theme
       "editor.wordHighlightBackground": dilute(BLUE, 15),
       "editor.wordHighlightStrongBackground": dilute(PURPLE, 20),
       "editorCursor.foreground": RED,
-      "editorGroupHeader.tabsBackground": WHITE,
-      "editorIndentGuide.background": dilute(BLACK, 10),
-      "editorRuler.foreground": dilute(BLACK, 10),
+      "editorGroupHeader.tabsBackground": BG,
+      "editorIndentGuide.background": BORDER_HARD,
+      "editorRuler.foreground": BORDER_HARD,
       "editorLineNumber.foreground": dilute(BLACK, 30),
       "foreground": UI_FG,
       "notification.background": UI_FG,
       "notification.foreground": WHITE,
       "panel.background": T_BG,
-      "panel.border": gray(85),
+      "panel.border": BORDER_HARD,
       "panelTitle.activeBorder": gray(50),
       "panelTitle.activeForeground": BLACK,
       "panelTitle.inactiveForeground": gray(60),
       "peekViewEditor.matchHighlightBackground": dilute(YELLOW, 50),
       "peekViewResult.matchHighlightBackground": dilute(YELLOW, 50),
-      "sideBar.border": gray(88),
-      "sideBar.background": gray(96),
-      "sideBarSectionHeader.background": gray(96),
+      "sideBar.border": BORDER_SOFT,
+      "sideBar.background": BG,
+      "sideBarSectionHeader.background": dilute(BLACK, 3),
       "tab.activeBackground": hsl(TRE, 50, 80),
       "tab.activeForeground": BLACK,
       "tab.inactiveBackground": TRANSPARENT,
       "tab.inactiveForeground": gray(50),
       "tab.border": TRANSPARENT,
-      "titleBar.activeBackground": gray(88),
+      "titleBar.activeBackground": BG,
       "titleBar.activeForeground": BLACK,
-      "titleBar.inactiveBackground": gray(96),
-      "titleBar.inactiveForeground": gray(50),
-      "titleBar.border": gray(74),
+      "titleBar.inactiveBackground": BG,
+      "titleBar.inactiveForeground": gray(70),
+      "titleBar.border": BORDER_SOFT,
       "terminal.foreground": T_FG,
       "terminal.background": T_BG,
       "terminal.ansiBlack": T_BLACK,
