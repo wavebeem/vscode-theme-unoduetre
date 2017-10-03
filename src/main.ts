@@ -56,13 +56,14 @@ abstract class Theme {
     return {
       focusBorder: this.UI_ACCENT,
       "widget.shadow": this.SHADOW,
-      "input.border": this.BORDER_HARD,
+      "input.border": this.BORDER_HARDER,
+      "input.background": this.INPUT_BG,
       "progressBar.background": this.UI_ACCENT,
       "list.activeSelectionBackground": this.activeSelectionBG(),
       "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
       "list.focusBackground": this.accentFocusBG(),
       "list.hoverBackground": this.dilute(this.UI_FG, 5),
-      "statusBar.border": this.BORDER_HARD,
+      "statusBar.border": this.BORDER_HARDER,
       "statusBar.background": this.statusBarBG(),
       "statusBar.foreground": this.WHITE,
       "activityBar.border": this.BORDER_SOFT,
@@ -97,7 +98,7 @@ abstract class Theme {
       "panel.background": this.T_BG,
       "panel.border": this.BORDER_HARD,
       "panelTitle.activeBorder": this.dilute(this.UI_FG, 50),
-      "panelTitle.activeForeground": this.BLACK,
+      "panelTitle.activeForeground": this.UI_FG,
       "panelTitle.inactiveForeground": this.dilute(this.UI_FG, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(this.YELLOW, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(this.YELLOW, 50),
@@ -348,8 +349,10 @@ class LightTheme extends Theme {
     this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
     this.FG = this.hsl(this.UNO, 20, 20);
     this.BG = this.gray(98);
+    this.INPUT_BG = this.WHITE;
     this.BORDER_SOFT = this.dilute(this.BLACK, 5);
     this.BORDER_HARD = this.dilute(this.BLACK, 10);
+    this.BORDER_HARDER = this.dilute(this.BLACK, 15);
     this.SHADOW = this.dilute(this.BLACK, 30);
   }
 
@@ -403,8 +406,8 @@ class LightTheme extends Theme {
 class DarkTheme extends Theme {
   constructor() {
     super();
-    this.UNO = 10;
-    this.DUE = 70;
+    this.UNO = 70;
+    this.DUE = 30;
     this.TRE = 160;
     [this.UNO_1, this.UNO_2, this.UNO_3, this.UNO_4, this.UNO_5] = this.ramp(
       this.UNO
@@ -433,11 +436,13 @@ class DarkTheme extends Theme {
     this.T_WHITE = "#e6e6e6";
     this.UI_FG = this.WHITE;
     this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
-    this.FG = this.hsl(this.UNO, 20, 90);
+    this.FG = this.WHITE;
     this.BG = this.gray(25);
+    this.INPUT_BG = this.gray(20);
     this.BORDER_SOFT = this.dilute(this.WHITE, 10);
     this.BORDER_HARD = this.dilute(this.WHITE, 15);
-    this.SHADOW = this.dilute(this.WHITE, 70);
+    this.BORDER_HARDER = this.dilute(this.WHITE, 25);
+    this.SHADOW = this.dilute(this.BLACK, 70);
   }
 
   ramp(hue: number) {
@@ -461,15 +466,15 @@ class DarkTheme extends Theme {
   }
 
   activeSelectionBG() {
-    return this.hsl(this.TRE, 60, 50);
+    return this.hsl(this.TRE, 40, 50);
   }
 
   inactiveSelectionBG() {
-    return this.hsl(this.TRE, 30, 40);
+    return this.hsl(this.TRE, 20, 40);
   }
 
   accentFocusBG() {
-    return this.hsl(this.TRE, 60, 50);
+    return this.hsl(this.TRE, 40, 50);
   }
 
   statusBarBG() {
