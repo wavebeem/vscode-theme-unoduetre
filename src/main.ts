@@ -395,11 +395,11 @@ class LightTheme extends Theme {
   }
 
   widgetBG() {
-    return this.BG;
+    return this.WHITE;
   }
 
   widgetBorder() {
-    return this.BORDER_HARD;
+    return this.BORDER_HARDER;
   }
 }
 
