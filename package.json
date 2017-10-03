@@ -1,26 +1,40 @@
 {
-    "name": "theme-unoduetre",
-    "displayName": "Uno Due Tre",
-    "description": "A theme with three colors",
-    "version": "1.4.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
-    },
-    "publisher": "wavebeem",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Uno Due Tre",
-                "uiTheme": "vs",
-                "path": "./themes/uno-due-tre.json"
-            }
-        ]
-    }
+  "name": "theme-unoduetre",
+  "displayName": "Uno Due Tre",
+  "description": "A theme with three colors",
+  "version": "1.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavebeem/vscode-theme-unoduetre.git"
+  },
+  "publisher": "wavebeem",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Uno Due Tre (Light)",
+        "uiTheme": "vs",
+        "path": "./themes/light.json"
+      }
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/wavebeem/vscode-theme-unoduetre/issues"
+  },
+  "homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Brian Mock <brian@mockbrian.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.0.32",
+    "@types/tinycolor2": "^1.4.0",
+    "tinycolor2": "^1.4.1",
+    "typescript": "^2.5.3"
+  }
 }
