@@ -18,6 +18,14 @@ abstract class Theme {
 
   abstract themeType(): ThemeType;
   abstract filename(): string;
+  abstract ramp(hue: number): string[];
+  abstract activeSelectionBG(): string;
+  abstract inactiveSelectionBG(): string;
+  abstract accentFocusBG(): string;
+  abstract statusBarBG(): string;
+  abstract lineHighlightBG(): string;
+  abstract widgetBG(): string;
+  abstract widgetBorder(): string;
 
   hsl(h: number, s: number, l: number) {
     return tinycolor({ h, s, l }).toHexString();
@@ -27,16 +35,6 @@ abstract class Theme {
     return this.hsl(0, 0, l);
   }
 
-  ramp(hue: number) {
-    return [
-      this.hsl(hue, 95, 35),
-      this.hsl(hue, 75, 45),
-      this.hsl(hue, 55, 55),
-      this.hsl(hue, 35, 65),
-      this.hsl(hue, 25, 70)
-    ];
-  }
-
   dilute(color: string, percent: number) {
     if (percent === 100) {
       return color;
@@ -44,43 +42,6 @@ abstract class Theme {
     const scaled = Math.floor(255 * (percent / 100));
     const alpha = (scaled.toString(16) as any).padStart(2, "0");
     return color + alpha;
-  }
-
-  constructor() {
-    this.UNO = 320;
-    this.DUE = 215;
-    this.TRE = 125;
-    [this.UNO_1, this.UNO_2, this.UNO_3, this.UNO_4, this.UNO_5] = this.ramp(
-      this.UNO
-    );
-    [this.DUE_1, this.DUE_2, this.DUE_3] = this.ramp(this.DUE);
-    [this.TRE_1] = this.ramp(this.TRE);
-    this.YELLOW = "#f1c40f";
-    this.ORANGE = "#e67e22";
-    this.BLUE = "#3498db";
-    this.PURPLE = "#9b59b6";
-    this.WHITE = "#ffffff";
-    this.BLACK = "#000000";
-    this.RED = "#cc0000";
-    this.CYAN = "#00bcd4";
-    this.TRANSPARENT = "#00000000";
-    this.NO_ = "#ff00ff";
-    this.T_BG = this.WHITE;
-    this.T_FG = "#5c668e";
-    this.T_BLACK = "#31364a";
-    this.T_RED = "#a91b1c";
-    this.T_GREEN = "#00a337";
-    this.T_YELLOW = "#cc8410";
-    this.T_BLUE = "#39b898";
-    this.T_MAGENTA = "#d95278";
-    this.T_CYAN = "#7f9608";
-    this.T_WHITE = "#e6e6e6";
-    this.UI_FG = "#222222";
-    this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
-    this.FG = this.hsl(this.UNO, 20, 20);
-    this.BG = this.gray(98);
-    this.BORDER_SOFT = this.dilute(this.BLACK, 5);
-    this.BORDER_HARD = this.dilute(this.BLACK, 10);
   }
 
   config() {
@@ -94,23 +55,24 @@ abstract class Theme {
   colors() {
     return {
       focusBorder: this.UI_ACCENT,
-      "widget.shadow": this.dilute(this.BLACK, 30),
-      "input.border": this.gray(80),
+      "widget.shadow": this.SHADOW,
+      "input.border": this.BORDER_HARD,
       "progressBar.background": this.UI_ACCENT,
-      "list.activeSelectionBackground": this.hsl(this.TRE, 50, 50),
-      "list.inactiveSelectionBackground": this.hsl(this.TRE, 40, 80),
-      "list.focusBackground": this.hsl(this.TRE, 50, 80),
-      "list.hoverBackground": this.dilute(this.BLACK, 5),
+      "list.activeSelectionBackground": this.activeSelectionBG(),
+      "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
+      "list.focusBackground": this.accentFocusBG(),
+      "list.hoverBackground": this.dilute(this.UI_FG, 5),
       "statusBar.border": this.BORDER_HARD,
-      "statusBar.background": this.gray(25),
+      "statusBar.background": this.statusBarBG(),
       "statusBar.foreground": this.WHITE,
       "activityBar.border": this.BORDER_SOFT,
       "activityBar.background": this.BG,
-      "activityBar.foreground": this.BLACK,
+      "activityBar.foreground": this.UI_FG,
       "activityBarBadge.background": this.UI_ACCENT,
       "activityBarBadge.foreground": this.WHITE,
-      "editorWidget.background": this.gray(98),
-      editorWidgetBorder: this.gray(80),
+      "editorWidget.foreground": this.UI_FG,
+      "editorWidget.background": this.widgetBG(),
+      "editorWidget.border": this.widgetBorder(),
       "editorBracketMatch.background": this.dilute(this.CYAN, 20),
       "editorBracketMatch.border": this.TRANSPARENT,
       "editor.findMatchBackground": this.dilute(this.ORANGE, 50),
@@ -118,7 +80,7 @@ abstract class Theme {
       "editor.findRangeHighlightBackground": this.dilute(this.NO_, 50),
       "editor.foreground": this.FG,
       "editor.background": this.BG,
-      "editor.lineHighlightBackground": this.dilute(this.YELLOW, 10),
+      "editor.lineHighlightBackground": this.lineHighlightBG(),
       "editor.rangeHighlightBackground": this.dilute(this.ORANGE, 10),
       "editor.selectionBackground": this.dilute(this.YELLOW, 30),
       "editor.inactiveSelectionBackground": this.dilute(this.YELLOW, 25),
@@ -128,29 +90,29 @@ abstract class Theme {
       "editorGroupHeader.tabsBackground": this.BG,
       "editorIndentGuide.background": this.BORDER_HARD,
       "editorRuler.foreground": this.BORDER_HARD,
-      "editorLineNumber.foreground": this.dilute(this.BLACK, 30),
+      "editorLineNumber.foreground": this.dilute(this.UI_FG, 30),
       foreground: this.UI_FG,
       "notification.background": this.UI_FG,
       "notification.foreground": this.WHITE,
       "panel.background": this.T_BG,
       "panel.border": this.BORDER_HARD,
-      "panelTitle.activeBorder": this.gray(50),
+      "panelTitle.activeBorder": this.dilute(this.UI_FG, 50),
       "panelTitle.activeForeground": this.BLACK,
-      "panelTitle.inactiveForeground": this.gray(60),
+      "panelTitle.inactiveForeground": this.dilute(this.UI_FG, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(this.YELLOW, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(this.YELLOW, 50),
       "sideBar.border": this.BORDER_SOFT,
       "sideBar.background": this.BG,
-      "sideBarSectionHeader.background": this.dilute(this.BLACK, 3),
-      "tab.activeBackground": this.hsl(this.TRE, 50, 80),
-      "tab.activeForeground": this.BLACK,
+      "sideBarSectionHeader.background": this.dilute(this.UI_FG, 3),
+      "tab.activeBackground": this.accentFocusBG(),
+      "tab.activeForeground": this.UI_FG,
       "tab.inactiveBackground": this.TRANSPARENT,
-      "tab.inactiveForeground": this.gray(50),
+      "tab.inactiveForeground": this.dilute(this.UI_FG, 50),
       "tab.border": this.TRANSPARENT,
       "titleBar.activeBackground": this.BG,
-      "titleBar.activeForeground": this.BLACK,
+      "titleBar.activeForeground": this.UI_FG,
       "titleBar.inactiveBackground": this.BG,
-      "titleBar.inactiveForeground": this.gray(70),
+      "titleBar.inactiveForeground": this.dilute(this.UI_FG, 70),
       "titleBar.border": this.BORDER_SOFT,
       "terminal.foreground": this.T_FG,
       "terminal.background": this.T_BG,
@@ -352,6 +314,55 @@ abstract class Theme {
 }
 
 class LightTheme extends Theme {
+  constructor() {
+    super();
+    this.UNO = 320;
+    this.DUE = 215;
+    this.TRE = 125;
+    [this.UNO_1, this.UNO_2, this.UNO_3, this.UNO_4, this.UNO_5] = this.ramp(
+      this.UNO
+    );
+    [this.DUE_1, this.DUE_2, this.DUE_3] = this.ramp(this.DUE);
+    [this.TRE_1] = this.ramp(this.TRE);
+    this.YELLOW = "#f1c40f";
+    this.ORANGE = "#e67e22";
+    this.BLUE = "#3498db";
+    this.PURPLE = "#9b59b6";
+    this.WHITE = "#ffffff";
+    this.BLACK = "#000000";
+    this.RED = "#cc0000";
+    this.CYAN = "#00bcd4";
+    this.TRANSPARENT = "#00000000";
+    this.NO_ = "#ff00ff";
+    this.T_BG = this.WHITE;
+    this.T_FG = "#5c668e";
+    this.T_BLACK = "#31364a";
+    this.T_RED = "#a91b1c";
+    this.T_GREEN = "#00a337";
+    this.T_YELLOW = "#cc8410";
+    this.T_BLUE = "#39b898";
+    this.T_MAGENTA = "#d95278";
+    this.T_CYAN = "#7f9608";
+    this.T_WHITE = "#e6e6e6";
+    this.UI_FG = this.BLACK;
+    this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
+    this.FG = this.hsl(this.UNO, 20, 20);
+    this.BG = this.gray(98);
+    this.BORDER_SOFT = this.dilute(this.BLACK, 5);
+    this.BORDER_HARD = this.dilute(this.BLACK, 10);
+    this.SHADOW = this.dilute(this.BLACK, 30);
+  }
+
+  ramp(hue: number) {
+    return [
+      this.hsl(hue, 95, 35),
+      this.hsl(hue, 75, 45),
+      this.hsl(hue, 55, 55),
+      this.hsl(hue, 35, 65),
+      this.hsl(hue, 25, 70)
+    ];
+  }
+
   filename() {
     return "light";
   }
@@ -359,7 +370,124 @@ class LightTheme extends Theme {
   themeType() {
     return ThemeType.LIGHT;
   }
+
+  activeSelectionBG() {
+    return this.hsl(this.TRE, 50, 50);
+  }
+
+  inactiveSelectionBG() {
+    return this.hsl(this.TRE, 40, 80);
+  }
+
+  accentFocusBG() {
+    return this.hsl(this.TRE, 50, 80);
+  }
+
+  statusBarBG() {
+    return this.gray(25);
+  }
+
+  lineHighlightBG() {
+    return this.dilute(this.YELLOW, 10);
+  }
+
+  widgetBG() {
+    return this.BG;
+  }
+
+  widgetBorder() {
+    return this.BORDER_HARD;
+  }
+}
+
+class DarkTheme extends Theme {
+  constructor() {
+    super();
+    this.UNO = 10;
+    this.DUE = 70;
+    this.TRE = 160;
+    [this.UNO_1, this.UNO_2, this.UNO_3, this.UNO_4, this.UNO_5] = this.ramp(
+      this.UNO
+    );
+    [this.DUE_1, this.DUE_2, this.DUE_3] = this.ramp(this.DUE);
+    [this.TRE_1] = this.ramp(this.TRE);
+    this.YELLOW = "#f1c40f";
+    this.ORANGE = "#e67e22";
+    this.BLUE = "#3498db";
+    this.PURPLE = "#9b59b6";
+    this.WHITE = "#ffffff";
+    this.BLACK = "#000000";
+    this.RED = "#ff8888";
+    this.CYAN = "#00bcd4";
+    this.TRANSPARENT = "#00000000";
+    this.NO_ = "#ff00ff";
+    this.T_BG = this.gray(20);
+    this.T_FG = this.hsl(this.UNO, 40, 90);
+    this.T_BLACK = "#31364a";
+    this.T_RED = "#a91b1c";
+    this.T_GREEN = "#00a337";
+    this.T_YELLOW = "#cc8410";
+    this.T_BLUE = "#39b898";
+    this.T_MAGENTA = "#d95278";
+    this.T_CYAN = "#7f9608";
+    this.T_WHITE = "#e6e6e6";
+    this.UI_FG = this.WHITE;
+    this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
+    this.FG = this.hsl(this.UNO, 20, 90);
+    this.BG = this.gray(25);
+    this.BORDER_SOFT = this.dilute(this.WHITE, 10);
+    this.BORDER_HARD = this.dilute(this.WHITE, 15);
+    this.SHADOW = this.dilute(this.WHITE, 70);
+  }
+
+  ramp(hue: number) {
+    const s = 100;
+    const l = 75;
+    return [
+      this.hsl(hue, s, l),
+      this.hsl(hue + 5, s, l),
+      this.hsl(hue + 10, s, l),
+      this.hsl(hue + 15, s, l),
+      this.hsl(hue + 20, s, l)
+    ];
+  }
+
+  filename() {
+    return "dark";
+  }
+
+  themeType() {
+    return ThemeType.DARK;
+  }
+
+  activeSelectionBG() {
+    return this.hsl(this.TRE, 60, 50);
+  }
+
+  inactiveSelectionBG() {
+    return this.hsl(this.TRE, 30, 40);
+  }
+
+  accentFocusBG() {
+    return this.hsl(this.TRE, 60, 50);
+  }
+
+  statusBarBG() {
+    return this.gray(15);
+  }
+
+  lineHighlightBG() {
+    return this.dilute(this.UI_FG, 7);
+  }
+
+  widgetBG() {
+    return this.gray(30);
+  }
+
+  widgetBorder() {
+    return this.gray(50);
+  }
 }
 
 new LightTheme().build();
-// new DarkTheme().build();
+new DarkTheme().build();
