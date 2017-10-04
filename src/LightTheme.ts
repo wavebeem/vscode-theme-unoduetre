@@ -1,41 +1,51 @@
-import Theme, { ThemeType } from "./Theme";
+import Theme, { ThemeType, Palette } from "./Theme";
+
+const white = "#ffffff";
+const black = "#000000";
+const yellow = "#f1c40f";
 
 export default class LightTheme extends Theme {
-  constructor() {
-    super();
-    this.UNO = 320;
-    this.DUE = 215;
-    this.TRE = 125;
-    this.YELLOW = "#f1c40f";
-    this.ORANGE = "#e67e22";
-    this.BLUE = "#3498db";
-    this.PURPLE = "#9b59b6";
-    this.WHITE = "#ffffff";
-    this.BLACK = "#000000";
-    this.RED = "#cc0000";
-    this.CYAN = "#00bcd4";
-    this.TRANSPARENT = "#00000000";
-    this.NO_ = "#ff00ff";
-    this.T_BG = this.WHITE;
-    this.T_FG = "#5c668e";
-    this.T_BLACK = "#31364a";
-    this.T_RED = "#a91b1c";
-    this.T_GREEN = "#00a337";
-    this.T_YELLOW = "#cc8410";
-    this.T_BLUE = "#39b898";
-    this.T_MAGENTA = "#d95278";
-    this.T_CYAN = "#7f9608";
-    this.T_WHITE = "#e6e6e6";
-    this.UI_FG = this.BLACK;
-    this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
-    this.FG = this.hsl(this.UNO, 20, 20);
-    this.BG = this.gray(98);
-    this.INPUT_BG = this.WHITE;
-    this.BORDER_SOFT = this.dilute(this.BLACK, 5);
-    this.BORDER_HARD = this.dilute(this.BLACK, 10);
-    this.BORDER_HARDER = this.dilute(this.BLACK, 15);
-    this.SHADOW = this.dilute(this.BLACK, 30);
-  }
+  uno = 320;
+  due = 215;
+  tre = 125;
+  palette: Palette = {
+    YELLOW: yellow,
+    ORANGE: "#e67e22",
+    BLUE: "#3498db",
+    PURPLE: "#9b59b6",
+    WHITE: white,
+    BLACK: black,
+    RED: "#cc0000",
+    CYAN: "#00bcd4",
+    TRANSPARENT: "#00000000",
+    NO_: "#ff00ff",
+    T_BG: white,
+    T_FG: "#5c668e",
+    T_BLACK: "#31364a",
+    T_RED: "#a91b1c",
+    T_GREEN: "#00a337",
+    T_YELLOW: "#cc8410",
+    T_BLUE: "#39b898",
+    T_MAGENTA: "#d95278",
+    T_CYAN: "#7f9608",
+    T_WHITE: "#e6e6e6",
+    UI_FG: black,
+    UI_ACCENT: this.hsl(this.tre, 70, 40),
+    FG: this.hsl(this.uno, 20, 20),
+    BG: this.gray(98),
+    INPUT_BG: white,
+    BORDER_SOFT: this.dilute(black, 5),
+    BORDER_HARD: this.dilute(black, 10),
+    BORDER_HARDER: this.dilute(black, 15),
+    SHADOW: this.dilute(black, 30),
+    activeSelectionBG: this.hsl(this.tre, 50, 50),
+    inactiveSelectionBG: this.hsl(this.tre, 40, 80),
+    accentFocusBG: this.hsl(this.tre, 50, 80),
+    statusBarBG: this.gray(25),
+    lineHighlightBG: this.dilute(yellow, 10),
+    widgetBG: white,
+    widgetBorder: this.dilute(black, 15)
+  };
 
   ramp(hue: number) {
     return [
@@ -53,33 +63,5 @@ export default class LightTheme extends Theme {
 
   themeType() {
     return ThemeType.LIGHT;
-  }
-
-  activeSelectionBG() {
-    return this.hsl(this.TRE, 50, 50);
-  }
-
-  inactiveSelectionBG() {
-    return this.hsl(this.TRE, 40, 80);
-  }
-
-  accentFocusBG() {
-    return this.hsl(this.TRE, 50, 80);
-  }
-
-  statusBarBG() {
-    return this.gray(25);
-  }
-
-  lineHighlightBG() {
-    return this.dilute(this.YELLOW, 10);
-  }
-
-  widgetBG() {
-    return this.WHITE;
-  }
-
-  widgetBorder() {
-    return this.BORDER_HARDER;
   }
 }
