@@ -23,14 +23,14 @@ export default class DarkTheme extends Theme {
     this.NO_ = "#ff00ff";
     this.T_BG = this.gray(20);
     this.T_FG = this.hsl(this.UNO, 40, 90);
-    this.T_BLACK = "#31364a";
-    this.T_RED = "#a91b1c";
-    this.T_GREEN = "#00a337";
-    this.T_YELLOW = "#cc8410";
-    this.T_BLUE = "#39b898";
-    this.T_MAGENTA = "#d95278";
-    this.T_CYAN = "#7f9608";
-    this.T_WHITE = "#e6e6e6";
+    this.T_BLACK = this.gray(15);
+    this.T_RED = this.hsl(0, 60, 60);
+    this.T_GREEN = this.hsl(140, 60, 60);
+    this.T_YELLOW = this.hsl(40, 60, 60);
+    this.T_BLUE = this.hsl(200, 60, 60);
+    this.T_MAGENTA = this.hsl(330, 60, 60);
+    this.T_CYAN = this.hsl(80, 60, 60);
+    this.T_WHITE = this.WHITE;
     this.UI_FG = this.WHITE;
     this.UI_ACCENT = this.hsl(this.TRE, 70, 40);
     this.FG = this.WHITE;
@@ -63,15 +63,15 @@ export default class DarkTheme extends Theme {
   }
 
   activeSelectionBG() {
-    return this.hsl(this.TRE, 40, 50);
+    return this.hsl(this.TRE, 35, 35);
   }
 
   inactiveSelectionBG() {
-    return this.hsl(this.TRE, 20, 40);
+    return this.hsl(this.TRE, 10, 30);
   }
 
   accentFocusBG() {
-    return this.hsl(this.TRE, 40, 50);
+    return this.hsl(this.TRE, 35, 35);
   }
 
   statusBarBG() {
