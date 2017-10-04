@@ -6,11 +6,6 @@ export default class DarkTheme extends Theme {
     this.UNO = 70;
     this.DUE = 30;
     this.TRE = 160;
-    [this.UNO_1, this.UNO_2, this.UNO_3, this.UNO_4, this.UNO_5] = this.ramp(
-      this.UNO
-    );
-    [this.DUE_1, this.DUE_2, this.DUE_3] = this.ramp(this.DUE);
-    [this.TRE_1] = this.ramp(this.TRE);
     this.YELLOW = "#f1c40f";
     this.ORANGE = "#e67e22";
     this.BLUE = "#3498db";

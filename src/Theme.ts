@@ -60,7 +60,7 @@ export default abstract class Theme {
       "input.background": this.INPUT_BG,
       "progressBar.background": this.UI_ACCENT,
       "inputOption.activeBorder": this.UI_ACCENT,
-      "list.highlightForeground": this.RED,
+      "list.highlightForeground": this.WHITE,
       "list.activeSelectionBackground": this.activeSelectionBG(),
       "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
       "list.focusBackground": this.accentFocusBG(),
@@ -140,12 +140,8 @@ export default abstract class Theme {
 
   tokenColors() {
     return this.scopes().reduce((arr, item) => {
-      let [x, y] = item;
-      if (Array.isArray(y)) {
-        y = y.join(", ");
-      }
-      const name = x as string;
-      const scope = y as string;
+      const [name, scopes] = item;
+      const scope = scopes.join(", ");
       const settings = this.namedScopeToSettings(name);
       if (settings) {
         return [...arr, { name, scope, settings }];
@@ -155,7 +151,7 @@ export default abstract class Theme {
   }
 
   scopes() {
-    return [
+    const data: [string, string[]][] = [
       ["Parameter", ["variable.parameter.function"]],
       ["Comments", ["comment", "punctuation.definition.comment"]],
       [
@@ -248,51 +244,55 @@ export default abstract class Theme {
       ["Deprecated", ["invalid.deprecated"]],
       ["Unimplemented", ["invalid.unimplemented"]]
     ];
+    return data;
   }
 
   namedScopeToSettings(name: string) {
+    const [uno1, uno2, uno3, uno4, uno5] = this.ramp(this.UNO);
+    const [due1, due2, due3] = this.ramp(this.DUE);
+    const [tre1] = this.ramp(this.TRE);
     const obj: { [key: string]: Style } = {
-      Call: this.style(this.UNO_2),
-      Parameter: this.style(this.DUE_3),
-      Comments: this.style(this.UNO_5),
-      Punctuation: this.style(this.UNO_4),
-      Delimiters: this.style(this.UNO_5),
-      Operators: this.style(this.UNO_3),
-      Search: this.style(this.UNO_2, "bold"),
-      "Search Line": this.style(this.DUE_1, "bold"),
-      Keywords: this.style(this.UNO_1, "bold"),
-      Variables: this.style(this.DUE_3),
-      Functions: this.style(this.DUE_2, "bold"),
-      Classes: this.style(this.DUE_2, "bold"),
-      Methods: this.style(this.DUE_2),
-      Storage: this.style(this.UNO_1, "bold"),
-      Strings: this.style(this.TRE_1),
-      Symbols: this.style(this.DUE_1),
-      Numbers: this.style(this.DUE_1),
-      Boolean: this.style(this.DUE_1),
-      Constants: this.style(this.DUE_1),
-      Support: this.style(this.UNO_2),
-      Tags: this.style(this.DUE_1),
-      Attributes: this.style(this.DUE_1),
-      "Attribute IDs": this.style(this.DUE_1),
-      Selector: this.style(this.UNO_2),
-      Headings: this.style(this.DUE_1, "bold"),
-      Units: this.style(this.DUE_3),
-      Bold: this.style(this.UNO_2, "bold"),
-      Italic: this.style(this.UNO_2, "italic"),
-      Code: this.style(this.UNO_3),
-      "Link Text": this.style(this.UNO_4, "bold"),
-      "Link Url": this.style(this.DUE_1),
-      Lists: this.style(this.DUE_3),
-      Quotes: this.style(this.UNO_4),
-      Separator: this.style(this.UNO_4),
-      Inserted: this.style(this.DUE_2),
+      Call: this.style(uno2),
+      Parameter: this.style(due3),
+      Comments: this.style(uno5),
+      Punctuation: this.style(uno4),
+      Delimiters: this.style(uno5),
+      Operators: this.style(uno3),
+      Search: this.style(uno2, "bold"),
+      "Search Line": this.style(due1, "bold"),
+      Keywords: this.style(uno1, "bold"),
+      Variables: this.style(due3),
+      Functions: this.style(due2, "bold"),
+      Classes: this.style(due2, "bold"),
+      Methods: this.style(due2),
+      Storage: this.style(uno1, "bold"),
+      Strings: this.style(tre1),
+      Symbols: this.style(due1),
+      Numbers: this.style(due1),
+      Boolean: this.style(due1),
+      Constants: this.style(due1),
+      Support: this.style(uno2),
+      Tags: this.style(due1),
+      Attributes: this.style(due1),
+      "Attribute IDs": this.style(due1),
+      Selector: this.style(uno2),
+      Headings: this.style(due1, "bold"),
+      Units: this.style(due3),
+      Bold: this.style(uno2, "bold"),
+      Italic: this.style(uno2, "italic"),
+      Code: this.style(uno3),
+      "Link Text": this.style(uno4, "bold"),
+      "Link Url": this.style(due1),
+      Lists: this.style(due3),
+      Quotes: this.style(uno4),
+      Separator: this.style(uno4),
+      Inserted: this.style(due2),
       Deleted: this.style(this.RED),
-      Changed: this.style(this.UNO_4),
-      Colors: this.style(this.DUE_3),
-      "Regular Expressions": this.style(this.UNO_3),
-      "Escape Characters": this.style(this.UNO_3),
-      Embedded: this.style(this.UNO_2),
+      Changed: this.style(uno4),
+      Colors: this.style(due3),
+      "Regular Expressions": this.style(uno3),
+      "Escape Characters": this.style(uno3),
+      Embedded: this.style(uno2),
       Broken: this.style(this.RED, "bold"),
       Deprecated: this.style(this.RED, "bold"),
       Unimplemented: this.style(this.RED, "bold"),
