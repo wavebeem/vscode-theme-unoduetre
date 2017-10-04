@@ -59,6 +59,7 @@ export default abstract class Theme {
       "input.border": this.BORDER_HARDER,
       "input.background": this.INPUT_BG,
       "progressBar.background": this.UI_ACCENT,
+      "inputOption.activeBorder": this.UI_ACCENT,
       "list.activeSelectionBackground": this.activeSelectionBG(),
       "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
       "list.focusBackground": this.accentFocusBG(),
