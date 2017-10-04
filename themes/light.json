@@ -7,6 +7,7 @@
     "input.background": "#ffffff",
     "progressBar.background": "#1fad2b",
     "inputOption.activeBorder": "#1fad2b",
+    "list.highlightForeground": "#cc0000",
     "list.activeSelectionBackground": "#40bf4a",
     "list.inactiveSelectionBackground": "#b8e0bb",
     "list.focusBackground": "#b3e6b7",
