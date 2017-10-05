@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
   "scripts": {
+    "prebuild": "tsc",
+    "build": "node build/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -42,8 +42,6 @@
     "editorRuler.foreground": "#ffffff26",
     "editorLineNumber.foreground": "#ffffff4c",
     "foreground": "#ffffff",
-    "notification.background": "#ffffff",
-    "notification.foreground": "#ffffff",
     "panel.background": "#333333",
     "panel.border": "#ffffff26",
     "panelTitle.activeBorder": "#ffffff7f",

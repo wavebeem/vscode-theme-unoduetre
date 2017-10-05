@@ -12,35 +12,35 @@ export enum ThemeType {
 }
 
 export interface Palette {
-  YELLOW: string;
-  ORANGE: string;
-  BLUE: string;
-  PURPLE: string;
-  WHITE: string;
-  BLACK: string;
-  RED: string;
-  CYAN: string;
-  TRANSPARENT: string;
-  NO_: string;
-  T_BG: string;
-  T_FG: string;
-  T_BLACK: string;
-  T_RED: string;
-  T_GREEN: string;
-  T_YELLOW: string;
-  T_BLUE: string;
-  T_MAGENTA: string;
-  T_CYAN: string;
-  T_WHITE: string;
-  UI_FG: string;
-  UI_ACCENT: string;
-  FG: string;
-  BG: string;
-  INPUT_BG: string;
-  BORDER_SOFT: string;
-  BORDER_HARD: string;
-  BORDER_HARDER: string;
-  SHADOW: string;
+  yellow: string;
+  orange: string;
+  blue: string;
+  purple: string;
+  white: string;
+  black: string;
+  red: string;
+  cyan: string;
+  transparent: string;
+  __NO__: string;
+  tBG: string;
+  tFG: string;
+  tBlack: string;
+  tRed: string;
+  tGreen: string;
+  tYellow: string;
+  tBlue: string;
+  tMagenta: string;
+  tCyan: string;
+  tWhite: string;
+  uiFG: string;
+  uiAccent: string;
+  fg: string;
+  bg: string;
+  inputBG: string;
+  borderSoft: string;
+  borderMedium: string;
+  borderHard: string;
+  shadow: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
   accentFocusBG: string;
@@ -89,87 +89,85 @@ export default abstract class Theme {
   colors() {
     const p = this.palette;
     return {
-      focusBorder: p.UI_ACCENT,
-      "widget.shadow": p.SHADOW,
-      "input.border": p.BORDER_HARDER,
-      "input.background": p.INPUT_BG,
-      "progressBar.background": p.UI_ACCENT,
-      "inputOption.activeBorder": p.UI_ACCENT,
-      "list.highlightForeground": p.RED,
+      focusBorder: p.uiAccent,
+      "widget.shadow": p.shadow,
+      "input.border": p.borderHard,
+      "input.background": p.inputBG,
+      "progressBar.background": p.uiAccent,
+      "inputOption.activeBorder": p.uiAccent,
+      "list.highlightForeground": p.red,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.UI_FG, 5),
-      "statusBar.border": p.BORDER_HARDER,
+      "list.hoverBackground": this.dilute(p.uiFG, 5),
+      "statusBar.border": p.borderHard,
       "statusBar.background": p.statusBarBG,
-      "statusBar.foreground": p.WHITE,
-      "activityBar.border": p.BORDER_SOFT,
-      "activityBar.background": p.BG,
-      "activityBar.foreground": p.UI_FG,
-      "activityBarBadge.background": p.UI_ACCENT,
-      "activityBarBadge.foreground": p.WHITE,
-      "editorWidget.foreground": p.UI_FG,
+      "statusBar.foreground": p.white,
+      "activityBar.border": p.borderSoft,
+      "activityBar.background": p.bg,
+      "activityBar.foreground": p.uiFG,
+      "activityBarBadge.background": p.uiAccent,
+      "activityBarBadge.foreground": p.white,
+      "editorWidget.foreground": p.uiFG,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
-      "editorBracketMatch.background": this.dilute(p.CYAN, 20),
-      "editorBracketMatch.border": p.TRANSPARENT,
-      "editor.findMatchBackground": this.dilute(p.ORANGE, 50),
-      "editor.findMatchHighlightBackground": this.dilute(p.YELLOW, 50),
-      "editor.findRangeHighlightBackground": this.dilute(p.NO_, 50),
-      "editor.foreground": p.FG,
-      "editor.background": p.BG,
+      "editorBracketMatch.background": this.dilute(p.cyan, 20),
+      "editorBracketMatch.border": p.transparent,
+      "editor.findMatchBackground": this.dilute(p.orange, 50),
+      "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
+      "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
+      "editor.foreground": p.fg,
+      "editor.background": p.bg,
       "editor.lineHighlightBackground": p.lineHighlightBG,
-      "editor.rangeHighlightBackground": this.dilute(p.ORANGE, 10),
-      "editor.selectionBackground": this.dilute(p.YELLOW, 30),
-      "editor.inactiveSelectionBackground": this.dilute(p.YELLOW, 25),
-      "editor.wordHighlightBackground": this.dilute(p.BLUE, 15),
-      "editor.wordHighlightStrongBackground": this.dilute(p.PURPLE, 20),
-      "editorCursor.foreground": p.RED,
-      "editorGroupHeader.tabsBackground": p.BG,
-      "editorIndentGuide.background": p.BORDER_HARD,
-      "editorRuler.foreground": p.BORDER_HARD,
-      "editorLineNumber.foreground": this.dilute(p.UI_FG, 30),
-      foreground: p.UI_FG,
-      "notification.background": p.UI_FG,
-      "notification.foreground": p.WHITE,
-      "panel.background": p.T_BG,
-      "panel.border": p.BORDER_HARD,
-      "panelTitle.activeBorder": this.dilute(p.UI_FG, 50),
-      "panelTitle.activeForeground": p.UI_FG,
-      "panelTitle.inactiveForeground": this.dilute(p.UI_FG, 60),
-      "peekViewEditor.matchHighlightBackground": this.dilute(p.YELLOW, 50),
-      "peekViewResult.matchHighlightBackground": this.dilute(p.YELLOW, 50),
-      "sideBar.border": p.BORDER_SOFT,
-      "sideBar.background": p.BG,
-      "sideBarSectionHeader.background": this.dilute(p.UI_FG, 3),
+      "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
+      "editor.selectionBackground": this.dilute(p.yellow, 30),
+      "editor.inactiveSelectionBackground": this.dilute(p.yellow, 25),
+      "editor.wordHighlightBackground": this.dilute(p.blue, 15),
+      "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
+      "editorCursor.foreground": p.red,
+      "editorGroupHeader.tabsBackground": p.bg,
+      "editorIndentGuide.background": p.borderMedium,
+      "editorRuler.foreground": p.borderMedium,
+      "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
+      foreground: p.uiFG,
+      "panel.background": p.tBG,
+      "panel.border": p.borderMedium,
+      "panelTitle.activeBorder": this.dilute(p.uiFG, 50),
+      "panelTitle.activeForeground": p.uiFG,
+      "panelTitle.inactiveForeground": this.dilute(p.uiFG, 60),
+      "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
+      "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
+      "sideBar.border": p.borderSoft,
+      "sideBar.background": p.bg,
+      "sideBarSectionHeader.background": this.dilute(p.uiFG, 3),
       "tab.activeBackground": p.accentFocusBG,
-      "tab.activeForeground": p.UI_FG,
-      "tab.inactiveBackground": p.TRANSPARENT,
-      "tab.inactiveForeground": this.dilute(p.UI_FG, 50),
-      "tab.border": p.TRANSPARENT,
-      "titleBar.activeBackground": p.BG,
-      "titleBar.activeForeground": p.UI_FG,
-      "titleBar.inactiveBackground": p.BG,
-      "titleBar.inactiveForeground": this.dilute(p.UI_FG, 70),
-      "titleBar.border": p.BORDER_SOFT,
-      "terminal.foreground": p.T_FG,
-      "terminal.background": p.T_BG,
-      "terminal.ansiBlack": p.T_BLACK,
-      "terminal.ansiBlue": p.T_BLUE,
-      "terminal.ansiBrightBlack": p.T_BLACK,
-      "terminal.ansiBrightBlue": p.T_BLUE,
-      "terminal.ansiBrightCyan": p.T_CYAN,
-      "terminal.ansiBrightGreen": p.T_GREEN,
-      "terminal.ansiBrightMagenta": p.T_MAGENTA,
-      "terminal.ansiBrightRed": p.T_RED,
-      "terminal.ansiBrightWhite": p.T_WHITE,
-      "terminal.ansiBrightYellow": p.T_YELLOW,
-      "terminal.ansiCyan": p.T_CYAN,
-      "terminal.ansiGreen": p.T_GREEN,
-      "terminal.ansiMagenta": p.T_MAGENTA,
-      "terminal.ansiRed": p.T_RED,
-      "terminal.ansiWhite": p.T_WHITE,
-      "terminal.ansiYellow": p.T_YELLOW
+      "tab.activeForeground": p.uiFG,
+      "tab.inactiveBackground": p.transparent,
+      "tab.inactiveForeground": this.dilute(p.uiFG, 50),
+      "tab.border": p.transparent,
+      "titleBar.activeBackground": p.bg,
+      "titleBar.activeForeground": p.uiFG,
+      "titleBar.inactiveBackground": p.bg,
+      "titleBar.inactiveForeground": this.dilute(p.uiFG, 70),
+      "titleBar.border": p.borderSoft,
+      "terminal.foreground": p.tFG,
+      "terminal.background": p.tBG,
+      "terminal.ansiBlack": p.tBlack,
+      "terminal.ansiBlue": p.tBlue,
+      "terminal.ansiBrightBlack": p.tBlack,
+      "terminal.ansiBrightBlue": p.tBlue,
+      "terminal.ansiBrightCyan": p.tCyan,
+      "terminal.ansiBrightGreen": p.tGreen,
+      "terminal.ansiBrightMagenta": p.tMagenta,
+      "terminal.ansiBrightRed": p.tRed,
+      "terminal.ansiBrightWhite": p.tWhite,
+      "terminal.ansiBrightYellow": p.tYellow,
+      "terminal.ansiCyan": p.tCyan,
+      "terminal.ansiGreen": p.tGreen,
+      "terminal.ansiMagenta": p.tMagenta,
+      "terminal.ansiRed": p.tRed,
+      "terminal.ansiWhite": p.tWhite,
+      "terminal.ansiYellow": p.tYellow
     };
   }
 
@@ -322,16 +320,16 @@ export default abstract class Theme {
       Quotes: this.style(uno4),
       Separator: this.style(uno4),
       Inserted: this.style(due2),
-      Deleted: this.style(p.RED),
+      Deleted: this.style(p.red),
       Changed: this.style(uno4),
       Colors: this.style(due3),
       "Regular Expressions": this.style(uno3),
       "Escape Characters": this.style(uno3),
       Embedded: this.style(uno2),
-      Broken: this.style(p.RED, "bold"),
-      Deprecated: this.style(p.RED, "bold"),
-      Unimplemented: this.style(p.RED, "bold"),
-      Illegal: this.style(p.RED, "bold")
+      Broken: this.style(p.red, "bold"),
+      Deprecated: this.style(p.red, "bold"),
+      Unimplemented: this.style(p.red, "bold"),
+      Illegal: this.style(p.red, "bold")
     };
     return obj[name];
   }
