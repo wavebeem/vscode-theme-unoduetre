@@ -3,6 +3,9 @@ import Theme, { ThemeType, Palette } from "./Theme";
 const white = "#ffffff";
 const black = "#000000";
 const yellow = "#f1c40f";
+const red = "#cc0000";
+const cyan = "#00bcd4";
+const transparent = "#00000000";
 
 export default class LightTheme extends Theme {
   uno = 320;
@@ -15,9 +18,9 @@ export default class LightTheme extends Theme {
     purple: "#9b59b6",
     white: white,
     black: black,
-    red: "#cc0000",
-    cyan: "#00bcd4",
-    transparent: "#00000000",
+    red: red,
+    cyan: cyan,
+    transparent: transparent,
     __NO__: "#ff00ff",
     tBG: white,
     tFG: "#5c668e",
@@ -31,9 +34,12 @@ export default class LightTheme extends Theme {
     tWhite: "#e6e6e6",
     uiFG: black,
     uiAccent: this.hsl(this.tre, 70, 40),
+    uiAccent2: red,
     fg: this.hsl(this.uno, 20, 20),
     bg: this.gray(98),
     inputBG: white,
+    bracketMatchBG: this.dilute(cyan, 30),
+    brackerMatchBorder: transparent,
     borderSoft: this.dilute(black, 5),
     borderMedium: this.dilute(black, 10),
     borderHard: this.dilute(black, 15),

@@ -34,6 +34,7 @@ export interface Palette {
   tWhite: string;
   uiFG: string;
   uiAccent: string;
+  uiAccent2: string;
   fg: string;
   bg: string;
   inputBG: string;
@@ -48,6 +49,8 @@ export interface Palette {
   lineHighlightBG: string;
   widgetBG: string;
   widgetBorder: string;
+  bracketMatchBG: string;
+  brackerMatchBorder: string;
 }
 
 export default abstract class Theme {
@@ -96,7 +99,7 @@ export default abstract class Theme {
       "input.background": p.inputBG,
       "progressBar.background": p.uiAccent,
       "inputOption.activeBorder": p.uiAccent,
-      "list.highlightForeground": p.red,
+      "list.highlightForeground": p.uiAccent2,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
@@ -112,20 +115,21 @@ export default abstract class Theme {
       "editorWidget.foreground": p.uiFG,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
-      "editorBracketMatch.background": this.dilute(p.cyan, 20),
-      "editorBracketMatch.border": p.transparent,
+      "editorBracketMatch.background": p.bracketMatchBG,
+      "editorBracketMatch.border": p.brackerMatchBorder,
       "editor.findMatchBackground": this.dilute(p.orange, 50),
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
       "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
       "editor.foreground": p.fg,
       "editor.background": p.bg,
+      "editorLink.activeForeground": p.cyan,
       "editor.lineHighlightBackground": p.lineHighlightBG,
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
       "editor.selectionBackground": this.dilute(p.yellow, 30),
       "editor.inactiveSelectionBackground": this.dilute(p.yellow, 25),
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
-      "editorCursor.foreground": p.red,
+      "editorCursor.foreground": p.uiAccent2,
       "editorGroupHeader.tabsBackground": p.bg,
       "editorIndentGuide.background": p.borderMedium,
       "editorRuler.foreground": p.borderMedium,

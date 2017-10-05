@@ -8,7 +8,7 @@
     "input.background": "#333333",
     "progressBar.background": "#1fad7e",
     "inputOption.activeBorder": "#1fad7e",
-    "list.highlightForeground": "#ff8888",
+    "list.highlightForeground": "#33ff33",
     "list.activeSelectionBackground": "#3a7864",
     "list.inactiveSelectionBackground": "#45544f",
     "list.focusBackground": "#3a7864",
@@ -24,20 +24,21 @@
     "editorWidget.foreground": "#ffffff",
     "editorWidget.background": "#4d4d4d",
     "editorWidget.border": "#808080",
-    "editorBracketMatch.background": "#00bcd433",
-    "editorBracketMatch.border": "#00000000",
+    "editorBracketMatch.background": "#00bcd47f",
+    "editorBracketMatch.border": "#00bcd400",
     "editor.findMatchBackground": "#e67e227f",
     "editor.findMatchHighlightBackground": "#f1c40f7f",
     "editor.findRangeHighlightBackground": "#ff00ff7f",
     "editor.foreground": "#ffffff",
     "editor.background": "#404040",
+    "editorLink.activeForeground": "#00bcd4",
     "editor.lineHighlightBackground": "#ffffff11",
     "editor.rangeHighlightBackground": "#e67e2219",
     "editor.selectionBackground": "#f1c40f4c",
     "editor.inactiveSelectionBackground": "#f1c40f3f",
     "editor.wordHighlightBackground": "#3498db26",
     "editor.wordHighlightStrongBackground": "#9b59b633",
-    "editorCursor.foreground": "#ff8888",
+    "editorCursor.foreground": "#33ff33",
     "editorGroupHeader.tabsBackground": "#404040",
     "editorIndentGuide.background": "#ffffff26",
     "editorRuler.foreground": "#ffffff26",
@@ -359,7 +360,7 @@
       "name": "Deleted",
       "scope": "markup.deleted",
       "settings": {
-        "foreground": "#ff8888",
+        "foreground": "#ff6666",
         "fontStyle": ""
       }
     },
@@ -407,7 +408,7 @@
       "name": "Illegal",
       "scope": "invalid, invalid.illegal",
       "settings": {
-        "foreground": "#ff8888",
+        "foreground": "#ff6666",
         "fontStyle": "bold"
       }
     },
@@ -415,7 +416,7 @@
       "name": "Broken",
       "scope": "invalid.broken",
       "settings": {
-        "foreground": "#ff8888",
+        "foreground": "#ff6666",
         "fontStyle": "bold"
       }
     },
@@ -423,7 +424,7 @@
       "name": "Deprecated",
       "scope": "invalid.deprecated",
       "settings": {
-        "foreground": "#ff8888",
+        "foreground": "#ff6666",
         "fontStyle": "bold"
       }
     },
@@ -431,7 +432,7 @@
       "name": "Unimplemented",
       "scope": "invalid.unimplemented",
       "settings": {
-        "foreground": "#ff8888",
+        "foreground": "#ff6666",
         "fontStyle": "bold"
       }
     }

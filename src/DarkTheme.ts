@@ -2,6 +2,8 @@ import Theme, { ThemeType, Palette } from "./Theme";
 
 const white = "#ffffff";
 const black = "#000000";
+const cyan = "#00bcd4";
+const hueAccent2 = 120;
 
 export default class DarkTheme extends Theme {
   uno = 70;
@@ -14,8 +16,8 @@ export default class DarkTheme extends Theme {
     purple: "#9b59b6",
     white: white,
     black: black,
-    red: "#ff8888",
-    cyan: "#00bcd4",
+    red: "#ff6666",
+    cyan: cyan,
     transparent: "#00000000",
     __NO__: "#ff00ff",
     tBG: this.gray(20),
@@ -30,9 +32,12 @@ export default class DarkTheme extends Theme {
     tWhite: white,
     uiFG: white,
     uiAccent: this.hsl(this.tre, 70, 40),
+    uiAccent2: this.hsl(hueAccent2, 100, 60),
     fg: white,
     bg: this.gray(25),
     inputBG: this.gray(20),
+    bracketMatchBG: this.dilute(cyan, 50),
+    brackerMatchBorder: this.dilute(cyan, 0),
     borderSoft: this.dilute(white, 10),
     borderMedium: this.dilute(white, 15),
     borderHard: this.dilute(white, 25),
