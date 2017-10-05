@@ -91,6 +91,7 @@ export default abstract class Theme {
     return {
       focusBorder: p.uiAccent,
       "widget.shadow": p.shadow,
+      "scrollbar.shadow": p.shadow,
       "input.border": p.borderHard,
       "input.background": p.inputBG,
       "progressBar.background": p.uiAccent,
@@ -99,7 +100,7 @@ export default abstract class Theme {
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.uiFG, 5),
+      "list.hoverBackground": this.dilute(p.uiFG, 10),
       "statusBar.border": p.borderHard,
       "statusBar.background": p.statusBarBG,
       "statusBar.foreground": p.white,

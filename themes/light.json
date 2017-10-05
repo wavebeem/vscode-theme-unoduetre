@@ -3,6 +3,7 @@
   "colors": {
     "focusBorder": "#1fad2b",
     "widget.shadow": "#0000004c",
+    "scrollbar.shadow": "#0000004c",
     "input.border": "#00000026",
     "input.background": "#ffffff",
     "progressBar.background": "#1fad2b",
@@ -11,7 +12,7 @@
     "list.activeSelectionBackground": "#40bf4a",
     "list.inactiveSelectionBackground": "#b8e0bb",
     "list.focusBackground": "#b3e6b7",
-    "list.hoverBackground": "#0000000c",
+    "list.hoverBackground": "#00000019",
     "statusBar.border": "#00000026",
     "statusBar.background": "#404040",
     "statusBar.foreground": "#ffffff",

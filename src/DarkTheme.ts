@@ -36,7 +36,7 @@ export default class DarkTheme extends Theme {
     borderSoft: this.dilute(white, 10),
     borderMedium: this.dilute(white, 15),
     borderHard: this.dilute(white, 25),
-    shadow: this.dilute(black, 70),
+    shadow: this.dilute(black, 50),
     activeSelectionBG: this.hsl(this.tre, 35, 35),
     inactiveSelectionBG: this.hsl(this.tre, 10, 30),
     accentFocusBG: this.hsl(this.tre, 35, 35),
@@ -49,10 +49,10 @@ export default class DarkTheme extends Theme {
   ramp(hue: number) {
     return [
       this.hsl(hue, 100, 70),
-      this.hsl(hue + 5, 100, 70),
-      this.hsl(hue + 10, 95, 75),
-      this.hsl(hue + 15, 80, 75),
-      this.hsl(hue + 20, 70, 80)
+      this.hsl(hue + 4, 100, 70),
+      this.hsl(hue + 8, 95, 75),
+      this.hsl(hue + 12, 80, 75),
+      this.hsl(hue + 16, 70, 80)
     ];
   }
 
