@@ -3,6 +3,8 @@ import Theme, { ThemeType, Palette } from "./Theme";
 const white = "#ffffff";
 const black = "#000000";
 const cyan = "#5bf1ff";
+const yellow = "#fcd435";
+const transparent = "#00000000";
 const hueAccent2 = 120;
 
 export default class DarkTheme extends Theme {
@@ -10,7 +12,7 @@ export default class DarkTheme extends Theme {
   due = 30;
   tre = 160;
   palette: Palette = {
-    yellow: "#fcd435",
+    yellow: yellow,
     orange: "#f79e51",
     blue: "#8cd1ff",
     purple: "#e1a2f9",
@@ -18,7 +20,7 @@ export default class DarkTheme extends Theme {
     black: black,
     red: "#ff6666",
     cyan: cyan,
-    transparent: "#00000000",
+    transparent: transparent,
     __NO__: "#ff00ff",
     tBG: this.gray(20),
     tFG: this.hsl(this.uno, 40, 90),
@@ -37,7 +39,7 @@ export default class DarkTheme extends Theme {
     bg: this.gray(25),
     inputBG: this.gray(20),
     bracketMatchBG: this.dilute(cyan, 50),
-    brackerMatchBorder: this.dilute(cyan, 0),
+    brackerMatchBorder: transparent,
     borderSoft: this.dilute(white, 10),
     borderMedium: this.dilute(white, 15),
     borderHard: this.dilute(white, 25),
@@ -46,7 +48,7 @@ export default class DarkTheme extends Theme {
     inactiveSelectionBG: this.hsl(this.tre, 10, 30),
     accentFocusBG: this.hsl(this.tre, 35, 35),
     statusBarBG: this.gray(15),
-    lineHighlightBG: this.dilute(white, 7),
+    lineHighlightBG: this.dilute(yellow, 8),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)
   };
