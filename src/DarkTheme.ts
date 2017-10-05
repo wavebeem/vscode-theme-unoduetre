@@ -2,7 +2,7 @@ import Theme, { ThemeType, Palette } from "./Theme";
 
 const white = "#ffffff";
 const black = "#000000";
-const cyan = "#00bcd4";
+const cyan = "#5bf1ff";
 const hueAccent2 = 120;
 
 export default class DarkTheme extends Theme {
@@ -10,10 +10,10 @@ export default class DarkTheme extends Theme {
   due = 30;
   tre = 160;
   palette: Palette = {
-    yellow: "#f1c40f",
-    orange: "#e67e22",
-    blue: "#3498db",
-    purple: "#9b59b6",
+    yellow: "#fcd435",
+    orange: "#f79e51",
+    blue: "#8cd1ff",
+    purple: "#e1a2f9",
     white: white,
     black: black,
     red: "#ff6666",
