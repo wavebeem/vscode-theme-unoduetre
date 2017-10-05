@@ -47,14 +47,12 @@ export default class DarkTheme extends Theme {
   };
 
   ramp(hue: number) {
-    const s = 100;
-    const l = 75;
     return [
-      this.hsl(hue, s, l),
-      this.hsl(hue + 5, s, l),
-      this.hsl(hue + 10, s, l),
-      this.hsl(hue + 15, s, l),
-      this.hsl(hue + 20, s, l)
+      this.hsl(hue, 100, 70),
+      this.hsl(hue + 5, 100, 70),
+      this.hsl(hue + 10, 95, 75),
+      this.hsl(hue + 15, 80, 75),
+      this.hsl(hue + 20, 70, 80)
     ];
   }
 
