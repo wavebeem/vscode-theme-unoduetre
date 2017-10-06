@@ -336,7 +336,7 @@ export default abstract class Theme {
       Unimplemented: this.style(p.red, "bold"),
       Illegal: this.style(p.red, "bold")
     };
-    return obj[name];
+    return obj.hasOwnProperty(name) ? obj[name] : undefined;
   }
 
   style(color: string, ...fontStyle: string[]): Style {
@@ -346,10 +346,10 @@ export default abstract class Theme {
     };
   }
 
-  build() {
+  saveAs(name: string) {
     const json = JSON.stringify(this.config(), null, 2);
     const d = new Date().toString();
-    console.log(`Saving theme "${this.filename()}" (${d})`);
-    fs.writeFileSync(`themes/${this.filename()}.json`, json);
+    console.log(`Saving theme "${name}" (${d})`);
+    fs.writeFileSync(`themes/${name}.json`, json);
   }
 }
