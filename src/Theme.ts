@@ -53,6 +53,11 @@ export interface Palette {
   brackerMatchBorder: string;
 }
 
+export interface Scope {
+  name: string;
+  scopes: string[];
+}
+
 export default abstract class Theme {
   abstract uno: number;
   abstract due: number;
@@ -178,7 +183,7 @@ export default abstract class Theme {
 
   tokenColors() {
     return this.scopes().reduce((arr, item) => {
-      const [name, scopes] = item;
+      const { name, scopes } = item;
       const scope = scopes.join(", ");
       const settings = this.namedScopeToSettings(name);
       if (settings) {
@@ -188,13 +193,19 @@ export default abstract class Theme {
     }, []);
   }
 
-  scopes(): [string, string[]][] {
+  scopes(): Scope[] {
     return [
-      ["Parameter", ["variable.parameter.function"]],
-      ["Comments", ["comment", "punctuation.definition.comment"]],
-      [
-        "Punctuation",
-        [
+      {
+        name: "Parameter",
+        scopes: ["variable.parameter.function"]
+      },
+      {
+        name: "Comments",
+        scopes: ["comment", "punctuation.definition.comment"]
+      },
+      {
+        name: "Punctuation",
+        scopes: [
           "punctuation.definition.string",
           "punctuation.definition.variable",
           "punctuation.definition.string",
@@ -203,84 +214,196 @@ export default abstract class Theme {
           "punctuation.definition.array",
           "punctuation.terminator"
         ]
-      ],
-      [
-        "Delimiters",
-        [
+      },
+      {
+        name: "Delimiters",
+        scopes: [
           "punctuation.separator",
           "punctuation.section",
           "meta.brace",
           "meta.delimiter"
         ]
-      ],
-      ["Operators", ["keyword.operator"]],
-      ["Keywords", ["keyword.control"]],
-      [
-        "Variables",
-        ["variable.declaration", "variable.parameter", "variable.other"]
-      ],
-      ["Search", ["entity.name.filename.find-in-files"]],
-      ["Search Line", ["constant.numeric.line-number.match.find-in-files"]],
-      [
-        "Functions",
-        ["entity.name.function", "meta.require", "support.function.any-method"]
-      ],
-      [
-        "Classes",
-        [
+      },
+      {
+        name: "Operators",
+        scopes: ["keyword.operator"]
+      },
+      {
+        name: "Keywords",
+        scopes: ["keyword.control"]
+      },
+      {
+        name: "Variables",
+        scopes: ["variable.declaration", "variable.parameter", "variable.other"]
+      },
+      {
+        name: "Search",
+        scopes: ["entity.name.filename.find-in-files"]
+      },
+      {
+        name: "Search Line",
+        scopes: ["constant.numeric.line-number.match.find-in-files"]
+      },
+      {
+        name: "Functions",
+        scopes: [
+          "entity.name.function",
+          "meta.require",
+          "support.function.any-method"
+        ]
+      },
+      {
+        name: "Classes",
+        scopes: [
           "support.class",
           "entity.name.class",
           "entity.name.type.class",
           "entity.name.type.module",
           "entity.other.inherited-class"
         ]
-      ],
-      ["Methods", ["keyword.other.special-method"]],
-      ["Storage", ["storage"]],
-      ["Support", ["support"]],
-      [
-        "Strings",
-        [
+      },
+      {
+        name: "Methods",
+        scopes: ["keyword.other.special-method"]
+      },
+      {
+        name: "Storage",
+        scopes: ["storage"]
+      },
+      {
+        name: "Support",
+        scopes: ["support"]
+      },
+      {
+        name: "Strings",
+        scopes: [
           "string",
           "punctuation.definition.string",
           "support.constant.property-value"
         ]
-      ],
-      ["Numbers", ["constant.numeric"]],
-      ["Symbols", ["constant.other.symbol"]],
-      ["Boolean", ["constant.language.boolean"]],
-      ["Constants", ["constant", "support.constant", "variable.language"]],
-      ["Tags", ["entity.name.tag", "punctuation.definition.tag"]],
-      ["Attributes", ["entity.other.attribute-name"]],
-      [
-        "Attribute IDs",
-        ["entity.other.attribute-name.id", "punctuation.definition.entity"]
-      ],
-      ["Selector", ["meta.selector", "meta.object-literal.key"]],
-      [
-        "Headings",
-        ["markup.heading punctuation.definition.heading", "entity.name.section"]
-      ],
-      ["Units", ["keyword.other.unit"]],
-      ["Bold", ["markup.bold", "punctuation.definition.bold"]],
-      ["Italic", ["markup.italic", "punctuation.definition.italic"]],
-      ["Code", ["markup.raw.inline"]],
-      ["Link Text", ["string.other.link"]],
-      ["Link Url", ["meta.link"]],
-      ["Lists", ["markup.list"]],
-      ["Quotes", ["markup.quote"]],
-      ["Separator", ["meta.separator"]],
-      ["Inserted", ["markup.inserted"]],
-      ["Deleted", ["markup.deleted"]],
-      ["Changed", ["markup.changed"]],
-      ["Colors", ["constant.other.color"]],
-      ["Regular Expressions", ["string.regexp"]],
-      ["Escape Characters", ["constant.character.escape"]],
-      ["Embedded", ["punctuation.section.embedded", "variable.interpolation"]],
-      ["Illegal", ["invalid", "invalid.illegal"]],
-      ["Broken", ["invalid.broken"]],
-      ["Deprecated", ["invalid.deprecated"]],
-      ["Unimplemented", ["invalid.unimplemented"]]
+      },
+      {
+        name: "Numbers",
+        scopes: ["constant.numeric"]
+      },
+      {
+        name: "Symbols",
+        scopes: ["constant.other.symbol"]
+      },
+      {
+        name: "Boolean",
+        scopes: ["constant.language.boolean"]
+      },
+      {
+        name: "Constants",
+        scopes: ["constant", "support.constant", "variable.language"]
+      },
+      {
+        name: "Tags",
+        scopes: ["entity.name.tag", "punctuation.definition.tag"]
+      },
+      {
+        name: "Attributes",
+        scopes: ["entity.other.attribute-name"]
+      },
+      {
+        name: "Attribute IDs",
+        scopes: [
+          "entity.other.attribute-name.id",
+          "punctuation.definition.entity"
+        ]
+      },
+      {
+        name: "Selector",
+        scopes: ["meta.selector", "meta.object-literal.key"]
+      },
+      {
+        name: "Headings",
+        scopes: [
+          "markup.heading punctuation.definition.heading",
+          "entity.name.section"
+        ]
+      },
+      {
+        name: "Units",
+        scopes: ["keyword.other.unit"]
+      },
+      {
+        name: "Bold",
+        scopes: ["markup.bold", "punctuation.definition.bold"]
+      },
+      {
+        name: "Italic",
+        scopes: ["markup.italic", "punctuation.definition.italic"]
+      },
+      {
+        name: "Code",
+        scopes: ["markup.raw.inline"]
+      },
+      {
+        name: "Link Text",
+        scopes: ["string.other.link"]
+      },
+      {
+        name: "Link Url",
+        scopes: ["meta.link"]
+      },
+      {
+        name: "Lists",
+        scopes: ["markup.list"]
+      },
+      {
+        name: "Quotes",
+        scopes: ["markup.quote"]
+      },
+      {
+        name: "Separator",
+        scopes: ["meta.separator"]
+      },
+      {
+        name: "Inserted",
+        scopes: ["markup.inserted"]
+      },
+      {
+        name: "Deleted",
+        scopes: ["markup.deleted"]
+      },
+      {
+        name: "Changed",
+        scopes: ["markup.changed"]
+      },
+      {
+        name: "Colors",
+        scopes: ["constant.other.color"]
+      },
+      {
+        name: "Regular Expressions",
+        scopes: ["string.regexp"]
+      },
+      {
+        name: "Escape Characters",
+        scopes: ["constant.character.escape"]
+      },
+      {
+        name: "Embedded",
+        scopes: ["punctuation.section.embedded", "variable.interpolation"]
+      },
+      {
+        name: "Illegal",
+        scopes: ["invalid", "invalid.illegal"]
+      },
+      {
+        name: "Broken",
+        scopes: ["invalid.broken"]
+      },
+      {
+        name: "Deprecated",
+        scopes: ["invalid.deprecated"]
+      },
+      {
+        name: "Unimplemented",
+        scopes: ["invalid.unimplemented"]
+      }
     ];
   }
 
