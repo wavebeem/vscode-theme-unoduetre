@@ -58,6 +58,12 @@ export interface Scope {
   scopes: string[];
 }
 
+export interface TokenColor {
+  name: string;
+  scope: string;
+  settings: Style;
+}
+
 export default abstract class Theme {
   abstract uno: number;
   abstract due: number;
@@ -155,6 +161,11 @@ export default abstract class Theme {
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.uiFG, 50),
       "tab.border": p.transparent,
+      "gitDecoration.modifiedResourceForeground": p.orange,
+      "gitDecoration.deletedResourceForeground": p.red,
+      "gitDecoration.untrackedResourceForeground": p.blue,
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.uiFG, 40),
+      "gitDecoration.conflictingResourceForeground": p.cyan,
       "titleBar.activeBackground": p.bg,
       "titleBar.activeForeground": p.uiFG,
       "titleBar.inactiveBackground": p.bg,
@@ -182,15 +193,18 @@ export default abstract class Theme {
   }
 
   tokenColors() {
-    return this.scopes().reduce((arr, item) => {
-      const { name, scopes } = item;
-      const scope = scopes.join(", ");
-      const settings = this.namedScopeToSettings(name);
-      if (settings) {
-        return [...arr, { name, scope, settings }];
-      }
-      return arr;
-    }, []);
+    return this.scopes().reduce(
+      (arr, item) => {
+        const { name, scopes } = item;
+        const scope = scopes.join(", ");
+        const settings = this.namedScopeToSettings(name);
+        if (settings) {
+          return [...arr, { name, scope, settings }];
+        }
+        return arr;
+      },
+      [] as TokenColor[]
+    );
   }
 
   scopes(): Scope[] {
