@@ -9,7 +9,7 @@
       "problemMatcher": ["$tsc"],
       "presentation": {
         "echo": true,
-        "reveal": "silent",
+        "reveal": "always",
         "focus": false,
         "panel": "new"
       },
