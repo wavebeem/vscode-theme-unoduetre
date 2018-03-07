@@ -43,6 +43,7 @@
     "editorIndentGuide.background": "#00000019",
     "editorRuler.foreground": "#00000019",
     "editorLineNumber.foreground": "#0000004c",
+    "editorActiveLineNumber.foreground": "#000000",
     "foreground": "#000000",
     "panel.background": "#ffffff",
     "panel.border": "#00000019",

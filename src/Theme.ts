@@ -1,6 +1,25 @@
 import * as fs from "fs";
 import * as tinycolor from "tinycolor2";
 
+// --- TODO ---
+//
+// notificationCenter.border: Notification Center border color.
+// notificationCenterHeader.foreground: Notification Center header foreground color.
+// notificationCenterHeader.background: Notification Center header background color.
+// notificationToast.border: Notification toast border color.
+// notifications.foreground: Notifications foreground color.
+// notifications.background: Notifications background color.
+// notifications.border: Notifications border color separating from other notifications in the Notification Center.
+// notificationLink.foreground: Notification links foreground color.
+//
+// editor.selectionHighlightBorder: Border color for regions with the same content as the selection.
+// editor.wordHighlightBorder: Border color of a symbol during read-access, for example when reading a variable.
+// editor.wordHighlightStrongBorder: Border color of a symbol during write-access, for example when writing to a variable.
+// editor.findMatchBorder: Border color of the current search match.
+// editor.findMatchHighlightBorder: Border color of the other search matches.
+// editor.findRangeHighlightBorder: Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
+// editor.rangeHighlightBorder: Background color of the border around highlighted ranges.
+
 export interface Style {
   foreground: string;
   fontStyle: string;
@@ -145,6 +164,7 @@ export default abstract class Theme {
       "editorIndentGuide.background": p.borderMedium,
       "editorRuler.foreground": p.borderMedium,
       "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
+      "editorActiveLineNumber.foreground": p.uiFG,
       foreground: p.uiFG,
       "panel.background": p.tBG,
       "panel.border": p.borderMedium,
