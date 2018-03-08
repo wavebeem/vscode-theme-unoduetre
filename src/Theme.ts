@@ -165,6 +165,23 @@ export default abstract class Theme {
       "editorRuler.foreground": p.borderMedium,
       "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
       "editorActiveLineNumber.foreground": p.uiFG,
+      // Notification Center border color.
+      "notificationCenter.border": undefined,
+      // Notification Center header foreground color.
+      "notificationCenterHeader.foreground": p.uiFG,
+      // Notification Center header background color.
+      "notificationCenterHeader.background": p.inputBG,
+      // Notification toast border color.
+      "notificationToast.border": undefined,
+      // Notifications foreground color.
+      "notifications.foreground": p.uiFG,
+      // Notifications background color.
+      "notifications.background": p.inputBG,
+      // Notifications border color separating from other notifications in
+      // the Notification Center.
+      "notifications.border": p.borderMedium,
+      // Notification links foreground color.
+      "notificationLink.foreground": p.cyan,
       foreground: p.uiFG,
       "panel.background": p.tBG,
       "panel.border": p.borderMedium,
