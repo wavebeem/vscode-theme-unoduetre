@@ -3,15 +3,6 @@ import * as tinycolor from "tinycolor2";
 
 // --- TODO ---
 //
-// notificationCenter.border: Notification Center border color.
-// notificationCenterHeader.foreground: Notification Center header foreground color.
-// notificationCenterHeader.background: Notification Center header background color.
-// notificationToast.border: Notification toast border color.
-// notifications.foreground: Notifications foreground color.
-// notifications.background: Notifications background color.
-// notifications.border: Notifications border color separating from other notifications in the Notification Center.
-// notificationLink.foreground: Notification links foreground color.
-//
 // editor.selectionHighlightBorder: Border color for regions with the same content as the selection.
 // editor.wordHighlightBorder: Border color of a symbol during read-access, for example when reading a variable.
 // editor.wordHighlightStrongBorder: Border color of a symbol during write-access, for example when writing to a variable.
@@ -19,6 +10,14 @@ import * as tinycolor from "tinycolor2";
 // editor.findMatchHighlightBorder: Border color of the other search matches.
 // editor.findRangeHighlightBorder: Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
 // editor.rangeHighlightBorder: Background color of the border around highlighted ranges.
+
+function sortedObject<T>(obj: Record<string, T>) {
+  const ret: Record<string, T> = {};
+  for (const key of Object.keys(obj).sort()) {
+    ret[key] = obj[key];
+  }
+  return ret;
+}
 
 export interface Style {
   foreground: string;
@@ -113,9 +112,101 @@ export default abstract class Theme {
 
   config() {
     return {
+      // This is the base theme from VSCode (light / dark / high contrast)
       type: this.themeType(),
-      colors: this.colors(),
+      // These are the UI override colors
+      colors: sortedObject(this.colors()),
+      // These are the color for syntax highlighting
       tokenColors: this.tokenColors()
+    };
+  }
+
+  themeActivityBar() {
+    const p = this.palette;
+    return {
+      "activityBar.border": p.borderSoft,
+      "activityBar.background": p.bg,
+      "activityBar.foreground": p.uiFG,
+      "activityBarBadge.background": p.uiAccent,
+      "activityBarBadge.foreground": p.white
+    };
+  }
+
+  themeNotifications() {
+    const p = this.palette;
+    return {
+      // Notification Center border color.
+      "notificationCenter.border": undefined,
+      // Notification Center header foreground color.
+      "notificationCenterHeader.foreground": p.uiFG,
+      // Notification Center header background color.
+      "notificationCenterHeader.background": p.inputBG,
+      // Notification toast border color.
+      "notificationToast.border": undefined,
+      // Notifications foreground color.
+      "notifications.foreground": p.uiFG,
+      // Notifications background color.
+      "notifications.background": p.inputBG,
+      // Notifications border color separating from other notifications in
+      // the Notification Center.
+      "notifications.border": p.borderMedium,
+      // Notification links foreground color.
+      "notificationLink.foreground": p.cyan
+    };
+  }
+
+  themeList() {
+    const p = this.palette;
+    return {
+      "list.highlightForeground": p.uiAccent2,
+      "list.activeSelectionBackground": p.activeSelectionBG,
+      "list.inactiveSelectionBackground": p.inactiveSelectionBG,
+      "list.focusBackground": p.accentFocusBG,
+      "list.hoverBackground": this.dilute(p.uiFG, 10)
+    };
+  }
+
+  themeTerminal() {
+    const p = this.palette;
+    return {
+      "terminal.foreground": p.tFG,
+      "terminal.background": p.tBG,
+      "terminal.ansiBlack": p.tBlack,
+      "terminal.ansiBlue": p.tBlue,
+      "terminal.ansiBrightBlack": p.tBlack,
+      "terminal.ansiBrightBlue": p.tBlue,
+      "terminal.ansiBrightCyan": p.tCyan,
+      "terminal.ansiBrightGreen": p.tGreen,
+      "terminal.ansiBrightMagenta": p.tMagenta,
+      "terminal.ansiBrightRed": p.tRed,
+      "terminal.ansiBrightWhite": p.tWhite,
+      "terminal.ansiBrightYellow": p.tYellow,
+      "terminal.ansiCyan": p.tCyan,
+      "terminal.ansiGreen": p.tGreen,
+      "terminal.ansiMagenta": p.tMagenta,
+      "terminal.ansiRed": p.tRed,
+      "terminal.ansiWhite": p.tWhite,
+      "terminal.ansiYellow": p.tYellow
+    };
+  }
+
+  themeGit() {
+    const p = this.palette;
+    return {
+      "gitDecoration.modifiedResourceForeground": p.orange,
+      "gitDecoration.deletedResourceForeground": p.red,
+      "gitDecoration.untrackedResourceForeground": p.blue,
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.uiFG, 40),
+      "gitDecoration.conflictingResourceForeground": p.cyan
+    };
+  }
+
+  themeStatusBar() {
+    const p = this.palette;
+    return {
+      "statusBar.border": p.borderHard,
+      "statusBar.background": p.statusBarBG,
+      "statusBar.foreground": p.white
     };
   }
 
@@ -129,19 +220,9 @@ export default abstract class Theme {
       "input.background": p.inputBG,
       "progressBar.background": p.uiAccent,
       "inputOption.activeBorder": p.uiAccent,
-      "list.highlightForeground": p.uiAccent2,
-      "list.activeSelectionBackground": p.activeSelectionBG,
-      "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.uiFG, 10),
-      "statusBar.border": p.borderHard,
-      "statusBar.background": p.statusBarBG,
-      "statusBar.foreground": p.white,
-      "activityBar.border": p.borderSoft,
-      "activityBar.background": p.bg,
-      "activityBar.foreground": p.uiFG,
-      "activityBarBadge.background": p.uiAccent,
-      "activityBarBadge.foreground": p.white,
+      ...this.themeList(),
+      ...this.themeStatusBar(),
+      ...this.themeActivityBar(),
       "editorWidget.foreground": p.uiFG,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
@@ -165,23 +246,7 @@ export default abstract class Theme {
       "editorRuler.foreground": p.borderMedium,
       "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
       "editorActiveLineNumber.foreground": p.uiFG,
-      // Notification Center border color.
-      "notificationCenter.border": undefined,
-      // Notification Center header foreground color.
-      "notificationCenterHeader.foreground": p.uiFG,
-      // Notification Center header background color.
-      "notificationCenterHeader.background": p.inputBG,
-      // Notification toast border color.
-      "notificationToast.border": undefined,
-      // Notifications foreground color.
-      "notifications.foreground": p.uiFG,
-      // Notifications background color.
-      "notifications.background": p.inputBG,
-      // Notifications border color separating from other notifications in
-      // the Notification Center.
-      "notifications.border": p.borderMedium,
-      // Notification links foreground color.
-      "notificationLink.foreground": p.cyan,
+      ...this.themeNotifications(),
       foreground: p.uiFG,
       "panel.background": p.tBG,
       "panel.border": p.borderMedium,
@@ -198,34 +263,13 @@ export default abstract class Theme {
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.uiFG, 50),
       "tab.border": p.transparent,
-      "gitDecoration.modifiedResourceForeground": p.orange,
-      "gitDecoration.deletedResourceForeground": p.red,
-      "gitDecoration.untrackedResourceForeground": p.blue,
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.uiFG, 40),
-      "gitDecoration.conflictingResourceForeground": p.cyan,
+      ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
       "titleBar.activeForeground": p.uiFG,
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.uiFG, 70),
       "titleBar.border": p.borderSoft,
-      "terminal.foreground": p.tFG,
-      "terminal.background": p.tBG,
-      "terminal.ansiBlack": p.tBlack,
-      "terminal.ansiBlue": p.tBlue,
-      "terminal.ansiBrightBlack": p.tBlack,
-      "terminal.ansiBrightBlue": p.tBlue,
-      "terminal.ansiBrightCyan": p.tCyan,
-      "terminal.ansiBrightGreen": p.tGreen,
-      "terminal.ansiBrightMagenta": p.tMagenta,
-      "terminal.ansiBrightRed": p.tRed,
-      "terminal.ansiBrightWhite": p.tWhite,
-      "terminal.ansiBrightYellow": p.tYellow,
-      "terminal.ansiCyan": p.tCyan,
-      "terminal.ansiGreen": p.tGreen,
-      "terminal.ansiMagenta": p.tMagenta,
-      "terminal.ansiRed": p.tRed,
-      "terminal.ansiWhite": p.tWhite,
-      "terminal.ansiYellow": p.tYellow
+      ...this.themeTerminal()
     };
   }
 
