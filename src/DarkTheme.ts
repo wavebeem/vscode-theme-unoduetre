@@ -9,8 +9,8 @@ const hueAccent2 = 120;
 
 export default class DarkTheme extends Theme {
   uno = 70;
-  due = 30;
-  tre = 160;
+  due = 160;
+  tre = 30;
   palette: Palette = {
     yellow: yellow,
     orange: "#f79e51",
