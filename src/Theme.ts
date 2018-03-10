@@ -1,16 +1,6 @@
 import * as fs from "fs";
 import * as tinycolor from "tinycolor2";
 
-// --- TODO ---
-//
-// editor.selectionHighlightBorder: Border color for regions with the same content as the selection.
-// editor.wordHighlightBorder: Border color of a symbol during read-access, for example when reading a variable.
-// editor.wordHighlightStrongBorder: Border color of a symbol during write-access, for example when writing to a variable.
-// editor.findMatchBorder: Border color of the current search match.
-// editor.findMatchHighlightBorder: Border color of the other search matches.
-// editor.findRangeHighlightBorder: Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
-// editor.rangeHighlightBorder: Background color of the border around highlighted ranges.
-
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
   for (const key of Object.keys(obj).sort()) {
@@ -210,6 +200,25 @@ export default abstract class Theme {
     };
   }
 
+  themeHighlightBorders() {
+    return {
+      // Border color for regions with the same content as the selection.
+      "editor.selectionHighlightBorder": undefined,
+      // Border color of a symbol during read-access, for example when reading a variable.
+      "editor.wordHighlightBorder": undefined,
+      // Border color of a symbol during write-access, for example when writing to a variable.
+      "editor.wordHighlightStrongBorder": undefined,
+      // Border color of the current search match.
+      "editor.findMatchBorder": undefined,
+      // Border color of the other search matches.
+      "editor.findMatchHighlightBorder": undefined,
+      // Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
+      "editor.findRangeHighlightBorder": undefined,
+      // Background color of the border around highlighted ranges.
+      "editor.rangeHighlightBorder": undefined
+    };
+  }
+
   colors() {
     const p = this.palette;
     return {
@@ -269,6 +278,7 @@ export default abstract class Theme {
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.uiFG, 70),
       "titleBar.border": p.borderSoft,
+      ...this.themeHighlightBorders(),
       ...this.themeTerminal()
     };
   }
