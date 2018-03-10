@@ -9,7 +9,7 @@ const hueAccent2 = 120;
 
 export default class DarkTheme extends Theme {
   uno = 70;
-  due = 160;
+  due = 175;
   tre = 30;
   palette: Palette = {
     yellow: yellow,
@@ -24,7 +24,7 @@ export default class DarkTheme extends Theme {
     __NO__: "#ff00ff",
     tBG: this.gray(18),
     tFG: this.hsl(this.uno, 90, 90),
-    tBlack: this.gray(15),
+    tBlack: this.gray(35),
     tRed: this.hsl(0, 60, 60),
     tGreen: this.hsl(140, 60, 60),
     tYellow: this.hsl(40, 60, 60),
