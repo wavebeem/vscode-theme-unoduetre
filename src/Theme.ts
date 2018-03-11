@@ -58,7 +58,7 @@ export interface Palette {
   widgetBG: string;
   widgetBorder: string;
   bracketMatchBG: string;
-  brackerMatchBorder: string;
+  bracketMatchBorder: string;
 }
 
 export interface Scope {
@@ -236,7 +236,7 @@ export default abstract class Theme {
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
       "editorBracketMatch.background": p.bracketMatchBG,
-      "editorBracketMatch.border": p.brackerMatchBorder,
+      "editorBracketMatch.border": p.bracketMatchBorder,
       "editor.findMatchBackground": this.dilute(p.orange, 50),
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
       "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
