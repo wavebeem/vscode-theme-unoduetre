@@ -1,3 +1,7 @@
+# [v2.0.1]
+
+* Adds theme icon
+
 # [v2.0.0]
 
 * Adds dark version
