@@ -54,6 +54,7 @@ export interface Palette {
   inactiveSelectionBG: string;
   accentFocusBG: string;
   statusBarBG: string;
+  statusBarFG: string;
   lineHighlightBG: string;
   widgetBG: string;
   widgetBorder: string;
@@ -194,9 +195,14 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.borderHard,
+      "statusBar.border": p.borderMedium,
+      "statusBarItem.activeBackground": this.dilute(p.uiFG, 15),
+      "statusBarItem.hoverBackground": this.dilute(p.uiFG, 5),
+      "statusBarItem.prominentBackground": this.dilute(p.uiFG, 20),
       "statusBar.background": p.statusBarBG,
-      "statusBar.foreground": p.white
+      "statusBar.debuggingBackground": p.statusBarBG,
+      "statusBar.noFolderBackground": p.statusBarBG,
+      "statusBar.foreground": p.statusBarFG
     };
   }
 
@@ -267,7 +273,7 @@ export default abstract class Theme {
       "sideBar.border": p.borderSoft,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.uiFG, 3),
-      "tab.activeBackground": p.accentFocusBG,
+      "tab.activeBackground": this.dilute(p.uiFG, 3),
       "tab.activeForeground": p.uiFG,
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.uiFG, 50),
