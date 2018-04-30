@@ -58,7 +58,7 @@
     "peekViewEditor.matchHighlightBackground": "#f1c40f7f",
     "peekViewResult.matchHighlightBackground": "#f1c40f7f",
     "progressBar.background": "#1fad2b",
-    "scrollbar.shadow": "#0000004c",
+    "scrollbar.shadow": "#00000033",
     "sideBar.background": "#fafafa",
     "sideBar.border": "#0000000c",
     "sideBarSectionHeader.background": "#00000007",
@@ -98,7 +98,7 @@
     "titleBar.border": "#0000000c",
     "titleBar.inactiveBackground": "#fafafa",
     "titleBar.inactiveForeground": "#000000b2",
-    "widget.shadow": "#0000004c"
+    "widget.shadow": "#00000033"
   },
   "tokenColors": [
     {

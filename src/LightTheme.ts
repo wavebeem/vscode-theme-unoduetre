@@ -43,7 +43,7 @@ export default class LightTheme extends Theme {
     borderSoft: this.dilute(black, 5),
     borderMedium: this.dilute(black, 10),
     borderHard: this.dilute(black, 15),
-    shadow: this.dilute(black, 30),
+    shadow: this.dilute(black, 20),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     accentFocusBG: this.hsl(this.tre, 50, 80),
