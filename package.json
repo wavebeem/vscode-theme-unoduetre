@@ -5,7 +5,7 @@
   "version": "2.0.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wavebeem/vscode-theme-unoduetre.git"
+    "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
   },
   "icon": "img/icon.png",
   "galleryBanner": {
