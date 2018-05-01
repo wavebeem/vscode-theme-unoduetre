@@ -9,7 +9,7 @@ const transparent = "#00000000";
 
 // TODO:
 // - All the terminal colors
-// - Use transparency for the editor guides to fix selection strangeness
+// - Try out a non-yellow selection color since it conflicts with search colors?
 
 export default class LightTheme extends Theme {
   bgHue = 80;
@@ -57,6 +57,7 @@ export default class LightTheme extends Theme {
     statusBarBG: this.gray(96),
     statusBarFG: this.gray(40),
     lineHighlightBG: this.dilute(yellow, 10),
+    editorLine: this.dilute(this.gray(30), 10),
     widgetBG: this.gray(98),
     widgetBorder: this.dilute(black, 15)
   };

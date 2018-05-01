@@ -59,6 +59,7 @@ export interface Palette {
   widgetBorder: string;
   bracketMatchBG: string;
   bracketMatchBorder: string;
+  editorLine: string;
 }
 
 export interface Scope {
@@ -266,8 +267,8 @@ export default abstract class Theme {
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
       "editorCursor.foreground": p.accent1,
       "editorGroupHeader.tabsBackground": p.bg,
-      "editorIndentGuide.background": p.borderMedium,
-      "editorRuler.foreground": p.borderMedium,
+      "editorIndentGuide.background": p.editorLine,
+      "editorRuler.foreground": p.editorLine,
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
       "editorActiveLineNumber.foreground": p.fg,
       ...this.themeNotifications(),
