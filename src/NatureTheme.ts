@@ -7,10 +7,17 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
+// TODO:
+// - All the terminal colors
+// - Use transparency for the editor guides to fix selection strangeness
+
 export default class LightTheme extends Theme {
-  uno = 320;
-  due = 215;
-  tre = 125;
+  bgHue = 80;
+  fgHue = 287;
+
+  uno = 287;
+  due = 327;
+  tre = 179;
 
   palette: Palette = {
     yellow: yellow,
@@ -23,8 +30,8 @@ export default class LightTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: white,
-    tFG: "#5c668e",
+    tBG: this.gray(98),
+    tFG: this.hsl(this.fgHue, 80, 30),
     tBlack: "#31364a",
     tRed: "#a91b1c",
     tGreen: "#00a337",
@@ -32,27 +39,31 @@ export default class LightTheme extends Theme {
     tBlue: "#39b898",
     tMagenta: "#d95278",
     tCyan: "#7f9608",
-    tWhite: "#e6e6e6",
+    tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: red,
-    fg: this.hsl(this.uno, 20, 20),
-    bg: this.gray(98),
-    inputBG: white,
+    fg: this.hsl(this.bgHue, 70, 20),
+    bg: this.gray(94),
+    inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    borderSoft: this.dilute(black, 5),
-    borderMedium: this.dilute(black, 10),
-    borderHard: this.dilute(black, 15),
+    borderSoft: this.gray(90),
+    borderMedium: this.gray(86),
+    borderHard: this.gray(82),
     shadow: this.dilute(black, 20),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     accentFocusBG: this.hsl(this.tre, 50, 80),
-    statusBarBG: this.gray(98),
+    statusBarBG: this.gray(96),
     statusBarFG: this.gray(40),
     lineHighlightBG: this.dilute(yellow, 10),
-    widgetBG: white,
+    widgetBG: this.gray(98),
     widgetBorder: this.dilute(black, 15)
   };
+
+  gray(l: number) {
+    return this.hsl(this.bgHue, 30, l);
+  }
 
   ramp(hue: number) {
     return [
@@ -65,7 +76,7 @@ export default class LightTheme extends Theme {
   }
 
   filename() {
-    return "light";
+    return "nature";
   }
 
   themeType() {

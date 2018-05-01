@@ -28,6 +28,11 @@
         "label": "Uno Due Tre (Dark)",
         "uiTheme": "vs-dark",
         "path": "./themes/dark.json"
+      },
+      {
+        "label": "Uno Due Tre (Nature)",
+        "uiTheme": "vs",
+        "path": "./themes/nature.json"
       }
     ]
   },

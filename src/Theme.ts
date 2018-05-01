@@ -282,7 +282,7 @@ export default abstract class Theme {
       "sideBar.border": p.borderSoft,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
-      "tab.activeBackground": this.dilute(p.fg, 3),
+      "tab.activeBackground": this.dilute(p.accent0, 10),
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.fg, 50),
@@ -591,8 +591,7 @@ export default abstract class Theme {
 
   saveAs(name: string) {
     const json = JSON.stringify(this.config(), null, 2);
-    const d = new Date().toString();
-    console.log(`Saving theme "${name}" (${d})`);
+    console.log(`Saving theme "${name}"`);
     fs.writeFileSync(`themes/${name}.json`, json);
   }
 }
