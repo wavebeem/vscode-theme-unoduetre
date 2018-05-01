@@ -40,9 +40,8 @@ export interface Palette {
   tMagenta: string;
   tCyan: string;
   tWhite: string;
-  uiFG: string;
-  uiAccent: string;
-  uiAccent2: string;
+  accent0: string;
+  accent1: string;
   fg: string;
   bg: string;
   inputBG: string;
@@ -117,8 +116,8 @@ export default abstract class Theme {
     return {
       "activityBar.border": p.borderSoft,
       "activityBar.background": p.bg,
-      "activityBar.foreground": p.uiFG,
-      "activityBarBadge.background": p.uiAccent,
+      "activityBar.foreground": p.fg,
+      "activityBarBadge.background": p.accent0,
       "activityBarBadge.foreground": p.white
     };
   }
@@ -127,15 +126,15 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       // Notification Center border color.
-      "notificationCenter.border": undefined,
+      "notificationCenter.border": p.bg,
       // Notification Center header foreground color.
-      "notificationCenterHeader.foreground": p.uiFG,
+      "notificationCenterHeader.foreground": p.fg,
       // Notification Center header background color.
       "notificationCenterHeader.background": p.inputBG,
       // Notification toast border color.
-      "notificationToast.border": undefined,
+      "notificationToast.border": p.bg,
       // Notifications foreground color.
-      "notifications.foreground": p.uiFG,
+      "notifications.foreground": p.fg,
       // Notifications background color.
       "notifications.background": p.inputBG,
       // Notifications border color separating from other notifications in
@@ -149,11 +148,11 @@ export default abstract class Theme {
   themeList() {
     const p = this.palette;
     return {
-      "list.highlightForeground": p.uiAccent2,
+      "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.uiFG, 10)
+      "list.hoverBackground": this.dilute(p.accent0, 10)
     };
   }
 
@@ -187,7 +186,7 @@ export default abstract class Theme {
       "gitDecoration.modifiedResourceForeground": p.orange,
       "gitDecoration.deletedResourceForeground": p.red,
       "gitDecoration.untrackedResourceForeground": p.blue,
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.uiFG, 40),
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40),
       "gitDecoration.conflictingResourceForeground": p.cyan
     };
   }
@@ -196,9 +195,9 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "statusBar.border": p.borderMedium,
-      "statusBarItem.activeBackground": this.dilute(p.uiFG, 15),
-      "statusBarItem.hoverBackground": this.dilute(p.uiFG, 5),
-      "statusBarItem.prominentBackground": this.dilute(p.uiFG, 20),
+      "statusBarItem.activeBackground": this.dilute(p.fg, 15),
+      "statusBarItem.hoverBackground": this.dilute(p.fg, 5),
+      "statusBarItem.prominentBackground": this.dilute(p.fg, 20),
       "statusBar.background": p.statusBarBG,
       "statusBar.debuggingBackground": p.statusBarBG,
       "statusBar.noFolderBackground": p.statusBarBG,
@@ -225,20 +224,30 @@ export default abstract class Theme {
     };
   }
 
+  themeScrollbar() {
+    const p = this.palette;
+    return {
+      "scrollbar.shadow": p.shadow,
+      "scrollbarSlider.background": this.dilute(p.fg, 30),
+      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
+      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60)
+    };
+  }
+
   colors() {
     const p = this.palette;
     return {
-      focusBorder: p.uiAccent,
+      focusBorder: p.accent0,
       "widget.shadow": p.shadow,
-      "scrollbar.shadow": p.shadow,
+      ...this.themeScrollbar(),
       "input.border": p.borderHard,
       "input.background": p.inputBG,
-      "progressBar.background": p.uiAccent,
-      "inputOption.activeBorder": p.uiAccent,
+      "progressBar.background": p.accent0,
+      "inputOption.activeBorder": p.accent0,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeActivityBar(),
-      "editorWidget.foreground": p.uiFG,
+      "editorWidget.foreground": p.fg,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
       "editorBracketMatch.background": p.bracketMatchBG,
@@ -255,34 +264,34 @@ export default abstract class Theme {
       "editor.inactiveSelectionBackground": this.dilute(p.yellow, 25),
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
-      "editorCursor.foreground": p.uiAccent2,
+      "editorCursor.foreground": p.accent1,
       "editorGroupHeader.tabsBackground": p.bg,
       "editorIndentGuide.background": p.borderMedium,
       "editorRuler.foreground": p.borderMedium,
-      "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
-      "editorActiveLineNumber.foreground": p.uiFG,
+      "editorLineNumber.foreground": this.dilute(p.fg, 30),
+      "editorActiveLineNumber.foreground": p.fg,
       ...this.themeNotifications(),
-      foreground: p.uiFG,
+      foreground: p.fg,
       "panel.background": p.tBG,
       "panel.border": p.borderMedium,
-      "panelTitle.activeBorder": this.dilute(p.uiFG, 50),
-      "panelTitle.activeForeground": p.uiFG,
-      "panelTitle.inactiveForeground": this.dilute(p.uiFG, 60),
+      "panelTitle.activeBorder": this.dilute(p.fg, 50),
+      "panelTitle.activeForeground": p.fg,
+      "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
       "sideBar.border": p.borderSoft,
       "sideBar.background": p.bg,
-      "sideBarSectionHeader.background": this.dilute(p.uiFG, 3),
-      "tab.activeBackground": this.dilute(p.uiFG, 3),
-      "tab.activeForeground": p.uiFG,
+      "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      "tab.activeBackground": this.dilute(p.fg, 3),
+      "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.uiFG, 50),
+      "tab.inactiveForeground": this.dilute(p.fg, 50),
       "tab.border": p.transparent,
       ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
-      "titleBar.activeForeground": p.uiFG,
+      "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
-      "titleBar.inactiveForeground": this.dilute(p.uiFG, 70),
+      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
       "titleBar.border": p.borderSoft,
       ...this.themeHighlightBorders(),
       ...this.themeTerminal()
