@@ -48,7 +48,7 @@ export default class DarkTheme extends Theme {
     accentFocusBG: this.hsl(this.due, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
-    lineHighlightBG: this.dilute(yellow, 8),
+    lineHighlightBG: this.dilute(cyan, 8),
     editorLine: this.dilute(this.gray(80), 10),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)

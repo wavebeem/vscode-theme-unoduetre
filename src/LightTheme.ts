@@ -49,10 +49,10 @@ export default class LightTheme extends Theme {
     accentFocusBG: this.hsl(this.tre, 50, 80),
     statusBarBG: this.gray(98),
     statusBarFG: this.gray(40),
-    lineHighlightBG: this.dilute(yellow, 10),
+    lineHighlightBG: this.dilute(cyan, 10),
     editorLine: this.dilute(this.gray(30), 10),
     widgetBG: white,
-    widgetBorder: this.dilute(black, 15)
+    widgetBorder: this.dilute(black, 50)
   };
 
   ramp(hue: number) {
