@@ -210,15 +210,18 @@ export default abstract class Theme {
     return {
       // Border color for regions with the same content as the selection.
       "editor.selectionHighlightBorder": undefined,
-      // Border color of a symbol during read-access, for example when reading a variable.
+      // Border color of a symbol during read-access, for example when reading a
+      // variable.
       "editor.wordHighlightBorder": undefined,
-      // Border color of a symbol during write-access, for example when writing to a variable.
+      // Border color of a symbol during write-access, for example when writing
+      // to a variable.
       "editor.wordHighlightStrongBorder": undefined,
       // Border color of the current search match.
       "editor.findMatchBorder": undefined,
       // Border color of the other search matches.
       "editor.findMatchHighlightBorder": undefined,
-      // Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
+      // Border color the range limiting the search (Enable 'Find in Selection'
+      // in the find widget).
       "editor.findRangeHighlightBorder": undefined,
       // Background color of the border around highlighted ranges.
       "editor.rangeHighlightBorder": undefined
