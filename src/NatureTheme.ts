@@ -7,14 +7,13 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
+const bgHue = 80;
+const fgHue = 287;
+
 // TODO:
 // - All the terminal colors
-// - Try out a non-yellow selection color since it conflicts with search colors?
 
 export default class LightTheme extends Theme {
-  bgHue = 80;
-  fgHue = 287;
-
   uno = 287;
   due = 327;
   tre = 179;
@@ -31,7 +30,7 @@ export default class LightTheme extends Theme {
     transparent: transparent,
     __NO__: "#ff00ff",
     tBG: this.gray(98),
-    tFG: this.hsl(this.fgHue, 80, 30),
+    tFG: this.hsl(fgHue, 80, 30),
     tBlack: "#31364a",
     tRed: "#a91b1c",
     tGreen: "#00a337",
@@ -42,7 +41,7 @@ export default class LightTheme extends Theme {
     tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: red,
-    fg: this.hsl(this.bgHue, 70, 20),
+    fg: this.hsl(bgHue, 70, 20),
     bg: this.gray(94),
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
@@ -59,11 +58,11 @@ export default class LightTheme extends Theme {
     lineHighlightBG: this.dilute(yellow, 10),
     editorLine: this.dilute(this.gray(30), 10),
     widgetBG: this.gray(98),
-    widgetBorder: this.dilute(black, 15)
+    widgetBorder: this.gray(86)
   };
 
   gray(l: number) {
-    return this.hsl(this.bgHue, 30, l);
+    return this.hsl(bgHue, 30, l);
   }
 
   ramp(hue: number) {
