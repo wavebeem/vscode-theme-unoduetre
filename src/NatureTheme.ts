@@ -40,7 +40,7 @@ export default class LightTheme extends Theme {
     tCyan: "#7f9608",
     tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: red,
+    accent1: this.hsl(40, 80, 40),
     fg: this.hsl(bgHue, 70, 20),
     bg: this.gray(94),
     inputBG: this.gray(98),
