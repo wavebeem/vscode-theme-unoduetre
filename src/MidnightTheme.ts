@@ -5,12 +5,18 @@ const black = "#000000";
 const cyan = "#5bf1ff";
 const yellow = "#fcd435";
 const transparent = "#00000000";
-const hueAccent2 = 120;
+const hueAccent2 = 40;
 
-export default class DarkTheme extends Theme {
-  uno = 70;
-  due = 175;
-  tre = 30;
+const bgHue = 280;
+
+// TODO
+// - All the terminal colors
+
+export default class MidnightTheme extends Theme {
+  uno = 160;
+  due = 190;
+  tre = 320;
+
   palette: Palette = {
     yellow: yellow,
     orange: "#f79e51",
@@ -23,7 +29,7 @@ export default class DarkTheme extends Theme {
     transparent: transparent,
     __NO__: "#ff00ff",
     tBG: this.gray(18),
-    tFG: this.hsl(this.due, 90, 90),
+    tFG: this.hsl(bgHue, 90, 90),
     tBlack: this.gray(35),
     tRed: this.hsl(0, 60, 60),
     tGreen: this.hsl(140, 60, 60),
@@ -32,7 +38,7 @@ export default class DarkTheme extends Theme {
     tMagenta: this.hsl(330, 60, 60),
     tCyan: this.hsl(80, 60, 60),
     tWhite: white,
-    accent0: this.hsl(this.due, 70, 40),
+    accent0: this.hsl(this.uno, 70, 40),
     accent1: this.hsl(hueAccent2, 100, 60),
     fg: white,
     bg: this.gray(20),
@@ -43,9 +49,9 @@ export default class DarkTheme extends Theme {
     borderMedium: this.dilute(white, 10),
     borderHard: this.dilute(white, 15),
     shadow: this.dilute(black, 50),
-    activeSelectionBG: this.hsl(this.due, 35, 35),
-    inactiveSelectionBG: this.hsl(this.due, 10, 30),
-    accentFocusBG: this.hsl(this.due, 35, 35),
+    activeSelectionBG: this.hsl(this.uno, 35, 35),
+    inactiveSelectionBG: this.hsl(this.uno, 10, 30),
+    accentFocusBG: this.hsl(this.uno, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
     lineHighlightBG: this.dilute(cyan, 8),
@@ -53,6 +59,10 @@ export default class DarkTheme extends Theme {
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)
   };
+
+  gray(l: number) {
+    return this.hsl(bgHue, 40, l);
+  }
 
   ramp(hue: number) {
     return [

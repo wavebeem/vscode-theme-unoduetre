@@ -65,10 +65,6 @@ export default class LightTheme extends Theme {
     ];
   }
 
-  filename() {
-    return "light";
-  }
-
   themeType() {
     return ThemeType.LIGHT;
   }

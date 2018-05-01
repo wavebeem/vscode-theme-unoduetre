@@ -79,7 +79,6 @@ export default abstract class Theme {
   abstract tre: number;
   abstract palette: Palette;
   abstract themeType(): ThemeType;
-  abstract filename(): string;
   abstract ramp(hue: number): string[];
 
   hsl(h: number, s: number, l: number) {

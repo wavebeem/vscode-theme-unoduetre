@@ -33,6 +33,16 @@
         "label": "Uno Due Tre (Nature)",
         "uiTheme": "vs",
         "path": "./themes/nature.json"
+      },
+      {
+        "label": "Uno Due Tre (Bubble Gum)",
+        "uiTheme": "vs",
+        "path": "./themes/bubblegum.json"
+      },
+      {
+        "label": "Uno Due Tre (Midnight)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/midnight.json"
       }
     ]
   },

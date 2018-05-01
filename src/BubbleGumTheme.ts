@@ -7,13 +7,13 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-const bgHue = 80;
+const bgHue = 300;
 // const fgHue = 287;
 
 // TODO:
 // - All the terminal colors
 
-export default class LightTheme extends Theme {
+export default class BubbleGumTheme extends Theme {
   uno = 287;
   due = 327;
   tre = 179;
