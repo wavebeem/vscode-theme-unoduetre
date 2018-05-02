@@ -47,7 +47,7 @@ export default class LightTheme extends Theme {
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     accentFocusBG: this.hsl(this.tre, 50, 80),
-    statusBarBG: this.gray(94),
+    statusBarBG: this.gray(98),
     statusBarFG: this.gray(40),
     lineHighlightBG: this.dilute(cyan, 10),
     editorLine: this.dilute(this.gray(30), 10),

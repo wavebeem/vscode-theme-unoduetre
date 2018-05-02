@@ -52,7 +52,7 @@ export default class MidnightTheme extends Theme {
     activeSelectionBG: this.hsl(this.uno, 35, 35),
     inactiveSelectionBG: this.hsl(this.uno, 10, 30),
     accentFocusBG: this.hsl(this.uno, 35, 35),
-    statusBarBG: this.gray(18),
+    statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
     lineHighlightBG: this.dilute(cyan, 8),
     editorLine: this.dilute(this.gray(80), 10),
