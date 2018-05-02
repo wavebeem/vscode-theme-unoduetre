@@ -126,20 +126,20 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       // Notification Center border color.
-      "notificationCenter.border": p.bg,
+      "notificationCenter.border": p.accent0,
       // Notification Center header foreground color.
       "notificationCenterHeader.foreground": p.fg,
       // Notification Center header background color.
       "notificationCenterHeader.background": p.inputBG,
       // Notification toast border color.
-      "notificationToast.border": p.bg,
+      "notificationToast.border": p.accent0,
       // Notifications foreground color.
       "notifications.foreground": p.fg,
       // Notifications background color.
       "notifications.background": p.inputBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
-      "notifications.border": p.borderMedium,
+      "notifications.border": p.accent0,
       // Notification links foreground color.
       "notificationLink.foreground": p.cyan
     };
@@ -237,6 +237,16 @@ export default abstract class Theme {
     };
   }
 
+  themeDropdown() {
+    const p = this.palette;
+    return {
+      "dropdown.background": p.inputBG,
+      "dropdown.listBackground": p.widgetBG,
+      "dropdown.border": p.borderHard,
+      "dropdown.foreground": p.fg
+    };
+  }
+
   colors() {
     const p = this.palette;
     return {
@@ -290,12 +300,15 @@ export default abstract class Theme {
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.fg, 50),
       "tab.border": p.transparent,
+      "pickerGroup.border": p.borderSoft,
       ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
       "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
       "titleBar.border": p.borderSoft,
+      "debugToolBar.background": p.widgetBG,
+      ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
       ...this.themeTerminal()
     };

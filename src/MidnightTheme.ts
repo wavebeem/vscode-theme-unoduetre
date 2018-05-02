@@ -7,7 +7,7 @@ const yellow = "#fcd435";
 const transparent = "#00000000";
 const hueAccent2 = 40;
 
-const bgHue = 280;
+const bgHue = 260;
 
 // TODO
 // - All the terminal colors
@@ -40,9 +40,9 @@ export default class MidnightTheme extends Theme {
     tWhite: white,
     accent0: this.hsl(this.uno, 70, 40),
     accent1: this.hsl(hueAccent2, 100, 60),
-    fg: white,
+    fg: this.hsl(bgHue, 80, 90),
     bg: this.gray(20),
-    inputBG: this.gray(20),
+    inputBG: this.gray(25),
     bracketMatchBG: this.dilute(this.hsl(this.tre, 100, 60), 20),
     bracketMatchBorder: this.dilute(this.hsl(this.tre, 100, 60), 80),
     borderSoft: this.dilute(white, 5),
@@ -52,12 +52,12 @@ export default class MidnightTheme extends Theme {
     activeSelectionBG: this.hsl(this.uno, 35, 35),
     inactiveSelectionBG: this.hsl(this.uno, 10, 30),
     accentFocusBG: this.hsl(this.uno, 35, 35),
-    statusBarBG: this.gray(20),
+    statusBarBG: this.gray(18),
     statusBarFG: this.gray(70),
     lineHighlightBG: this.dilute(cyan, 8),
     editorLine: this.dilute(this.gray(80), 10),
-    widgetBG: this.gray(30),
-    widgetBorder: this.gray(50)
+    widgetBG: this.gray(25),
+    widgetBorder: this.gray(40)
   };
 
   gray(l: number) {

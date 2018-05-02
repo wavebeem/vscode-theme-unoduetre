@@ -1,4 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "workbench.editor.showTabs": true
+  "workbench.editor.showTabs": false
 }
