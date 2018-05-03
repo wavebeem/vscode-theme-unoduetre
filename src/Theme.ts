@@ -336,40 +336,41 @@ export default abstract class Theme {
       {
         name: "Uno1",
         settings: this.style(uno1),
-        // Unused
-        scopes: []
+        scopes: [
+          // Operators
+          "keyword.operator"
+        ]
       },
       {
         name: "Uno2",
         settings: this.style(uno2),
         scopes: [
-          // TODO: What is this?
-          // "support",
-
-          // TODO: Is this a CSS selector thing?
-          "meta.selector",
+          // Object keys
           "meta.object-literal.key",
 
-          // Interpolration stuff?
+          // CSS properties
+          "meta.property-name",
+
+          // Interpolration stuff
           "punctuation.section.embedded",
-          "variable.interpolation"
+          "variable.interpolation",
+
+          // Regexp fancy stuff
+          "punctuation.definition.character-class",
+          "punctuation.definition.group",
+          "keyword.control.anchor.regexp"
         ]
       },
       {
         name: "Uno3",
         settings: this.style(uno3),
         scopes: [
-          // Operators
-          "keyword.operator",
-
           // Code
           "markup.raw.inline",
 
-          // Regexp
-          "string.regexp",
-
           // Escape characters
-          "constant.character.escape"
+          "constant.character.escape",
+          "punctuation.definition.template-expression"
         ]
       },
       {
@@ -384,6 +385,12 @@ export default abstract class Theme {
           "punctuation.definition.string",
           "punctuation.definition.array",
           "punctuation.terminator",
+
+          // Punctuation
+          "punctuation.separator",
+          "punctuation.section",
+          "meta.brace",
+          "meta.delimiter",
 
           // Markdown link text
           "string.other.link",
@@ -401,13 +408,7 @@ export default abstract class Theme {
         scopes: [
           // Comment
           "comment",
-          "punctuation.definition.comment",
-
-          // Punctuation
-          "punctuation.separator",
-          "punctuation.section",
-          "meta.brace",
-          "meta.delimiter"
+          "punctuation.definition.comment"
         ]
       },
       {
@@ -427,7 +428,13 @@ export default abstract class Theme {
         scopes: [
           // Bold
           "markup.bold",
-          "punctuation.definition.bold"
+          "punctuation.definition.bold",
+
+          // CSS blocks
+          "meta.selector entity.other.attribute-name.id",
+          "meta.selector entity.other.attribute-name.class",
+          "meta.selector entity.other.attribute-name.pseudo-class",
+          "meta.selector entity.name.tag"
         ]
       },
       {
@@ -509,6 +516,7 @@ export default abstract class Theme {
         scopes: [
           // Functions
           "meta.definition entity.name.function",
+          "meta.function entity.name.function",
           "meta.require",
           "support.function.any-method",
 

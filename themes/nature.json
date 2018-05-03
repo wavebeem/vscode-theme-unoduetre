@@ -115,8 +115,16 @@
   },
   "tokenColors": [
     {
+      "name": "Uno1",
+      "scope": "keyword.operator",
+      "settings": {
+        "foreground": "#950465",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Uno2",
-      "scope": "meta.selector, meta.object-literal.key, punctuation.section.embedded, variable.interpolation",
+      "scope": "meta.object-literal.key, meta.property-name, punctuation.section.embedded, variable.interpolation, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#b3197f",
         "fontStyle": ""
@@ -124,7 +132,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "keyword.operator, markup.raw.inline, string.regexp, constant.character.escape",
+      "scope": "markup.raw.inline, constant.character.escape, punctuation.definition.template-expression",
       "settings": {
         "foreground": "#c63997",
         "fontStyle": ""
@@ -132,7 +140,7 @@
     },
     {
       "name": "Uno4",
-      "scope": "punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, string.other.link, markup.quote, meta.separator",
+      "scope": "punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#bd75a5",
         "fontStyle": ""
@@ -140,7 +148,7 @@
     },
     {
       "name": "Uno5",
-      "scope": "comment, punctuation.definition.comment, punctuation.separator, punctuation.section, meta.brace, meta.delimiter",
+      "scope": "comment, punctuation.definition.comment",
       "settings": {
         "foreground": "#bc8fad",
         "fontStyle": ""
@@ -156,7 +164,7 @@
     },
     {
       "name": "Uno2Bold",
-      "scope": "markup.bold, punctuation.definition.bold",
+      "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class, meta.selector entity.other.attribute-name.pseudo-class, meta.selector entity.name.tag",
       "settings": {
         "foreground": "#b3197f",
         "fontStyle": "bold"
@@ -196,7 +204,7 @@
     },
     {
       "name": "Due2Bold",
-      "scope": "meta.definition entity.name.function, meta.require, support.function.any-method, support.class, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
+      "scope": "meta.definition entity.name.function, meta.function entity.name.function, meta.require, support.function.any-method, support.class, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
         "foreground": "#b36619",
         "fontStyle": "bold"
