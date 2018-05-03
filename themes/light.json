@@ -133,22 +133,14 @@
     },
     {
       "name": "Uno3",
-      "scope": "markup.raw.inline, constant.character.escape, punctuation.definition.template-expression",
-      "settings": {
-        "foreground": "#cb4da1",
-        "fontStyle": ""
-      }
-    },
-    {
-      "name": "Uno4",
-      "scope": "punctuation.definition.tag.begin, punctuation.definition.tag.end, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "markup.raw.inline, constant.character.escape, punctuation.definition.template-expression, punctuation.definition.tag.begin, punctuation.definition.tag.end, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#c587b0",
         "fontStyle": ""
       }
     },
     {
-      "name": "Uno5",
+      "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
         "foreground": "#c69fb9",
@@ -181,17 +173,9 @@
     },
     {
       "name": "Due2",
-      "scope": "keyword.other.special-method, meta.definition",
+      "scope": "keyword.other.special-method, meta.definition, variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, markup.list, constant.other.color",
       "settings": {
         "foreground": "#1d64c9",
-        "fontStyle": ""
-      }
-    },
-    {
-      "name": "Due3",
-      "scope": "variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, markup.list, constant.other.color",
-      "settings": {
-        "foreground": "#4d82cb",
         "fontStyle": ""
       }
     },

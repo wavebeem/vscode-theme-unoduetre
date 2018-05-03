@@ -67,7 +67,6 @@ export default class BubbleGumTheme extends Theme {
     return [
       this.hsl(hue, 95, 35),
       this.hsl(hue, 75, 45),
-      this.hsl(hue, 55, 55),
       this.hsl(hue, 35, 65),
       this.hsl(hue, 25, 70)
     ];

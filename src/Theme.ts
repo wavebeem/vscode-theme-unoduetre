@@ -330,8 +330,8 @@ export default abstract class Theme {
   }
 
   tokenColors(): TokenColor[] {
-    const [uno1, uno2, uno3, uno4, uno5] = this.ramp(this.uno);
-    const [due1, due2, due3] = this.ramp(this.due);
+    const [uno1, uno2, uno3, uno4] = this.ramp(this.uno);
+    const [due1, due2] = this.ramp(this.due);
     const [tre1] = this.ramp(this.tre);
     const p = this.palette;
     const tc: AlmostTokenColor[] = [
@@ -380,13 +380,8 @@ export default abstract class Theme {
 
           // Escape characters
           "constant.character.escape",
-          "punctuation.definition.template-expression"
-        ]
-      },
-      {
-        name: "Uno4",
-        settings: this.style(uno4),
-        scopes: [
+          "punctuation.definition.template-expression",
+
           // Punctuation
           "punctuation.definition.tag.begin",
           "punctuation.definition.tag.end",
@@ -418,8 +413,8 @@ export default abstract class Theme {
         ]
       },
       {
-        name: "Uno5",
-        settings: this.style(uno5),
+        name: "Uno4",
+        settings: this.style(uno4),
         scopes: [
           // Comment
           "comment",
@@ -491,13 +486,8 @@ export default abstract class Theme {
           "keyword.other.special-method",
 
           // Variable definition
-          "meta.definition"
-        ]
-      },
-      {
-        name: "Due3",
-        settings: this.style(due3),
-        scopes: [
+          "meta.definition",
+
           // Parameter
           "variable.parameter.function",
 

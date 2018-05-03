@@ -67,7 +67,6 @@ export default class MidnightTheme extends Theme {
     return [
       this.hsl(hue, 80, 65),
       this.hsl(hue + 4, 70, 60),
-      this.hsl(hue + 8, 60, 55),
       this.hsl(hue + 12, 40, 50),
       this.hsl(hue + 16, 30, 45)
     ];
