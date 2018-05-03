@@ -11,6 +11,7 @@ export default class DarkTheme extends Theme {
   uno = 70;
   due = 175;
   tre = 30;
+
   palette: Palette = {
     yellow: yellow,
     orange: "#f79e51",
@@ -33,7 +34,7 @@ export default class DarkTheme extends Theme {
     tCyan: this.hsl(80, 60, 60),
     tWhite: white,
     accent0: this.hsl(this.due, 70, 40),
-    accent1: red,
+    accent1: this.hsl(this.tre, 100, 60),
     fg: white,
     bg: this.gray(20),
     inputBG: this.gray(20),

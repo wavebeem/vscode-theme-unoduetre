@@ -10,9 +10,9 @@ const hueAccent2 = 40;
 const bgHue = 260;
 
 export default class MidnightTheme extends Theme {
-  uno = 160;
+  uno = 140;
   due = 190;
-  tre = 320;
+  tre = 330;
 
   palette: Palette = {
     yellow: yellow,
@@ -35,7 +35,7 @@ export default class MidnightTheme extends Theme {
     tMagenta: this.hsl(330, 60, 60),
     tCyan: this.hsl(80, 60, 60),
     tWhite: white,
-    accent0: this.hsl(this.uno, 70, 40),
+    accent0: this.hsl(this.due, 70, 40),
     accent1: this.hsl(hueAccent2, 100, 60),
     fg: this.hsl(bgHue, 80, 90),
     bg: this.gray(20),
@@ -46,11 +46,11 @@ export default class MidnightTheme extends Theme {
     borderMedium: this.dilute(white, 10),
     borderHard: this.dilute(white, 15),
     shadow: this.dilute(black, 50),
-    activeSelectionBG: this.hsl(this.uno, 35, 35),
-    inactiveSelectionBG: this.hsl(this.uno, 10, 30),
-    textSelectionBG: this.hsla(this.uno, 50, 50, 30),
-    lineHighlightBG: this.hsla(this.uno, 50, 50, 10),
-    accentFocusBG: this.hsl(this.uno, 35, 35),
+    activeSelectionBG: this.hsla(this.due, 50, 50, 60),
+    inactiveSelectionBG: this.hsla(this.due, 50, 50, 30),
+    textSelectionBG: this.hsla(this.due, 50, 50, 30),
+    lineHighlightBG: this.hsla(this.due, 50, 50, 10),
+    accentFocusBG: this.hsl(this.due, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
     editorLine: this.dilute(this.gray(80), 10),

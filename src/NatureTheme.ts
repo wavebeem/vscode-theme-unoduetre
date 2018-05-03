@@ -7,12 +7,12 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-const bgHue = 80;
+const bgHue = 60;
 
-export default class LightTheme extends Theme {
-  uno = 287;
-  due = 327;
-  tre = 179;
+export default class NatureTheme extends Theme {
+  uno = 330;
+  due = 30;
+  tre = 180;
 
   palette: Palette = {
     yellow: yellow,
@@ -36,7 +36,7 @@ export default class LightTheme extends Theme {
     tCyan: "#7f9608",
     tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: this.hsl(40, 80, 40),
+    accent1: this.hsl(200, 80, 40),
     fg: this.hsl(bgHue, 75, 20),
     bg: this.gray(94),
     inputBG: this.gray(98),
@@ -46,8 +46,8 @@ export default class LightTheme extends Theme {
     borderMedium: this.gray(84),
     borderHard: this.gray(80),
     shadow: this.dilute(this.gray(20), 20),
-    activeSelectionBG: this.hsl(this.tre, 50, 50),
-    inactiveSelectionBG: this.hsl(this.tre, 40, 80),
+    activeSelectionBG: this.hsla(this.tre, 50, 50, 60),
+    inactiveSelectionBG: this.hsla(this.tre, 50, 50, 30),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),

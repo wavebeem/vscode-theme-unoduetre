@@ -10,9 +10,9 @@ const transparent = "#00000000";
 const bgHue = 300;
 
 export default class BubbleGumTheme extends Theme {
-  uno = 287;
-  due = 327;
-  tre = 179;
+  uno = 290;
+  due = 330;
+  tre = 180;
 
   palette: Palette = {
     yellow: yellow,
@@ -36,7 +36,7 @@ export default class BubbleGumTheme extends Theme {
     tCyan: "#7f9608",
     tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: this.hsl(140, 45, 40),
+    accent1: this.hsl(200, 45, 40),
     fg: this.hsl(bgHue, 80, 25),
     bg: this.gray(94),
     inputBG: this.gray(98),
