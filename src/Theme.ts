@@ -45,9 +45,8 @@ export interface Palette {
   fg: string;
   bg: string;
   inputBG: string;
-  borderSoft: string;
-  borderMedium: string;
-  borderHard: string;
+  border0: string;
+  border1: string;
   shadow: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
@@ -124,7 +123,7 @@ export default abstract class Theme {
   themeActivityBar() {
     const p = this.palette;
     return {
-      "activityBar.border": p.borderSoft,
+      "activityBar.border": p.border0,
       "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
       "activityBarBadge.background": p.accent0,
@@ -204,7 +203,7 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.borderMedium,
+      "statusBar.border": p.border0,
       "statusBarItem.activeBackground": this.dilute(p.fg, 15),
       "statusBarItem.hoverBackground": this.dilute(p.fg, 5),
       "statusBarItem.prominentBackground": this.dilute(p.fg, 20),
@@ -252,7 +251,7 @@ export default abstract class Theme {
     return {
       "dropdown.background": p.inputBG,
       "dropdown.listBackground": p.widgetBG,
-      "dropdown.border": p.borderHard,
+      "dropdown.border": p.border1,
       "dropdown.foreground": p.fg
     };
   }
@@ -263,7 +262,7 @@ export default abstract class Theme {
       focusBorder: p.accent0,
       "widget.shadow": p.shadow,
       ...this.themeScrollbar(),
-      "input.border": p.borderHard,
+      "input.border": p.border1,
       "input.background": p.inputBG,
       "input.placeholderForeground": this.dilute(p.fg, 40),
       "progressBar.background": p.accent0,
@@ -289,7 +288,7 @@ export default abstract class Theme {
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
       "editorCursor.foreground": p.accent1,
-      "editorGroup.border": p.borderSoft,
+      "editorGroup.border": p.border0,
       "editorGroupHeader.tabsBackground": p.bg,
       "editorIndentGuide.background": p.editorLine,
       "editorIndentGuide.activeBackground": p.activeEditorLine,
@@ -299,13 +298,13 @@ export default abstract class Theme {
       ...this.themeNotifications(),
       foreground: p.fg,
       "panel.background": p.tBG,
-      "panel.border": p.borderMedium,
+      "panel.border": p.border0,
       "panelTitle.activeBorder": this.dilute(p.fg, 50),
       "panelTitle.activeForeground": p.fg,
       "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
-      "sideBar.border": p.borderSoft,
+      "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
       "tab.activeBackground": this.dilute(p.accent0, 10),
@@ -313,13 +312,13 @@ export default abstract class Theme {
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.fg, 50),
       "tab.border": p.transparent,
-      "pickerGroup.border": p.borderSoft,
+      "pickerGroup.border": p.border0,
       ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
       "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": p.borderSoft,
+      "titleBar.border": p.border0,
       "debugToolBar.background": p.widgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
