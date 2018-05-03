@@ -116,7 +116,7 @@
   "tokenColors": [
     {
       "name": "Uno2",
-      "scope": "support, meta.selector, meta.object-literal.key, punctuation.section.embedded, variable.interpolation",
+      "scope": "meta.selector, meta.object-literal.key, punctuation.section.embedded, variable.interpolation",
       "settings": {
         "foreground": "#ac1dc9",
         "fontStyle": ""
@@ -132,7 +132,7 @@
     },
     {
       "name": "Uno4",
-      "scope": "punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, markup.quote, meta.separator",
+      "scope": "punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#bb87c5",
         "fontStyle": ""
@@ -163,14 +163,6 @@
       }
     },
     {
-      "name": "Uno4Bold",
-      "scope": "string.other.link",
-      "settings": {
-        "foreground": "#bb87c5",
-        "fontStyle": "bold"
-      }
-    },
-    {
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link",
       "settings": {
@@ -180,7 +172,7 @@
     },
     {
       "name": "Due2",
-      "scope": "keyword.other.special-method",
+      "scope": "keyword.other.special-method, meta.definition",
       "settings": {
         "foreground": "#c91d73",
         "fontStyle": ""
@@ -188,7 +180,7 @@
     },
     {
       "name": "Due3",
-      "scope": "variable.parameter.function, variable.declaration, variable.parameter, variable.other, keyword.other.unit, markup.list, constant.other.color",
+      "scope": "variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, markup.list, constant.other.color",
       "settings": {
         "foreground": "#cb4d8c",
         "fontStyle": ""
@@ -204,7 +196,7 @@
     },
     {
       "name": "Due2Bold",
-      "scope": "entity.name.function, meta.require, support.function.any-method, support.class, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
+      "scope": "meta.definition entity.name.function, meta.require, support.function.any-method, support.class, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
         "foreground": "#c91d73",
         "fontStyle": "bold"

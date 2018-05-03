@@ -344,7 +344,7 @@ export default abstract class Theme {
         settings: this.style(uno2),
         scopes: [
           // TODO: What is this?
-          "support",
+          // "support",
 
           // TODO: Is this a CSS selector thing?
           "meta.selector",
@@ -385,6 +385,9 @@ export default abstract class Theme {
           "punctuation.definition.array",
           "punctuation.terminator",
 
+          // Markdown link text
+          "string.other.link",
+
           // Quotes
           "markup.quote",
 
@@ -414,7 +417,7 @@ export default abstract class Theme {
           // Keywords
           "keyword.control",
 
-          // Storage (var
+          // Storage (var)
           "storage"
         ]
       },
@@ -426,26 +429,6 @@ export default abstract class Theme {
           "markup.bold",
           "punctuation.definition.bold"
         ]
-      },
-      {
-        name: "Uno3Bold",
-        settings: this.style(uno3, "bold"),
-        // Unused
-        scopes: []
-      },
-      {
-        name: "Uno4Bold",
-        settings: this.style(uno4, "bold"),
-        scopes: [
-          // TODO: Link text inside Markdown? Let's change this later
-          "string.other.link"
-        ]
-      },
-      {
-        name: "Uno5Bold",
-        settings: this.style(uno5, "bold"),
-        // Unused
-        scopes: []
       },
       {
         name: "Due1",
@@ -483,7 +466,10 @@ export default abstract class Theme {
         settings: this.style(due2),
         scopes: [
           // Methods
-          "keyword.other.special-method"
+          "keyword.other.special-method",
+
+          // Variable definition
+          "meta.definition"
         ]
       },
       {
@@ -496,7 +482,7 @@ export default abstract class Theme {
           // Variables
           "variable.declaration",
           "variable.parameter",
-          "variable.other",
+          // "variable.other",
 
           // Units
           "keyword.other.unit",
@@ -522,7 +508,7 @@ export default abstract class Theme {
         settings: this.style(due2, "bold"),
         scopes: [
           // Functions
-          "entity.name.function",
+          "meta.definition entity.name.function",
           "meta.require",
           "support.function.any-method",
 
@@ -535,12 +521,6 @@ export default abstract class Theme {
         ]
       },
       {
-        name: "Due3Bold",
-        settings: this.style(due3, "bold"),
-        // Unused
-        scopes: []
-      },
-      {
         name: "Tre1",
         settings: this.style(tre1),
         scopes: [
@@ -549,12 +529,6 @@ export default abstract class Theme {
           "punctuation.definition.string",
           "support.constant.property-value"
         ]
-      },
-      {
-        name: "Tre1Bold",
-        settings: this.style(tre1, "bold"),
-        // Unused
-        scopes: []
       },
       {
         name: "Broken",
