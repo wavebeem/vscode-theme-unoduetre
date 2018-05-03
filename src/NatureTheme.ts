@@ -10,7 +10,7 @@ const transparent = "#00000000";
 const bgHue = 60;
 
 export default class NatureTheme extends Theme {
-  uno = 330;
+  uno = 320;
   due = 30;
   tre = 180;
 
