@@ -51,6 +51,7 @@ export interface Palette {
   shadow: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
+  textSelectionBG: string;
   accentFocusBG: string;
   statusBarBG: string;
   statusBarFG: string;
@@ -83,6 +84,10 @@ export default abstract class Theme {
 
   hsl(h: number, s: number, l: number) {
     return tinycolor({ h, s, l }).toHexString();
+  }
+
+  hsla(h: number, s: number, l: number, a: number) {
+    return this.dilute(this.hsl(h, s, l), a);
   }
 
   gray(l: number) {
@@ -273,8 +278,8 @@ export default abstract class Theme {
       "editorLink.activeForeground": p.cyan,
       "editor.lineHighlightBackground": p.lineHighlightBG,
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
-      "editor.selectionBackground": this.dilute(p.cyan, 30),
-      "editor.inactiveSelectionBackground": this.dilute(p.cyan, 25),
+      "editor.selectionBackground": p.textSelectionBG,
+      "editor.inactiveSelectionBackground": p.textSelectionBG,
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
       "editorCursor.foreground": p.accent1,

@@ -8,10 +8,6 @@ const cyan = "#00bcd4";
 const transparent = "#00000000";
 
 const bgHue = 300;
-// const fgHue = 287;
-
-// TODO:
-// - All the terminal colors
 
 export default class BubbleGumTheme extends Theme {
   uno = 287;
@@ -40,7 +36,7 @@ export default class BubbleGumTheme extends Theme {
     tCyan: "#7f9608",
     tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: red,
+    accent1: this.hsl(140, 45, 40),
     fg: this.hsl(bgHue, 80, 25),
     bg: this.gray(94),
     inputBG: this.gray(98),
@@ -52,10 +48,11 @@ export default class BubbleGumTheme extends Theme {
     shadow: this.dilute(this.gray(10), 25),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
+    textSelectionBG: this.hsla(this.tre, 50, 50, 30),
+    lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     statusBarBG: this.gray(94),
     statusBarFG: this.gray(40),
-    lineHighlightBG: this.dilute(cyan, 10),
     editorLine: this.dilute(this.gray(30), 10),
     widgetBG: this.gray(98),
     widgetBorder: this.gray(50)

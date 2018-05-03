@@ -9,9 +9,6 @@ const hueAccent2 = 40;
 
 const bgHue = 260;
 
-// TODO
-// - All the terminal colors
-
 export default class MidnightTheme extends Theme {
   uno = 160;
   due = 190;
@@ -51,10 +48,11 @@ export default class MidnightTheme extends Theme {
     shadow: this.dilute(black, 50),
     activeSelectionBG: this.hsl(this.uno, 35, 35),
     inactiveSelectionBG: this.hsl(this.uno, 10, 30),
+    textSelectionBG: this.hsla(this.uno, 50, 50, 30),
+    lineHighlightBG: this.hsla(this.uno, 50, 50, 10),
     accentFocusBG: this.hsl(this.uno, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
-    lineHighlightBG: this.dilute(cyan, 8),
     editorLine: this.dilute(this.gray(80), 10),
     widgetBG: this.gray(25),
     widgetBorder: this.gray(40)

@@ -5,7 +5,7 @@ const black = "#000000";
 const cyan = "#5bf1ff";
 const yellow = "#fcd435";
 const transparent = "#00000000";
-const hueAccent2 = 120;
+const red = "#ff6666";
 
 export default class DarkTheme extends Theme {
   uno = 70;
@@ -18,7 +18,7 @@ export default class DarkTheme extends Theme {
     purple: "#e1a2f9",
     white: white,
     black: black,
-    red: "#ff6666",
+    red: red,
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
@@ -33,7 +33,7 @@ export default class DarkTheme extends Theme {
     tCyan: this.hsl(80, 60, 60),
     tWhite: white,
     accent0: this.hsl(this.due, 70, 40),
-    accent1: this.hsl(hueAccent2, 100, 60),
+    accent1: red,
     fg: white,
     bg: this.gray(20),
     inputBG: this.gray(20),
@@ -45,10 +45,11 @@ export default class DarkTheme extends Theme {
     shadow: this.dilute(black, 50),
     activeSelectionBG: this.hsl(this.due, 35, 35),
     inactiveSelectionBG: this.hsl(this.due, 10, 30),
+    textSelectionBG: this.hsla(this.due, 50, 50, 30),
+    lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
-    lineHighlightBG: this.dilute(cyan, 8),
     editorLine: this.dilute(this.gray(80), 10),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)

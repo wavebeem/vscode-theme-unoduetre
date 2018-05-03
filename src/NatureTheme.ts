@@ -8,10 +8,6 @@ const cyan = "#00bcd4";
 const transparent = "#00000000";
 
 const bgHue = 80;
-// const fgHue = 287;
-
-// TODO:
-// - All the terminal colors
 
 export default class LightTheme extends Theme {
   uno = 287;
@@ -52,10 +48,11 @@ export default class LightTheme extends Theme {
     shadow: this.dilute(this.gray(20), 20),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
+    textSelectionBG: this.hsla(this.tre, 50, 50, 30),
+    lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     statusBarBG: this.gray(94),
     statusBarFG: this.gray(40),
-    lineHighlightBG: this.dilute(cyan, 10),
     editorLine: this.dilute(this.gray(30), 10),
     widgetBG: this.gray(98),
     widgetBorder: this.gray(50)
