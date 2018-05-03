@@ -10,8 +10,8 @@ const transparent = "#00000000";
 const bgHue = 60;
 
 export default class NatureTheme extends Theme {
-  uno = 320;
-  due = 30;
+  uno = 30;
+  due = 320;
   tre = 180;
 
   palette: Palette = {
@@ -65,7 +65,7 @@ export default class NatureTheme extends Theme {
 
   ramp(hue: number) {
     return [
-      this.hsl(hue, 95, 30),
+      this.hsl(hue, 95, 35),
       this.hsl(hue, 75, 40),
       this.hsl(hue, 55, 50),
       this.hsl(hue, 35, 60),

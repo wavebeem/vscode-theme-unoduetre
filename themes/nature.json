@@ -117,9 +117,9 @@
   "tokenColors": [
     {
       "name": "Uno1",
-      "scope": "keyword.operator",
+      "scope": "keyword.operator, storage.type.function.arrow",
       "settings": {
-        "foreground": "#950465",
+        "foreground": "#ae5904",
         "fontStyle": ""
       }
     },
@@ -127,7 +127,7 @@
       "name": "Uno2",
       "scope": "meta.object-literal.key, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
-        "foreground": "#b3197f",
+        "foreground": "#b36619",
         "fontStyle": ""
       }
     },
@@ -135,15 +135,15 @@
       "name": "Uno3",
       "scope": "markup.raw.inline, constant.character.escape, punctuation.definition.template-expression",
       "settings": {
-        "foreground": "#c63997",
+        "foreground": "#c68039",
         "fontStyle": ""
       }
     },
     {
       "name": "Uno4",
-      "scope": "punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "punctuation.definition.tag.begin, punctuation.definition.tag.end, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#bd75a5",
+        "foreground": "#bd9975",
         "fontStyle": ""
       }
     },
@@ -151,7 +151,7 @@
       "name": "Uno5",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#bc8fad",
+        "foreground": "#bca68f",
         "fontStyle": ""
       }
     },
@@ -159,7 +159,7 @@
       "name": "Uno1Bold",
       "scope": "keyword.control, storage",
       "settings": {
-        "foreground": "#950465",
+        "foreground": "#ae5904",
         "fontStyle": "bold"
       }
     },
@@ -167,7 +167,7 @@
       "name": "Uno2Bold",
       "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class, meta.selector entity.other.attribute-name.pseudo-class, meta.selector entity.name.tag",
       "settings": {
-        "foreground": "#b3197f",
+        "foreground": "#b36619",
         "fontStyle": "bold"
       }
     },
@@ -175,7 +175,7 @@
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link",
       "settings": {
-        "foreground": "#954d04",
+        "foreground": "#ae0476",
         "fontStyle": ""
       }
     },
@@ -183,7 +183,7 @@
       "name": "Due2",
       "scope": "keyword.other.special-method, meta.definition",
       "settings": {
-        "foreground": "#b36619",
+        "foreground": "#b3197f",
         "fontStyle": ""
       }
     },
@@ -191,7 +191,7 @@
       "name": "Due3",
       "scope": "variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, markup.list, constant.other.color",
       "settings": {
-        "foreground": "#c68039",
+        "foreground": "#c63997",
         "fontStyle": ""
       }
     },
@@ -199,7 +199,7 @@
       "name": "Due1Bold",
       "scope": "markup.heading punctuation.definition.heading, entity.name.section",
       "settings": {
-        "foreground": "#954d04",
+        "foreground": "#ae0476",
         "fontStyle": "bold"
       }
     },
@@ -207,7 +207,7 @@
       "name": "Due2Bold",
       "scope": "meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
-        "foreground": "#b36619",
+        "foreground": "#b3197f",
         "fontStyle": "bold"
       }
     },
@@ -215,7 +215,7 @@
       "name": "Tre1",
       "scope": "string, punctuation.definition.string, support.constant.property-value",
       "settings": {
-        "foreground": "#049595",
+        "foreground": "#04aeae",
         "fontStyle": ""
       }
     },

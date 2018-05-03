@@ -117,7 +117,7 @@
   "tokenColors": [
     {
       "name": "Uno1",
-      "scope": "keyword.operator",
+      "scope": "keyword.operator, storage.type.function.arrow",
       "settings": {
         "foreground": "#d5ed5e",
         "fontStyle": ""
@@ -141,7 +141,7 @@
     },
     {
       "name": "Uno4",
-      "scope": "punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "punctuation.definition.tag.begin, punctuation.definition.tag.end, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#8db34d",
         "fontStyle": ""

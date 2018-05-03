@@ -340,7 +340,8 @@ export default abstract class Theme {
         settings: this.style(uno1),
         scopes: [
           // Operators
-          "keyword.operator"
+          "keyword.operator",
+          "storage.type.function.arrow"
         ]
       },
       {
@@ -387,6 +388,10 @@ export default abstract class Theme {
         settings: this.style(uno4),
         scopes: [
           // Punctuation
+          "punctuation.definition.tag.begin",
+          "punctuation.definition.tag.end",
+          "punctuation.definition.binding-pattern.array",
+          "punctuation.definition.binding-pattern.object",
           "punctuation.definition.block",
           "punctuation.definition.string",
           "punctuation.definition.variable",
