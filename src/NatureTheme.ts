@@ -64,11 +64,11 @@ export default class NatureTheme extends Theme {
 
   ramp(hue: number) {
     return [
-      this.hsl(hue, 95, 35),
-      this.hsl(hue, 75, 45),
-      this.hsl(hue, 55, 55),
-      this.hsl(hue, 35, 65),
-      this.hsl(hue, 25, 70)
+      this.hsl(hue, 95, 30),
+      this.hsl(hue, 75, 40),
+      this.hsl(hue, 55, 50),
+      this.hsl(hue, 35, 60),
+      this.hsl(hue, 25, 65)
     ];
   }
 

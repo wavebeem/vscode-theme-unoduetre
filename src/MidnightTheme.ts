@@ -64,11 +64,11 @@ export default class MidnightTheme extends Theme {
 
   ramp(hue: number) {
     return [
-      this.hsl(hue, 90, 65),
-      this.hsl(hue + 4, 80, 60),
-      this.hsl(hue + 8, 70, 55),
-      this.hsl(hue + 12, 50, 50),
-      this.hsl(hue + 16, 40, 45)
+      this.hsl(hue, 80, 60),
+      this.hsl(hue + 4, 70, 55),
+      this.hsl(hue + 8, 60, 50),
+      this.hsl(hue + 12, 40, 45),
+      this.hsl(hue + 16, 30, 40)
     ];
   }
 
