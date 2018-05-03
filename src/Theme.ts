@@ -260,6 +260,7 @@ export default abstract class Theme {
       ...this.themeScrollbar(),
       "input.border": p.borderHard,
       "input.background": p.inputBG,
+      "input.placeholderForeground": this.dilute(p.fg, 40),
       "progressBar.background": p.accent0,
       "inputOption.activeBorder": p.accent0,
       ...this.themeList(),

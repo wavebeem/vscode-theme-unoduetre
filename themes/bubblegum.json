@@ -43,6 +43,7 @@
     "gitDecoration.untrackedResourceForeground": "#3498db",
     "input.background": "#fbf8fb",
     "input.border": "#dbbddb",
+    "input.placeholderForeground": "#730d7366",
     "inputOption.activeBorder": "#1fadad",
     "list.activeSelectionBackground": "#40bfbf",
     "list.focusBackground": "#b3e5e6",

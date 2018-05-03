@@ -37,7 +37,7 @@ export default class DarkTheme extends Theme {
     accent1: this.hsl(this.tre, 100, 60),
     fg: white,
     bg: this.gray(20),
-    inputBG: this.gray(20),
+    inputBG: this.gray(18),
     bracketMatchBG: this.dilute(this.hsl(this.tre, 100, 60), 20),
     bracketMatchBorder: this.dilute(this.hsl(this.tre, 100, 60), 80),
     borderSoft: this.dilute(white, 5),
