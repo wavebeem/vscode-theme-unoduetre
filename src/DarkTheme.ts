@@ -38,8 +38,8 @@ export default class DarkTheme extends Theme {
     fg: this.gray(90),
     bg: this.gray(20),
     inputBG: this.gray(18),
-    bracketMatchBG: this.dilute(this.hsl(this.tre, 100, 60), 20),
-    bracketMatchBorder: this.dilute(this.hsl(this.tre, 100, 60), 80),
+    bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
+    bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
     border0: this.dilute(white, 10),
     border1: this.dilute(white, 20),
     shadow: this.dilute(black, 50),
@@ -48,8 +48,6 @@ export default class DarkTheme extends Theme {
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
     lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
-    editorLine: this.dilute(this.gray(80), 10),
-    activeEditorLine: this.dilute(this.gray(80), 20),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)
   };

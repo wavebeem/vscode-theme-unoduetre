@@ -40,8 +40,8 @@ export default class MidnightTheme extends Theme {
     fg: this.hsl(bgHue, 80, 90),
     bg: this.gray(20),
     inputBG: this.gray(18),
-    bracketMatchBG: this.dilute(this.hsl(this.tre, 100, 60), 20),
-    bracketMatchBorder: this.dilute(this.hsl(this.tre, 100, 60), 80),
+    bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
+    bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
     border0: this.gray(30),
     border1: this.gray(36),
     shadow: this.dilute(black, 50),
@@ -50,8 +50,6 @@ export default class MidnightTheme extends Theme {
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
     lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
-    editorLine: this.dilute(this.gray(80), 10),
-    activeEditorLine: this.dilute(this.gray(80), 20),
     widgetBG: this.gray(25),
     widgetBorder: this.gray(40)
   };

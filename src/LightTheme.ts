@@ -48,8 +48,6 @@ export default class LightTheme extends Theme {
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
-    editorLine: this.dilute(this.gray(30), 10),
-    activeEditorLine: this.dilute(this.gray(30), 20),
     widgetBG: white,
     widgetBorder: this.dilute(black, 50)
   };
