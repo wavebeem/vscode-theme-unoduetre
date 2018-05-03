@@ -53,8 +53,6 @@ export interface Palette {
   inactiveSelectionBG: string;
   textSelectionBG: string;
   accentFocusBG: string;
-  statusBarBG: string;
-  statusBarFG: string;
   lineHighlightBG: string;
   widgetBG: string;
   widgetBorder: string;
@@ -210,10 +208,10 @@ export default abstract class Theme {
       "statusBarItem.activeBackground": this.dilute(p.fg, 15),
       "statusBarItem.hoverBackground": this.dilute(p.fg, 5),
       "statusBarItem.prominentBackground": this.dilute(p.fg, 20),
-      "statusBar.background": p.statusBarBG,
-      "statusBar.debuggingBackground": p.statusBarBG,
-      "statusBar.noFolderBackground": p.statusBarBG,
-      "statusBar.foreground": p.statusBarFG
+      "statusBar.background": p.bg,
+      "statusBar.debuggingBackground": p.bg,
+      "statusBar.noFolderBackground": p.bg,
+      "statusBar.foreground": p.fg
     };
   }
 

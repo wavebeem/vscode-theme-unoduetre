@@ -79,7 +79,7 @@
     "statusBar.background": "#fafafa",
     "statusBar.border": "#00000019",
     "statusBar.debuggingBackground": "#fafafa",
-    "statusBar.foreground": "#666666",
+    "statusBar.foreground": "#3d2936",
     "statusBar.noFolderBackground": "#fafafa",
     "statusBarItem.activeBackground": "#3d293626",
     "statusBarItem.hoverBackground": "#3d29360c",
