@@ -52,6 +52,7 @@ export default class DarkTheme extends Theme {
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
     editorLine: this.dilute(this.gray(80), 10),
+    activeEditorLine: this.dilute(this.gray(80), 20),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(50)
   };

@@ -52,6 +52,7 @@ export default class LightTheme extends Theme {
     statusBarBG: this.gray(98),
     statusBarFG: this.gray(40),
     editorLine: this.dilute(this.gray(30), 10),
+    activeEditorLine: this.dilute(this.gray(30), 20),
     widgetBG: white,
     widgetBorder: this.dilute(black, 50)
   };

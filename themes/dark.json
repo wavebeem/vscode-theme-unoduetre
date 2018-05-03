@@ -28,6 +28,7 @@
     "editorCursor.foreground": "#ff9933",
     "editorGroup.border": "#ffffff0c",
     "editorGroupHeader.tabsBackground": "#333333",
+    "editorIndentGuide.activeBackground": "#cccccc33",
     "editorIndentGuide.background": "#cccccc19",
     "editorLineNumber.foreground": "#e6e6e64c",
     "editorLink.activeForeground": "#5bf1ff",
@@ -124,7 +125,7 @@
     },
     {
       "name": "Uno2",
-      "scope": "meta.object-literal.key, meta.property-name, punctuation.section.embedded, variable.interpolation, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "meta.object-literal.key, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#bfe052",
         "fontStyle": ""
@@ -140,7 +141,7 @@
     },
     {
       "name": "Uno4",
-      "scope": "punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#8db34d",
         "fontStyle": ""
@@ -204,7 +205,7 @@
     },
     {
       "name": "Due2Bold",
-      "scope": "meta.definition entity.name.function, meta.function entity.name.function, meta.require, support.function.any-method, support.class, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
+      "scope": "meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
         "foreground": "#52e0de",
         "fontStyle": "bold"

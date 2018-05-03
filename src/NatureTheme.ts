@@ -54,6 +54,7 @@ export default class NatureTheme extends Theme {
     statusBarBG: this.gray(94),
     statusBarFG: this.gray(40),
     editorLine: this.dilute(this.gray(30), 10),
+    activeEditorLine: this.dilute(this.gray(30), 20),
     widgetBG: this.gray(98),
     widgetBorder: this.gray(50)
   };

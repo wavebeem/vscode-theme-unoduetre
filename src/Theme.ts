@@ -61,6 +61,7 @@ export interface Palette {
   bracketMatchBG: string;
   bracketMatchBorder: string;
   editorLine: string;
+  activeEditorLine: string;
 }
 
 export interface Scope {
@@ -293,6 +294,7 @@ export default abstract class Theme {
       "editorGroup.border": p.borderSoft,
       "editorGroupHeader.tabsBackground": p.bg,
       "editorIndentGuide.background": p.editorLine,
+      "editorIndentGuide.activeBackground": p.activeEditorLine,
       "editorRuler.foreground": p.editorLine,
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
       "editorActiveLineNumber.foreground": p.fg,
@@ -355,6 +357,13 @@ export default abstract class Theme {
           "punctuation.section.embedded",
           "variable.interpolation",
 
+          // JSX tags
+          "support.class.component",
+
+          // Decorators
+          "meta.decorator",
+          "entity.name.function.decorator",
+
           // Regexp fancy stuff
           "punctuation.definition.character-class",
           "punctuation.definition.group",
@@ -378,6 +387,7 @@ export default abstract class Theme {
         settings: this.style(uno4),
         scopes: [
           // Punctuation
+          "punctuation.definition.block",
           "punctuation.definition.string",
           "punctuation.definition.variable",
           "punctuation.definition.string",
@@ -518,10 +528,8 @@ export default abstract class Theme {
           "meta.definition entity.name.function",
           "meta.function entity.name.function",
           "meta.require",
-          "support.function.any-method",
 
           // Classes
-          "support.class",
           "entity.name.class",
           "entity.name.type.class",
           "entity.name.type.module",
