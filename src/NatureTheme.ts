@@ -52,7 +52,7 @@ export default class NatureTheme extends Theme {
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     statusBarBG: this.gray(94),
-    statusBarFG: this.gray(40),
+    statusBarFG: this.gray(30),
     editorLine: this.dilute(this.gray(30), 10),
     activeEditorLine: this.dilute(this.gray(30), 20),
     widgetBG: this.gray(98),
