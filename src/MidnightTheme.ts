@@ -5,12 +5,14 @@ const black = "#000000";
 const cyan = "#5bf1ff";
 const yellow = "#fcd435";
 const transparent = "#00000000";
-const red = "#ff6666";
+const hueAccent2 = 40;
 
-export default class DarkTheme extends Theme {
-  uno = 70;
-  due = 175;
-  tre = 30;
+const bgHue = 260;
+
+export default class MidnightTheme extends Theme {
+  uno = 140;
+  due = 190;
+  tre = 330;
 
   palette: Palette = {
     yellow: yellow,
@@ -19,12 +21,12 @@ export default class DarkTheme extends Theme {
     purple: "#e1a2f9",
     white: white,
     black: black,
-    red: red,
+    red: "#ff6666",
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
     tBG: this.gray(18),
-    tFG: this.hsl(this.due, 90, 90),
+    tFG: this.hsl(bgHue, 90, 90),
     tBlack: this.gray(35),
     tRed: this.hsl(0, 60, 60),
     tGreen: this.hsl(140, 60, 60),
@@ -34,27 +36,31 @@ export default class DarkTheme extends Theme {
     tCyan: this.hsl(80, 60, 60),
     tWhite: white,
     accent0: this.hsl(this.due, 70, 40),
-    accent1: this.hsl(this.tre, 100, 60),
-    fg: white,
+    accent1: this.hsl(hueAccent2, 100, 60),
+    fg: this.hsl(bgHue, 80, 90),
     bg: this.gray(20),
-    inputBG: this.gray(20),
+    inputBG: this.gray(25),
     bracketMatchBG: this.dilute(this.hsl(this.tre, 100, 60), 20),
     bracketMatchBorder: this.dilute(this.hsl(this.tre, 100, 60), 80),
     borderSoft: this.dilute(white, 5),
     borderMedium: this.dilute(white, 10),
     borderHard: this.dilute(white, 15),
     shadow: this.dilute(black, 50),
-    activeSelectionBG: this.hsl(this.due, 35, 35),
-    inactiveSelectionBG: this.hsl(this.due, 10, 30),
+    activeSelectionBG: this.hsla(this.due, 50, 50, 60),
+    inactiveSelectionBG: this.hsla(this.due, 50, 50, 30),
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
     lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
     statusBarBG: this.gray(20),
     statusBarFG: this.gray(70),
     editorLine: this.dilute(this.gray(80), 10),
-    widgetBG: this.gray(30),
-    widgetBorder: this.gray(50)
+    widgetBG: this.gray(25),
+    widgetBorder: this.gray(40)
   };
+
+  gray(l: number) {
+    return this.hsl(bgHue, 40, l);
+  }
 
   ramp(hue: number) {
     return [

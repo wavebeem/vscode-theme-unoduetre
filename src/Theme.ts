@@ -40,9 +40,8 @@ export interface Palette {
   tMagenta: string;
   tCyan: string;
   tWhite: string;
-  uiFG: string;
-  uiAccent: string;
-  uiAccent2: string;
+  accent0: string;
+  accent1: string;
   fg: string;
   bg: string;
   inputBG: string;
@@ -52,13 +51,16 @@ export interface Palette {
   shadow: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
+  textSelectionBG: string;
   accentFocusBG: string;
   statusBarBG: string;
+  statusBarFG: string;
   lineHighlightBG: string;
   widgetBG: string;
   widgetBorder: string;
   bracketMatchBG: string;
   bracketMatchBorder: string;
+  editorLine: string;
 }
 
 export interface Scope {
@@ -78,11 +80,14 @@ export default abstract class Theme {
   abstract tre: number;
   abstract palette: Palette;
   abstract themeType(): ThemeType;
-  abstract filename(): string;
   abstract ramp(hue: number): string[];
 
   hsl(h: number, s: number, l: number) {
     return tinycolor({ h, s, l }).toHexString();
+  }
+
+  hsla(h: number, s: number, l: number, a: number) {
+    return this.dilute(this.hsl(h, s, l), a);
   }
 
   gray(l: number) {
@@ -116,8 +121,8 @@ export default abstract class Theme {
     return {
       "activityBar.border": p.borderSoft,
       "activityBar.background": p.bg,
-      "activityBar.foreground": p.uiFG,
-      "activityBarBadge.background": p.uiAccent,
+      "activityBar.foreground": p.fg,
+      "activityBarBadge.background": p.accent0,
       "activityBarBadge.foreground": p.white
     };
   }
@@ -126,20 +131,20 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       // Notification Center border color.
-      "notificationCenter.border": undefined,
+      "notificationCenter.border": p.accent0,
       // Notification Center header foreground color.
-      "notificationCenterHeader.foreground": p.uiFG,
+      "notificationCenterHeader.foreground": p.fg,
       // Notification Center header background color.
       "notificationCenterHeader.background": p.inputBG,
       // Notification toast border color.
-      "notificationToast.border": undefined,
+      "notificationToast.border": p.accent0,
       // Notifications foreground color.
-      "notifications.foreground": p.uiFG,
+      "notifications.foreground": p.fg,
       // Notifications background color.
       "notifications.background": p.inputBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
-      "notifications.border": p.borderMedium,
+      "notifications.border": p.accent0,
       // Notification links foreground color.
       "notificationLink.foreground": p.cyan
     };
@@ -148,11 +153,11 @@ export default abstract class Theme {
   themeList() {
     const p = this.palette;
     return {
-      "list.highlightForeground": p.uiAccent2,
+      "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.uiFG, 10)
+      "list.hoverBackground": this.dilute(p.accent0, 10)
     };
   }
 
@@ -186,7 +191,7 @@ export default abstract class Theme {
       "gitDecoration.modifiedResourceForeground": p.orange,
       "gitDecoration.deletedResourceForeground": p.red,
       "gitDecoration.untrackedResourceForeground": p.blue,
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.uiFG, 40),
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40),
       "gitDecoration.conflictingResourceForeground": p.cyan
     };
   }
@@ -194,9 +199,14 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.borderHard,
+      "statusBar.border": p.borderMedium,
+      "statusBarItem.activeBackground": this.dilute(p.fg, 15),
+      "statusBarItem.hoverBackground": this.dilute(p.fg, 5),
+      "statusBarItem.prominentBackground": this.dilute(p.fg, 20),
       "statusBar.background": p.statusBarBG,
-      "statusBar.foreground": p.white
+      "statusBar.debuggingBackground": p.statusBarBG,
+      "statusBar.noFolderBackground": p.statusBarBG,
+      "statusBar.foreground": p.statusBarFG
     };
   }
 
@@ -204,35 +214,58 @@ export default abstract class Theme {
     return {
       // Border color for regions with the same content as the selection.
       "editor.selectionHighlightBorder": undefined,
-      // Border color of a symbol during read-access, for example when reading a variable.
+      // Border color of a symbol during read-access, for example when reading a
+      // variable.
       "editor.wordHighlightBorder": undefined,
-      // Border color of a symbol during write-access, for example when writing to a variable.
+      // Border color of a symbol during write-access, for example when writing
+      // to a variable.
       "editor.wordHighlightStrongBorder": undefined,
       // Border color of the current search match.
       "editor.findMatchBorder": undefined,
       // Border color of the other search matches.
       "editor.findMatchHighlightBorder": undefined,
-      // Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
+      // Border color the range limiting the search (Enable 'Find in Selection'
+      // in the find widget).
       "editor.findRangeHighlightBorder": undefined,
       // Background color of the border around highlighted ranges.
       "editor.rangeHighlightBorder": undefined
     };
   }
 
+  themeScrollbar() {
+    const p = this.palette;
+    return {
+      "scrollbar.shadow": p.shadow,
+      "scrollbarSlider.background": this.dilute(p.fg, 30),
+      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
+      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60)
+    };
+  }
+
+  themeDropdown() {
+    const p = this.palette;
+    return {
+      "dropdown.background": p.inputBG,
+      "dropdown.listBackground": p.widgetBG,
+      "dropdown.border": p.borderHard,
+      "dropdown.foreground": p.fg
+    };
+  }
+
   colors() {
     const p = this.palette;
     return {
-      focusBorder: p.uiAccent,
+      focusBorder: p.accent0,
       "widget.shadow": p.shadow,
-      "scrollbar.shadow": p.shadow,
+      ...this.themeScrollbar(),
       "input.border": p.borderHard,
       "input.background": p.inputBG,
-      "progressBar.background": p.uiAccent,
-      "inputOption.activeBorder": p.uiAccent,
+      "progressBar.background": p.accent0,
+      "inputOption.activeBorder": p.accent0,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeActivityBar(),
-      "editorWidget.foreground": p.uiFG,
+      "editorWidget.foreground": p.fg,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
       "editorBracketMatch.background": p.bracketMatchBG,
@@ -245,39 +278,42 @@ export default abstract class Theme {
       "editorLink.activeForeground": p.cyan,
       "editor.lineHighlightBackground": p.lineHighlightBG,
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
-      "editor.selectionBackground": this.dilute(p.yellow, 30),
-      "editor.inactiveSelectionBackground": this.dilute(p.yellow, 25),
+      "editor.selectionBackground": p.textSelectionBG,
+      "editor.inactiveSelectionBackground": p.textSelectionBG,
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
-      "editorCursor.foreground": p.uiAccent2,
+      "editorCursor.foreground": p.accent1,
       "editorGroupHeader.tabsBackground": p.bg,
-      "editorIndentGuide.background": p.borderMedium,
-      "editorRuler.foreground": p.borderMedium,
-      "editorLineNumber.foreground": this.dilute(p.uiFG, 30),
-      "editorActiveLineNumber.foreground": p.uiFG,
+      "editorIndentGuide.background": p.editorLine,
+      "editorRuler.foreground": p.editorLine,
+      "editorLineNumber.foreground": this.dilute(p.fg, 30),
+      "editorActiveLineNumber.foreground": p.fg,
       ...this.themeNotifications(),
-      foreground: p.uiFG,
+      foreground: p.fg,
       "panel.background": p.tBG,
       "panel.border": p.borderMedium,
-      "panelTitle.activeBorder": this.dilute(p.uiFG, 50),
-      "panelTitle.activeForeground": p.uiFG,
-      "panelTitle.inactiveForeground": this.dilute(p.uiFG, 60),
+      "panelTitle.activeBorder": this.dilute(p.fg, 50),
+      "panelTitle.activeForeground": p.fg,
+      "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
       "sideBar.border": p.borderSoft,
       "sideBar.background": p.bg,
-      "sideBarSectionHeader.background": this.dilute(p.uiFG, 3),
-      "tab.activeBackground": p.accentFocusBG,
-      "tab.activeForeground": p.uiFG,
+      "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      "tab.activeBackground": this.dilute(p.accent0, 10),
+      "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.uiFG, 50),
+      "tab.inactiveForeground": this.dilute(p.fg, 50),
       "tab.border": p.transparent,
+      "pickerGroup.border": p.borderSoft,
       ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
-      "titleBar.activeForeground": p.uiFG,
+      "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
-      "titleBar.inactiveForeground": this.dilute(p.uiFG, 70),
+      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
       "titleBar.border": p.borderSoft,
+      "debugToolBar.background": p.widgetBG,
+      ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
       ...this.themeTerminal()
     };
@@ -576,8 +612,7 @@ export default abstract class Theme {
 
   saveAs(name: string) {
     const json = JSON.stringify(this.config(), null, 2);
-    const d = new Date().toString();
-    console.log(`Saving theme "${name}" (${d})`);
+    console.log(`Saving theme "${name}"`);
     fs.writeFileSync(`themes/${name}.json`, json);
   }
 }

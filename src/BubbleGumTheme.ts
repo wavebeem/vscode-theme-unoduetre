@@ -7,10 +7,12 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-export default class LightTheme extends Theme {
-  uno = 320;
-  due = 215;
-  tre = 125;
+const bgHue = 300;
+
+export default class BubbleGumTheme extends Theme {
+  uno = 290;
+  due = 330;
+  tre = 180;
 
   palette: Palette = {
     yellow: yellow,
@@ -23,8 +25,8 @@ export default class LightTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: white,
-    tFG: "#5c668e",
+    tBG: this.gray(96),
+    tFG: this.hsl(bgHue, 80, 25),
     tBlack: "#31364a",
     tRed: "#a91b1c",
     tGreen: "#00a337",
@@ -32,29 +34,33 @@ export default class LightTheme extends Theme {
     tBlue: "#39b898",
     tMagenta: "#d95278",
     tCyan: "#7f9608",
-    tWhite: "#e6e6e6",
+    tWhite: this.gray(96),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: red,
-    fg: this.hsl(this.uno, 20, 20),
-    bg: this.gray(98),
-    inputBG: white,
+    accent1: this.hsl(200, 45, 40),
+    fg: this.hsl(bgHue, 80, 25),
+    bg: this.gray(94),
+    inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    borderSoft: this.dilute(black, 5),
-    borderMedium: this.dilute(black, 10),
-    borderHard: this.dilute(black, 15),
-    shadow: this.dilute(black, 20),
+    borderSoft: this.gray(88),
+    borderMedium: this.gray(84),
+    borderHard: this.gray(80),
+    shadow: this.dilute(this.gray(10), 25),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
-    statusBarBG: this.gray(98),
+    statusBarBG: this.gray(94),
     statusBarFG: this.gray(40),
     editorLine: this.dilute(this.gray(30), 10),
-    widgetBG: white,
-    widgetBorder: this.dilute(black, 50)
+    widgetBG: this.gray(98),
+    widgetBorder: this.gray(50)
   };
+
+  gray(l: number) {
+    return this.hsl(bgHue, 30, l);
+  }
 
   ramp(hue: number) {
     return [

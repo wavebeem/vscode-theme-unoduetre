@@ -5,7 +5,7 @@
   "version": "2.0.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wavebeem/vscode-theme-unoduetre.git"
+    "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
   },
   "icon": "img/icon.png",
   "galleryBanner": {
@@ -28,6 +28,21 @@
         "label": "Uno Due Tre (Dark)",
         "uiTheme": "vs-dark",
         "path": "./themes/dark.json"
+      },
+      {
+        "label": "Uno Due Tre (Nature)",
+        "uiTheme": "vs",
+        "path": "./themes/nature.json"
+      },
+      {
+        "label": "Uno Due Tre (Bubble Gum)",
+        "uiTheme": "vs",
+        "path": "./themes/bubblegum.json"
+      },
+      {
+        "label": "Uno Due Tre (Midnight)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/midnight.json"
       }
     ]
   },
