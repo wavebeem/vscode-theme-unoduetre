@@ -74,6 +74,12 @@ export interface TokenColor {
   settings: Style;
 }
 
+export interface AlmostTokenColor {
+  name: string;
+  scopes: string[];
+  settings: Style;
+}
+
 export default abstract class Theme {
   abstract uno: number;
   abstract due: number;
@@ -284,6 +290,7 @@ export default abstract class Theme {
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
       "editorCursor.foreground": p.accent1,
+      "editorGroup.border": p.borderSoft,
       "editorGroupHeader.tabsBackground": p.bg,
       "editorIndentGuide.background": p.editorLine,
       "editorRuler.foreground": p.editorLine,
@@ -320,46 +327,80 @@ export default abstract class Theme {
     };
   }
 
-  tokenColors() {
-    return this.scopes().reduce(
-      (arr, item) => {
-        const { name, scopes } = item;
-        const scope = scopes.join(", ");
-        const settings = this.namedScopeToSettings(name);
-        if (settings) {
-          return [...arr, { name, scope, settings }];
-        }
-        return arr;
-      },
-      [] as TokenColor[]
-    );
-  }
-
-  scopes(): Scope[] {
-    return [
+  tokenColors(): TokenColor[] {
+    const [uno1, uno2, uno3, uno4, uno5] = this.ramp(this.uno);
+    const [due1, due2, due3] = this.ramp(this.due);
+    const [tre1] = this.ramp(this.tre);
+    const p = this.palette;
+    const tc: AlmostTokenColor[] = [
       {
-        name: "Parameter",
-        scopes: ["variable.parameter.function"]
+        name: "Uno1",
+        settings: this.style(uno1),
+        // Unused
+        scopes: []
       },
       {
-        name: "Comments",
-        scopes: ["comment", "punctuation.definition.comment"]
-      },
-      {
-        name: "Punctuation",
+        name: "Uno2",
+        settings: this.style(uno2),
         scopes: [
+          // TODO: What is this?
+          "support",
+
+          // TODO: Is this a CSS selector thing?
+          "meta.selector",
+          "meta.object-literal.key",
+
+          // Interpolration stuff?
+          "punctuation.section.embedded",
+          "variable.interpolation"
+        ]
+      },
+      {
+        name: "Uno3",
+        settings: this.style(uno3),
+        scopes: [
+          // Operators
+          "keyword.operator",
+
+          // Code
+          "markup.raw.inline",
+
+          // Regexp
+          "string.regexp",
+
+          // Escape characters
+          "constant.character.escape"
+        ]
+      },
+      {
+        name: "Uno4",
+        settings: this.style(uno4),
+        scopes: [
+          // Punctuation
           "punctuation.definition.string",
           "punctuation.definition.variable",
           "punctuation.definition.string",
           "punctuation.definition.parameters",
           "punctuation.definition.string",
           "punctuation.definition.array",
-          "punctuation.terminator"
+          "punctuation.terminator",
+
+          // Quotes
+          "markup.quote",
+
+          // Separator
+          "meta.separator"
         ]
       },
       {
-        name: "Delimiters",
+        name: "Uno5",
+        settings: this.style(uno5),
         scopes: [
+          // Comment
+          "comment",
+          "punctuation.definition.comment",
+
+          // Punctuation
           "punctuation.separator",
           "punctuation.section",
           "meta.brace",
@@ -367,36 +408,125 @@ export default abstract class Theme {
         ]
       },
       {
-        name: "Operators",
-        scopes: ["keyword.operator"]
-      },
-      {
-        name: "Keywords",
-        scopes: ["keyword.control"]
-      },
-      {
-        name: "Variables",
-        scopes: ["variable.declaration", "variable.parameter", "variable.other"]
-      },
-      {
-        name: "Search",
-        scopes: ["entity.name.filename.find-in-files"]
-      },
-      {
-        name: "Search Line",
-        scopes: ["constant.numeric.line-number.match.find-in-files"]
-      },
-      {
-        name: "Functions",
+        name: "Uno1Bold",
+        settings: this.style(uno1, "bold"),
         scopes: [
-          "entity.name.function",
-          "meta.require",
-          "support.function.any-method"
+          // Keywords
+          "keyword.control",
+
+          // Storage (var
+          "storage"
         ]
       },
       {
-        name: "Classes",
+        name: "Uno2Bold",
+        settings: this.style(uno2, "bold"),
         scopes: [
+          // Bold
+          "markup.bold",
+          "punctuation.definition.bold"
+        ]
+      },
+      {
+        name: "Uno3Bold",
+        settings: this.style(uno3, "bold"),
+        // Unused
+        scopes: []
+      },
+      {
+        name: "Uno4Bold",
+        settings: this.style(uno4, "bold"),
+        scopes: [
+          // TODO: Link text inside Markdown? Let's change this later
+          "string.other.link"
+        ]
+      },
+      {
+        name: "Uno5Bold",
+        settings: this.style(uno5, "bold"),
+        // Unused
+        scopes: []
+      },
+      {
+        name: "Due1",
+        settings: this.style(due1),
+        scopes: [
+          // Symbols
+          "constant.other.symbol",
+
+          // Numbers
+          "constant.numeric",
+
+          // Boolean
+          "constant.language.boolean",
+
+          // Constants
+          "constant",
+          "support.constant",
+          "variable.language",
+
+          // Tags
+          "entity.name.tag",
+          "punctuation.definition.tag",
+
+          // Attributes
+          "entity.other.attribute-name",
+          "entity.other.attribute-name.id",
+          "punctuation.definition.entity",
+
+          // Link URL
+          "meta.link"
+        ]
+      },
+      {
+        name: "Due2",
+        settings: this.style(due2),
+        scopes: [
+          // Methods
+          "keyword.other.special-method"
+        ]
+      },
+      {
+        name: "Due3",
+        settings: this.style(due3),
+        scopes: [
+          // Parameter
+          "variable.parameter.function",
+
+          // Variables
+          "variable.declaration",
+          "variable.parameter",
+          "variable.other",
+
+          // Units
+          "keyword.other.unit",
+
+          // Lists
+          "markup.list",
+
+          // Colors
+          "constant.other.color"
+        ]
+      },
+      {
+        name: "Due1Bold",
+        settings: this.style(due1, "bold"),
+        scopes: [
+          // Headings
+          "markup.heading punctuation.definition.heading",
+          "entity.name.section"
+        ]
+      },
+      {
+        name: "Due2Bold",
+        settings: this.style(due2, "bold"),
+        scopes: [
+          // Functions
+          "entity.name.function",
+          "meta.require",
+          "support.function.any-method",
+
+          // Classes
           "support.class",
           "entity.name.class",
           "entity.name.type.class",
@@ -405,203 +535,45 @@ export default abstract class Theme {
         ]
       },
       {
-        name: "Methods",
-        scopes: ["keyword.other.special-method"]
+        name: "Due3Bold",
+        settings: this.style(due3, "bold"),
+        // Unused
+        scopes: []
       },
       {
-        name: "Storage",
-        scopes: ["storage"]
-      },
-      {
-        name: "Support",
-        scopes: ["support"]
-      },
-      {
-        name: "Strings",
+        name: "Tre1",
+        settings: this.style(tre1),
         scopes: [
+          // Strings
           "string",
           "punctuation.definition.string",
           "support.constant.property-value"
         ]
       },
       {
-        name: "Numbers",
-        scopes: ["constant.numeric"]
-      },
-      {
-        name: "Symbols",
-        scopes: ["constant.other.symbol"]
-      },
-      {
-        name: "Boolean",
-        scopes: ["constant.language.boolean"]
-      },
-      {
-        name: "Constants",
-        scopes: ["constant", "support.constant", "variable.language"]
-      },
-      {
-        name: "Tags",
-        scopes: ["entity.name.tag", "punctuation.definition.tag"]
-      },
-      {
-        name: "Attributes",
-        scopes: ["entity.other.attribute-name"]
-      },
-      {
-        name: "Attribute IDs",
-        scopes: [
-          "entity.other.attribute-name.id",
-          "punctuation.definition.entity"
-        ]
-      },
-      {
-        name: "Selector",
-        scopes: ["meta.selector", "meta.object-literal.key"]
-      },
-      {
-        name: "Headings",
-        scopes: [
-          "markup.heading punctuation.definition.heading",
-          "entity.name.section"
-        ]
-      },
-      {
-        name: "Units",
-        scopes: ["keyword.other.unit"]
-      },
-      {
-        name: "Bold",
-        scopes: ["markup.bold", "punctuation.definition.bold"]
-      },
-      {
-        name: "Italic",
-        scopes: ["markup.italic", "punctuation.definition.italic"]
-      },
-      {
-        name: "Code",
-        scopes: ["markup.raw.inline"]
-      },
-      {
-        name: "Link Text",
-        scopes: ["string.other.link"]
-      },
-      {
-        name: "Link Url",
-        scopes: ["meta.link"]
-      },
-      {
-        name: "Lists",
-        scopes: ["markup.list"]
-      },
-      {
-        name: "Quotes",
-        scopes: ["markup.quote"]
-      },
-      {
-        name: "Separator",
-        scopes: ["meta.separator"]
-      },
-      {
-        name: "Inserted",
-        scopes: ["markup.inserted"]
-      },
-      {
-        name: "Deleted",
-        scopes: ["markup.deleted"]
-      },
-      {
-        name: "Changed",
-        scopes: ["markup.changed"]
-      },
-      {
-        name: "Colors",
-        scopes: ["constant.other.color"]
-      },
-      {
-        name: "Regular Expressions",
-        scopes: ["string.regexp"]
-      },
-      {
-        name: "Escape Characters",
-        scopes: ["constant.character.escape"]
-      },
-      {
-        name: "Embedded",
-        scopes: ["punctuation.section.embedded", "variable.interpolation"]
-      },
-      {
-        name: "Illegal",
-        scopes: ["invalid", "invalid.illegal"]
+        name: "Tre1Bold",
+        settings: this.style(tre1, "bold"),
+        // Unused
+        scopes: []
       },
       {
         name: "Broken",
-        scopes: ["invalid.broken"]
-      },
-      {
-        name: "Deprecated",
-        scopes: ["invalid.deprecated"]
-      },
-      {
-        name: "Unimplemented",
-        scopes: ["invalid.unimplemented"]
+        settings: this.style(p.red, "bold"),
+        scopes: [
+          // Broken stuff
+          "invalid.broken",
+          "invalid.deprecated",
+          "invalid.unimplemented"
+        ]
       }
     ];
-  }
-
-  namedScopeToSettings(name: string) {
-    const [uno1, uno2, uno3, uno4, uno5] = this.ramp(this.uno);
-    const [due1, due2, due3] = this.ramp(this.due);
-    const [tre1] = this.ramp(this.tre);
-    const p = this.palette;
-    const obj: { [key: string]: Style } = {
-      Call: this.style(uno2),
-      Parameter: this.style(due3),
-      Comments: this.style(uno5),
-      Punctuation: this.style(uno4),
-      Delimiters: this.style(uno5),
-      Operators: this.style(uno3),
-      Search: this.style(uno2, "bold"),
-      "Search Line": this.style(due1, "bold"),
-      Keywords: this.style(uno1, "bold"),
-      Variables: this.style(due3),
-      Functions: this.style(due2, "bold"),
-      Classes: this.style(due2, "bold"),
-      Methods: this.style(due2),
-      Storage: this.style(uno1, "bold"),
-      Strings: this.style(tre1),
-      Symbols: this.style(due1),
-      Numbers: this.style(due1),
-      Boolean: this.style(due1),
-      Constants: this.style(due1),
-      Support: this.style(uno2),
-      Tags: this.style(due1),
-      Attributes: this.style(due1),
-      "Attribute IDs": this.style(due1),
-      Selector: this.style(uno2),
-      Headings: this.style(due1, "bold"),
-      Units: this.style(due3),
-      Bold: this.style(uno2, "bold"),
-      Italic: this.style(uno2, "italic"),
-      Code: this.style(uno3),
-      "Link Text": this.style(uno4, "bold"),
-      "Link Url": this.style(due1),
-      Lists: this.style(due3),
-      Quotes: this.style(uno4),
-      Separator: this.style(uno4),
-      Inserted: this.style(due2),
-      Deleted: this.style(p.red),
-      Changed: this.style(uno4),
-      Colors: this.style(due3),
-      "Regular Expressions": this.style(uno3),
-      "Escape Characters": this.style(uno3),
-      Embedded: this.style(uno2),
-      Broken: this.style(p.red, "bold"),
-      Deprecated: this.style(p.red, "bold"),
-      Unimplemented: this.style(p.red, "bold"),
-      Illegal: this.style(p.red, "bold")
-    };
-    return obj.hasOwnProperty(name) ? obj[name] : undefined;
+    return tc
+      .map(x => ({
+        name: x.name,
+        scope: x.scopes.join(", "),
+        settings: x.settings
+      }))
+      .filter(x => x.scope);
   }
 
   style(color: string, ...fontStyle: string[]): Style {
