@@ -44,7 +44,8 @@ export default class MidnightTheme extends Theme {
     lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(25),
-    widgetBorder: this.gray(60)
+    widgetBorder: this.gray(60),
+    ruler: this.hsla(bgHue, 60, 70, 10)
   };
 
   gray(l: number) {

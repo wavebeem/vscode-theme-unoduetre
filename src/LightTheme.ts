@@ -40,8 +40,8 @@ export default class LightTheme extends Theme {
     inputBG: white,
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    border0: this.dilute(black, 10),
-    border1: this.dilute(black, 20),
+    border0: this.gray(90),
+    border1: this.gray(80),
     shadow: this.dilute(black, 20),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
@@ -49,7 +49,8 @@ export default class LightTheme extends Theme {
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     widgetBG: white,
-    widgetBorder: this.dilute(black, 50)
+    widgetBorder: this.dilute(black, 50),
+    ruler: this.dilute(black, 10)
   };
 
   ramp(hue: number) {

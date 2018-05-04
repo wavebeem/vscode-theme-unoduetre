@@ -44,7 +44,8 @@ export default class NatureTheme extends Theme {
     lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     widgetBG: this.gray(98),
-    widgetBorder: this.gray(50)
+    widgetBorder: this.gray(50),
+    ruler: this.hsla(bgHue, 60, 30, 10)
   };
 
   gray(l: number) {
