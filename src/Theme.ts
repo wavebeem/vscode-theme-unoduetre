@@ -201,11 +201,11 @@ export default abstract class Theme {
   themeGit() {
     const p = this.palette;
     return {
-      "gitDecoration.modifiedResourceForeground": p.orange,
-      "gitDecoration.deletedResourceForeground": p.red,
-      "gitDecoration.untrackedResourceForeground": p.blue,
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40),
-      "gitDecoration.conflictingResourceForeground": p.cyan
+      "gitDecoration.modifiedResourceForeground": this.mix(p.orange, p.fg, 20),
+      "gitDecoration.deletedResourceForeground": this.mix(p.red, p.fg, 20),
+      "gitDecoration.untrackedResourceForeground": this.mix(p.blue, p.fg, 20),
+      "gitDecoration.conflictingResourceForeground": this.mix(p.cyan, p.fg, 20),
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40)
     };
   }
 
