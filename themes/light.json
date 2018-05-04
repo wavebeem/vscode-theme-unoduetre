@@ -116,6 +116,14 @@
   },
   "tokenColors": [
     {
+      "name": "Default",
+      "scope": "meta.function-call entity.name.function",
+      "settings": {
+        "foreground": "#3d2936",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Uno1",
       "scope": "keyword.operator, storage.type.function.arrow",
       "settings": {

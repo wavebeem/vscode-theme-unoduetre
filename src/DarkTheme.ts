@@ -24,7 +24,7 @@ export default class DarkTheme extends Theme {
     transparent: transparent,
     __NO__: "#ff00ff",
     tBG: this.gray(18),
-    tFG: this.hsl(this.due, 90, 90),
+    tFG: this.gray(80),
     tBlack: this.gray(35),
     tRed: this.hsl(0, 60, 60),
     tGreen: this.hsl(140, 60, 60),

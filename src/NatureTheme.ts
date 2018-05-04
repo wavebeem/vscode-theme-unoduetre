@@ -7,7 +7,7 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-const bgHue = 60;
+const bgHue = 70;
 
 export default class NatureTheme extends Theme {
   uno = 30;
@@ -27,14 +27,7 @@ export default class NatureTheme extends Theme {
     __NO__: "#ff00ff",
     tBG: this.gray(96),
     tFG: this.hsl(bgHue, 75, 20),
-    tBlack: "#31364a",
-    tRed: "#a91b1c",
-    tGreen: "#00a337",
-    tYellow: "#cc8410",
-    tBlue: "#39b898",
-    tMagenta: "#d95278",
-    tCyan: "#7f9608",
-    tWhite: this.gray(96),
+    ...this.tintedAnsiLight(bgHue),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: this.hsl(200, 80, 40),
     fg: this.hsl(bgHue, 75, 20),

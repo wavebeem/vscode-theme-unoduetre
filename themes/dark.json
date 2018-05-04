@@ -106,7 +106,7 @@
     "terminal.ansiWhite": "#ffffff",
     "terminal.ansiYellow": "#d6ad5c",
     "terminal.background": "#2e2e2e",
-    "terminal.foreground": "#cffcf9",
+    "terminal.foreground": "#cccccc",
     "titleBar.activeBackground": "#333333",
     "titleBar.activeForeground": "#e6e6e6",
     "titleBar.border": "#ffffff19",
@@ -115,6 +115,14 @@
     "widget.shadow": "#0000007f"
   },
   "tokenColors": [
+    {
+      "name": "Default",
+      "scope": "meta.function-call entity.name.function",
+      "settings": {
+        "foreground": "#e6e6e6",
+        "fontStyle": ""
+      }
+    },
     {
       "name": "Uno1",
       "scope": "keyword.operator, storage.type.function.arrow",

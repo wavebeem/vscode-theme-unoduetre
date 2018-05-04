@@ -19,6 +19,17 @@ export enum ThemeType {
   DARK = "dark"
 }
 
+export interface AnsiColors {
+  tBlack: string;
+  tRed: string;
+  tGreen: string;
+  tYellow: string;
+  tBlue: string;
+  tMagenta: string;
+  tCyan: string;
+  tWhite: string;
+}
+
 export interface Palette {
   yellow: string;
   orange: string;
@@ -254,6 +265,42 @@ export default abstract class Theme {
     };
   }
 
+  tintedAnsiLight(hue: number): AnsiColors {
+    const tintedHsl = (h: number, s: number, l: number) => {
+      return tinycolor
+        .mix(this.hsl(h, s, l), this.hsl(hue, 80, 50), 20)
+        .toHexString();
+    };
+    return {
+      tBlack: tintedHsl(0, 0, 0),
+      tRed: tintedHsl(0, 75, 45),
+      tGreen: tintedHsl(135, 65, 45),
+      tYellow: tintedHsl(30, 75, 55),
+      tBlue: tintedHsl(250, 75, 55),
+      tMagenta: tintedHsl(310, 75, 55),
+      tCyan: tintedHsl(180, 75, 45),
+      tWhite: tintedHsl(0, 0, 95)
+    };
+  }
+
+  tintedAnsiDark(hue: number): AnsiColors {
+    const tintedHsl = (h: number, s: number, l: number) => {
+      return tinycolor
+        .mix(this.hsl(h, s, l), this.hsl(hue, 80, 50), 20)
+        .toHexString();
+    };
+    return {
+      tBlack: tintedHsl(0, 0, 20),
+      tRed: tintedHsl(0, 75, 65),
+      tGreen: tintedHsl(135, 65, 65),
+      tYellow: tintedHsl(30, 75, 75),
+      tBlue: tintedHsl(250, 75, 75),
+      tMagenta: tintedHsl(310, 75, 75),
+      tCyan: tintedHsl(180, 75, 65),
+      tWhite: tintedHsl(0, 0, 95)
+    };
+  }
+
   themeEditor() {
     const p = this.palette;
     return {
@@ -337,6 +384,14 @@ export default abstract class Theme {
     const [tre1] = this.ramp(this.tre);
     const p = this.palette;
     const tc: AlmostTokenColor[] = [
+      {
+        name: "Default",
+        settings: this.style(p.fg),
+        scopes: [
+          // Function call
+          "meta.function-call entity.name.function"
+        ]
+      },
       {
         name: "Uno1",
         settings: this.style(uno1),
