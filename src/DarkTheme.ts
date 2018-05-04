@@ -49,7 +49,7 @@ export default class DarkTheme extends Theme {
     lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(30),
-    widgetBorder: this.gray(50)
+    widgetBorder: this.gray(60)
   };
 
   ramp(hue: number) {

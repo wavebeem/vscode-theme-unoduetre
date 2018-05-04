@@ -34,7 +34,7 @@
     "editorLink.activeForeground": "#5bf1ff",
     "editorRuler.foreground": "#e6e6e619",
     "editorWidget.background": "#4d4d4d",
-    "editorWidget.border": "#808080",
+    "editorWidget.border": "#999999",
     "editorWidget.foreground": "#e6e6e6",
     "focusBorder": "#1fada2",
     "foreground": "#e6e6e6",
