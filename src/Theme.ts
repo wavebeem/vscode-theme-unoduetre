@@ -254,20 +254,9 @@ export default abstract class Theme {
     };
   }
 
-  colors() {
+  themeEditor() {
     const p = this.palette;
     return {
-      focusBorder: p.accent0,
-      "widget.shadow": p.shadow,
-      ...this.themeScrollbar(),
-      "input.border": p.border1,
-      "input.background": p.inputBG,
-      "input.placeholderForeground": this.dilute(p.fg, 40),
-      "progressBar.background": p.accent0,
-      "inputOption.activeBorder": p.accent0,
-      ...this.themeList(),
-      ...this.themeStatusBar(),
-      ...this.themeActivityBar(),
       "editorWidget.foreground": p.fg,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
@@ -288,11 +277,29 @@ export default abstract class Theme {
       "editorCursor.foreground": p.accent1,
       "editorGroup.border": p.border0,
       "editorGroupHeader.tabsBackground": p.bg,
-      "editorRuler.foreground": p.border0,
-      "editorIndentGuide.background": p.border0,
-      "editorIndentGuide.activeBackground": p.border1,
+      "editorRuler.foreground": this.dilute(p.fg, 10),
+      "editorIndentGuide.background": this.dilute(p.fg, 10),
+      "editorIndentGuide.activeBackground": this.dilute(p.fg, 10),
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
-      "editorActiveLineNumber.foreground": p.fg,
+      "editorActiveLineNumber.foreground": p.fg
+    };
+  }
+
+  colors() {
+    const p = this.palette;
+    return {
+      focusBorder: p.accent0,
+      "widget.shadow": p.shadow,
+      ...this.themeScrollbar(),
+      "input.border": p.border1,
+      "input.background": p.inputBG,
+      "input.placeholderForeground": this.dilute(p.fg, 40),
+      "progressBar.background": p.accent0,
+      "inputOption.activeBorder": p.accent0,
+      ...this.themeList(),
+      ...this.themeStatusBar(),
+      ...this.themeActivityBar(),
+      ...this.themeEditor(),
       ...this.themeNotifications(),
       foreground: p.fg,
       "panel.background": p.tBG,
