@@ -181,17 +181,9 @@
     },
     {
       "name": "Due1Bold",
-      "scope": "markup.heading punctuation.definition.heading, entity.name.section",
+      "scope": "markup.heading punctuation.definition.heading, entity.name.section, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
         "foreground": "#5eede1",
-        "fontStyle": "bold"
-      }
-    },
-    {
-      "name": "Due2Bold",
-      "scope": "meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
-      "settings": {
-        "foreground": "#52e0de",
         "fontStyle": "bold"
       }
     },

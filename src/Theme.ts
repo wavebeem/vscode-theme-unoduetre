@@ -507,13 +507,8 @@ export default abstract class Theme {
         scopes: [
           // Headings
           "markup.heading punctuation.definition.heading",
-          "entity.name.section"
-        ]
-      },
-      {
-        name: "Due2Bold",
-        settings: this.style(due2, "bold"),
-        scopes: [
+          "entity.name.section",
+
           // Functions
           "meta.definition entity.name.function",
           "meta.function entity.name.function",
