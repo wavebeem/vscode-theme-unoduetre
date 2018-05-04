@@ -27,7 +27,7 @@ export default class BubbleGumTheme extends Theme {
     __NO__: "#ff00ff",
     tBG: this.gray(96),
     tFG: this.hsl(bgHue, 80, 25),
-    ...this.tintedAnsiLight(bgHue),
+    ...this.tintedAnsiLight(this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: this.hsl(200, 45, 40),
     fg: this.hsl(bgHue, 80, 25),

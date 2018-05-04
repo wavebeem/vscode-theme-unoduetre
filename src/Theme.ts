@@ -265,11 +265,9 @@ export default abstract class Theme {
     };
   }
 
-  tintedAnsiLight(hue: number): AnsiColors {
+  tintedAnsiLight(color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return tinycolor
-        .mix(this.hsl(h, s, l), this.hsl(hue, 80, 50), 20)
-        .toHexString();
+      return this.mix(this.hsl(h, s, l), color, 20);
     };
     return {
       tBlack: tintedHsl(0, 0, 0),
@@ -283,11 +281,9 @@ export default abstract class Theme {
     };
   }
 
-  tintedAnsiDark(hue: number): AnsiColors {
+  tintedAnsiDark(color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return tinycolor
-        .mix(this.hsl(h, s, l), this.hsl(hue, 80, 50), 20)
-        .toHexString();
+      return this.mix(this.hsl(h, s, l), color, 20);
     };
     return {
       tBlack: tintedHsl(0, 0, 20),
@@ -299,6 +295,10 @@ export default abstract class Theme {
       tCyan: tintedHsl(180, 75, 65),
       tWhite: tintedHsl(0, 0, 95)
     };
+  }
+
+  mix(a: string, b: string, x: number) {
+    return tinycolor.mix(a, b, x).toHex8String();
   }
 
   themeEditor() {

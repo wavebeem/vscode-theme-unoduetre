@@ -27,7 +27,7 @@ export default class MidnightTheme extends Theme {
     __NO__: "#ff00ff",
     tBG: this.gray(18),
     tFG: this.hsl(bgHue, 90, 90),
-    ...this.tintedAnsiDark(bgHue),
+    ...this.tintedAnsiDark(this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.due, 70, 40),
     accent1: this.hsl(hueAccent2, 100, 60),
     fg: this.hsl(bgHue, 80, 90),
