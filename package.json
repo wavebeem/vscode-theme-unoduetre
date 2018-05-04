@@ -43,6 +43,11 @@
         "label": "Uno Due Tre (Midnight)",
         "uiTheme": "vs-dark",
         "path": "./themes/midnight.json"
+      },
+      {
+        "label": "Uno Due Tre (Ocean)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ocean.json"
       }
     ]
   },

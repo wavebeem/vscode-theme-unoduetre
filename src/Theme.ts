@@ -407,6 +407,7 @@ export default abstract class Theme {
         scopes: [
           // Object keys
           "meta.object-literal.key",
+          "support.type.property-name",
 
           // CSS properties
           "meta.property-name",
@@ -440,8 +441,8 @@ export default abstract class Theme {
           "punctuation.definition.template-expression",
 
           // Punctuation
-          "punctuation.definition.tag.begin",
-          "punctuation.definition.tag.end",
+          "punctuation.definition.dictionary",
+          "punctuation.definition.tag",
           "punctuation.definition.binding-pattern.array",
           "punctuation.definition.binding-pattern.object",
           "punctuation.definition.block",

@@ -3,6 +3,7 @@ import DarkTheme from "./DarkTheme";
 import NatureTheme from "./NatureTheme";
 import BubbleGumTheme from "./BubbleGumTheme";
 import MidnightTheme from "./MidnightTheme";
+import OceanTheme from "./OceanTheme";
 
 console.log(new Date().toString());
 
@@ -11,3 +12,4 @@ new DarkTheme().saveAs("dark");
 new NatureTheme().saveAs("nature");
 new BubbleGumTheme().saveAs("bubblegum");
 new MidnightTheme().saveAs("midnight");
+new OceanTheme().saveAs("ocean");
