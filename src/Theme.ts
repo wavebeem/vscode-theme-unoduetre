@@ -406,6 +406,11 @@ export default abstract class Theme {
         name: "Uno2",
         settings: this.style(uno2),
         scopes: [
+          // Code
+          "markup.raw.inline",
+          "markup.inline",
+          "punctuation.definition.markdown",
+
           // Object keys
           "meta.object-literal.key",
           "support.type.property-name",
@@ -434,9 +439,6 @@ export default abstract class Theme {
         name: "Uno3",
         settings: this.style(uno3),
         scopes: [
-          // Code
-          "markup.raw.inline",
-
           // Escape characters
           "constant.character.escape",
           "punctuation.definition.template-expression",
@@ -507,6 +509,14 @@ export default abstract class Theme {
         ]
       },
       {
+        name: "Uno2Italic",
+        settings: this.style(uno2, "italic"),
+        scopes: [
+          // Italic
+          "markup.italic"
+        ]
+      },
+      {
         name: "Due1",
         settings: this.style(due1),
         scopes: [
@@ -559,7 +569,7 @@ export default abstract class Theme {
           "keyword.other.unit",
 
           // Lists
-          "markup.list",
+          "beginning.punctuation.definition.list",
 
           // Colors
           "constant.other.color"

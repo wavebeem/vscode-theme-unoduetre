@@ -133,7 +133,7 @@
     },
     {
       "name": "Uno2",
-      "scope": "meta.object-literal.key, support.type.property-name, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#52e0ba",
         "fontStyle": ""
@@ -141,7 +141,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "markup.raw.inline, constant.character.escape, punctuation.definition.template-expression, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#4db3a5",
         "fontStyle": ""
@@ -172,6 +172,14 @@
       }
     },
     {
+      "name": "Uno2Italic",
+      "scope": "markup.italic",
+      "settings": {
+        "foreground": "#52e0ba",
+        "fontStyle": "italic"
+      }
+    },
+    {
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link",
       "settings": {
@@ -181,7 +189,7 @@
     },
     {
       "name": "Due2",
-      "scope": "keyword.other.special-method, meta.definition, variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, markup.list, constant.other.color",
+      "scope": "keyword.other.special-method, meta.definition, variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
         "foreground": "#52a7e0",
         "fontStyle": ""
