@@ -273,11 +273,11 @@ export default abstract class Theme {
     return {
       tBlack: tintedHsl(0, 0, 0),
       tRed: tintedHsl(0, 75, 45),
-      tGreen: tintedHsl(135, 65, 45),
+      tGreen: tintedHsl(135, 60, 40),
       tYellow: tintedHsl(30, 75, 55),
       tBlue: tintedHsl(250, 75, 55),
-      tMagenta: tintedHsl(310, 75, 55),
-      tCyan: tintedHsl(180, 75, 45),
+      tMagenta: tintedHsl(310, 70, 50),
+      tCyan: tintedHsl(180, 75, 40),
       tWhite: tintedHsl(0, 0, 95)
     };
   }
