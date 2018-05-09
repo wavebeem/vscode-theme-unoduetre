@@ -1,3 +1,12 @@
+# [v3.1.0]
+
+* Improves Markdown highlighting
+
+# [v3.0.0]
+
+* Adds new themes (Bubble Gum, Midnight, Ocean, Nature)
+* Many many fixes to highlighting where things were being highlighted in special colors when they shouldn't have been, and more
+
 # [v2.0.1]
 
 * Adds theme icon
