@@ -224,6 +224,14 @@ export default abstract class Theme {
     };
   }
 
+  themeBadge() {
+    const p = this.palette;
+    return {
+      "badge.foreground": p.fg,
+      "badge.background": this.dilute(p.fg, 10)
+    };
+  }
+
   themeHighlightBorders() {
     return {
       // Border color for regions with the same content as the selection.
@@ -346,6 +354,7 @@ export default abstract class Theme {
       "inputOption.activeBorder": p.accent0,
       ...this.themeList(),
       ...this.themeStatusBar(),
+      ...this.themeBadge(),
       ...this.themeActivityBar(),
       ...this.themeEditor(),
       ...this.themeNotifications(),

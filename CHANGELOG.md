@@ -1,6 +1,7 @@
 # [TODO]
 
 * More prominent status bar hover colors
+* Fixes badge colors for search results counts
 
 # [v3.1.0]
 

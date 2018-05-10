@@ -6,6 +6,8 @@
     "activityBar.foreground": "#dfd1fa",
     "activityBarBadge.background": "#1f96ad",
     "activityBarBadge.foreground": "#ffffff",
+    "badge.background": "#dfd1fa19",
+    "badge.foreground": "#dfd1fa",
     "debugToolBar.background": "#372659",
     "dropdown.background": "#281c40",
     "dropdown.border": "#503781",
