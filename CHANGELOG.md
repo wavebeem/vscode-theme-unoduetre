@@ -1,3 +1,7 @@
+# [TODO]
+
+* More prominent status bar hover colors
+
 # [v3.1.0]
 
 * Improves Markdown highlighting

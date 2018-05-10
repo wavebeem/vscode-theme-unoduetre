@@ -214,9 +214,9 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "statusBar.border": p.border0,
-      "statusBarItem.activeBackground": this.dilute(p.fg, 15),
-      "statusBarItem.hoverBackground": this.dilute(p.fg, 5),
-      "statusBarItem.prominentBackground": this.dilute(p.fg, 20),
+      "statusBarItem.activeBackground": this.dilute(p.fg, 20),
+      "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
+      "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
       "statusBar.background": p.bg,
       "statusBar.debuggingBackground": p.bg,
       "statusBar.noFolderBackground": p.bg,
