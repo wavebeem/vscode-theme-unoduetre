@@ -544,7 +544,8 @@ export default abstract class Theme {
           "punctuation.definition.entity",
 
           // Link URL
-          "meta.link"
+          "meta.link",
+          "markup.underline.link"
         ]
       },
       {
