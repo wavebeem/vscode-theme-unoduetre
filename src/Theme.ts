@@ -227,8 +227,8 @@ export default abstract class Theme {
   themeBadge() {
     const p = this.palette;
     return {
-      "badge.foreground": p.fg,
-      "badge.background": this.dilute(p.fg, 10)
+      "badge.foreground": p.white,
+      "badge.background": p.accent0
     };
   }
 
