@@ -9,24 +9,28 @@ tastes.
 
 ## Dark
 
-![dark screenshot](./img/theme-dark.png)
+![dark screenshot](img/theme-dark.png)
 
 ## Ocean
 
-![ocean screenshot](./img/theme-ocean.png)
+![ocean screenshot](img/theme-ocean.png)
 
 ## Midnight
 
-![midnight screenshot](./img/theme-midnight.png)
+![midnight screenshot](img/theme-midnight.png)
 
 ## Light
 
-![light screenshot](./img/theme-light.png)
+![light screenshot](img/theme-light.png)
 
 ## Nature
 
-![nature screenshot](./img/theme-nature.png)
+![nature screenshot](img/theme-nature.png)
 
 ## Bubble Gum
 
-![bubblegum screenshot](./img/theme-bubblegum.png)
+![bubblegum screenshot](img/theme-bubblegum.png)
+
+# License
+
+[MIT](LICENSE)
