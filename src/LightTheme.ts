@@ -35,7 +35,7 @@ export default class LightTheme extends Theme {
     tWhite: "#e6e6e6",
     accent0: this.hsl(this.tre, 70, 40),
     accent1: red,
-    fg: this.hsl(this.uno, 20, 20),
+    fg: this.gray(20),
     bg: this.gray(98),
     inputBG: white,
     bracketMatchBG: this.dilute(cyan, 35),
