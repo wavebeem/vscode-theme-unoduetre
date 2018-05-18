@@ -41,6 +41,7 @@ export interface Palette {
   cyan: string;
   transparent: string;
   __NO__: string;
+  // TODO: Remove this color?
   tBG: string;
   tFG: string;
   tBlack: string;
