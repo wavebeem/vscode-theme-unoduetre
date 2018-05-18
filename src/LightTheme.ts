@@ -23,7 +23,7 @@ export default class LightTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: white,
+    tBG: this.gray(98),
     tFG: "#5c668e",
     tBlack: "#31364a",
     tRed: "#a91b1c",

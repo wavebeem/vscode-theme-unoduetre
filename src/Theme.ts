@@ -180,7 +180,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "terminal.foreground": p.tFG,
-      "terminal.background": p.bg,
+      "terminal.background": p.tBG,
       "terminal.ansiBlack": p.tBlack,
       "terminal.ansiBlue": p.tBlue,
       "terminal.ansiBrightBlack": p.tBlack,

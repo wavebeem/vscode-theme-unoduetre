@@ -5,6 +5,7 @@
 * Removes red tint from UI text for default theme
 * Stop making the bottom panel a different color
 * Softened some border colors
+* Increase theme contrast slightly
 
 # [v3.1.0]
 
