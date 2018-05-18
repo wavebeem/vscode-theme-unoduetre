@@ -35,7 +35,7 @@ export default class MidnightTheme extends Theme {
     inputBG: this.gray(18),
     bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    border0: this.gray(30),
+    border0: this.gray(26),
     border1: this.gray(36),
     shadow: this.dilute(this.gray(5), 40),
     activeSelectionBG: this.hsla(this.due, 50, 50, 60),

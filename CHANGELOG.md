@@ -3,7 +3,8 @@
 * More prominent status bar hover colors
 * Fixes badge colors for search results counts
 * Removes red tint from UI text for default theme
-* Stop using tBG
+* Stop making the bottom panel a different color
+* Softened some border colors
 
 # [v3.1.0]
 

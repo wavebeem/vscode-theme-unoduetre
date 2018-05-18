@@ -40,7 +40,7 @@ export default class DarkTheme extends Theme {
     inputBG: this.gray(18),
     bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    border0: this.gray(25),
+    border0: this.gray(24),
     border1: this.gray(40),
     shadow: this.dilute(black, 50),
     activeSelectionBG: this.hsl(this.due, 35, 35),
@@ -50,7 +50,7 @@ export default class DarkTheme extends Theme {
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(60),
-    ruler: this.gray(25)
+    ruler: this.gray(24)
   };
 
   ramp(hue: number) {

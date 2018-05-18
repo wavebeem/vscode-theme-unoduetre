@@ -41,7 +41,7 @@ export default class LightTheme extends Theme {
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
     border0: this.gray(90),
-    border1: this.gray(80),
+    border1: this.gray(85),
     shadow: this.dilute(black, 20),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),

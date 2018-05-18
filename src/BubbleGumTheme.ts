@@ -35,7 +35,7 @@ export default class BubbleGumTheme extends Theme {
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    border0: this.gray(84),
+    border0: this.gray(86),
     border1: this.gray(78),
     shadow: this.dilute(this.gray(10), 25),
     activeSelectionBG: this.hsl(this.tre, 50, 50),
