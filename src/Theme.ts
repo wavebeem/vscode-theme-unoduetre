@@ -179,7 +179,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "terminal.foreground": p.tFG,
-      "terminal.background": p.tBG,
+      "terminal.background": p.bg,
       "terminal.ansiBlack": p.tBlack,
       "terminal.ansiBlue": p.tBlue,
       "terminal.ansiBrightBlack": p.tBlack,
@@ -359,7 +359,7 @@ export default abstract class Theme {
       ...this.themeEditor(),
       ...this.themeNotifications(),
       foreground: p.fg,
-      "panel.background": p.tBG,
+      "panel.background": p.bg,
       "panel.border": p.border0,
       "panelTitle.activeBorder": this.dilute(p.fg, 50),
       "panelTitle.activeForeground": p.fg,
