@@ -214,6 +214,14 @@
       }
     },
     {
+      "name": "Default",
+      "scope": "meta.embedded",
+      "settings": {
+        "foreground": "#e6e6e6",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Broken",
       "scope": "invalid.broken, invalid.deprecated, invalid.unimplemented",
       "settings": {

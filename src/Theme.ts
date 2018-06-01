@@ -617,6 +617,14 @@ export default abstract class Theme {
         ]
       },
       {
+        name: "Default",
+        settings: this.style(p.fg),
+        scopes: [
+          // String interpolation
+          "meta.embedded"
+        ]
+      },
+      {
         name: "Broken",
         settings: this.style(p.red, "bold"),
         scopes: [
