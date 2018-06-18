@@ -146,20 +146,20 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       // Notification Center border color.
-      "notificationCenter.border": p.accent0,
+      "notificationCenter.border": undefined,
       // Notification Center header foreground color.
       "notificationCenterHeader.foreground": p.fg,
       // Notification Center header background color.
       "notificationCenterHeader.background": p.inputBG,
       // Notification toast border color.
-      "notificationToast.border": p.accent0,
+      "notificationToast.border": undefined,
       // Notifications foreground color.
       "notifications.foreground": p.fg,
       // Notifications background color.
       "notifications.background": p.inputBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
-      "notifications.border": p.accent0,
+      "notifications.border": undefined,
       // Notification links foreground color.
       "notificationLink.foreground": p.cyan
     };
