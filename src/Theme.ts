@@ -168,6 +168,8 @@ export default abstract class Theme {
   themeList() {
     const p = this.palette;
     return {
+      "list.errorForeground": p.red,
+      "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
@@ -370,6 +372,8 @@ export default abstract class Theme {
       "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      "tab.activeBorderTop": undefined,
+      "tab.unfocusedActiveBorderTop": undefined,
       "tab.activeBackground": this.dilute(p.accent0, 10),
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
