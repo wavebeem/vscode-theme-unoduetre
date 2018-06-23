@@ -34,6 +34,7 @@
     "editorIndentGuide.background": "#6b7a1f19",
     "editorLineNumber.foreground": "#4c590d4c",
     "editorLink.activeForeground": "#00bcd4",
+    "editorOverviewRuler.border": "#00000000",
     "editorRuler.foreground": "#6b7a1f19",
     "editorWidget.background": "#fbfbf8",
     "editorWidget.border": "#99a659",

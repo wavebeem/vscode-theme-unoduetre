@@ -333,6 +333,7 @@ export default abstract class Theme {
       "editor.inactiveSelectionBackground": p.textSelectionBG,
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
+      "editorOverviewRuler.border": p.transparent,
       "editorCursor.foreground": p.accent1,
       "editorGroup.border": p.border0,
       "editorGroupHeader.tabsBackground": p.bg,
