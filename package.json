@@ -1,79 +1,72 @@
 {
-    "name": "theme-unoduetre",
-    "displayName": "Uno Due Tre",
-    "description": "A theme with three colors",
-    "version": "3.2.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
-    },
-    "icon": "img/icon.png",
-    "galleryBanner": {
-        "color": "#333333",
-        "theme": "dark"
-    },
-    "publisher": "wavebeem",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Uno Due Tre",
-                "uiTheme": "vs",
-                "path": "./themes/light.json"
-            },
-            {
-                "label": "Uno Due Tre (Dark)",
-                "uiTheme": "vs-dark",
-                "path": "./themes/dark.json"
-            },
-            {
-                "label": "Uno Due Tre (Nature)",
-                "uiTheme": "vs",
-                "path": "./themes/nature.json"
-            },
-            {
-                "label": "Uno Due Tre (Bubble Gum)",
-                "uiTheme": "vs",
-                "path": "./themes/bubblegum.json"
-            },
-            {
-                "label": "Uno Due Tre (Midnight)",
-                "uiTheme": "vs-dark",
-                "path": "./themes/midnight.json"
-            },
-            {
-                "label": "Uno Due Tre (Ocean)",
-                "uiTheme": "vs-dark",
-                "path": "./themes/ocean.json"
-            }
-        ]
-    },
-    "bugs": {
-        "url": "https://github.com/wavebeem/vscode-theme-unoduetre/issues"
-    },
-    "homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
-    "scripts": {
-        "prebuild": "tsc",
-        "build": "node build/main.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "Brian Mock <brian@mockbrian.com>",
-    "license": "MIT",
-    "devDependencies": {
-        "@types/node": "^8.0.32",
-        "@types/tinycolor2": "^1.4.0",
-        "tinycolor2": "^1.4.1",
-        "typescript": "^2.5.3"
-    },
-    "__metadata": {
-        "id": "e18a4366-db45-4ced-ba20-d6316dc6c79b",
-        "publisherDisplayName": "Brian Mock",
-        "publisherId": "dd905317-d989-4b98-9bc3-3cc12206629d"
-    }
+  "name": "theme-unoduetre",
+  "displayName": "Uno Due Tre",
+  "description": "A theme with three colors",
+  "version": "3.3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
+  },
+  "icon": "img/icon.png",
+  "galleryBanner": {
+    "color": "#333333",
+    "theme": "dark"
+  },
+  "publisher": "wavebeem",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Uno Due Tre",
+        "uiTheme": "vs",
+        "path": "./themes/light.json"
+      },
+      {
+        "label": "Uno Due Tre (Dark)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark.json"
+      },
+      {
+        "label": "Uno Due Tre (Nature)",
+        "uiTheme": "vs",
+        "path": "./themes/nature.json"
+      },
+      {
+        "label": "Uno Due Tre (Bubble Gum)",
+        "uiTheme": "vs",
+        "path": "./themes/bubblegum.json"
+      },
+      {
+        "label": "Uno Due Tre (Midnight)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/midnight.json"
+      },
+      {
+        "label": "Uno Due Tre (Ocean)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ocean.json"
+      }
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/wavebeem/vscode-theme-unoduetre/issues"
+  },
+  "homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "node build/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Brian Mock <brian@mockbrian.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.0.32",
+    "@types/tinycolor2": "^1.4.0",
+    "tinycolor2": "^1.4.1",
+    "typescript": "^2.5.3"
+  }
 }
