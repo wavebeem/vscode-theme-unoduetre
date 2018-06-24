@@ -150,13 +150,13 @@ export default abstract class Theme {
       // Notification Center header foreground color.
       "notificationCenterHeader.foreground": p.fg,
       // Notification Center header background color.
-      "notificationCenterHeader.background": p.inputBG,
+      "notificationCenterHeader.background": p.widgetBG,
       // Notification toast border color.
-      "notificationToast.border": undefined,
+      "notificationToast.border": p.widgetBorder,
       // Notifications foreground color.
       "notifications.foreground": p.fg,
       // Notifications background color.
-      "notifications.background": p.inputBG,
+      "notifications.background": p.widgetBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
       "notifications.border": undefined,
@@ -313,6 +313,27 @@ export default abstract class Theme {
     return tinycolor.mix(a, b, x).toHex8String();
   }
 
+  themeDragAndDrop() {
+    const p = this.palette;
+    const color = this.dilute(p.accent0, 30);
+    return {
+      "list.dropBackground": color,
+      "activityBar.dropBackground": color,
+      "sideBar.dropBackground": color,
+      "editorGroup.dropBackground": color,
+      "panel.dropBackground": color
+    };
+  }
+
+  themeButton() {
+    const p = this.palette;
+    return {
+      "button.background": p.accent0,
+      "button.foreground": p.white,
+      "button.hoverBackground": undefined
+    };
+  }
+
   themeEditor() {
     const p = this.palette;
     return {
@@ -362,6 +383,8 @@ export default abstract class Theme {
       ...this.themeActivityBar(),
       ...this.themeEditor(),
       ...this.themeNotifications(),
+      ...this.themeDragAndDrop(),
+      ...this.themeButton(),
       foreground: p.fg,
       "panel.background": p.bg,
       "panel.border": p.border0,

@@ -1,3 +1,7 @@
+# v3.3.0
+
+- Buttons and drag'n'drop effects now match the theme accent color
+
 # v3.2.0
 
 - Hides the scrollbar border
