@@ -5,8 +5,6 @@ import BubbleGumTheme from "./BubbleGumTheme";
 import MidnightTheme from "./MidnightTheme";
 import OceanTheme from "./OceanTheme";
 
-console.log(new Date().toString());
-
 new LightTheme().saveAs("light");
 new DarkTheme().saveAs("dark");
 new NatureTheme().saveAs("nature");

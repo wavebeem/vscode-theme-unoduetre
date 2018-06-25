@@ -56,7 +56,9 @@
   },
   "homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
   "scripts": {
-    "prebuild": "tsc",
+    "prebuild": "tsc && npm run -s unknown",
+    "missing": "node reference/missing.js",
+    "unknown": "node reference/unknown.js",
     "build": "node build/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

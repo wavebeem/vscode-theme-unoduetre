@@ -4,8 +4,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "build",
+      "type": "shell",
+      "command": "npm run -s build",
+      "label": "build",
       "problemMatcher": ["$tsc"],
       "presentation": {
         "echo": true,

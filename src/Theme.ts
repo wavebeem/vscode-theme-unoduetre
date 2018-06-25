@@ -337,7 +337,6 @@ export default abstract class Theme {
   themeEditor() {
     const p = this.palette;
     return {
-      "editorWidget.foreground": p.fg,
       "editorWidget.background": p.widgetBG,
       "editorWidget.border": p.widgetBorder,
       "editorBracketMatch.background": p.bracketMatchBG,
@@ -362,7 +361,7 @@ export default abstract class Theme {
       "editorIndentGuide.background": p.ruler,
       "editorIndentGuide.activeBackground": p.ruler,
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
-      "editorActiveLineNumber.foreground": p.fg
+      "editorLineNumber.activeForeground": p.fg
     };
   }
 
@@ -683,7 +682,6 @@ export default abstract class Theme {
 
   saveAs(name: string) {
     const json = JSON.stringify(this.config(), null, 2);
-    console.log(`Saving theme "${name}"`);
     fs.writeFileSync(`themes/${name}.json`, json);
   }
 }
