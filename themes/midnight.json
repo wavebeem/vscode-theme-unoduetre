@@ -77,7 +77,7 @@
     "peekViewResult.matchHighlightBackground": "#fcd4357f",
     "pickerGroup.border": "#422e6b",
     "progressBar.background": "#1f96ad",
-    "scrollbar.shadow": "#0b081266",
+    "scrollbar.shadow": "#0b0812b2",
     "scrollbarSlider.activeBackground": "#dfd1fa99",
     "scrollbarSlider.background": "#dfd1fa4c",
     "scrollbarSlider.hoverBackground": "#dfd1fa7f",
@@ -123,7 +123,7 @@
     "titleBar.border": "#422e6b",
     "titleBar.inactiveBackground": "#281c40",
     "titleBar.inactiveForeground": "#dfd1fab2",
-    "widget.shadow": "#0b081266"
+    "widget.shadow": "#0b0812b2"
   },
   "tokenColors": [
     {

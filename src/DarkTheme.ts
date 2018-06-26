@@ -42,7 +42,7 @@ export default class DarkTheme extends Theme {
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
     border0: this.gray(28),
     border1: this.gray(40),
-    shadow: this.dilute(black, 50),
+    shadow: this.dilute(black, 70),
     activeSelectionBG: this.hsl(this.due, 35, 35),
     inactiveSelectionBG: this.hsl(this.due, 10, 30),
     textSelectionBG: this.hsla(this.due, 50, 50, 30),

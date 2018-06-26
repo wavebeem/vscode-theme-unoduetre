@@ -1,3 +1,7 @@
+# ???
+
+- More legible shadows on dark themes
+
 # v3.3.0
 
 - Buttons and drag'n'drop effects now match the theme accent color
