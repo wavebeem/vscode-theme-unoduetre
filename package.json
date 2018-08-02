@@ -40,6 +40,11 @@
         "path": "./themes/bubblegum.json"
       },
       {
+        "label": "Uno Due Tre (Periwinkle)",
+        "uiTheme": "vs",
+        "path": "./themes/periwinkle.json"
+      },
+      {
         "label": "Uno Due Tre (Midnight)",
         "uiTheme": "vs-dark",
         "path": "./themes/midnight.json"
