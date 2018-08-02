@@ -29,7 +29,7 @@ export default class BubbleGumTheme extends Theme {
     tFG: this.hsl(bgHue, 80, 25),
     ...this.tintedAnsiLight(this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.tre, 70, 40),
-    accent1: this.hsl(200, 45, 40),
+    accent1: this.hsl(320, 80, 40),
     fg: this.hsl(bgHue, 80, 25),
     bg: this.gray(96),
     inputBG: this.gray(98),
