@@ -1,6 +1,7 @@
-# ???
+# v3.4.0
 
 - More legible shadows on dark themes
+- Adds new theme Periwinkle
 
 # v3.3.0
 
