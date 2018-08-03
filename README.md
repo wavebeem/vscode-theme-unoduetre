@@ -31,6 +31,10 @@ tastes.
 
 ![bubblegum screenshot](img/theme-bubblegum.png)
 
+## Periwinkle
+
+![periwinkle screenshot](img/theme-periwinkle.png)
+
 # License
 
 [MIT](LICENSE)
