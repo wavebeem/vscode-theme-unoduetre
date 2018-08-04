@@ -12,7 +12,9 @@
   "engines": {
     "vscode": "^1.5.0"
   },
-  "categories": ["Themes"],
+  "categories": [
+    "Themes"
+  ],
   "contributes": {
     "themes": [
       {
@@ -67,9 +69,9 @@
   "author": "Brian Mock <brian@mockbrian.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^8.0.32",
-    "@types/tinycolor2": "^1.4.0",
+    "@types/node": "^8.10.23",
+    "@types/tinycolor2": "^1.4.1",
     "tinycolor2": "^1.4.1",
-    "typescript": "^2.5.3"
+    "typescript": "^3.0.1"
   }
 }
