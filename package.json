@@ -1,22 +1,20 @@
 {
   "name": "theme-unoduetre",
   "displayName": "Uno Due Tre",
-  "description": "A theme with three colors",
-  "version": "3.4.0",
+  "description": "A collection of themes with three colors each",
+  "version": "3.5.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
   },
   "icon": "img/icon.png",
-  "galleryBanner": {
-    "color": "#333333",
-    "theme": "dark"
-  },
   "publisher": "wavebeem",
   "engines": {
     "vscode": "^1.5.0"
   },
-  "categories": ["Themes"],
+  "categories": [
+    "Themes"
+  ],
   "contributes": {
     "themes": [
       {
@@ -71,9 +69,9 @@
   "author": "Brian Mock <brian@mockbrian.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^8.0.32",
-    "@types/tinycolor2": "^1.4.0",
+    "@types/node": "^8.10.23",
+    "@types/tinycolor2": "^1.4.1",
     "tinycolor2": "^1.4.1",
-    "typescript": "^2.5.3"
+    "typescript": "^3.0.1"
   }
 }

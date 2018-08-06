@@ -2,6 +2,15 @@
 
 - Adds an active indent guide color
 
+# v3.5.1
+
+- Updates package description
+- Removes custom extension background color for Visual Studio Marketplace
+
+# v3.5.0
+
+- New extension icon
+
 # v3.4.0
 
 - More legible shadows on dark themes
