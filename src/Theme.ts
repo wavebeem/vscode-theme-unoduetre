@@ -359,7 +359,7 @@ export default abstract class Theme {
       "editorGroupHeader.tabsBackground": p.bg,
       "editorRuler.foreground": p.ruler,
       "editorIndentGuide.background": p.ruler,
-      "editorIndentGuide.activeBackground": p.ruler,
+      "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
       "editorLineNumber.activeForeground": p.fg
     };

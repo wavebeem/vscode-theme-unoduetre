@@ -33,7 +33,7 @@
     "editorGroup.border": "#e6e6e6",
     "editorGroup.dropBackground": "#1fad2b4c",
     "editorGroupHeader.tabsBackground": "#fafafa",
-    "editorIndentGuide.activeBackground": "#00000019",
+    "editorIndentGuide.activeBackground": "#3333334c",
     "editorIndentGuide.background": "#00000019",
     "editorLineNumber.activeForeground": "#333333",
     "editorLineNumber.foreground": "#3333334c",

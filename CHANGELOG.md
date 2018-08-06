@@ -1,3 +1,7 @@
+# ???
+
+- Adds an active indent guide color
+
 # v3.4.0
 
 - More legible shadows on dark themes
