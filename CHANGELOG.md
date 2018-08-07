@@ -1,4 +1,4 @@
-# ???
+# v3.6.0
 
 - Adds an active indent guide color
 
