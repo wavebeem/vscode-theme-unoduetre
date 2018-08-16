@@ -10,9 +10,9 @@ const transparent = "#00000000";
 const bgHue = 240;
 
 export default class BubbleGumTheme extends Theme {
-  uno = 200;
-  due = 280;
-  tre = 160;
+  uno = 290;
+  due = 200;
+  tre = 110;
 
   palette: Palette = {
     yellow: yellow,
