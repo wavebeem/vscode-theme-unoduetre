@@ -289,7 +289,7 @@ export default abstract class Theme {
       tBlue: tintedHsl(250, 75, 55),
       tMagenta: tintedHsl(310, 70, 50),
       tCyan: tintedHsl(180, 75, 40),
-      tWhite: tintedHsl(0, 0, 95)
+      tWhite: this.hsl(0, 0, 95)
     };
   }
 
@@ -305,7 +305,7 @@ export default abstract class Theme {
       tBlue: tintedHsl(250, 75, 75),
       tMagenta: tintedHsl(310, 75, 75),
       tCyan: tintedHsl(180, 75, 65),
-      tWhite: tintedHsl(0, 0, 95)
+      tWhite: this.hsl(0, 0, 95)
     };
   }
 
