@@ -1,6 +1,7 @@
 # ???
 
 - Tweaks and rearranges some colors in Periwinkle
+- Stop tinting the "white" color in the terminal themes since it affects readability on colored backgrounds
 
 # v3.6.0
 
