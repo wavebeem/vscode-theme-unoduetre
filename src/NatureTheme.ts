@@ -41,7 +41,6 @@ export default class NatureTheme extends Theme {
     activeSelectionBG: this.hsla(this.tre, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.tre, 50, 50, 30),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
-    lineHighlightBG: this.hsla(this.tre, 50, 50, 10),
     accentFocusBG: this.hsl(this.tre, 50, 80),
     widgetBG: this.gray(98),
     widgetBorder: this.gray(50),

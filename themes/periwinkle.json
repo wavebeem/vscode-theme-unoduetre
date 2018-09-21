@@ -22,7 +22,7 @@
     "editor.findRangeHighlightBackground": "#ff00ff7f",
     "editor.foreground": "#0d0d73",
     "editor.inactiveSelectionBackground": "#55bf404c",
-    "editor.lineHighlightBackground": "#55bf4019",
+    "editor.lineHighlightBackground": "#0d0d730a",
     "editor.rangeHighlightBackground": "#e67e2219",
     "editor.selectionBackground": "#55bf404c",
     "editor.wordHighlightBackground": "#3498db26",

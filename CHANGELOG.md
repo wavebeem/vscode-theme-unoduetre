@@ -1,5 +1,7 @@
 # ???
 
+- Switch line highlight BG to use text color instead of accent color since it
+  made diff views hard to understand when the accent color is green
 - Tweaks and rearranges some colors in Periwinkle
 - Stop tinting the "white" color in the terminal themes since it affects readability on colored backgrounds
 

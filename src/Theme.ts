@@ -64,7 +64,6 @@ export interface Palette {
   inactiveSelectionBG: string;
   textSelectionBG: string;
   accentFocusBG: string;
-  lineHighlightBG: string;
   widgetBG: string;
   widgetBorder: string;
   bracketMatchBG: string;
@@ -347,7 +346,7 @@ export default abstract class Theme {
       "editor.foreground": p.fg,
       "editor.background": p.bg,
       "editorLink.activeForeground": p.cyan,
-      "editor.lineHighlightBackground": p.lineHighlightBG,
+      "editor.lineHighlightBackground": this.dilute(p.fg, 4),
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
       "editor.selectionBackground": p.textSelectionBG,
       "editor.inactiveSelectionBackground": p.textSelectionBG,

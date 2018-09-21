@@ -46,7 +46,6 @@ export default class DarkTheme extends Theme {
     activeSelectionBG: this.hsl(this.due, 35, 35),
     inactiveSelectionBG: this.hsl(this.due, 10, 30),
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
-    lineHighlightBG: this.hsla(this.due, 50, 50, 10),
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(60),
