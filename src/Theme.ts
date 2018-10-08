@@ -136,6 +136,7 @@ export default abstract class Theme {
       "activityBar.border": p.border0,
       "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
+      "activityBar.inactiveForeground": this.dilute(p.fg, 40),
       "activityBarBadge.background": p.accent0,
       "activityBarBadge.foreground": p.white
     };

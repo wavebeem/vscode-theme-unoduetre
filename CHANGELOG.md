@@ -4,6 +4,7 @@
   made diff views hard to understand when the accent color is green
 - Tweaks and rearranges some colors in Periwinkle
 - Stop tinting the "white" color in the terminal themes since it affects readability on colored backgrounds
+- Inactive activity bar icons are now much lighter
 
 # v3.6.0
 
