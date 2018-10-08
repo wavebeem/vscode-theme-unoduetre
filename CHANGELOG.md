@@ -3,7 +3,8 @@
 - Switch line highlight BG to use text color instead of accent color since it
   made diff views hard to understand when the accent color is green
 - Tweaks and rearranges some colors in Periwinkle
-- Stop tinting the "white" color in the terminal themes since it affects readability on colored backgrounds
+- Stop tinting the "white" color in the terminal themes since it affects
+  readability on colored backgrounds
 - Inactive activity bar icons are now much lighter
 
 # v3.6.0
@@ -26,7 +27,7 @@
 
 # v3.3.0
 
-- Buttons and drag'n'drop effects now match the theme accent color
+- Buttons and drag and drop effects now match the theme accent color
 
 # v3.2.0
 
