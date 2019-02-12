@@ -19,6 +19,10 @@ tastes.
 
 ![midnight screenshot](img/theme-midnight.png)
 
+## Sprinkles
+
+![sprinkles screenshot](img/theme-sprinkles.png)
+
 ## Light
 
 ![light screenshot](img/theme-light.png)
