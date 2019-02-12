@@ -1,3 +1,4 @@
+import SprinklesTheme from "./SprinklesTheme";
 import LightTheme from "./LightTheme";
 import DarkTheme from "./DarkTheme";
 import NatureTheme from "./NatureTheme";
@@ -13,3 +14,4 @@ new BubbleGumTheme().saveAs("bubblegum");
 new MidnightTheme().saveAs("midnight");
 new OceanTheme().saveAs("ocean");
 new PeriwinkleTheme().saveAs("periwinkle");
+new SprinklesTheme().saveAs("sprinkles");
