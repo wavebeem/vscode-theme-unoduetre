@@ -1,4 +1,4 @@
-# ???
+# 3.7.0
 
 - Better support for Go, C++, C#, Haskell, Rust
 - Adds new "Sprinkles" theme
