@@ -429,7 +429,8 @@ export default abstract class Theme {
         settings: this.style(p.fg),
         scopes: [
           // Function call
-          "meta.function-call entity.name.function"
+          "meta.function-call entity.name.function",
+          "source.go entity.name.function"
         ]
       },
       {
@@ -453,6 +454,12 @@ export default abstract class Theme {
           // Object keys
           "meta.object-literal.key",
           "support.type.property-name",
+          "punctuation.curlybrace",
+          "punctuation.squarebracket",
+          "punctuation.parenthesis",
+          "punctuation.definition.begin",
+          "punctuation.definition.end",
+          "punctuation.definition.bracket",
 
           // CSS properties
           "meta.property-name",
@@ -483,6 +490,8 @@ export default abstract class Theme {
           "punctuation.definition.template-expression",
 
           // Punctuation
+          "punctuation.definition.imports",
+          "punctuation.definition.scope",
           "punctuation.definition.dictionary",
           "punctuation.definition.tag",
           "punctuation.definition.binding-pattern.array",
@@ -497,6 +506,7 @@ export default abstract class Theme {
           "punctuation.terminator",
 
           // Punctuation
+          "punctuation.other.comma",
           "punctuation.separator",
           "punctuation.section",
           "meta.brace",
@@ -527,6 +537,15 @@ export default abstract class Theme {
         scopes: [
           // Keywords
           "keyword.control",
+          "keyword.import",
+          "keyword.function",
+          "keyword.package",
+          "keyword.interface",
+          "keyword.map",
+          "keyword.var",
+          "keyword.other",
+          "keyword.type",
+          "meta.preprocessor",
 
           // Storage (var)
           "storage"
@@ -591,9 +610,6 @@ export default abstract class Theme {
         name: "Due2",
         settings: this.style(due2),
         scopes: [
-          // Methods
-          "keyword.other.special-method",
-
           // Variable definition
           "meta.definition",
 
@@ -603,10 +619,7 @@ export default abstract class Theme {
           // Variables
           "variable.declaration",
           "variable.parameter",
-          // "variable.other",
-
-          // Units
-          "keyword.other.unit",
+          "variable.other.assignment",
 
           // Lists
           "beginning.punctuation.definition.list",
@@ -624,6 +637,7 @@ export default abstract class Theme {
           "entity.name.section",
 
           // Functions
+          "source.go entity.name.function",
           "meta.definition entity.name.function",
           "meta.function entity.name.function",
           "meta.require",

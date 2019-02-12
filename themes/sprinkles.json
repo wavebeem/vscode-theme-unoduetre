@@ -129,7 +129,7 @@
   "tokenColors": [
     {
       "name": "Default",
-      "scope": "meta.function-call entity.name.function",
+      "scope": "meta.function-call entity.name.function, source.go entity.name.function",
       "settings": {
         "foreground": "#ecd1fa",
         "fontStyle": ""
@@ -139,23 +139,23 @@
       "name": "Uno1",
       "scope": "keyword.operator, storage.type.function.arrow",
       "settings": {
-        "foreground": "#f28cd0",
+        "foreground": "#f075c7",
         "fontStyle": ""
       }
     },
     {
       "name": "Uno2",
-      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
-        "foreground": "#e085c2",
+        "foreground": "#db70b8",
         "fontStyle": ""
       }
     },
     {
       "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#cc66aa",
+        "foreground": "#c6539f",
         "fontStyle": ""
       }
     },
@@ -163,15 +163,15 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#ba5e9c",
+        "foreground": "#b34d90",
         "fontStyle": ""
       }
     },
     {
       "name": "Uno1Bold",
-      "scope": "keyword.control, storage",
+      "scope": "keyword.control, keyword.import, keyword.function, keyword.package, keyword.interface, keyword.map, keyword.var, keyword.other, keyword.type, meta.preprocessor, storage",
       "settings": {
-        "foreground": "#f28cd0",
+        "foreground": "#f075c7",
         "fontStyle": "bold"
       }
     },
@@ -179,7 +179,7 @@
       "name": "Uno2Bold",
       "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class, meta.selector entity.other.attribute-name.pseudo-class, meta.selector entity.name.tag",
       "settings": {
-        "foreground": "#e085c2",
+        "foreground": "#db70b8",
         "fontStyle": "bold"
       }
     },
@@ -187,7 +187,7 @@
       "name": "Uno2Italic",
       "scope": "markup.italic",
       "settings": {
-        "foreground": "#e085c2",
+        "foreground": "#db70b8",
         "fontStyle": "italic"
       }
     },
@@ -195,23 +195,23 @@
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
       "settings": {
-        "foreground": "#f2d98c",
+        "foreground": "#f0d175",
         "fontStyle": ""
       }
     },
     {
       "name": "Due2",
-      "scope": "keyword.other.special-method, meta.definition, variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, beginning.punctuation.definition.list, constant.other.color",
+      "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
-        "foreground": "#e0c985",
+        "foreground": "#dbc170",
         "fontStyle": ""
       }
     },
     {
       "name": "Due1Bold",
-      "scope": "markup.heading punctuation.definition.heading, entity.name.section, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
+      "scope": "markup.heading punctuation.definition.heading, entity.name.section, source.go entity.name.function, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
-        "foreground": "#f2d98c",
+        "foreground": "#f0d175",
         "fontStyle": "bold"
       }
     },
@@ -219,7 +219,7 @@
       "name": "Tre1",
       "scope": "string, punctuation.definition.string, support.constant.property-value",
       "settings": {
-        "foreground": "#8cf2e1",
+        "foreground": "#75f0db",
         "fontStyle": ""
       }
     },

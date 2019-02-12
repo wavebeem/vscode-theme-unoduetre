@@ -53,10 +53,10 @@ export default class SprinklesTheme extends Theme {
 
   ramp(hue: number) {
     return [
-      this.hsl(hue, 80, 75),
-      this.hsl(hue, 60, 70),
-      this.hsl(hue, 50, 60),
-      this.hsl(hue, 40, 55)
+      this.hsl(hue, 80, 70),
+      this.hsl(hue, 60, 65),
+      this.hsl(hue, 50, 55),
+      this.hsl(hue, 40, 50)
     ];
   }
 

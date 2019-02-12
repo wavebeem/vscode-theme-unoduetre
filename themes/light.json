@@ -129,7 +129,7 @@
   "tokenColors": [
     {
       "name": "Default",
-      "scope": "meta.function-call entity.name.function",
+      "scope": "meta.function-call entity.name.function, source.go entity.name.function",
       "settings": {
         "foreground": "#333333",
         "fontStyle": ""
@@ -145,7 +145,7 @@
     },
     {
       "name": "Uno2",
-      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#c91d8f",
         "fontStyle": ""
@@ -153,7 +153,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#cc66aa",
         "fontStyle": ""
@@ -169,7 +169,7 @@
     },
     {
       "name": "Uno1Bold",
-      "scope": "keyword.control, storage",
+      "scope": "keyword.control, keyword.import, keyword.function, keyword.package, keyword.interface, keyword.map, keyword.var, keyword.other, keyword.type, meta.preprocessor, storage",
       "settings": {
         "foreground": "#ae0476",
         "fontStyle": "bold"
@@ -201,7 +201,7 @@
     },
     {
       "name": "Due2",
-      "scope": "keyword.other.special-method, meta.definition, variable.parameter.function, variable.declaration, variable.parameter, keyword.other.unit, beginning.punctuation.definition.list, constant.other.color",
+      "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
         "foreground": "#1d64c9",
         "fontStyle": ""
@@ -209,7 +209,7 @@
     },
     {
       "name": "Due1Bold",
-      "scope": "markup.heading punctuation.definition.heading, entity.name.section, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
+      "scope": "markup.heading punctuation.definition.heading, entity.name.section, source.go entity.name.function, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
         "foreground": "#044bae",
         "fontStyle": "bold"
