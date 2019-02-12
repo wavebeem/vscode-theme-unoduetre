@@ -545,7 +545,6 @@ export default abstract class Theme {
           "keyword.var",
           "keyword.other",
           "keyword.type",
-          "meta.preprocessor",
 
           // Storage (var)
           "storage"

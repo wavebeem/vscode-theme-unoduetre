@@ -169,7 +169,7 @@
     },
     {
       "name": "Uno1Bold",
-      "scope": "keyword.control, keyword.import, keyword.function, keyword.package, keyword.interface, keyword.map, keyword.var, keyword.other, keyword.type, meta.preprocessor, storage",
+      "scope": "keyword.control, keyword.import, keyword.function, keyword.package, keyword.interface, keyword.map, keyword.var, keyword.other, keyword.type, storage",
       "settings": {
         "foreground": "#9204ae",
         "fontStyle": "bold"
