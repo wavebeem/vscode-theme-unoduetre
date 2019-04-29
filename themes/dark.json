@@ -57,7 +57,7 @@
     "inputOption.activeBorder": "#1fada2",
     "list.activeSelectionBackground": "#3a7873",
     "list.dropBackground": "#1fada24c",
-    "list.errorForeground": "#000000b2",
+    "list.errorForeground": "#0d0d0db2",
     "list.focusBackground": "#3a7873",
     "list.highlightForeground": "#ff9933",
     "list.hoverBackground": "#1fada219",
@@ -79,7 +79,7 @@
     "peekViewResult.matchHighlightBackground": "#fcd4357f",
     "pickerGroup.border": "#383838",
     "progressBar.background": "#1fada2",
-    "scrollbar.shadow": "#000000b2",
+    "scrollbar.shadow": "#0d0d0db2",
     "scrollbarSlider.activeBackground": "#e6e6e699",
     "scrollbarSlider.background": "#e6e6e64c",
     "scrollbarSlider.hoverBackground": "#e6e6e67f",
@@ -125,7 +125,7 @@
     "titleBar.border": "#383838",
     "titleBar.inactiveBackground": "#2e2e2e",
     "titleBar.inactiveForeground": "#e6e6e6b2",
-    "widget.shadow": "#0000004c"
+    "widget.shadow": "#0d0d0d4c"
   },
   "tokenColors": [
     {

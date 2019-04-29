@@ -38,7 +38,7 @@ export default class NatureTheme extends Theme {
     border0: this.gray(90),
     border1: this.gray(80),
     shadow0: this.dilute(this.gray(90), 70),
-    shadow1: this.dilute(this.gray(80), 30),
+    shadow1: this.dilute(this.gray(60), 70),
     activeSelectionBG: this.hsla(this.tre, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.tre, 50, 50, 30),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
