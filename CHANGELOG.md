@@ -1,3 +1,8 @@
+# 3.8.0
+
+- More subtle shadows
+- Better tab bar theming (adds borders, uses bottom border)
+
 # 3.7.0
 
 - Better support for Go, C++, C#, Haskell, Rust

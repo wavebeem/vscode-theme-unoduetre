@@ -59,7 +59,8 @@ export interface Palette {
   inputBG: string;
   border0: string;
   border1: string;
-  shadow: string;
+  shadow0: string;
+  shadow1: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
   textSelectionBG: string;
@@ -168,7 +169,7 @@ export default abstract class Theme {
   themeList() {
     const p = this.palette;
     return {
-      "list.errorForeground": p.red,
+      "list.errorForeground": p.shadow0,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,
@@ -260,7 +261,7 @@ export default abstract class Theme {
   themeScrollbar() {
     const p = this.palette;
     return {
-      "scrollbar.shadow": p.shadow,
+      "scrollbar.shadow": p.shadow0,
       "scrollbarSlider.background": this.dilute(p.fg, 30),
       "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
       "scrollbarSlider.activeBackground": this.dilute(p.fg, 60)
@@ -369,7 +370,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       focusBorder: p.accent0,
-      "widget.shadow": p.shadow,
+      "widget.shadow": p.shadow1,
       ...this.themeScrollbar(),
       "input.border": p.border1,
       "input.background": p.inputBG,
@@ -395,15 +396,16 @@ export default abstract class Theme {
       "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
-      "tab.activeBorder": undefined,
-      "tab.unfocusedActiveBorder": undefined,
-      "tab.activeBorderTop": p.accent0,
-      "tab.unfocusedActiveBorderTop": p.accent0,
+      "tab.border": p.border0,
+      "editorGroupHeader.tabsBorder": p.border0,
+      "tab.activeBorder": p.accent0,
+      "tab.unfocusedActiveBorder": p.accent0,
+      "tab.activeBorderTop": undefined,
+      "tab.unfocusedActiveBorderTop": undefined,
       "tab.activeBackground": this.dilute(p.accent0, 10),
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
       "tab.inactiveForeground": this.dilute(p.fg, 50),
-      "tab.border": p.transparent,
       "pickerGroup.border": p.border0,
       ...this.themeGit(),
       "titleBar.activeBackground": p.bg,
