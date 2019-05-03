@@ -39,7 +39,7 @@ export default class LightTheme extends Theme {
     bg: this.gray(98),
     statusBG: this.gray(20),
     statusFG: this.gray(90),
-    statusBorder: this.gray(10),
+    statusBorder: this.gray(5),
     inputBG: white,
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,

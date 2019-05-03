@@ -1,3 +1,7 @@
+# 3.9.0
+
+- Back to a dark status bar to avoid theme clashes
+
 # 3.8.0
 
 - More subtle shadows
