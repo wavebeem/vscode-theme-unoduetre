@@ -349,7 +349,7 @@ export default abstract class Theme {
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
       "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
       "editor.foreground": p.fg,
-      "editor.background": p.inputBG,
+      "editor.background": p.bg,
       "editorLink.activeForeground": p.cyan,
       "editor.lineHighlightBackground": this.dilute(p.fg, 4),
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
@@ -366,6 +366,33 @@ export default abstract class Theme {
       "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
       "editorLineNumber.activeForeground": p.fg
+    };
+  }
+
+  themeTitlebar() {
+    const p = this.palette;
+    return {
+      "titleBar.activeBackground": p.bg,
+      "titleBar.activeForeground": p.fg,
+      "titleBar.inactiveBackground": p.bg,
+      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
+      "titleBar.border": p.border0
+    };
+  }
+
+  themeTabs() {
+    const p = this.palette;
+    return {
+      "tab.border": p.border0,
+      "editorGroupHeader.tabsBorder": p.border0,
+      "tab.activeBorder": p.accent0,
+      "tab.unfocusedActiveBorder": p.accent0,
+      "tab.activeBorderTop": undefined,
+      "tab.unfocusedActiveBorderTop": undefined,
+      "tab.activeBackground": this.dilute(p.accent0, 10),
+      "tab.activeForeground": p.fg,
+      "tab.inactiveBackground": p.transparent,
+      "tab.inactiveForeground": this.dilute(p.fg, 50)
     };
   }
 
@@ -399,23 +426,10 @@ export default abstract class Theme {
       "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
-      "tab.border": p.border0,
-      "editorGroupHeader.tabsBorder": p.border0,
-      "tab.activeBorder": p.accent0,
-      "tab.unfocusedActiveBorder": p.accent0,
-      "tab.activeBorderTop": undefined,
-      "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.dilute(p.accent0, 10),
-      "tab.activeForeground": p.fg,
-      "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.fg, 50),
+      ...this.themeTabs(),
       "pickerGroup.border": p.border0,
       ...this.themeGit(),
-      "titleBar.activeBackground": p.inputBG,
-      "titleBar.activeForeground": p.fg,
-      "titleBar.inactiveBackground": p.inputBG,
-      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": p.border1,
+      ...this.themeTitlebar(),
       "debugToolBar.background": p.widgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
