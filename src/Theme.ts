@@ -56,6 +56,9 @@ export interface Palette {
   accent1: string;
   fg: string;
   bg: string;
+  statusBG: string;
+  statusFG: string;
+  statusBorder: string;
   inputBG: string;
   border0: string;
   border1: string;
@@ -217,14 +220,14 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.border0,
-      "statusBarItem.activeBackground": this.dilute(p.fg, 20),
-      "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
-      "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
-      "statusBar.background": p.bg,
-      "statusBar.debuggingBackground": p.bg,
-      "statusBar.noFolderBackground": p.bg,
-      "statusBar.foreground": p.fg
+      "statusBar.border": p.statusBorder,
+      "statusBarItem.activeBackground": this.dilute(p.statusFG, 20),
+      "statusBarItem.hoverBackground": this.dilute(p.statusFG, 10),
+      "statusBarItem.prominentBackground": this.dilute(p.statusFG, 30),
+      "statusBar.background": p.statusBG,
+      "statusBar.debuggingBackground": p.statusBG,
+      "statusBar.noFolderBackground": p.statusBG,
+      "statusBar.foreground": p.statusFG
     };
   }
 
@@ -366,6 +369,33 @@ export default abstract class Theme {
     };
   }
 
+  themeTitlebar() {
+    const p = this.palette;
+    return {
+      "titleBar.activeBackground": p.bg,
+      "titleBar.activeForeground": p.fg,
+      "titleBar.inactiveBackground": p.bg,
+      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
+      "titleBar.border": p.border0
+    };
+  }
+
+  themeTabs() {
+    const p = this.palette;
+    return {
+      "tab.border": p.border0,
+      "editorGroupHeader.tabsBorder": p.border0,
+      "tab.activeBorder": p.accent0,
+      "tab.unfocusedActiveBorder": p.accent0,
+      "tab.activeBorderTop": undefined,
+      "tab.unfocusedActiveBorderTop": undefined,
+      "tab.activeBackground": this.dilute(p.accent0, 10),
+      "tab.activeForeground": p.fg,
+      "tab.inactiveBackground": p.transparent,
+      "tab.inactiveForeground": this.dilute(p.fg, 50)
+    };
+  }
+
   colors() {
     const p = this.palette;
     return {
@@ -396,23 +426,10 @@ export default abstract class Theme {
       "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
-      "tab.border": p.border0,
-      "editorGroupHeader.tabsBorder": p.border0,
-      "tab.activeBorder": p.accent0,
-      "tab.unfocusedActiveBorder": p.accent0,
-      "tab.activeBorderTop": undefined,
-      "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.dilute(p.accent0, 10),
-      "tab.activeForeground": p.fg,
-      "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.fg, 50),
+      ...this.themeTabs(),
       "pickerGroup.border": p.border0,
       ...this.themeGit(),
-      "titleBar.activeBackground": p.bg,
-      "titleBar.activeForeground": p.fg,
-      "titleBar.inactiveBackground": p.bg,
-      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": p.border0,
+      ...this.themeTitlebar(),
       "debugToolBar.background": p.widgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
