@@ -137,8 +137,8 @@ export default abstract class Theme {
   themeActivityBar() {
     const p = this.palette;
     return {
-      "activityBar.border": p.border1,
-      "activityBar.background": p.inputBG,
+      "activityBar.border": p.border0,
+      "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 40),
       "activityBarBadge.background": p.accent0,
@@ -349,7 +349,7 @@ export default abstract class Theme {
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
       "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
       "editor.foreground": p.fg,
-      "editor.background": p.bg,
+      "editor.background": p.inputBG,
       "editorLink.activeForeground": p.cyan,
       "editor.lineHighlightBackground": this.dilute(p.fg, 4),
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
@@ -396,8 +396,8 @@ export default abstract class Theme {
       "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
-      "sideBar.border": p.border1,
-      "sideBar.background": p.inputBG,
+      "sideBar.border": p.border0,
+      "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
       "tab.border": p.border0,
       "editorGroupHeader.tabsBorder": p.border0,
