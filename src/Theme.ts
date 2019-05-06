@@ -172,7 +172,7 @@ export default abstract class Theme {
   themeList() {
     const p = this.palette;
     return {
-      "list.errorForeground": p.shadow0,
+      "list.errorForeground": p.red,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,

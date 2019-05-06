@@ -1,3 +1,7 @@
+# 3.9.1
+
+- Fixes bug where "errored" files in the sidebar had the wrong color
+
 # 3.9.0
 
 - Back to a dark status bar to avoid theme clashes

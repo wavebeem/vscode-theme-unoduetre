@@ -57,7 +57,7 @@
     "inputOption.activeBorder": "#1fadad",
     "list.activeSelectionBackground": "#40bfbf99",
     "list.dropBackground": "#1fadad4c",
-    "list.errorForeground": "#ebeddeb2",
+    "list.errorForeground": "#cc0000",
     "list.focusBackground": "#b3e5e6",
     "list.highlightForeground": "#1481b8",
     "list.hoverBackground": "#1fadad19",
