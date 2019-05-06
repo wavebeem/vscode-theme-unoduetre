@@ -1,4 +1,4 @@
-# 3.9.1
+# 3.9.4
 
 - Fixes bug where "errored" files in the sidebar had the wrong color
 
