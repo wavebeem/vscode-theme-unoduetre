@@ -1,3 +1,7 @@
+# 3.10.0
+
+- Changes the colors for the Nature theme to be much more blue tinted
+
 # 3.9.4
 
 - Fixes bug where "errored" files in the sidebar had the wrong color
