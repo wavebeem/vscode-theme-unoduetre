@@ -1,3 +1,9 @@
+# 3.11.0
+
+- Darkens backgrounds on light themes
+- Raises contrast on all borders
+- Light border on light theme status borders
+
 # 3.10.0
 
 - Changes the colors for the Nature theme to be much more blue tinted
