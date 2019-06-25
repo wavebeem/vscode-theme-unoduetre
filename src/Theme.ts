@@ -56,9 +56,6 @@ export interface Palette {
   accent1: string;
   fg: string;
   bg: string;
-  statusBG: string;
-  statusFG: string;
-  statusBorder: string;
   inputBG: string;
   border0: string;
   border1: string;
@@ -220,14 +217,14 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.statusBorder,
-      "statusBarItem.activeBackground": this.dilute(p.statusFG, 20),
-      "statusBarItem.hoverBackground": this.dilute(p.statusFG, 10),
-      "statusBarItem.prominentBackground": this.dilute(p.statusFG, 30),
-      "statusBar.background": p.statusBG,
-      "statusBar.debuggingBackground": p.statusBG,
-      "statusBar.noFolderBackground": p.statusBG,
-      "statusBar.foreground": p.statusFG
+      "statusBar.border": p.border0,
+      "statusBarItem.activeBackground": this.dilute(p.fg, 20),
+      "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
+      "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
+      "statusBar.background": p.bg,
+      "statusBar.debuggingBackground": p.bg,
+      "statusBar.noFolderBackground": p.bg,
+      "statusBar.foreground": p.fg
     };
   }
 

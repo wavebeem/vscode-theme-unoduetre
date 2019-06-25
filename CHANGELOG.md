@@ -1,3 +1,7 @@
+# 3.12.0
+
+- Back to dark border on light theme status bars
+
 # 3.11.0
 
 - Darkens backgrounds on light themes
