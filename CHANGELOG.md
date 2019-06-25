@@ -1,3 +1,7 @@
+# 3.13.0
+
+- No more dark status bars, back to just the regular theme colors
+
 # 3.12.0
 
 - Back to dark border on light theme status bars
