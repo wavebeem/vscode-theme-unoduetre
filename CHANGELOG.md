@@ -1,3 +1,7 @@
+# 3.14.0
+
+- Better activity sidebar and tab colors
+
 # 3.13.0
 
 - No more dark status bars, back to just the regular theme colors
