@@ -1,4 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "breadcrumbs.enabled": false
+  "breadcrumbs.enabled": true
 }

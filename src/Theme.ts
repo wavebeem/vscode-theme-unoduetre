@@ -139,7 +139,10 @@ export default abstract class Theme {
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 40),
       "activityBarBadge.background": p.accent0,
-      "activityBarBadge.foreground": p.white
+      "activityBarBadge.foreground": p.white,
+      "activityBar.activeBorder": p.accent0,
+      "tab.activeBorder": p.accent0,
+      "activityBar.activeBackground": this.dilute(p.accent0, 10)
     };
   }
 
@@ -380,7 +383,7 @@ export default abstract class Theme {
   themeTabs() {
     const p = this.palette;
     return {
-      "tab.border": p.border0,
+      // "tab.border": p.border0,
       "editorGroupHeader.tabsBorder": p.border0,
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,

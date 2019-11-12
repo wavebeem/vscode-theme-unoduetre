@@ -1,6 +1,8 @@
 {
   "type": "dark",
   "colors": {
+    "activityBar.activeBackground": "#1fad9619",
+    "activityBar.activeBorder": "#1fad96",
     "activityBar.background": "#331e3e",
     "activityBar.border": "#553267",
     "activityBar.dropBackground": "#1fad964c",
@@ -98,7 +100,6 @@
     "tab.activeBackground": "#1fad9619",
     "tab.activeBorder": "#1fad96",
     "tab.activeForeground": "#ecd1fa",
-    "tab.border": "#553267",
     "tab.inactiveBackground": "#00000000",
     "tab.inactiveForeground": "#ecd1fa7f",
     "tab.unfocusedActiveBorder": "#1fad96",
