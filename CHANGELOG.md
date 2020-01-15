@@ -1,3 +1,7 @@
+# 3.15.0
+
+- Ensures WCAG AA small contrast compliance on text for better accessibility
+
 # 3.14.0
 
 - Better activity sidebar and tab colors

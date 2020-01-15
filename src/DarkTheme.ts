@@ -12,6 +12,8 @@ export default class DarkTheme extends Theme {
   due = 175;
   tre = 30;
 
+  bg = this.gray(18);
+
   palette: Palette = {
     yellow: yellow,
     orange: "#f79e51",
@@ -36,7 +38,7 @@ export default class DarkTheme extends Theme {
     accent0: this.hsl(this.due, 70, 40),
     accent1: this.hsl(this.tre, 100, 60),
     fg: this.gray(90),
-    bg: this.gray(18),
+    bg: this.bg,
     inputBG: this.gray(14),
     bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),

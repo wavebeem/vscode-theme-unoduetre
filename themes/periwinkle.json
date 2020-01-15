@@ -103,22 +103,22 @@
     "tab.inactiveBackground": "#00000000",
     "tab.inactiveForeground": "#0d0d737f",
     "tab.unfocusedActiveBorder": "#36ad1f",
-    "terminal.ansiBlack": "#05052eff",
-    "terminal.ansiBlue": "#4730e3ff",
-    "terminal.ansiBrightBlack": "#05052eff",
-    "terminal.ansiBrightBlue": "#4730e3ff",
-    "terminal.ansiBrightCyan": "#1994bdff",
-    "terminal.ansiBrightGreen": "#268767ff",
-    "terminal.ansiBrightMagenta": "#b323c4ff",
-    "terminal.ansiBrightRed": "#a61c45ff",
+    "terminal.ansiBlack": "#05052e",
+    "terminal.ansiBlue": "#4730e3",
+    "terminal.ansiBrightBlack": "#05052e",
+    "terminal.ansiBrightBlue": "#4730e3",
+    "terminal.ansiBrightCyan": "#137190",
+    "terminal.ansiBrightGreen": "#1b5f49",
+    "terminal.ansiBrightMagenta": "#8b1b99",
+    "terminal.ansiBrightRed": "#a61c45",
     "terminal.ansiBrightWhite": "#f2f2f2",
-    "terminal.ansiBrightYellow": "#ba7559ff",
-    "terminal.ansiCyan": "#1994bdff",
-    "terminal.ansiGreen": "#268767ff",
-    "terminal.ansiMagenta": "#b323c4ff",
-    "terminal.ansiRed": "#a61c45ff",
+    "terminal.ansiBrightYellow": "#7a4733",
+    "terminal.ansiCyan": "#137190",
+    "terminal.ansiGreen": "#1b5f49",
+    "terminal.ansiMagenta": "#8b1b99",
+    "terminal.ansiRed": "#a61c45",
     "terminal.ansiWhite": "#f2f2f2",
-    "terminal.ansiYellow": "#ba7559ff",
+    "terminal.ansiYellow": "#7a4733",
     "terminal.background": "#ebebf4",
     "terminal.foreground": "#0d0d73",
     "titleBar.activeBackground": "#ebebf4",
@@ -157,7 +157,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#bb66cc",
+        "foreground": "#883399",
         "fontStyle": ""
       }
     },
@@ -165,7 +165,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#bf9fc6",
+        "foreground": "#774c80",
         "fontStyle": ""
       }
     },
@@ -197,7 +197,7 @@
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
       "settings": {
-        "foreground": "#0476ae",
+        "foreground": "#03547c",
         "fontStyle": ""
       }
     },
@@ -205,7 +205,7 @@
       "name": "Due2",
       "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
-        "foreground": "#1d8fc9",
+        "foreground": "#176f9c",
         "fontStyle": ""
       }
     },
@@ -213,7 +213,7 @@
       "name": "Due1Bold",
       "scope": "markup.heading punctuation.definition.heading, entity.name.section, source.go entity.name.function, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
-        "foreground": "#0476ae",
+        "foreground": "#03547c",
         "fontStyle": "bold"
       }
     },
@@ -221,7 +221,7 @@
       "name": "Tre1",
       "scope": "string, punctuation.definition.string, support.constant.property-value",
       "settings": {
-        "foreground": "#21ae04",
+        "foreground": "#187c03",
         "fontStyle": ""
       }
     },

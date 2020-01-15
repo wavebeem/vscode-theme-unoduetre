@@ -12,6 +12,8 @@ export default class LightTheme extends Theme {
   due = 215;
   tre = 125;
 
+  bg = this.gray(96);
+
   palette: Palette = {
     yellow: yellow,
     orange: "#e67e22",
@@ -36,7 +38,7 @@ export default class LightTheme extends Theme {
     accent0: this.hsl(this.tre, 70, 40),
     accent1: red,
     fg: this.gray(20),
-    bg: this.gray(96),
+    bg: this.bg,
     inputBG: white,
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,

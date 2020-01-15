@@ -93,6 +93,7 @@ export default abstract class Theme {
   abstract uno: number;
   abstract due: number;
   abstract tre: number;
+  abstract bg: string;
   abstract palette: Palette;
   abstract themeType(): ThemeType;
   abstract ramp(hue: number): string[];
@@ -283,7 +284,7 @@ export default abstract class Theme {
 
   tintedAnsiLight(color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.mix(this.hsl(h, s, l), color, 20);
+      return this.fixContrast(this.mix(this.hsl(h, s, l), color, 20));
     };
     return {
       tBlack: tintedHsl(0, 0, 0),
@@ -299,7 +300,7 @@ export default abstract class Theme {
 
   tintedAnsiDark(color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.mix(this.hsl(h, s, l), color, 20);
+      return this.fixContrast(this.mix(this.hsl(h, s, l), color, 20));
     };
     return {
       tBlack: tintedHsl(0, 0, 20),
@@ -437,10 +438,32 @@ export default abstract class Theme {
     };
   }
 
+  fixContrast(color: string): string {
+    const bg = tinycolor(this.bg);
+    const isDark = bg.isDark();
+    const step = 10;
+    const fg = tinycolor(color);
+    while (!tinycolor.isReadable(fg, bg)) {
+      if (isDark) {
+        fg.lighten(step);
+      } else {
+        fg.darken(step);
+      }
+    }
+    if (fg.getAlpha() < 1) {
+      return fg.toHex8String();
+    }
+    return fg.toHexString();
+  }
+
+  safeRamp(hue: number): string[] {
+    return this.ramp(hue).map(color => this.fixContrast(color));
+  }
+
   tokenColors(): TokenColor[] {
-    const [uno1, uno2, uno3, uno4] = this.ramp(this.uno);
-    const [due1, due2] = this.ramp(this.due);
-    const [tre1] = this.ramp(this.tre);
+    const [uno1, uno2, uno3, uno4] = this.safeRamp(this.uno);
+    const [due1, due2] = this.safeRamp(this.due);
+    const [tre1] = this.safeRamp(this.tre);
     const p = this.palette;
     const tc: AlmostTokenColor[] = [
       {

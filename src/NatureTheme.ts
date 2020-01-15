@@ -14,6 +14,8 @@ export default class NatureTheme extends Theme {
   due = 90;
   tre = 310;
 
+  bg = this.gray(94);
+
   palette: Palette = {
     yellow: yellow,
     orange: "#e67e22",
@@ -31,7 +33,7 @@ export default class NatureTheme extends Theme {
     accent0: this.hsl(this.due, 70, 40),
     accent1: this.hsl(200, 80, 40),
     fg: this.hsl(bgHue, 75, 20),
-    bg: this.gray(94),
+    bg: this.bg,
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
