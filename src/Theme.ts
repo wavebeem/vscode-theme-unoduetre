@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import * as tinycolor from "tinycolor2";
+import fs from "fs";
+import tinycolor from "tinycolor2";
 
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
