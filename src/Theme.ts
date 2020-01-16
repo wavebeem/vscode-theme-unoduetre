@@ -441,7 +441,7 @@ export default abstract class Theme {
   fixContrast(color: string): string {
     const bg = tinycolor(this.bg);
     const isDark = bg.isDark();
-    const step = 10;
+    const step = 1;
     const fg = tinycolor(color);
     while (!tinycolor.isReadable(fg, bg)) {
       if (isDark) {
@@ -506,7 +506,7 @@ export default abstract class Theme {
           // CSS properties
           "meta.property-name",
 
-          // Interpolration stuff
+          // Interpolation stuff
           "punctuation.section.embedded",
           "variable.interpolation",
 

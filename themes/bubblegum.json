@@ -107,18 +107,18 @@
     "terminal.ansiBlue": "#7030e3",
     "terminal.ansiBrightBlack": "#2e052e",
     "terminal.ansiBrightBlue": "#7030e3",
-    "terminal.ansiBrightCyan": "#285971",
-    "terminal.ansiBrightGreen": "#3c674e",
-    "terminal.ansiBrightMagenta": "#b01c9c",
+    "terminal.ansiBrightCyan": "#327090",
+    "terminal.ansiBrightGreen": "#447458",
+    "terminal.ansiBrightMagenta": "#bd1ea8",
     "terminal.ansiBrightRed": "#cf1c45",
     "terminal.ansiBrightWhite": "#f2f2f2",
-    "terminal.ansiBrightYellow": "#b73e1f",
-    "terminal.ansiCyan": "#285971",
-    "terminal.ansiGreen": "#3c674e",
-    "terminal.ansiMagenta": "#b01c9c",
+    "terminal.ansiBrightYellow": "#bb3f20",
+    "terminal.ansiCyan": "#327090",
+    "terminal.ansiGreen": "#447458",
+    "terminal.ansiMagenta": "#bd1ea8",
     "terminal.ansiRed": "#cf1c45",
     "terminal.ansiWhite": "#f2f2f2",
-    "terminal.ansiYellow": "#b73e1f",
+    "terminal.ansiYellow": "#bb3f20",
     "terminal.background": "#f4ebf4",
     "terminal.foreground": "#730d73",
     "titleBar.activeBackground": "#f4ebf4",
@@ -157,7 +157,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#883399",
+        "foreground": "#a33db7",
         "fontStyle": ""
       }
     },
@@ -165,7 +165,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#774c80",
+        "foreground": "#8b5996",
         "fontStyle": ""
       }
     },
@@ -221,7 +221,7 @@
       "name": "Tre1",
       "scope": "string, punctuation.definition.string, support.constant.property-value",
       "settings": {
-        "foreground": "#024a4a",
+        "foreground": "#037777",
         "fontStyle": ""
       }
     },

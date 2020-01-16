@@ -1,3 +1,7 @@
+# 3.15.1
+
+- Fixed overcorrected contrast
+
 # 3.15.0
 
 - Ensures WCAG AA small contrast compliance on text for better accessibility

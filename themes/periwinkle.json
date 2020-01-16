@@ -108,17 +108,17 @@
     "terminal.ansiBrightBlack": "#05052e",
     "terminal.ansiBrightBlue": "#4730e3",
     "terminal.ansiBrightCyan": "#137190",
-    "terminal.ansiBrightGreen": "#1b5f49",
-    "terminal.ansiBrightMagenta": "#8b1b99",
+    "terminal.ansiBrightGreen": "#22775b",
+    "terminal.ansiBrightMagenta": "#af22c0",
     "terminal.ansiBrightRed": "#a61c45",
     "terminal.ansiBrightWhite": "#f2f2f2",
-    "terminal.ansiBrightYellow": "#7a4733",
+    "terminal.ansiBrightYellow": "#9b5a40",
     "terminal.ansiCyan": "#137190",
-    "terminal.ansiGreen": "#1b5f49",
-    "terminal.ansiMagenta": "#8b1b99",
+    "terminal.ansiGreen": "#22775b",
+    "terminal.ansiMagenta": "#af22c0",
     "terminal.ansiRed": "#a61c45",
     "terminal.ansiWhite": "#f2f2f2",
-    "terminal.ansiYellow": "#7a4733",
+    "terminal.ansiYellow": "#9b5a40",
     "terminal.background": "#ebebf4",
     "terminal.foreground": "#0d0d73",
     "titleBar.activeBackground": "#ebebf4",
@@ -157,7 +157,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#883399",
+        "foreground": "#a33db7",
         "fontStyle": ""
       }
     },
@@ -165,7 +165,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#774c80",
+        "foreground": "#885793",
         "fontStyle": ""
       }
     },
@@ -197,7 +197,7 @@
       "name": "Due1",
       "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
       "settings": {
-        "foreground": "#03547c",
+        "foreground": "#046fa4",
         "fontStyle": ""
       }
     },
@@ -213,7 +213,7 @@
       "name": "Due1Bold",
       "scope": "markup.heading punctuation.definition.heading, entity.name.section, source.go entity.name.function, meta.definition entity.name.function, meta.function entity.name.function, meta.require, entity.name.class, entity.name.type.class, entity.name.type.module, entity.other.inherited-class",
       "settings": {
-        "foreground": "#03547c",
+        "foreground": "#046fa4",
         "fontStyle": "bold"
       }
     },

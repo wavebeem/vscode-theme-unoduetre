@@ -103,20 +103,20 @@
     "tab.inactiveBackground": "#00000000",
     "tab.inactiveForeground": "#ecd1fa7f",
     "tab.unfocusedActiveBorder": "#1fad96",
-    "terminal.ansiBlack": "#b18ec3",
+    "terminal.ansiBlack": "#a880bc",
     "terminal.ansiBlue": "#a077ed",
-    "terminal.ansiBrightBlack": "#b18ec3",
+    "terminal.ansiBrightBlack": "#a880bc",
     "terminal.ansiBrightBlue": "#a077ed",
     "terminal.ansiBrightCyan": "#70bfe8",
     "terminal.ansiBrightGreen": "#77b89c",
     "terminal.ansiBrightMagenta": "#e077e0",
-    "terminal.ansiBrightRed": "#e47e9d",
+    "terminal.ansiBrightRed": "#df658a",
     "terminal.ansiBrightWhite": "#f2f2f2",
     "terminal.ansiBrightYellow": "#e09ea0",
     "terminal.ansiCyan": "#70bfe8",
     "terminal.ansiGreen": "#77b89c",
     "terminal.ansiMagenta": "#e077e0",
-    "terminal.ansiRed": "#e47e9d",
+    "terminal.ansiRed": "#df658a",
     "terminal.ansiWhite": "#f2f2f2",
     "terminal.ansiYellow": "#e09ea0",
     "terminal.background": "#331e3e",
@@ -157,7 +157,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#d379b4",
+        "foreground": "#cf6eae",
         "fontStyle": ""
       }
     },
@@ -165,7 +165,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#d294bd",
+        "foreground": "#c474a8",
         "fontStyle": ""
       }
     },
