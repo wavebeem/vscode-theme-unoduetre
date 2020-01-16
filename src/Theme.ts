@@ -114,11 +114,9 @@ export default abstract class Theme {
     if (percent === 100) {
       return color;
     }
-    const ratio = percent / 100;
-    const scaled = Math.floor(255 * ratio);
-    const hex = scaled.toString(16);
-    const alpha = hex.length < 2 ? `0${hex}` : hex;
-    return color + alpha;
+    return tinycolor(color)
+      .setAlpha(percent / 100)
+      .toHex8String();
   }
 
   config() {

@@ -1,3 +1,7 @@
+# 3.15.2
+
+- Fixes transparent colors very slightly
+
 # 3.15.1
 
 - Fixed overcorrected contrast
