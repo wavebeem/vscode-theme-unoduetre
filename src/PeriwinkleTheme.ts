@@ -67,7 +67,3 @@ export default class BubbleGumTheme extends Theme {
     return ThemeType.LIGHT;
   }
 }
-
-// cool
-// stuff
-// ok

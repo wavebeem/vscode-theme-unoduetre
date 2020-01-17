@@ -1,51 +1,57 @@
-# 3.15.2
+# v3.16.0
+
+- Nature theme had become very dull and boring looking after the accessibility
+  update, so I changed the hues around a bit; hopefully it's still thematically
+  appropriate and fun
+
+# v3.15.2
 
 - Fixes transparent colors very slightly
 
-# 3.15.1
+# v3.15.1
 
 - Fixed overcorrected contrast
 
-# 3.15.0
+# v3.15.0
 
 - Ensures WCAG AA small contrast compliance on text for better accessibility
 
-# 3.14.0
+# v3.14.0
 
 - Better activity sidebar and tab colors
 
-# 3.13.0
+# v3.13.0
 
 - No more dark status bars, back to just the regular theme colors
 
-# 3.12.0
+# v3.12.0
 
 - Back to dark border on light theme status bars
 
-# 3.11.0
+# v3.11.0
 
 - Darkens backgrounds on light themes
 - Raises contrast on all borders
 - Light border on light theme status borders
 
-# 3.10.0
+# v3.10.0
 
 - Changes the colors for the Nature theme to be much more blue tinted
 
-# 3.9.4
+# v3.9.4
 
 - Fixes bug where "errored" files in the sidebar had the wrong color
 
-# 3.9.0
+# v3.9.0
 
 - Back to a dark status bar to avoid theme clashes
 
-# 3.8.0
+# v3.8.0
 
 - More subtle shadows
 - Better tab bar theming (adds borders, uses bottom border)
 
-# 3.7.0
+# v3.7.0
 
 - Better support for Go, C++, C#, Haskell, Rust
 - Adds new "Sprinkles" theme
