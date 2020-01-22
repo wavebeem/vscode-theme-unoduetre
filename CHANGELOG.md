@@ -1,3 +1,8 @@
+# v3.17.0
+
+- Light theme code comments are a little easier to differentiate from plain text
+  now
+
 # v3.16.0
 
 - Nature theme had become very dull and boring looking after the accessibility

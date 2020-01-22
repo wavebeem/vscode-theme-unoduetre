@@ -165,7 +165,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#8b5996",
+        "foreground": "#9650a5",
         "fontStyle": ""
       }
     },
