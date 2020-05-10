@@ -1,6 +1,11 @@
 import fs from "fs";
 import tinycolor from "tinycolor2";
 
+// WCAG AA minimum contrast values
+// https://webaim.org/resources/contrastchecker/
+const CONTRAST_TEXT = 4.5;
+const CONTRAST_UI = 3;
+
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
   for (const key of Object.keys(obj).sort()) {
@@ -36,7 +41,6 @@ export interface Palette {
   blue: string;
   purple: string;
   white: string;
-  black: string;
   red: string;
   cyan: string;
   transparent: string;
@@ -119,7 +123,29 @@ export default abstract class Theme {
       .toHex8String();
   }
 
+  uiColorKeys(): (keyof Palette)[] {
+    return [
+      "border1",
+      "cyan",
+      "yellow",
+      "orange",
+      "blue",
+      "purple",
+      "red",
+      "cyan",
+    ];
+  }
+
   config() {
+    const p = this.palette;
+    for (const k of this.uiColorKeys()) {
+      p[k] = this.fixContrast(p[k], this.bg, CONTRAST_UI);
+    }
+    this.palette.tFG = this.fixContrast(
+      this.palette.tFG,
+      this.palette.tBG,
+      CONTRAST_TEXT
+    );
     return {
       // This is the base theme from VSCode (light / dark / high contrast)
       type: this.themeType(),
@@ -136,7 +162,7 @@ export default abstract class Theme {
       "activityBar.border": p.border0,
       "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
-      "activityBar.inactiveForeground": this.dilute(p.fg, 40),
+      "activityBar.inactiveForeground": this.dilute(p.fg, 60),
       "activityBarBadge.background": p.accent0,
       "activityBarBadge.foreground": p.white,
       "activityBar.activeBorder": p.accent0,
@@ -280,9 +306,13 @@ export default abstract class Theme {
     };
   }
 
-  tintedAnsiLight(color: string): AnsiColors {
+  tintedAnsiLight(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.fixContrast(this.mix(this.hsl(h, s, l), color, 20));
+      return this.fixContrast(
+        this.mix(this.hsl(h, s, l), color, 20),
+        bg,
+        CONTRAST_TEXT
+      );
     };
     return {
       tBlack: tintedHsl(0, 0, 0),
@@ -296,9 +326,13 @@ export default abstract class Theme {
     };
   }
 
-  tintedAnsiDark(color: string): AnsiColors {
+  tintedAnsiDark(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.fixContrast(this.mix(this.hsl(h, s, l), color, 20));
+      return this.fixContrast(
+        this.mix(this.hsl(h, s, l), color, 20),
+        bg,
+        CONTRAST_TEXT
+      );
     };
     return {
       tBlack: tintedHsl(0, 0, 20),
@@ -356,7 +390,7 @@ export default abstract class Theme {
       "editor.inactiveSelectionBackground": p.textSelectionBG,
       "editor.wordHighlightBackground": this.dilute(p.blue, 15),
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
-      "editorOverviewRuler.border": p.transparent,
+      "editorOverviewRuler.border": p.ruler,
       "editorCursor.foreground": p.accent1,
       "editorGroup.border": p.border0,
       "editorGroupHeader.tabsBackground": p.bg,
@@ -382,7 +416,7 @@ export default abstract class Theme {
   themeTabs() {
     const p = this.palette;
     return {
-      // "tab.border": p.border0,
+      "tab.border": p.border0,
       "editorGroupHeader.tabsBorder": p.border0,
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
@@ -398,6 +432,10 @@ export default abstract class Theme {
   colors() {
     const p = this.palette;
     return {
+      // contrastBorder: p.border0,
+      "editor.tokenColorCustomizations": {
+        semanticHighlighting: true,
+      },
       focusBorder: p.accent0,
       "widget.shadow": p.shadow1,
       ...this.themeScrollbar(),
@@ -436,12 +474,11 @@ export default abstract class Theme {
     };
   }
 
-  fixContrast(color: string): string {
-    const bg = tinycolor(this.bg);
-    const isDark = bg.isDark();
+  fixContrast(color: string, bg: string, minimum: number): string {
+    const isDark = tinycolor(bg).isDark();
     const step = 1;
     const fg = tinycolor(color);
-    while (!tinycolor.isReadable(fg, bg)) {
+    while (tinycolor.readability(fg, bg) < minimum) {
       if (isDark) {
         fg.lighten(step);
       } else {
@@ -455,7 +492,9 @@ export default abstract class Theme {
   }
 
   safeRamp(hue: number): string[] {
-    return this.ramp(hue).map((color) => this.fixContrast(color));
+    return this.ramp(hue).map((color) =>
+      this.fixContrast(color, this.bg, CONTRAST_TEXT)
+    );
   }
 
   tokenColors(): TokenColor[] {

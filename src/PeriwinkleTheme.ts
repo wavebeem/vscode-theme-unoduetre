@@ -1,7 +1,6 @@
 import Theme, { ThemeType, Palette } from "./Theme";
 
 const white = "#ffffff";
-const black = "#000000";
 const yellow = "#f1c40f";
 const red = "#cc0000";
 const cyan = "#00bcd4";
@@ -22,14 +21,13 @@ export default class BubbleGumTheme extends Theme {
     blue: "#3498db",
     purple: "#9b59b6",
     white: white,
-    black: black,
     red: red,
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: this.gray(94),
+    tBG: this.bg,
     tFG: this.hsl(bgHue, 80, 25),
-    ...this.tintedAnsiLight(this.hsl(bgHue, 80, 50)),
+    ...this.tintedAnsiLight(this.bg, this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: this.hsl(320, 80, 40),
     fg: this.hsl(bgHue, 80, 25),

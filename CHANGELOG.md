@@ -1,3 +1,7 @@
+# v3.18.0
+
+- More automatic contrast fixes
+
 # v3.17.0
 
 - Light theme code comments are a little easier to differentiate from plain text

@@ -1,7 +1,6 @@
 import Theme, { ThemeType, Palette } from "./Theme";
 
 const white = "#ffffff";
-const black = "#000000";
 const cyan = "#5bf1ff";
 const yellow = "#fcd435";
 const transparent = "#00000000";
@@ -22,14 +21,13 @@ export default class SprinklesTheme extends Theme {
     blue: "#8cd1ff",
     purple: "#e1a2f9",
     white: white,
-    black: black,
     red: "#ff6666",
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: this.gray(18),
+    tBG: this.bg,
     tFG: this.hsl(bgHue, 90, 90),
-    ...this.tintedAnsiDark(this.hsl(bgHue, 80, 50)),
+    ...this.tintedAnsiDark(this.bg, this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.tre, 70, 40),
     accent1: this.hsl(hueAccent2, 100, 60),
     fg: this.hsl(bgHue, 80, 90),
