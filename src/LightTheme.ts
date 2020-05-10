@@ -52,7 +52,7 @@ export default class LightTheme extends Theme {
     accentFocusBG: this.hsl(this.tre, 50, 80),
     widgetBG: white,
     widgetBorder: this.dilute(black, 50),
-    ruler: this.dilute(black, 10)
+    ruler: this.dilute(black, 10),
   };
 
   ramp(hue: number) {
@@ -60,7 +60,7 @@ export default class LightTheme extends Theme {
       this.hsl(hue, 95, 35),
       this.hsl(hue, 75, 45),
       this.hsl(hue, 50, 60),
-      this.hsl(hue, 35, 70)
+      this.hsl(hue, 35, 70),
     ];
   }
 

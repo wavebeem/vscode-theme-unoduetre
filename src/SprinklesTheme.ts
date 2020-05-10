@@ -47,7 +47,7 @@ export default class SprinklesTheme extends Theme {
     accentFocusBG: this.hsl(this.tre, 35, 35),
     widgetBG: this.gray(25),
     widgetBorder: this.gray(60),
-    ruler: this.hsla(bgHue, 60, 70, 10)
+    ruler: this.hsla(bgHue, 60, 70, 10),
   };
 
   gray(l: number) {
@@ -59,7 +59,7 @@ export default class SprinklesTheme extends Theme {
       this.hsl(hue, 80, 70),
       this.hsl(hue, 60, 65),
       this.hsl(hue, 50, 55),
-      this.hsl(hue, 40, 50)
+      this.hsl(hue, 40, 50),
     ];
   }
 

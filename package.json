@@ -74,11 +74,11 @@
 	"author": "Brian Mock <brian@mockbrian.com>",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^13.1.7",
+		"@types/node": "^13.13.5",
 		"@types/tinycolor2": "^1.4.2",
-		"npm-check": "^5.9.0",
+		"npm-check": "^5.9.2",
 		"tinycolor2": "^1.4.1",
-		"typescript": "^3.7.4"
+		"typescript": "^3.8.3"
 	},
 	"__metadata": {
 		"id": "e18a4366-db45-4ced-ba20-d6316dc6c79b",

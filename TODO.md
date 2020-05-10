@@ -1,5 +1,5 @@
-* Rulers vs borders?
-* Drag and drop colors
-* Test in as many languages as possible for consistent look and feel
-  * Bash "support" and subshells maybe?
-  * Shebang coloration
+- Rulers vs borders?
+- Drag and drop colors
+- Test in as many languages as possible for consistent look and feel
+  - Bash "support" and subshells maybe?
+  - Shebang coloration

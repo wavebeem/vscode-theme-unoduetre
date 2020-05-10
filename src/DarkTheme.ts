@@ -52,7 +52,7 @@ export default class DarkTheme extends Theme {
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(30),
     widgetBorder: this.gray(60),
-    ruler: this.gray(24)
+    ruler: this.gray(24),
   };
 
   ramp(hue: number) {
@@ -60,7 +60,7 @@ export default class DarkTheme extends Theme {
       this.hsl(hue, 80, 65),
       this.hsl(hue + 4, 70, 60),
       this.hsl(hue + 12, 40, 50),
-      this.hsl(hue + 16, 30, 45)
+      this.hsl(hue + 16, 30, 45),
     ];
   }
 

@@ -16,7 +16,7 @@ export interface Style {
 
 export enum ThemeType {
   LIGHT = "light",
-  DARK = "dark"
+  DARK = "dark",
 }
 
 export interface AnsiColors {
@@ -126,7 +126,7 @@ export default abstract class Theme {
       // These are the UI override colors
       colors: sortedObject(this.colors()),
       // These are the color for syntax highlighting
-      tokenColors: this.tokenColors()
+      tokenColors: this.tokenColors(),
     };
   }
 
@@ -141,7 +141,7 @@ export default abstract class Theme {
       "activityBarBadge.foreground": p.white,
       "activityBar.activeBorder": p.accent0,
       "tab.activeBorder": p.accent0,
-      "activityBar.activeBackground": this.dilute(p.accent0, 10)
+      "activityBar.activeBackground": this.dilute(p.accent0, 10),
     };
   }
 
@@ -164,7 +164,7 @@ export default abstract class Theme {
       // the Notification Center.
       "notifications.border": undefined,
       // Notification links foreground color.
-      "notificationLink.foreground": p.cyan
+      "notificationLink.foreground": p.cyan,
     };
   }
 
@@ -177,7 +177,7 @@ export default abstract class Theme {
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "list.focusBackground": p.accentFocusBG,
-      "list.hoverBackground": this.dilute(p.accent0, 10)
+      "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
 
@@ -201,7 +201,7 @@ export default abstract class Theme {
       "terminal.ansiMagenta": p.tMagenta,
       "terminal.ansiRed": p.tRed,
       "terminal.ansiWhite": p.tWhite,
-      "terminal.ansiYellow": p.tYellow
+      "terminal.ansiYellow": p.tYellow,
     };
   }
 
@@ -212,7 +212,7 @@ export default abstract class Theme {
       "gitDecoration.deletedResourceForeground": this.mix(p.red, p.fg, 20),
       "gitDecoration.untrackedResourceForeground": this.mix(p.blue, p.fg, 20),
       "gitDecoration.conflictingResourceForeground": this.mix(p.cyan, p.fg, 20),
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40)
+      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40),
     };
   }
 
@@ -226,7 +226,7 @@ export default abstract class Theme {
       "statusBar.background": p.bg,
       "statusBar.debuggingBackground": p.bg,
       "statusBar.noFolderBackground": p.bg,
-      "statusBar.foreground": p.fg
+      "statusBar.foreground": p.fg,
     };
   }
 
@@ -234,7 +234,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "badge.foreground": p.white,
-      "badge.background": p.accent0
+      "badge.background": p.accent0,
     };
   }
 
@@ -256,7 +256,7 @@ export default abstract class Theme {
       // in the find widget).
       "editor.findRangeHighlightBorder": undefined,
       // Background color of the border around highlighted ranges.
-      "editor.rangeHighlightBorder": undefined
+      "editor.rangeHighlightBorder": undefined,
     };
   }
 
@@ -266,7 +266,7 @@ export default abstract class Theme {
       "scrollbar.shadow": p.shadow0,
       "scrollbarSlider.background": this.dilute(p.fg, 30),
       "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
-      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60)
+      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60),
     };
   }
 
@@ -276,7 +276,7 @@ export default abstract class Theme {
       "dropdown.background": p.inputBG,
       "dropdown.listBackground": p.widgetBG,
       "dropdown.border": p.border1,
-      "dropdown.foreground": p.fg
+      "dropdown.foreground": p.fg,
     };
   }
 
@@ -292,7 +292,7 @@ export default abstract class Theme {
       tBlue: tintedHsl(250, 75, 55),
       tMagenta: tintedHsl(310, 70, 50),
       tCyan: tintedHsl(180, 75, 40),
-      tWhite: this.hsl(0, 0, 95)
+      tWhite: this.hsl(0, 0, 95),
     };
   }
 
@@ -308,7 +308,7 @@ export default abstract class Theme {
       tBlue: tintedHsl(250, 75, 75),
       tMagenta: tintedHsl(310, 75, 75),
       tCyan: tintedHsl(180, 75, 65),
-      tWhite: this.hsl(0, 0, 95)
+      tWhite: this.hsl(0, 0, 95),
     };
   }
 
@@ -324,7 +324,7 @@ export default abstract class Theme {
       "activityBar.dropBackground": color,
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
-      "panel.dropBackground": color
+      "panel.dropBackground": color,
     };
   }
 
@@ -333,7 +333,7 @@ export default abstract class Theme {
     return {
       "button.background": p.accent0,
       "button.foreground": p.white,
-      "button.hoverBackground": undefined
+      "button.hoverBackground": undefined,
     };
   }
 
@@ -364,7 +364,7 @@ export default abstract class Theme {
       "editorIndentGuide.background": p.ruler,
       "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
       "editorLineNumber.foreground": this.dilute(p.fg, 30),
-      "editorLineNumber.activeForeground": p.fg
+      "editorLineNumber.activeForeground": p.fg,
     };
   }
 
@@ -375,7 +375,7 @@ export default abstract class Theme {
       "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": p.border0
+      "titleBar.border": p.border0,
     };
   }
 
@@ -391,7 +391,7 @@ export default abstract class Theme {
       "tab.activeBackground": this.dilute(p.accent0, 10),
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.fg, 50)
+      "tab.inactiveForeground": this.dilute(p.fg, 50),
     };
   }
 
@@ -432,7 +432,7 @@ export default abstract class Theme {
       "debugToolBar.background": p.widgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
-      ...this.themeTerminal()
+      ...this.themeTerminal(),
     };
   }
 
@@ -455,7 +455,7 @@ export default abstract class Theme {
   }
 
   safeRamp(hue: number): string[] {
-    return this.ramp(hue).map(color => this.fixContrast(color));
+    return this.ramp(hue).map((color) => this.fixContrast(color));
   }
 
   tokenColors(): TokenColor[] {
@@ -470,8 +470,8 @@ export default abstract class Theme {
         scopes: [
           // Function call
           "meta.function-call entity.name.function",
-          "source.go entity.name.function"
-        ]
+          "source.go entity.name.function",
+        ],
       },
       {
         name: "Uno1",
@@ -479,8 +479,8 @@ export default abstract class Theme {
         scopes: [
           // Operators
           "keyword.operator",
-          "storage.type.function.arrow"
-        ]
+          "storage.type.function.arrow",
+        ],
       },
       {
         name: "Uno2",
@@ -518,8 +518,8 @@ export default abstract class Theme {
           // Regexp fancy stuff
           "punctuation.definition.character-class",
           "punctuation.definition.group",
-          "keyword.control.anchor.regexp"
-        ]
+          "keyword.control.anchor.regexp",
+        ],
       },
       {
         name: "Uno3",
@@ -559,8 +559,8 @@ export default abstract class Theme {
           "markup.quote",
 
           // Separator
-          "meta.separator"
-        ]
+          "meta.separator",
+        ],
       },
       {
         name: "Uno4",
@@ -568,8 +568,8 @@ export default abstract class Theme {
         scopes: [
           // Comment
           "comment",
-          "punctuation.definition.comment"
-        ]
+          "punctuation.definition.comment",
+        ],
       },
       {
         name: "Uno1Bold",
@@ -587,8 +587,8 @@ export default abstract class Theme {
           "keyword.type",
 
           // Storage (var)
-          "storage"
-        ]
+          "storage",
+        ],
       },
       {
         name: "Uno2Bold",
@@ -602,16 +602,16 @@ export default abstract class Theme {
           "meta.selector entity.other.attribute-name.id",
           "meta.selector entity.other.attribute-name.class",
           "meta.selector entity.other.attribute-name.pseudo-class",
-          "meta.selector entity.name.tag"
-        ]
+          "meta.selector entity.name.tag",
+        ],
       },
       {
         name: "Uno2Italic",
         settings: this.style(uno2, "italic"),
         scopes: [
           // Italic
-          "markup.italic"
-        ]
+          "markup.italic",
+        ],
       },
       {
         name: "Due1",
@@ -642,8 +642,8 @@ export default abstract class Theme {
 
           // Link URL
           "meta.link",
-          "markup.underline.link"
-        ]
+          "markup.underline.link",
+        ],
       },
       {
         name: "Due2",
@@ -664,8 +664,8 @@ export default abstract class Theme {
           "beginning.punctuation.definition.list",
 
           // Colors
-          "constant.other.color"
-        ]
+          "constant.other.color",
+        ],
       },
       {
         name: "Due1Bold",
@@ -685,8 +685,8 @@ export default abstract class Theme {
           "entity.name.class",
           "entity.name.type.class",
           "entity.name.type.module",
-          "entity.other.inherited-class"
-        ]
+          "entity.other.inherited-class",
+        ],
       },
       {
         name: "Tre1",
@@ -695,16 +695,16 @@ export default abstract class Theme {
           // Strings
           "string",
           "punctuation.definition.string",
-          "support.constant.property-value"
-        ]
+          "support.constant.property-value",
+        ],
       },
       {
         name: "Default",
         settings: this.style(p.fg),
         scopes: [
           // String interpolation
-          "meta.embedded"
-        ]
+          "meta.embedded",
+        ],
       },
       {
         name: "Broken",
@@ -713,23 +713,23 @@ export default abstract class Theme {
           // Broken stuff
           "invalid.broken",
           "invalid.deprecated",
-          "invalid.unimplemented"
-        ]
-      }
+          "invalid.unimplemented",
+        ],
+      },
     ];
     return tc
-      .map(x => ({
+      .map((x) => ({
         name: x.name,
         scope: x.scopes.join(", "),
-        settings: x.settings
+        settings: x.settings,
       }))
-      .filter(x => x.scope);
+      .filter((x) => x.scope);
   }
 
   style(color: string, ...fontStyle: string[]): Style {
     return {
       foreground: color,
-      fontStyle: fontStyle.join(" ")
+      fontStyle: fontStyle.join(" "),
     };
   }
 

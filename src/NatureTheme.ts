@@ -47,7 +47,7 @@ export default class NatureTheme extends Theme {
     accentFocusBG: this.hsl(this.due, 50, 80),
     widgetBG: this.gray(98),
     widgetBorder: this.gray(50),
-    ruler: this.hsla(bgHue, 60, 30, 10)
+    ruler: this.hsla(bgHue, 60, 30, 10),
   };
 
   gray(l: number) {
@@ -59,7 +59,7 @@ export default class NatureTheme extends Theme {
       this.hsl(hue, 95, 35),
       this.hsl(hue + 4, 75, 45),
       this.hsl(hue + 12, 50, 60),
-      this.hsl(hue + 16, 35, 70)
+      this.hsl(hue + 16, 35, 70),
     ];
   }
 

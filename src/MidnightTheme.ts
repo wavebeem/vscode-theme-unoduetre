@@ -47,7 +47,7 @@ export default class MidnightTheme extends Theme {
     accentFocusBG: this.hsl(this.due, 35, 35),
     widgetBG: this.gray(25),
     widgetBorder: this.gray(60),
-    ruler: this.hsla(bgHue, 60, 70, 10)
+    ruler: this.hsla(bgHue, 60, 70, 10),
   };
 
   gray(l: number) {
@@ -59,7 +59,7 @@ export default class MidnightTheme extends Theme {
       this.hsl(hue, 80, 65),
       this.hsl(hue + 4, 70, 60),
       this.hsl(hue + 12, 40, 50),
-      this.hsl(hue + 16, 30, 45)
+      this.hsl(hue + 16, 30, 45),
     ];
   }
 
