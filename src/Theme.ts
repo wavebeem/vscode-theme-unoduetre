@@ -433,9 +433,6 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       // contrastBorder: p.border0,
-      "editor.tokenColorCustomizations": {
-        semanticHighlighting: true,
-      },
       focusBorder: p.accent0,
       "widget.shadow": p.shadow1,
       ...this.themeScrollbar(),

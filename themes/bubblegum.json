@@ -28,9 +28,6 @@
     "editor.lineHighlightBackground": "#730d730a",
     "editor.rangeHighlightBackground": "#cd6d171a",
     "editor.selectionBackground": "#40bfbf4d",
-    "editor.tokenColorCustomizations": {
-      "semanticHighlighting": true
-    },
     "editor.wordHighlightBackground": "#268fd526",
     "editor.wordHighlightStrongBackground": "#9b59b633",
     "editorBracketMatch.background": "#00bcd459",
@@ -245,5 +242,6 @@
         "fontStyle": "bold"
       }
     }
-  ]
+  ],
+  "semanticHighlighting": true
 }
