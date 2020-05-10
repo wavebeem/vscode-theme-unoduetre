@@ -5,6 +5,9 @@ import tinycolor from "tinycolor2";
 // https://webaim.org/resources/contrastchecker/
 const CONTRAST_TEXT = 4.5;
 const CONTRAST_UI = 3;
+const CONTRAST_UI_LOW = 2;
+
+const USE_HIGH_CONTRAST = false;
 
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
@@ -123,8 +126,9 @@ export default abstract class Theme {
       .toHex8String();
   }
 
-  uiColorKeys(): (keyof Palette)[] {
-    return [
+  config() {
+    const p = this.palette;
+    const uiColorKeys: (keyof Palette)[] = [
       "border1",
       "cyan",
       "yellow",
@@ -134,13 +138,14 @@ export default abstract class Theme {
       "red",
       "cyan",
     ];
-  }
-
-  config() {
-    const p = this.palette;
-    for (const k of this.uiColorKeys()) {
+    for (const k of uiColorKeys) {
       p[k] = this.fixContrast(p[k], this.bg, CONTRAST_UI);
     }
+    this.palette.border0 = this.fixContrast(
+      this.palette.border0,
+      this.palette.bg,
+      USE_HIGH_CONTRAST ? CONTRAST_UI : CONTRAST_UI_LOW
+    );
     this.palette.tFG = this.fixContrast(
       this.palette.tFG,
       this.palette.tBG,
@@ -162,7 +167,7 @@ export default abstract class Theme {
       "activityBar.border": p.border0,
       "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
-      "activityBar.inactiveForeground": this.dilute(p.fg, 60),
+      "activityBar.inactiveForeground": this.dilute(p.fg, 50),
       "activityBarBadge.background": p.accent0,
       "activityBarBadge.foreground": p.white,
       "activityBar.activeBorder": p.accent0,
@@ -432,7 +437,8 @@ export default abstract class Theme {
   colors() {
     const p = this.palette;
     return {
-      // contrastBorder: p.border0,
+      contrastBorder: USE_HIGH_CONTRAST ? p.border0 : undefined,
+      contrastActiveBorder: USE_HIGH_CONTRAST ? p.accent0 : undefined,
       focusBorder: p.accent0,
       "widget.shadow": p.shadow1,
       ...this.themeScrollbar(),
