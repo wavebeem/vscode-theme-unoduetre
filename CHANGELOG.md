@@ -1,3 +1,7 @@
+# v3.19.0
+
+- The Light and Dark themes have more standard terminal color palettes now
+
 # v3.18.0
 
 - More automatic contrast fixes

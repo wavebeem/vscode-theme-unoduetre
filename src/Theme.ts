@@ -327,7 +327,7 @@ export default abstract class Theme {
       tBlue: tintedHsl(250, 75, 55),
       tMagenta: tintedHsl(310, 70, 50),
       tCyan: tintedHsl(180, 75, 40),
-      tWhite: this.hsl(0, 0, 95),
+      tWhite: this.hsl(0, 0, 90),
     };
   }
 
@@ -340,14 +340,14 @@ export default abstract class Theme {
       );
     };
     return {
-      tBlack: tintedHsl(0, 0, 20),
+      tBlack: this.hsl(0, 0, 20),
       tRed: tintedHsl(0, 75, 65),
       tGreen: tintedHsl(135, 65, 65),
       tYellow: tintedHsl(30, 75, 75),
       tBlue: tintedHsl(250, 75, 75),
       tMagenta: tintedHsl(310, 75, 75),
       tCyan: tintedHsl(180, 75, 65),
-      tWhite: this.hsl(0, 0, 95),
+      tWhite: tintedHsl(0, 0, 95),
     };
   }
 
