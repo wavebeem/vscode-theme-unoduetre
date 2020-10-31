@@ -466,6 +466,8 @@ export default abstract class Theme {
       "sideBar.border": p.border0,
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
+      "tree.indentGuidesStroke": p.border0,
       ...this.themeTabs(),
       "pickerGroup.border": p.border0,
       ...this.themeGit(),

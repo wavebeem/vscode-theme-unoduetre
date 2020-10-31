@@ -1,3 +1,7 @@
+# v3.20.0
+
+- Workbench tree indent guides are the correct color now
+
 # v3.19.0
 
 - The Light and Dark themes have more standard terminal color palettes now

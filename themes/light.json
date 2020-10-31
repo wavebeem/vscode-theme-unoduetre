@@ -127,6 +127,7 @@
     "titleBar.border": "#adadad",
     "titleBar.inactiveBackground": "#f5f5f5",
     "titleBar.inactiveForeground": "#333333b3",
+    "tree.indentGuidesStroke": "#adadad",
     "widget.shadow": "#999999b3"
   },
   "tokenColors": [
