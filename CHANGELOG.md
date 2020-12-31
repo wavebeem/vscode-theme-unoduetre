@@ -1,3 +1,8 @@
+# v3.21.0
+
+- Slightly decreases secondary UI border contrast
+- Adds additional UI borders, such as between sidebar views
+
 # v3.20.0
 
 - Workbench tree indent guides are the correct color now

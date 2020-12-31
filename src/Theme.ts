@@ -5,7 +5,7 @@ import tinycolor from "tinycolor2";
 // https://webaim.org/resources/contrastchecker/
 const CONTRAST_TEXT = 4.5;
 const CONTRAST_UI = 3;
-const CONTRAST_UI_LOW = 2;
+const CONTRAST_UI_LOW = 1.5;
 
 const USE_HIGH_CONTRAST = false;
 
@@ -437,7 +437,7 @@ export default abstract class Theme {
   colors() {
     const p = this.palette;
     return {
-      contrastBorder: USE_HIGH_CONTRAST ? p.border0 : undefined,
+      contrastBorder: p.border0,
       contrastActiveBorder: USE_HIGH_CONTRAST ? p.accent0 : undefined,
       focusBorder: p.accent0,
       "widget.shadow": p.shadow1,
