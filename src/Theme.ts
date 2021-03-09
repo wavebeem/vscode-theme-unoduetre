@@ -207,7 +207,7 @@ export default abstract class Theme {
       "list.highlightForeground": p.accent1,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "list.focusBackground": p.accentFocusBG,
+      "quickInput.list.focusBackground": p.accentFocusBG,
       "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
