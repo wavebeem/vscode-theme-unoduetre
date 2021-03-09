@@ -1,3 +1,7 @@
+# v3.21.1
+
+- Fixes list background to match new theme format
+
 # v3.21.0
 
 - Slightly decreases secondary UI border contrast
