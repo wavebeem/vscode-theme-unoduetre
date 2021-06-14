@@ -1,3 +1,7 @@
+# v3.22.5
+
+- Fixes color issues in lists and popup menus
+
 # v3.21.4
 
 - Security updates

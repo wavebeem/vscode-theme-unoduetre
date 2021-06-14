@@ -205,10 +205,11 @@ export default abstract class Theme {
       "list.errorForeground": p.red,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
-      "list.activeSelectionForeground": p.fg,
+      "list.activeSelectionForeground": p.white,
       "list.activeSelectionBackground": p.activeSelectionBG,
+      "list.inactiveSelectionForeground": p.fg,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "quickInput.list.focusBackground": p.accentFocusBG,
+      "quickInput.list.focusBackground": p.activeSelectionBG,
       "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
