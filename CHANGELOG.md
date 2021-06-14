@@ -1,3 +1,7 @@
+# v3.21.4
+
+- Security updates
+
 # v3.21.3
 
 - No changes, re-publishing due to an extension publishing bug
