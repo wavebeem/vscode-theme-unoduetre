@@ -59,6 +59,7 @@
     "input.placeholderForeground": "#730d7366",
     "inputOption.activeBorder": "#1fadad",
     "list.activeSelectionBackground": "#40bfbf",
+    "list.activeSelectionForeground": "#730d73",
     "list.dropBackground": "#1fadad4d",
     "list.errorForeground": "#cc0000",
     "list.highlightForeground": "#387594",

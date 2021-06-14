@@ -1,3 +1,9 @@
+# v3.21.2
+
+- Fixes a bug where the list item foreground color is now assumed to be white,
+  regardless of background color, for active selection items, causing unreadable
+  text for light themes
+
 # v3.21.1
 
 - Fixes list background to match new theme format

@@ -205,6 +205,7 @@ export default abstract class Theme {
       "list.errorForeground": p.red,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
+      "list.activeSelectionForeground": p.fg,
       "list.activeSelectionBackground": p.activeSelectionBG,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
       "quickInput.list.focusBackground": p.accentFocusBG,
