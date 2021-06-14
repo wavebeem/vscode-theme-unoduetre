@@ -1,3 +1,7 @@
+# v3.21.3
+
+- No changes, re-publishing due to an extension publishing bug
+
 # v3.21.2
 
 - Fixes a bug where the list item foreground color is now assumed to be white,
