@@ -3,11 +3,11 @@ import tinycolor from "tinycolor2";
 
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
-const CONTRAST_TEXT = 4.5;
-const CONTRAST_UI = 3;
-const CONTRAST_UI_LOW = 1.5;
-
-const USE_HIGH_CONTRAST = false;
+const Contrast = {
+  text: 4.5,
+  ui: 3,
+  decoration: 1.5,
+} as const;
 
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
@@ -62,10 +62,6 @@ export interface Palette {
   fg: string;
   bg: string;
   inputBG: string;
-  border0: string;
-  border1: string;
-  shadow0: string;
-  shadow1: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
   textSelectionBG: string;
@@ -124,10 +120,25 @@ export default abstract class Theme {
       .toHex8String();
   }
 
+  border0() {
+    return this.fixContrast({
+      fg: this.palette.bg,
+      bg: this.palette.bg,
+      type: "decoration",
+    });
+  }
+
+  border1() {
+    return this.fixContrast({
+      fg: this.palette.bg,
+      bg: this.palette.bg,
+      type: "ui",
+    });
+  }
+
   config() {
     const p = this.palette;
     const uiColorKeys: (keyof Palette)[] = [
-      "border1",
       "cyan",
       "yellow",
       "orange",
@@ -137,18 +148,18 @@ export default abstract class Theme {
       "cyan",
     ];
     for (const k of uiColorKeys) {
-      p[k] = this.fixContrast(p[k], this.bg, CONTRAST_UI);
+      p[k] = this.fixContrast({
+        fg: p[k],
+        bg: this.bg,
+        type: "ui",
+      });
     }
-    this.palette.border0 = this.fixContrast(
-      this.palette.border0,
-      this.palette.bg,
-      USE_HIGH_CONTRAST ? CONTRAST_UI : CONTRAST_UI_LOW
-    );
-    this.palette.tFG = this.fixContrast(
-      this.palette.tFG,
-      this.palette.bg,
-      CONTRAST_TEXT
-    );
+    this.palette.tFG = this.fixContrast({
+      // fg: this.palette.tFG,
+      fg: this.palette.bg,
+      bg: this.palette.bg,
+      type: "text",
+    });
     return {
       // This is the base theme from VSCode (light / dark / high contrast)
       type: this.themeType(),
@@ -162,7 +173,7 @@ export default abstract class Theme {
   themeActivityBar() {
     const p = this.palette;
     return {
-      "activityBar.border": p.border0,
+      "activityBar.border": this.border0(),
       "activityBar.background": p.bg,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
@@ -250,7 +261,7 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": p.border0,
+      "statusBar.border": this.border0(),
       "statusBarItem.activeBackground": this.dilute(p.fg, 20),
       "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
       "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
@@ -294,7 +305,7 @@ export default abstract class Theme {
   themeScrollbar() {
     const p = this.palette;
     return {
-      "scrollbar.shadow": p.shadow0,
+      "scrollbar.shadow": this.shadow0(),
       "scrollbarSlider.background": this.dilute(p.fg, 30),
       "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
       "scrollbarSlider.activeBackground": this.dilute(p.fg, 60),
@@ -306,18 +317,18 @@ export default abstract class Theme {
     return {
       "dropdown.background": p.inputBG,
       "dropdown.listBackground": p.widgetBG,
-      "dropdown.border": p.border1,
+      "dropdown.border": this.border1(),
       "dropdown.foreground": p.fg,
     };
   }
 
   tintedAnsiLight(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.fixContrast(
-        this.mix(this.hsl(h, s, l), color, 20),
+      return this.fixContrast({
+        fg: this.mix(this.hsl(h, s, l), color, 20),
         bg,
-        CONTRAST_TEXT
-      );
+        type: "text",
+      });
     };
     return {
       tBlack: tintedHsl(0, 0, 0),
@@ -333,11 +344,11 @@ export default abstract class Theme {
 
   tintedAnsiDark(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
-      return this.fixContrast(
-        this.mix(this.hsl(h, s, l), color, 20),
+      return this.fixContrast({
+        fg: this.mix(this.hsl(h, s, l), color, 20),
         bg,
-        CONTRAST_TEXT
-      );
+        type: "text",
+      });
     };
     return {
       tBlack: this.hsl(0, 0, 20),
@@ -397,7 +408,7 @@ export default abstract class Theme {
       "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
       "editorOverviewRuler.border": p.ruler,
       "editorCursor.foreground": p.accent1,
-      "editorGroup.border": p.border0,
+      "editorGroup.border": this.border0(),
       "editorGroupHeader.tabsBackground": p.bg,
       "editorRuler.foreground": p.ruler,
       "editorIndentGuide.background": p.ruler,
@@ -414,15 +425,15 @@ export default abstract class Theme {
       "titleBar.activeForeground": p.fg,
       "titleBar.inactiveBackground": p.bg,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": p.border0,
+      "titleBar.border": this.border0(),
     };
   }
 
   themeTabs() {
     const p = this.palette;
     return {
-      "tab.border": p.border0,
-      "editorGroupHeader.tabsBorder": p.border0,
+      "tab.border": this.border0(),
+      "editorGroupHeader.tabsBorder": this.border0(),
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
@@ -437,12 +448,12 @@ export default abstract class Theme {
   colors() {
     const p = this.palette;
     return {
-      contrastBorder: p.border0,
-      contrastActiveBorder: USE_HIGH_CONTRAST ? p.accent0 : undefined,
+      contrastBorder: this.border0(),
+      contrastActiveBorder: undefined,
       focusBorder: p.accent0,
-      "widget.shadow": p.shadow1,
+      "widget.shadow": this.shadow1(),
       ...this.themeScrollbar(),
-      "input.border": p.border1,
+      "input.border": this.border1(),
       "input.background": p.inputBG,
       "input.placeholderForeground": this.dilute(p.fg, 40),
       "progressBar.background": p.accent0,
@@ -457,19 +468,19 @@ export default abstract class Theme {
       ...this.themeButton(),
       foreground: p.fg,
       "panel.background": p.bg,
-      "panel.border": p.border0,
+      "panel.border": this.border0(),
       "panelTitle.activeBorder": this.dilute(p.fg, 50),
       "panelTitle.activeForeground": p.fg,
       "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
-      "sideBar.border": p.border0,
+      "sideBar.border": this.border0(),
       "sideBar.background": p.bg,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
       // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
-      "tree.indentGuidesStroke": p.border0,
+      "tree.indentGuidesStroke": this.border0(),
       ...this.themeTabs(),
-      "pickerGroup.border": p.border0,
+      "pickerGroup.border": this.border0(),
       ...this.themeGit(),
       ...this.themeTitlebar(),
       "debugToolBar.background": p.widgetBG,
@@ -479,26 +490,58 @@ export default abstract class Theme {
     };
   }
 
-  fixContrast(color: string, bg: string, minimum: number): string {
+  fixContrast({
+    fg,
+    bg,
+    type,
+  }: {
+    fg: string;
+    bg: string;
+    type: keyof typeof Contrast;
+  }): string {
     const isDark = tinycolor(bg).isDark();
     const step = 1;
-    const fg = tinycolor(color);
-    while (tinycolor.readability(fg, bg) < minimum) {
+    const ret = tinycolor(fg);
+    while (tinycolor.readability(ret, bg) < Contrast[type]) {
       if (isDark) {
-        fg.lighten(step);
+        ret.lighten(step);
       } else {
-        fg.darken(step);
+        ret.darken(step);
       }
     }
-    if (fg.getAlpha() < 1) {
-      return fg.toHex8String();
+    if (ret.getAlpha() < 1) {
+      return ret.toHex8String();
     }
-    return fg.toHexString();
+    return ret.toHexString();
+  }
+
+  shadow0(): string {
+    const ret = tinycolor(this.palette.bg);
+    if (ret.isDark()) {
+      ret.darken(50);
+      ret.setAlpha(0.8);
+    } else {
+      ret.darken(50);
+      ret.setAlpha(0.4);
+    }
+    return ret.toHex8String();
+  }
+
+  shadow1(): string {
+    const ret = tinycolor(this.palette.bg);
+    if (ret.isDark()) {
+      ret.darken(50);
+      ret.setAlpha(0.8);
+    } else {
+      ret.darken(50);
+      ret.setAlpha(0.2);
+    }
+    return ret.toHex8String();
   }
 
   safeRamp(hue: number): string[] {
     return this.ramp(hue).map((color) =>
-      this.fixContrast(color, this.bg, CONTRAST_TEXT)
+      this.fixContrast({ fg: color, bg: this.bg, type: "text" })
     );
   }
 
