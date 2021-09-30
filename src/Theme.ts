@@ -48,8 +48,6 @@ export interface Palette {
   cyan: string;
   transparent: string;
   __NO__: string;
-  // TODO: Remove this color?
-  tBG: string;
   tFG: string;
   tBlack: string;
   tRed: string;
@@ -148,7 +146,7 @@ export default abstract class Theme {
     );
     this.palette.tFG = this.fixContrast(
       this.palette.tFG,
-      this.palette.tBG,
+      this.palette.bg,
       CONTRAST_TEXT
     );
     return {
@@ -218,7 +216,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "terminal.foreground": p.tFG,
-      "terminal.background": p.tBG,
+      "terminal.background": p.bg,
       "terminal.ansiBlack": p.tBlack,
       "terminal.ansiBlue": p.tBlue,
       "terminal.ansiBrightBlack": p.tBlack,

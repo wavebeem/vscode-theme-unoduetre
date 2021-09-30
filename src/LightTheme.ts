@@ -24,7 +24,6 @@ export default class LightTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: this.bg,
     tFG: "#5c668e",
     ...this.tintedAnsiLight(this.bg, "#ffffff"),
     accent0: this.hsl(this.tre, 70, 40),

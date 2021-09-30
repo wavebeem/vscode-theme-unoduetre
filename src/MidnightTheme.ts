@@ -25,7 +25,6 @@ export default class MidnightTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: this.bg,
     tFG: this.hsl(bgHue, 90, 90),
     ...this.tintedAnsiDark(this.bg, this.hsl(bgHue, 80, 50)),
     accent0: this.hsl(this.due, 70, 40),

@@ -23,7 +23,6 @@ export default class DarkTheme extends Theme {
     cyan: cyan,
     transparent: transparent,
     __NO__: "#ff00ff",
-    tBG: this.bg,
     tFG: this.gray(80),
     ...this.tintedAnsiDark(this.bg, "#000000"),
     accent0: this.hsl(this.due, 70, 40),
