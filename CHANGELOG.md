@@ -1,3 +1,7 @@
+# v3.22.1
+
+- Last deployment was botched
+
 # v3.22.0
 
 - Tweaked shadows and borders a bit
