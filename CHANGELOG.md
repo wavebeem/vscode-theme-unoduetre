@@ -1,3 +1,7 @@
+# v3.22.0
+
+- Tweaked shadows and borders a bit
+
 # v3.21.5
 
 - Fixes color issues in lists and popup menus
