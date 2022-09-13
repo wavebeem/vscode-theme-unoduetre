@@ -146,7 +146,7 @@ export default abstract class Theme {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.statusbarBG,
-      type: "ui",
+      type: "decoration",
     });
   }
 

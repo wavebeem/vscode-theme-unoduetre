@@ -13,7 +13,7 @@ export default class BubbleGumTheme extends Theme {
   due = 330;
   tre = 180;
 
-  bg = this.gray(96);
+  bg = this.gray(94);
 
   palette: Palette = {
     yellow: yellow,

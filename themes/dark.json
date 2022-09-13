@@ -93,7 +93,7 @@
     "sideBar.dropBackground": "#1fada24d",
     "sideBarSectionHeader.background": "#e6e6e608",
     "statusBar.background": "#1f1f1f",
-    "statusBar.border": "#696969",
+    "statusBar.border": "#3d3d3d",
     "statusBar.debuggingBackground": "#1f1f1f",
     "statusBar.foreground": "#f5f5f5",
     "statusBar.noFolderBackground": "#1f1f1f",

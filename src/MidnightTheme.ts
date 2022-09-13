@@ -13,7 +13,7 @@ export default class MidnightTheme extends Theme {
   due = 190;
   tre = 330;
 
-  bg = this.gray(18);
+  bg = this.gray(20);
 
   palette: Palette = {
     yellow: yellow,

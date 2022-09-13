@@ -12,7 +12,7 @@ export default class LightTheme extends Theme {
   due = 215;
   tre = 125;
 
-  bg = this.gray(96);
+  bg = this.gray(94);
 
   palette: Palette = {
     yellow: yellow,
@@ -30,9 +30,9 @@ export default class LightTheme extends Theme {
     accent1: red,
     fg: this.gray(20),
     bg: this.bg,
-    titlebarBG: this.gray(90),
-    sidebarBG: this.gray(94),
-    activityBarBG: this.gray(92),
+    titlebarBG: this.gray(88),
+    sidebarBG: this.gray(92),
+    activityBarBG: this.gray(90),
     statusbarBG: this.gray(20),
     statusbarFG: this.gray(96),
     inputBG: white,
