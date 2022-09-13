@@ -1,6 +1,5 @@
 import fs from "fs";
 import tinycolor from "tinycolor2";
-// TODO: Use colord and lch colors!
 
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
@@ -414,7 +413,7 @@ export default abstract class Theme {
       "editor.foreground": p.fg,
       "editor.background": p.bg,
       "editorLink.activeForeground": p.cyan,
-      "editor.lineHighlightBackground": this.dilute(p.fg, 4),
+      "editor.lineHighlightBackground": p.sidebarBG,
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
       "editor.selectionBackground": p.textSelectionBG,
       "editor.inactiveSelectionBackground": p.textSelectionBG,
@@ -423,7 +422,6 @@ export default abstract class Theme {
       "editorOverviewRuler.border": p.ruler,
       "editorCursor.foreground": p.accent1,
       "editorGroup.border": this.border0(),
-      "editorGroupHeader.tabsBackground": p.bg,
       "editorRuler.foreground": p.ruler,
       "editorIndentGuide.background": p.ruler,
       "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
@@ -445,25 +443,28 @@ export default abstract class Theme {
 
   themeTabs() {
     const p = this.palette;
+    const bg = p.bg;
     return {
       "tab.border": this.border0(),
       "editorGroupHeader.tabsBorder": this.border0(),
+      "editorGroupHeader.noTabsBackground": p.bg,
+      "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.dilute(p.accent0, 10),
+      "tab.activeBackground": this.mix(p.bg, p.accent0, 20),
       "tab.activeForeground": p.fg,
-      "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.fg, 50),
+      "tab.inactiveBackground": bg,
+      "tab.inactiveForeground": this.dilute(p.fg, 80),
     };
   }
 
   colors() {
     const p = this.palette;
     return {
-      contrastBorder: this.border0(),
-      contrastActiveBorder: undefined,
+      // contrastBorder: this.border0(),
+      // contrastActiveBorder: undefined,
       focusBorder: p.accent0,
       "widget.shadow": this.shadow1(),
       ...this.themeScrollbar(),
@@ -490,7 +491,7 @@ export default abstract class Theme {
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
       "sideBar.border": this.border0(),
       "sideBar.background": p.sidebarBG,
-      "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      "sideBarSectionHeader.background": p.titlebarBG,
       // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
       "tree.indentGuidesStroke": this.border0(),
       ...this.themeTabs(),
