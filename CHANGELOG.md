@@ -1,3 +1,7 @@
+# v4.0.0
+
+- Adds more colors to the UI
+
 # v3.22.1
 
 - Last deployment was botched
