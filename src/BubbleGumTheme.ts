@@ -13,7 +13,7 @@ export default class BubbleGumTheme extends Theme {
   due = 330;
   tre = 180;
 
-  bg = this.gray(94);
+  bg = this.gray(96);
 
   palette: Palette = {
     yellow: yellow,
@@ -31,6 +31,11 @@ export default class BubbleGumTheme extends Theme {
     accent1: this.hsl(200, 45, 40),
     fg: this.hsl(bgHue, 80, 25),
     bg: this.bg,
+    titlebarBG: this.gray(88),
+    sidebarBG: this.gray(92),
+    activityBarBG: this.gray(90),
+    statusbarBG: this.gray(20),
+    statusbarFG: this.gray(96),
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,

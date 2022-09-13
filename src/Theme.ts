@@ -1,5 +1,6 @@
 import fs from "fs";
 import tinycolor from "tinycolor2";
+// TODO: Use colord and lch colors!
 
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
@@ -62,6 +63,11 @@ export interface Palette {
   fg: string;
   bg: string;
   inputBG: string;
+  titlebarBG: string;
+  sidebarBG: string;
+  activityBarBG: string;
+  statusbarBG: string;
+  statusbarFG: string;
   activeSelectionBG: string;
   inactiveSelectionBG: string;
   textSelectionBG: string;
@@ -136,6 +142,14 @@ export default abstract class Theme {
     });
   }
 
+  borderStatus() {
+    return this.fixContrast({
+      fg: this.palette.bg,
+      bg: this.palette.statusbarBG,
+      type: "ui",
+    });
+  }
+
   config() {
     const p = this.palette;
     const uiColorKeys: (keyof Palette)[] = [
@@ -174,7 +188,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "activityBar.border": this.border0(),
-      "activityBar.background": p.bg,
+      "activityBar.background": p.activityBarBG,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
       "activityBarBadge.background": p.accent0,
@@ -261,14 +275,14 @@ export default abstract class Theme {
   themeStatusBar() {
     const p = this.palette;
     return {
-      "statusBar.border": this.border0(),
-      "statusBarItem.activeBackground": this.dilute(p.fg, 20),
-      "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
-      "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
-      "statusBar.background": p.bg,
-      "statusBar.debuggingBackground": p.bg,
-      "statusBar.noFolderBackground": p.bg,
-      "statusBar.foreground": p.fg,
+      "statusBar.border": this.borderStatus(),
+      "statusBarItem.activeBackground": this.dilute(p.statusbarFG, 20),
+      "statusBarItem.hoverBackground": this.dilute(p.statusbarFG, 10),
+      "statusBarItem.prominentBackground": this.dilute(p.statusbarFG, 30),
+      "statusBar.background": p.statusbarBG,
+      "statusBar.debuggingBackground": p.statusbarBG,
+      "statusBar.noFolderBackground": p.statusbarBG,
+      "statusBar.foreground": p.statusbarFG,
     };
   }
 
@@ -421,9 +435,9 @@ export default abstract class Theme {
   themeTitlebar() {
     const p = this.palette;
     return {
-      "titleBar.activeBackground": p.bg,
+      "titleBar.activeBackground": p.titlebarBG,
       "titleBar.activeForeground": p.fg,
-      "titleBar.inactiveBackground": p.bg,
+      "titleBar.inactiveBackground": p.titlebarBG,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
       "titleBar.border": this.border0(),
     };
@@ -475,7 +489,7 @@ export default abstract class Theme {
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
       "sideBar.border": this.border0(),
-      "sideBar.background": p.bg,
+      "sideBar.background": p.sidebarBG,
       "sideBarSectionHeader.background": this.dilute(p.fg, 3),
       // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
       "tree.indentGuidesStroke": this.border0(),
