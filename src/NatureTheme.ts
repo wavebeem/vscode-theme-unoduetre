@@ -33,7 +33,6 @@ export default class NatureTheme extends Theme {
     bg: this.bg,
     titlebarBG: this.gray(88),
     sidebarBG: this.gray(92),
-    activityBarBG: this.gray(90),
     statusbarBG: this.gray(20),
     statusbarFG: this.gray(96),
     inputBG: this.gray(98),

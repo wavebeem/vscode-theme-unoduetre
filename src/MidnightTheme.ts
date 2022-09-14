@@ -33,7 +33,6 @@ export default class MidnightTheme extends Theme {
     bg: this.bg,
     titlebarBG: this.gray(12),
     sidebarBG: this.gray(16),
-    activityBarBG: this.gray(14),
     statusbarBG: this.gray(12),
     statusbarFG: this.gray(96),
     inputBG: this.gray(14),

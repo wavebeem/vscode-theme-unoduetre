@@ -64,7 +64,6 @@ export interface Palette {
   inputBG: string;
   titlebarBG: string;
   sidebarBG: string;
-  activityBarBG: string;
   statusbarBG: string;
   statusbarFG: string;
   activeSelectionBG: string;
@@ -187,7 +186,7 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "activityBar.border": this.border0(),
-      "activityBar.background": p.activityBarBG,
+      "activityBar.background": p.sidebarBG,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
       "activityBarBadge.background": p.accent0,
@@ -443,7 +442,7 @@ export default abstract class Theme {
 
   themeTabs() {
     const p = this.palette;
-    const bg = p.bg;
+    const bg = p.sidebarBG;
     return {
       "tab.border": this.border0(),
       "editorGroupHeader.tabsBorder": this.border0(),
@@ -531,25 +530,17 @@ export default abstract class Theme {
   }
 
   shadow0(): string {
-    const ret = tinycolor(this.palette.bg);
-    if (ret.isDark()) {
-      ret.darken(50);
-      ret.setAlpha(0.8);
-    } else {
-      ret.darken(50);
-      ret.setAlpha(0.4);
-    }
-    return ret.toHex8String();
+    return tinycolor({ r: 0, g: 0, b: 0, a: 0 }).toHex8String();
   }
 
   shadow1(): string {
     const ret = tinycolor(this.palette.bg);
     if (ret.isDark()) {
       ret.darken(50);
-      ret.setAlpha(0.8);
+      ret.setAlpha(0.6);
     } else {
       ret.darken(50);
-      ret.setAlpha(0.2);
+      ret.setAlpha(0.6);
     }
     return ret.toHex8String();
   }
