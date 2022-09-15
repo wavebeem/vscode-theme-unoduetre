@@ -1,5 +1,5 @@
 import fs from "fs";
-import tinycolor from "tinycolor2";
+import { colord } from "colord";
 
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
@@ -104,7 +104,7 @@ export default abstract class Theme {
   abstract ramp(hue: number): string[];
 
   hsl(h: number, s: number, l: number) {
-    return tinycolor({ h, s, l }).toHexString();
+    return colord({ h, s, l }).toHex();
   }
 
   hsla(h: number, s: number, l: number, a: number) {
@@ -119,9 +119,9 @@ export default abstract class Theme {
     if (percent === 100) {
       return color;
     }
-    return tinycolor(color)
-      .setAlpha(percent / 100)
-      .toHex8String();
+    const rgba = colord(color).toRgb();
+    rgba.a = percent / 100;
+    return colord(rgba).toHex();
   }
 
   border0() {
@@ -374,8 +374,10 @@ export default abstract class Theme {
     };
   }
 
-  mix(a: string, b: string, x: number) {
-    return tinycolor.mix(a, b, x).toHex8String();
+  mix(a: string, b: string, percent: number) {
+    return colord(a)
+      .mix(b, percent / 100)
+      .toHex();
   }
 
   themeDragAndDrop() {
@@ -442,17 +444,17 @@ export default abstract class Theme {
 
   themeTabs() {
     const p = this.palette;
-    const bg = p.sidebarBG;
+    const bg = p.bg;
     return {
-      "tab.border": this.border0(),
-      "editorGroupHeader.tabsBorder": this.border0(),
-      "editorGroupHeader.noTabsBackground": p.bg,
+      "tab.border": bg,
+      "editorGroupHeader.tabsBorder": bg,
+      "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.mix(p.bg, p.accent0, 20),
+      "tab.activeBackground": this.mix(bg, p.accent0, 20),
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": bg,
       "tab.inactiveForeground": this.dilute(p.fg, 80),
@@ -513,36 +515,35 @@ export default abstract class Theme {
     bg: string;
     type: keyof typeof Contrast;
   }): string {
-    const isDark = tinycolor(bg).isDark();
+    const isDark = colord(bg).isDark();
     const step = 1;
-    const ret = tinycolor(fg);
-    while (tinycolor.readability(ret, bg) < Contrast[type]) {
+    const lch = colord(fg).toLch();
+    while (colord(lch).contrast(bg) < Contrast[type]) {
       if (isDark) {
-        ret.lighten(step);
+        lch.l += step;
       } else {
-        ret.darken(step);
+        lch.l -= step;
       }
     }
-    if (ret.getAlpha() < 1) {
-      return ret.toHex8String();
-    }
-    return ret.toHexString();
+    return colord(lch).toHex();
   }
 
   shadow0(): string {
-    return tinycolor({ r: 0, g: 0, b: 0, a: 0 }).toHex8String();
+    const lch = colord(this.palette.bg).toLch();
+    lch.l -= 50;
+    if (colord(lch).isDark()) {
+      lch.a = 0.8;
+    } else {
+      lch.a = 0.4;
+    }
+    return colord(lch).toHex();
   }
 
   shadow1(): string {
-    const ret = tinycolor(this.palette.bg);
-    if (ret.isDark()) {
-      ret.darken(50);
-      ret.setAlpha(0.6);
-    } else {
-      ret.darken(50);
-      ret.setAlpha(0.6);
-    }
-    return ret.toHex8String();
+    const lch = colord(this.palette.bg).toLch();
+    lch.l -= 50;
+    lch.a = 0.6;
+    return colord(lch).toHex();
   }
 
   safeRamp(hue: number): string[] {

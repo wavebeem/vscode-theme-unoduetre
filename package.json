@@ -75,14 +75,15 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^15.12.2",
-		"@types/tinycolor2": "^1.4.2",
 		"npm-check": "^5.9.2",
-		"tinycolor2": "^1.4.2",
 		"typescript": "^4.3.2"
 	},
 	"__metadata": {
 		"id": "e18a4366-db45-4ced-ba20-d6316dc6c79b",
 		"publisherDisplayName": "Brian Mock",
 		"publisherId": "dd905317-d989-4b98-9bc3-3cc12206629d"
+	},
+	"dependencies": {
+		"colord": "^2.9.3"
 	}
 }

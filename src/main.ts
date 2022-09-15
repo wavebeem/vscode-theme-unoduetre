@@ -1,11 +1,12 @@
-import SprinklesTheme from "./SprinklesTheme";
-import LightTheme from "./LightTheme";
-import DarkTheme from "./DarkTheme";
-import NatureTheme from "./NatureTheme";
+import "./extend-colord";
 import BubbleGumTheme from "./BubbleGumTheme";
+import DarkTheme from "./DarkTheme";
+import LightTheme from "./LightTheme";
 import MidnightTheme from "./MidnightTheme";
+import NatureTheme from "./NatureTheme";
 import OceanTheme from "./OceanTheme";
 import PeriwinkleTheme from "./PeriwinkleTheme";
+import SprinklesTheme from "./SprinklesTheme";
 
 new LightTheme().saveAs("light");
 new DarkTheme().saveAs("dark");
