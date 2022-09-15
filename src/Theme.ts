@@ -447,7 +447,7 @@ export default abstract class Theme {
     const bg = p.bg;
     return {
       "tab.border": bg,
-      "editorGroupHeader.tabsBorder": bg,
+      "editorGroupHeader.tabsBorder": this.border0(),
       "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
@@ -530,8 +530,9 @@ export default abstract class Theme {
 
   shadow0(): string {
     const lch = colord(this.palette.bg).toLch();
+    const isDark = colord(lch).isDark();
     lch.l -= 50;
-    if (colord(lch).isDark()) {
+    if (isDark) {
       lch.a = 0.8;
     } else {
       lch.a = 0.4;
