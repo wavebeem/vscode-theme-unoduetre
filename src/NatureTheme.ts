@@ -57,7 +57,7 @@ export default class NatureTheme extends Theme {
       this.hsl(hue + 4, 75, 45),
       this.hsl(hue + 12, 50, 60),
       this.hsl(hue + 16, 35, 70),
-    ];
+    ] as const;
   }
 
   themeType() {

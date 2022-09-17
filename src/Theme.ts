@@ -6,7 +6,7 @@ import { colord } from "colord";
 const Contrast = {
   text: 4.5,
   ui: 3,
-  decoration: 1.5,
+  decoration: 1.75,
 } as const;
 
 function sortedObject<T>(obj: Record<string, T>) {
@@ -101,7 +101,7 @@ export default abstract class Theme {
   abstract bg: string;
   abstract palette: Palette;
   abstract themeType(): ThemeType;
-  abstract ramp(hue: number): string[];
+  abstract ramp(hue: number): readonly [string, string, string, string];
 
   hsl(h: number, s: number, l: number) {
     return colord({ h, s, l }).toHex();
@@ -389,6 +389,9 @@ export default abstract class Theme {
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
       "panel.dropBackground": color,
+      "panel.border": this.border0(),
+      "panelSection.border": this.border0(),
+      "panelSectionHeader.border": this.border0(),
     };
   }
 
@@ -518,7 +521,7 @@ export default abstract class Theme {
     const isDark = colord(bg).isDark();
     const step = 1;
     const lch = colord(fg).toLch();
-    while (colord(lch).contrast(bg) < Contrast[type]) {
+    while (colord(lch).contrast(bg) < Contrast[type] && lch.l > 0) {
       if (isDark) {
         lch.l += step;
       } else {
@@ -535,7 +538,7 @@ export default abstract class Theme {
     if (isDark) {
       lch.a = 0.8;
     } else {
-      lch.a = 0.4;
+      lch.a = 0.2;
     }
     return colord(lch).toHex();
   }

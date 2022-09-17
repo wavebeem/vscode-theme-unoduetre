@@ -67,6 +67,7 @@
 		"upgrade": "npm-check -u",
 		"prebuild": "tsc",
 		"build": "node build/main.js",
+		"package": "npm run build && vsce package",
 		"postversion": "git push --follow-tags && vsce publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

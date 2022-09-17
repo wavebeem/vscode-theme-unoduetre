@@ -57,7 +57,7 @@ export default class SprinklesTheme extends Theme {
       this.hsl(hue, 60, 65),
       this.hsl(hue, 50, 55),
       this.hsl(hue, 40, 50),
-    ];
+    ] as const;
   }
 
   themeType() {

@@ -51,7 +51,7 @@ export default class DarkTheme extends Theme {
       this.hsl(hue + 4, 70, 60),
       this.hsl(hue + 12, 40, 50),
       this.hsl(hue + 16, 30, 45),
-    ];
+    ] as const;
   }
 
   themeType() {
