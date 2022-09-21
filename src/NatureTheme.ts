@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const yellow = "#f1c40f";
@@ -8,14 +8,14 @@ const transparent = "#00000000";
 
 const bgHue = 160;
 
-export default class NatureTheme extends Theme {
+export class NatureTheme extends Theme {
   uno = 200;
   due = 70;
   tre = 310;
 
   bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",

@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const cyan = "#5bf1ff";
@@ -8,14 +8,14 @@ const hueAccent2 = 40;
 
 const bgHue = 220;
 
-export default class OceanTheme extends Theme {
+export class OceanTheme extends Theme {
   uno = 160;
   due = 200;
   tre = 30;
 
   bg = this.gray(20);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#f79e51",
     blue: "#8cd1ff",

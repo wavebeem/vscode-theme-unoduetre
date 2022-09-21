@@ -1,3 +1,7 @@
+// Read the docs to see all the lovely color options!
+//
+// https://code.visualstudio.com/api/references/theme-color
+
 import fs from "fs";
 import { colord } from "colord";
 
@@ -9,6 +13,8 @@ const Contrast = {
   decoration: 1.75,
 } as const;
 
+// Sort the JSON object so things always come out in the same order, and minor
+// refactoring doesn't cause the build files to change
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
   for (const key of Object.keys(obj).sort()) {
@@ -17,7 +23,7 @@ function sortedObject<T>(obj: Record<string, T>) {
   return ret;
 }
 
-export interface Style {
+interface Style {
   foreground: string;
   fontStyle: string;
 }
@@ -27,7 +33,7 @@ export enum ThemeType {
   DARK = "dark",
 }
 
-export interface AnsiColors {
+interface AnsiColors {
   tBlack: string;
   tRed: string;
   tGreen: string;
@@ -38,7 +44,7 @@ export interface AnsiColors {
   tWhite: string;
 }
 
-export interface Palette {
+export interface ThemePalette {
   yellow: string;
   orange: string;
   blue: string;
@@ -93,12 +99,12 @@ export interface AlmostTokenColor {
   settings: Style;
 }
 
-export default abstract class Theme {
+export abstract class Theme {
   abstract uno: number;
   abstract due: number;
   abstract tre: number;
   abstract bg: string;
-  abstract palette: Palette;
+  abstract palette: ThemePalette;
   abstract themeType(): ThemeType;
   abstract ramp(hue: number): readonly [string, string, string, string];
 
@@ -149,7 +155,7 @@ export default abstract class Theme {
 
   config() {
     const p = this.palette;
-    const uiColorKeys: (keyof Palette)[] = [
+    const uiColorKeys: (keyof ThemePalette)[] = [
       "cyan",
       "yellow",
       "orange",
@@ -419,6 +425,7 @@ export default abstract class Theme {
     const x = 0;
     [x, [x, [x, [x, [x, [x, x], x], x], x], x], x];
     [x, [x, [x, [x, [x, [x]]]]]];
+    //
     ////////////////////////////////////////////////////////////////////////////
     const b1 = this.safeRamp(this.uno)[1];
     const b2 = this.safeRamp(this.due)[1];
@@ -444,7 +451,7 @@ export default abstract class Theme {
       "editorBracketMatch.border": p.bracketMatchBorder,
       "editor.findMatchBackground": this.dilute(p.orange, 50),
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
-      "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
+      "editor.findRangeHighlightBackground": this.dilute(p.orange, 50),
       "editor.foreground": p.fg,
       "editor.background": p.bg,
       "editorLink.activeForeground": p.cyan,

@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const yellow = "#f1c40f";
@@ -8,14 +8,14 @@ const transparent = "#00000000";
 
 const bgHue = 240;
 
-export default class BubbleGumTheme extends Theme {
+export class PeriwinkleTheme extends Theme {
   uno = 290;
   due = 200;
   tre = 110;
 
   bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",

@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const black = "#000000";
@@ -7,14 +7,14 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-export default class LightTheme extends Theme {
+export class LightTheme extends Theme {
   uno = 320;
   due = 215;
   tre = 125;
 
   bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",

@@ -1,8 +1,8 @@
 # v4.0.0
 
 - Adds more colors to the UI
+- Improve contrast for buttons and selected list items
 - Made the tab bar more subtle
-- Improved color math for shadows and accessible UI borders (LCH)
 
 # v3.22.1
 

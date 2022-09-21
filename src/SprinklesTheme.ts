@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const cyan = "#5bf1ff";
@@ -8,14 +8,14 @@ const hueAccent2 = 170;
 
 const bgHue = 280;
 
-export default class SprinklesTheme extends Theme {
+export class SprinklesTheme extends Theme {
   uno = 320;
   due = 45;
   tre = 170;
 
   bg = this.gray(20);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#f79e51",
     blue: "#8cd1ff",
