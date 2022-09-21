@@ -38,7 +38,6 @@ export default class NatureTheme extends Theme {
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    activeSelectionBG: this.hsla(this.due, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.due, 50, 50, 30),
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
     accentFocusBG: this.hsl(this.due, 50, 80),

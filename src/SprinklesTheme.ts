@@ -38,7 +38,6 @@ export default class SprinklesTheme extends Theme {
     inputBG: this.gray(14),
     bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    activeSelectionBG: this.hsla(this.tre, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.tre, 50, 50, 30),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     accentFocusBG: this.hsl(this.tre, 35, 35),

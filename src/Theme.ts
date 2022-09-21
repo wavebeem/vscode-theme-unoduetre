@@ -66,7 +66,6 @@ export interface Palette {
   sidebarBG: string;
   statusbarBG: string;
   statusbarFG: string;
-  activeSelectionBG: string;
   inactiveSelectionBG: string;
   textSelectionBG: string;
   accentFocusBG: string;
@@ -225,11 +224,17 @@ export default abstract class Theme {
       "list.errorForeground": p.red,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
-      "list.activeSelectionForeground": p.white,
-      "list.activeSelectionBackground": p.activeSelectionBG,
+      "list.focusHighlightForeground": p.bg,
+      "list.activeSelectionIconForeground": p.bg,
+      "list.activeSelectionForeground": p.bg,
+      "list.activeSelectionBackground": p.fg,
+      "list.focusSelectionForeground": p.bg,
+      "list.focusSelectionBackground": p.fg,
       "list.inactiveSelectionForeground": p.fg,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "quickInput.list.focusBackground": p.activeSelectionBG,
+      "quickInput.list.focusBackground": p.fg,
+      "quickInput.list.focusForeground": p.bg,
+      "quickInput.list.focusIconForeground": p.bg,
       "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
@@ -271,15 +276,18 @@ export default abstract class Theme {
 
   themeStatusBar() {
     const p = this.palette;
+    const bg = p.statusbarBG;
+    const fg = p.statusbarFG;
+    const border = this.borderStatus();
     return {
-      "statusBar.border": this.borderStatus(),
-      "statusBarItem.activeBackground": this.dilute(p.statusbarFG, 20),
-      "statusBarItem.hoverBackground": this.dilute(p.statusbarFG, 10),
-      "statusBarItem.prominentBackground": this.dilute(p.statusbarFG, 30),
-      "statusBar.background": p.statusbarBG,
-      "statusBar.debuggingBackground": p.statusbarBG,
-      "statusBar.noFolderBackground": p.statusbarBG,
-      "statusBar.foreground": p.statusbarFG,
+      "statusBar.border": border,
+      "statusBarItem.activeBackground": this.dilute(fg, 20),
+      "statusBarItem.hoverBackground": this.dilute(fg, 10),
+      "statusBarItem.prominentBackground": this.dilute(fg, 30),
+      "statusBar.background": bg,
+      "statusBar.debuggingBackground": bg,
+      "statusBar.noFolderBackground": bg,
+      "statusBar.foreground": fg,
     };
   }
 
@@ -317,9 +325,9 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "scrollbar.shadow": this.shadow0(),
-      "scrollbarSlider.background": this.dilute(p.fg, 30),
-      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
-      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60),
+      "scrollbarSlider.background": this.dilute(p.fg, 50),
+      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 60),
+      "scrollbarSlider.activeBackground": this.dilute(p.fg, 70),
     };
   }
 
@@ -473,8 +481,8 @@ export default abstract class Theme {
     const bg = p.bg;
     return {
       "tab.border": bg,
-      "editorGroupHeader.tabsBorder": this.border0(),
-      // "editorGroupHeader.tabsBorder": undefined,
+      // "editorGroupHeader.tabsBorder": this.border0(),
+      "editorGroupHeader.tabsBorder": undefined,
       "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
@@ -559,22 +567,23 @@ export default abstract class Theme {
   }
 
   shadow0(): string {
-    const lch = colord(this.palette.bg).toLch();
-    const isDark = colord(lch).isDark();
-    lch.l -= 50;
+    const hsl = colord(this.palette.bg).toHsl();
+    const isDark = colord(hsl).isDark();
     if (isDark) {
-      lch.a = 0.8;
+      hsl.l -= 50;
+      hsl.a = 0.8;
     } else {
-      lch.a = 0.2;
+      hsl.l -= 30;
+      hsl.a = 0.8;
     }
-    return colord(lch).toHex();
+    return colord(hsl).toHex();
   }
 
   shadow1(): string {
-    const lch = colord(this.palette.bg).toLch();
-    lch.l -= 50;
-    lch.a = 0.6;
-    return colord(lch).toHex();
+    const hsl = colord(this.palette.bg).toHsl();
+    hsl.l -= 50;
+    hsl.a = 0.6;
+    return colord(hsl).toHex();
   }
 
   safeRamp(hue: number): readonly [string, string, string, string] {
