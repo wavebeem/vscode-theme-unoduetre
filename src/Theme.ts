@@ -488,15 +488,15 @@ export abstract class Theme {
     const bg = p.bg;
     return {
       "tab.border": bg,
-      // "editorGroupHeader.tabsBorder": this.border0(),
-      "editorGroupHeader.tabsBorder": undefined,
+      "editorGroupHeader.tabsBorder": this.border0(),
+      "editorGroupHeader.border": this.border0(),
       "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.mix(bg, p.accent0, 20),
+      "tab.activeBackground": p.inactiveSelectionBG,
       "tab.activeForeground": p.fg,
       "tab.inactiveBackground": bg,
       "tab.inactiveForeground": this.dilute(p.fg, 80),
