@@ -4,6 +4,7 @@ import { colord } from "colord";
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
 const Contrast = {
+  high: 10,
   text: 4.5,
   ui: 3,
   decoration: 1.75,
@@ -167,7 +168,6 @@ export default abstract class Theme {
       });
     }
     this.palette.tFG = this.fixContrast({
-      // fg: this.palette.tFG,
       fg: this.palette.bg,
       bg: this.palette.bg,
       type: "text",
@@ -190,7 +190,7 @@ export default abstract class Theme {
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
       "activityBarBadge.background": p.accent0,
-      "activityBarBadge.foreground": p.white,
+      "activityBarBadge.foreground": this.accent0FG(),
       "activityBar.activeBorder": p.accent0,
       "tab.activeBorder": p.accent0,
       "activityBar.activeBackground": this.dilute(p.accent0, 10),
@@ -287,7 +287,7 @@ export default abstract class Theme {
   themeBadge() {
     const p = this.palette;
     return {
-      "badge.foreground": p.white,
+      "badge.foreground": this.accent0FG(),
       "badge.background": p.accent0,
     };
   }
@@ -399,8 +399,41 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "button.background": p.accent0,
-      "button.foreground": p.white,
+      "button.foreground": this.accent0FG(),
       "button.hoverBackground": undefined,
+    };
+  }
+
+  accent0FG() {
+    const p = this.palette;
+    return this.fixContrast({
+      fg: p.accent0,
+      bg: p.accent0,
+      type: "high",
+    });
+  }
+
+  themeBracketColors() {
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // Code just for looking at the colorized braces... sorry!
+    //
+    const x = 0;
+    [x, [x, [x, [x, [x, [x, x], x], x], x], x], x];
+    [x, [x, [x, [x, [x, [x]]]]]];
+    ////////////////////////////////////////////////////////////////////////////
+    const b1 = this.safeRamp(this.uno)[1];
+    const b2 = this.safeRamp(this.due)[1];
+    const b3 = this.safeRamp(this.tre)[1];
+    const p = this.palette;
+    return {
+      "editorBracketHighlight.foreground1": b1,
+      "editorBracketHighlight.foreground2": b2,
+      "editorBracketHighlight.foreground3": b3,
+      "editorBracketHighlight.foreground4": b1,
+      "editorBracketHighlight.foreground5": b2,
+      "editorBracketHighlight.foreground6": b3,
+      "editorBracketHighlight.unexpectedBracket.foreground": p.red,
     };
   }
 
@@ -451,6 +484,7 @@ export default abstract class Theme {
     return {
       "tab.border": bg,
       "editorGroupHeader.tabsBorder": this.border0(),
+      // "editorGroupHeader.tabsBorder": undefined,
       "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
       "tab.activeBorder": p.accent0,
@@ -466,6 +500,16 @@ export default abstract class Theme {
 
   colors() {
     const p = this.palette;
+    p.accent0 = this.fixContrast({
+      fg: p.accent0,
+      bg: p.bg,
+      type: "text",
+    });
+    p.accent1 = this.fixContrast({
+      fg: p.accent1,
+      bg: p.bg,
+      type: "text",
+    });
     return {
       // contrastBorder: this.border0(),
       // contrastActiveBorder: undefined,
@@ -481,6 +525,7 @@ export default abstract class Theme {
       ...this.themeStatusBar(),
       ...this.themeBadge(),
       ...this.themeActivityBar(),
+      ...this.themeBracketColors(),
       ...this.themeEditor(),
       ...this.themeNotifications(),
       ...this.themeDragAndDrop(),
@@ -521,10 +566,12 @@ export default abstract class Theme {
     const isDark = colord(bg).isDark();
     const step = 1;
     const lch = colord(fg).toLch();
-    while (colord(lch).contrast(bg) < Contrast[type] && lch.l > 0) {
-      if (isDark) {
+    if (isDark) {
+      while (colord(lch).contrast(bg) < Contrast[type] && lch.l < 100) {
         lch.l += step;
-      } else {
+      }
+    } else {
+      while (colord(lch).contrast(bg) < Contrast[type] && lch.l > 0) {
         lch.l -= step;
       }
     }
@@ -538,7 +585,7 @@ export default abstract class Theme {
     if (isDark) {
       lch.a = 0.8;
     } else {
-      lch.a = 0.2;
+      lch.a = 0.4;
     }
     return colord(lch).toHex();
   }
@@ -550,10 +597,12 @@ export default abstract class Theme {
     return colord(lch).toHex();
   }
 
-  safeRamp(hue: number): string[] {
-    return this.ramp(hue).map((color) =>
-      this.fixContrast({ fg: color, bg: this.bg, type: "text" })
-    );
+  safeRamp(hue: number): readonly [string, string, string, string] {
+    const fix = (color: string): string => {
+      return this.fixContrast({ fg: color, bg: this.bg, type: "text" });
+    };
+    const [c1, c2, c3, c4] = this.ramp(hue);
+    return [fix(c1), fix(c2), fix(c3), fix(c4)];
   }
 
   tokenColors(): TokenColor[] {
