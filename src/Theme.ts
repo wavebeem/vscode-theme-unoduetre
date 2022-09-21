@@ -82,18 +82,13 @@ export interface ThemePalette {
   ruler: string;
 }
 
-export interface Scope {
-  name: string;
-  scopes: string[];
-}
-
-export interface TokenColor {
+interface TokenColor {
   name: string;
   scope: string;
   settings: Style;
 }
 
-export interface AlmostTokenColor {
+interface AlmostTokenColor {
   name: string;
   scopes: string[];
   settings: Style;
@@ -108,15 +103,15 @@ export abstract class Theme {
   abstract themeType(): ThemeType;
   abstract ramp(hue: number): readonly [string, string, string, string];
 
-  hsl(h: number, s: number, l: number) {
+  hsl(h: number, s: number, l: number): string {
     return colord({ h, s, l }).toHex();
   }
 
-  hsla(h: number, s: number, l: number, a: number) {
+  hsla(h: number, s: number, l: number, a: number): string {
     return this.dilute(this.hsl(h, s, l), a);
   }
 
-  gray(l: number) {
+  gray(l: number): string {
     return this.hsl(0, 0, l);
   }
 
@@ -129,7 +124,7 @@ export abstract class Theme {
     return colord(rgba).toHex();
   }
 
-  border0() {
+  border0(): string {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.bg,
@@ -137,7 +132,7 @@ export abstract class Theme {
     });
   }
 
-  border1() {
+  border1(): string {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.bg,
@@ -145,7 +140,7 @@ export abstract class Theme {
     });
   }
 
-  borderStatus() {
+  borderStatus(): string {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.statusbarBG,
@@ -153,7 +148,14 @@ export abstract class Theme {
     });
   }
 
-  config() {
+  config(): {
+    /** Base theme (e.g. light/dark/high contrast) */
+    type: ThemeType;
+    /** UI colors */
+    colors: Record<string, string | undefined>;
+    /** Syntax highlighting colors */
+    tokenColors: TokenColor[];
+  } {
     const p = this.palette;
     const uiColorKeys: (keyof ThemePalette)[] = [
       "cyan",
@@ -177,11 +179,8 @@ export abstract class Theme {
       type: "text",
     });
     return {
-      // This is the base theme from VSCode (light / dark / high contrast)
       type: this.themeType(),
-      // These are the UI override colors
       colors: sortedObject(this.colors()),
-      // These are the color for syntax highlighting
       tokenColors: this.tokenColors(),
     };
   }
@@ -387,7 +386,7 @@ export abstract class Theme {
     };
   }
 
-  mix(a: string, b: string, percent: number) {
+  mix(a: string, b: string, percent: number): string {
     return colord(a)
       .mix(b, percent / 100)
       .toHex();
@@ -490,8 +489,10 @@ export abstract class Theme {
       "tab.border": bg,
       "editorGroupHeader.tabsBorder": this.border0(),
       "editorGroupHeader.border": this.border0(),
+      "breadcrumb.background": bg,
       "editorGroupHeader.noTabsBackground": bg,
       "editorGroupHeader.tabsBackground": bg,
+      "tab.hoverBackground": this.dilute(p.accent0, 10),
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
@@ -509,6 +510,9 @@ export abstract class Theme {
       // contrastBorder: this.border0(),
       // contrastActiveBorder: undefined,
       focusBorder: p.accent0,
+      "icon.foreground": p.fg,
+      "toolbar.hoverBackground": this.dilute(p.fg, 10),
+      "toolbar.activeBackground": this.shadow0(),
       "widget.shadow": this.shadow1(),
       ...this.themeScrollbar(),
       "input.border": this.border1(),
@@ -876,7 +880,7 @@ export abstract class Theme {
     };
   }
 
-  saveAs(name: string) {
+  saveAs(name: string): void {
     const json = JSON.stringify(this.config(), null, 2);
     fs.writeFileSync(`themes/${name}.json`, json);
   }

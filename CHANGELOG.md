@@ -1,8 +1,10 @@
 # v4.0.0
 
 - Adds more colors to the UI
+  - Especially noticeable for light themes, which feel more colorful now
 - Improve contrast for buttons and selected list items
-- Made the tab bar more subtle
+- The status bar is now dark, even for light themes
+- Changed the tab bar and breadcrumbs bar a lot
 
 # v3.22.1
 
