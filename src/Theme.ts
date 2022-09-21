@@ -4,7 +4,6 @@ import { colord } from "colord";
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
 const Contrast = {
-  high: 10,
   text: 4.5,
   ui: 3,
   decoration: 1.75,
@@ -189,11 +188,11 @@ export default abstract class Theme {
       "activityBar.background": p.sidebarBG,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
-      "activityBarBadge.background": p.accent0,
-      "activityBarBadge.foreground": this.accent0FG(),
-      "activityBar.activeBorder": p.accent0,
-      "tab.activeBorder": p.accent0,
-      "activityBar.activeBackground": this.dilute(p.accent0, 10),
+      "activityBarBadge.background": p.fg,
+      "activityBarBadge.foreground": p.bg,
+      "activityBar.activeBorder": p.fg,
+      "tab.activeBorder": p.fg,
+      "activityBar.activeBackground": this.dilute(p.fg, 10),
     };
   }
 
@@ -287,8 +286,8 @@ export default abstract class Theme {
   themeBadge() {
     const p = this.palette;
     return {
-      "badge.foreground": this.accent0FG(),
-      "badge.background": p.accent0,
+      "badge.foreground": p.bg,
+      "badge.background": p.fg,
     };
   }
 
@@ -398,19 +397,10 @@ export default abstract class Theme {
   themeButton() {
     const p = this.palette;
     return {
-      "button.background": p.accent0,
-      "button.foreground": this.accent0FG(),
+      "button.background": p.fg,
+      "button.foreground": p.bg,
       "button.hoverBackground": undefined,
     };
-  }
-
-  accent0FG() {
-    const p = this.palette;
-    return this.fixContrast({
-      fg: p.accent0,
-      bg: p.accent0,
-      type: "high",
-    });
   }
 
   themeBracketColors() {
@@ -500,16 +490,6 @@ export default abstract class Theme {
 
   colors() {
     const p = this.palette;
-    p.accent0 = this.fixContrast({
-      fg: p.accent0,
-      bg: p.bg,
-      type: "text",
-    });
-    p.accent1 = this.fixContrast({
-      fg: p.accent1,
-      bg: p.bg,
-      type: "text",
-    });
     return {
       // contrastBorder: this.border0(),
       // contrastActiveBorder: undefined,
@@ -519,8 +499,8 @@ export default abstract class Theme {
       "input.border": this.border1(),
       "input.background": p.inputBG,
       "input.placeholderForeground": this.dilute(p.fg, 40),
-      "progressBar.background": p.accent0,
-      "inputOption.activeBorder": p.accent0,
+      "progressBar.background": p.fg,
+      "inputOption.activeBorder": p.fg,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
@@ -585,7 +565,7 @@ export default abstract class Theme {
     if (isDark) {
       lch.a = 0.8;
     } else {
-      lch.a = 0.4;
+      lch.a = 0.2;
     }
     return colord(lch).toHex();
   }
