@@ -545,17 +545,17 @@ export default abstract class Theme {
   }): string {
     const isDark = colord(bg).isDark();
     const step = 1;
-    const lch = colord(fg).toLch();
+    const hsl = colord(fg).toHsl();
     if (isDark) {
-      while (colord(lch).contrast(bg) < Contrast[type] && lch.l < 100) {
-        lch.l += step;
+      while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l < 100) {
+        hsl.l += step;
       }
     } else {
-      while (colord(lch).contrast(bg) < Contrast[type] && lch.l > 0) {
-        lch.l -= step;
+      while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l > 0) {
+        hsl.l -= step;
       }
     }
-    return colord(lch).toHex();
+    return colord(hsl).toHex();
   }
 
   shadow0(): string {
