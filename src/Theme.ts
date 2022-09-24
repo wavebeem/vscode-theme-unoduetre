@@ -237,9 +237,9 @@ export abstract class Theme {
       "list.focusSelectionBackground": p.fg,
       "list.inactiveSelectionForeground": p.fg,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "quickInput.list.focusBackground": p.fg,
-      "quickInput.list.focusForeground": p.bg,
-      "quickInput.list.focusIconForeground": p.bg,
+      "quickInputList.focusBackground": p.fg,
+      "quickInputList.focusForeground": p.bg,
+      "quickInputList.focusIconForeground": p.bg,
       "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
