@@ -1,14 +1,20 @@
+// Read the docs to see all the lovely color options!
+//
+// https://code.visualstudio.com/api/references/theme-color
+
 import fs from "fs";
-import tinycolor from "tinycolor2";
+import { colord } from "colord";
 
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
 const Contrast = {
   text: 4.5,
   ui: 3,
-  decoration: 1.5,
+  decoration: 1.75,
 } as const;
 
+// Sort the JSON object so things always come out in the same order, and minor
+// refactoring doesn't cause the build files to change
 function sortedObject<T>(obj: Record<string, T>) {
   const ret: Record<string, T> = {};
   for (const key of Object.keys(obj).sort()) {
@@ -17,7 +23,7 @@ function sortedObject<T>(obj: Record<string, T>) {
   return ret;
 }
 
-export interface Style {
+interface Style {
   foreground: string;
   fontStyle: string;
 }
@@ -27,7 +33,7 @@ export enum ThemeType {
   DARK = "dark",
 }
 
-export interface AnsiColors {
+interface AnsiColors {
   tBlack: string;
   tRed: string;
   tGreen: string;
@@ -38,7 +44,7 @@ export interface AnsiColors {
   tWhite: string;
 }
 
-export interface Palette {
+export interface ThemePalette {
   yellow: string;
   orange: string;
   blue: string;
@@ -62,7 +68,10 @@ export interface Palette {
   fg: string;
   bg: string;
   inputBG: string;
-  activeSelectionBG: string;
+  titlebarBG: string;
+  sidebarBG: string;
+  statusbarBG: string;
+  statusbarFG: string;
   inactiveSelectionBG: string;
   textSelectionBG: string;
   accentFocusBG: string;
@@ -73,41 +82,36 @@ export interface Palette {
   ruler: string;
 }
 
-export interface Scope {
-  name: string;
-  scopes: string[];
-}
-
-export interface TokenColor {
+interface TokenColor {
   name: string;
   scope: string;
   settings: Style;
 }
 
-export interface AlmostTokenColor {
+interface AlmostTokenColor {
   name: string;
   scopes: string[];
   settings: Style;
 }
 
-export default abstract class Theme {
+export abstract class Theme {
   abstract uno: number;
   abstract due: number;
   abstract tre: number;
   abstract bg: string;
-  abstract palette: Palette;
+  abstract palette: ThemePalette;
   abstract themeType(): ThemeType;
-  abstract ramp(hue: number): string[];
+  abstract ramp(hue: number): readonly [string, string, string, string];
 
-  hsl(h: number, s: number, l: number) {
-    return tinycolor({ h, s, l }).toHexString();
+  hsl(h: number, s: number, l: number): string {
+    return colord({ h, s, l }).toHex();
   }
 
-  hsla(h: number, s: number, l: number, a: number) {
+  hsla(h: number, s: number, l: number, a: number): string {
     return this.dilute(this.hsl(h, s, l), a);
   }
 
-  gray(l: number) {
+  gray(l: number): string {
     return this.hsl(0, 0, l);
   }
 
@@ -115,12 +119,12 @@ export default abstract class Theme {
     if (percent === 100) {
       return color;
     }
-    return tinycolor(color)
-      .setAlpha(percent / 100)
-      .toHex8String();
+    const rgba = colord(color).toRgb();
+    rgba.a = percent / 100;
+    return colord(rgba).toHex();
   }
 
-  border0() {
+  border0(): string {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.bg,
@@ -128,7 +132,7 @@ export default abstract class Theme {
     });
   }
 
-  border1() {
+  border1(): string {
     return this.fixContrast({
       fg: this.palette.bg,
       bg: this.palette.bg,
@@ -136,9 +140,24 @@ export default abstract class Theme {
     });
   }
 
-  config() {
+  borderStatus(): string {
+    return this.fixContrast({
+      fg: this.palette.bg,
+      bg: this.palette.statusbarBG,
+      type: "decoration",
+    });
+  }
+
+  config(): {
+    /** Base theme (e.g. light/dark/high contrast) */
+    type: ThemeType;
+    /** UI colors */
+    colors: Record<string, string | undefined>;
+    /** Syntax highlighting colors */
+    tokenColors: TokenColor[];
+  } {
     const p = this.palette;
-    const uiColorKeys: (keyof Palette)[] = [
+    const uiColorKeys: (keyof ThemePalette)[] = [
       "cyan",
       "yellow",
       "orange",
@@ -155,17 +174,13 @@ export default abstract class Theme {
       });
     }
     this.palette.tFG = this.fixContrast({
-      // fg: this.palette.tFG,
       fg: this.palette.bg,
       bg: this.palette.bg,
       type: "text",
     });
     return {
-      // This is the base theme from VSCode (light / dark / high contrast)
       type: this.themeType(),
-      // These are the UI override colors
       colors: sortedObject(this.colors()),
-      // These are the color for syntax highlighting
       tokenColors: this.tokenColors(),
     };
   }
@@ -174,14 +189,14 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "activityBar.border": this.border0(),
-      "activityBar.background": p.bg,
+      "activityBar.background": p.sidebarBG,
       "activityBar.foreground": p.fg,
       "activityBar.inactiveForeground": this.dilute(p.fg, 50),
-      "activityBarBadge.background": p.accent0,
-      "activityBarBadge.foreground": p.white,
-      "activityBar.activeBorder": p.accent0,
-      "tab.activeBorder": p.accent0,
-      "activityBar.activeBackground": this.dilute(p.accent0, 10),
+      "activityBarBadge.background": p.fg,
+      "activityBarBadge.foreground": p.bg,
+      "activityBar.activeBorder": p.fg,
+      "tab.activeBorder": p.fg,
+      "activityBar.activeBackground": this.dilute(p.fg, 10),
     };
   }
 
@@ -214,11 +229,17 @@ export default abstract class Theme {
       "list.errorForeground": p.red,
       "list.warningForeground": p.yellow,
       "list.highlightForeground": p.accent1,
-      "list.activeSelectionForeground": p.white,
-      "list.activeSelectionBackground": p.activeSelectionBG,
+      "list.focusHighlightForeground": p.bg,
+      "list.activeSelectionIconForeground": p.bg,
+      "list.activeSelectionForeground": p.bg,
+      "list.activeSelectionBackground": p.fg,
+      "list.focusSelectionForeground": p.bg,
+      "list.focusSelectionBackground": p.fg,
       "list.inactiveSelectionForeground": p.fg,
       "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "quickInput.list.focusBackground": p.activeSelectionBG,
+      "quickInputList.focusBackground": p.fg,
+      "quickInputList.focusForeground": p.bg,
+      "quickInputList.focusIconForeground": p.bg,
       "list.hoverBackground": this.dilute(p.accent0, 10),
     };
   }
@@ -260,23 +281,26 @@ export default abstract class Theme {
 
   themeStatusBar() {
     const p = this.palette;
+    const bg = p.statusbarBG;
+    const fg = p.statusbarFG;
+    const border = this.borderStatus();
     return {
-      "statusBar.border": this.border0(),
-      "statusBarItem.activeBackground": this.dilute(p.fg, 20),
-      "statusBarItem.hoverBackground": this.dilute(p.fg, 10),
-      "statusBarItem.prominentBackground": this.dilute(p.fg, 30),
-      "statusBar.background": p.bg,
-      "statusBar.debuggingBackground": p.bg,
-      "statusBar.noFolderBackground": p.bg,
-      "statusBar.foreground": p.fg,
+      "statusBar.border": border,
+      "statusBarItem.activeBackground": this.dilute(fg, 20),
+      "statusBarItem.hoverBackground": this.dilute(fg, 10),
+      "statusBarItem.prominentBackground": this.dilute(fg, 30),
+      "statusBar.background": bg,
+      "statusBar.debuggingBackground": bg,
+      "statusBar.noFolderBackground": bg,
+      "statusBar.foreground": fg,
     };
   }
 
   themeBadge() {
     const p = this.palette;
     return {
-      "badge.foreground": p.white,
-      "badge.background": p.accent0,
+      "badge.foreground": p.bg,
+      "badge.background": p.fg,
     };
   }
 
@@ -306,9 +330,9 @@ export default abstract class Theme {
     const p = this.palette;
     return {
       "scrollbar.shadow": this.shadow0(),
-      "scrollbarSlider.background": this.dilute(p.fg, 30),
-      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 50),
-      "scrollbarSlider.activeBackground": this.dilute(p.fg, 60),
+      "scrollbarSlider.background": this.dilute(p.fg, 50),
+      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 60),
+      "scrollbarSlider.activeBackground": this.dilute(p.fg, 70),
     };
   }
 
@@ -362,8 +386,10 @@ export default abstract class Theme {
     };
   }
 
-  mix(a: string, b: string, x: number) {
-    return tinycolor.mix(a, b, x).toHex8String();
+  mix(a: string, b: string, percent: number): string {
+    return colord(a)
+      .mix(b, percent / 100)
+      .toHex();
   }
 
   themeDragAndDrop() {
@@ -375,15 +401,43 @@ export default abstract class Theme {
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
       "panel.dropBackground": color,
+      "panel.border": this.border0(),
+      "panelSection.border": this.border0(),
+      "panelSectionHeader.border": this.border0(),
     };
   }
 
   themeButton() {
     const p = this.palette;
     return {
-      "button.background": p.accent0,
-      "button.foreground": p.white,
+      "button.background": p.fg,
+      "button.foreground": p.bg,
       "button.hoverBackground": undefined,
+    };
+  }
+
+  themeBracketColors() {
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // Code just for looking at the colorized braces... sorry!
+    //
+    const x = 0;
+    [x, [x, [x, [x, [x, [x, x], x], x], x], x], x];
+    [x, [x, [x, [x, [x, [x]]]]]];
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    const b1 = this.safeRamp(this.uno)[1];
+    const b2 = this.safeRamp(this.due)[1];
+    const b3 = this.safeRamp(this.tre)[1];
+    const p = this.palette;
+    return {
+      "editorBracketHighlight.foreground1": b1,
+      "editorBracketHighlight.foreground2": b2,
+      "editorBracketHighlight.foreground3": b3,
+      "editorBracketHighlight.foreground4": b1,
+      "editorBracketHighlight.foreground5": b2,
+      "editorBracketHighlight.foreground6": b3,
+      "editorBracketHighlight.unexpectedBracket.foreground": p.red,
     };
   }
 
@@ -396,11 +450,11 @@ export default abstract class Theme {
       "editorBracketMatch.border": p.bracketMatchBorder,
       "editor.findMatchBackground": this.dilute(p.orange, 50),
       "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
-      "editor.findRangeHighlightBackground": this.dilute(p.__NO__, 50),
+      "editor.findRangeHighlightBackground": this.dilute(p.orange, 50),
       "editor.foreground": p.fg,
       "editor.background": p.bg,
       "editorLink.activeForeground": p.cyan,
-      "editor.lineHighlightBackground": this.dilute(p.fg, 4),
+      "editor.lineHighlightBackground": p.sidebarBG,
       "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
       "editor.selectionBackground": p.textSelectionBG,
       "editor.inactiveSelectionBackground": p.textSelectionBG,
@@ -409,7 +463,6 @@ export default abstract class Theme {
       "editorOverviewRuler.border": p.ruler,
       "editorCursor.foreground": p.accent1,
       "editorGroup.border": this.border0(),
-      "editorGroupHeader.tabsBackground": p.bg,
       "editorRuler.foreground": p.ruler,
       "editorIndentGuide.background": p.ruler,
       "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
@@ -421,9 +474,9 @@ export default abstract class Theme {
   themeTitlebar() {
     const p = this.palette;
     return {
-      "titleBar.activeBackground": p.bg,
+      "titleBar.activeBackground": p.titlebarBG,
       "titleBar.activeForeground": p.fg,
-      "titleBar.inactiveBackground": p.bg,
+      "titleBar.inactiveBackground": p.titlebarBG,
       "titleBar.inactiveForeground": this.dilute(p.fg, 70),
       "titleBar.border": this.border0(),
     };
@@ -431,37 +484,47 @@ export default abstract class Theme {
 
   themeTabs() {
     const p = this.palette;
+    const bg = p.bg;
     return {
-      "tab.border": this.border0(),
+      "tab.border": bg,
       "editorGroupHeader.tabsBorder": this.border0(),
+      "editorGroupHeader.border": this.border0(),
+      "breadcrumb.background": bg,
+      "editorGroupHeader.noTabsBackground": bg,
+      "editorGroupHeader.tabsBackground": bg,
+      "tab.hoverBackground": this.dilute(p.accent0, 10),
       "tab.activeBorder": p.accent0,
       "tab.unfocusedActiveBorder": p.accent0,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.dilute(p.accent0, 10),
+      "tab.activeBackground": p.inactiveSelectionBG,
       "tab.activeForeground": p.fg,
-      "tab.inactiveBackground": p.transparent,
-      "tab.inactiveForeground": this.dilute(p.fg, 50),
+      "tab.inactiveBackground": bg,
+      "tab.inactiveForeground": this.dilute(p.fg, 80),
     };
   }
 
   colors() {
     const p = this.palette;
     return {
-      contrastBorder: this.border0(),
-      contrastActiveBorder: undefined,
+      // contrastBorder: this.border0(),
+      // contrastActiveBorder: undefined,
       focusBorder: p.accent0,
+      "icon.foreground": p.fg,
+      "toolbar.hoverBackground": this.dilute(p.fg, 10),
+      "toolbar.activeBackground": this.shadow0(),
       "widget.shadow": this.shadow1(),
       ...this.themeScrollbar(),
       "input.border": this.border1(),
       "input.background": p.inputBG,
       "input.placeholderForeground": this.dilute(p.fg, 40),
-      "progressBar.background": p.accent0,
-      "inputOption.activeBorder": p.accent0,
+      "progressBar.background": p.fg,
+      "inputOption.activeBorder": p.fg,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
       ...this.themeActivityBar(),
+      ...this.themeBracketColors(),
       ...this.themeEditor(),
       ...this.themeNotifications(),
       ...this.themeDragAndDrop(),
@@ -475,8 +538,8 @@ export default abstract class Theme {
       "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
       "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
       "sideBar.border": this.border0(),
-      "sideBar.background": p.bg,
-      "sideBarSectionHeader.background": this.dilute(p.fg, 3),
+      "sideBar.background": p.sidebarBG,
+      "sideBarSectionHeader.background": p.titlebarBG,
       // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
       "tree.indentGuidesStroke": this.border0(),
       ...this.themeTabs(),
@@ -499,50 +562,47 @@ export default abstract class Theme {
     bg: string;
     type: keyof typeof Contrast;
   }): string {
-    const isDark = tinycolor(bg).isDark();
+    const isDark = colord(bg).isDark();
     const step = 1;
-    const ret = tinycolor(fg);
-    while (tinycolor.readability(ret, bg) < Contrast[type]) {
-      if (isDark) {
-        ret.lighten(step);
-      } else {
-        ret.darken(step);
+    const hsl = colord(fg).toHsl();
+    if (isDark) {
+      while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l < 100) {
+        hsl.l += step;
+      }
+    } else {
+      while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l > 0) {
+        hsl.l -= step;
       }
     }
-    if (ret.getAlpha() < 1) {
-      return ret.toHex8String();
-    }
-    return ret.toHexString();
+    return colord(hsl).toHex();
   }
 
   shadow0(): string {
-    const ret = tinycolor(this.palette.bg);
-    if (ret.isDark()) {
-      ret.darken(50);
-      ret.setAlpha(0.8);
+    const hsl = colord(this.palette.bg).toHsl();
+    const isDark = colord(hsl).isDark();
+    if (isDark) {
+      hsl.l -= 50;
+      hsl.a = 0.8;
     } else {
-      ret.darken(50);
-      ret.setAlpha(0.4);
+      hsl.l -= 30;
+      hsl.a = 0.8;
     }
-    return ret.toHex8String();
+    return colord(hsl).toHex();
   }
 
   shadow1(): string {
-    const ret = tinycolor(this.palette.bg);
-    if (ret.isDark()) {
-      ret.darken(50);
-      ret.setAlpha(0.8);
-    } else {
-      ret.darken(50);
-      ret.setAlpha(0.2);
-    }
-    return ret.toHex8String();
+    const hsl = colord(this.palette.bg).toHsl();
+    hsl.l -= 50;
+    hsl.a = 0.6;
+    return colord(hsl).toHex();
   }
 
-  safeRamp(hue: number): string[] {
-    return this.ramp(hue).map((color) =>
-      this.fixContrast({ fg: color, bg: this.bg, type: "text" })
-    );
+  safeRamp(hue: number): readonly [string, string, string, string] {
+    const fix = (color: string): string => {
+      return this.fixContrast({ fg: color, bg: this.bg, type: "text" });
+    };
+    const [c1, c2, c3, c4] = this.ramp(hue);
+    return [fix(c1), fix(c2), fix(c3), fix(c4)];
   }
 
   tokenColors(): TokenColor[] {
@@ -820,7 +880,7 @@ export default abstract class Theme {
     };
   }
 
-  saveAs(name: string) {
+  saveAs(name: string): void {
     const json = JSON.stringify(this.config(), null, 2);
     fs.writeFileSync(`themes/${name}.json`, json);
   }

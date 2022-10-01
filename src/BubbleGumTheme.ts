@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const yellow = "#f1c40f";
@@ -8,14 +8,14 @@ const transparent = "#00000000";
 
 const bgHue = 300;
 
-export default class BubbleGumTheme extends Theme {
-  uno = 290;
-  due = 330;
+export class BubbleGumTheme extends Theme {
+  uno = 270;
+  due = 350;
   tre = 180;
 
   bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",
@@ -31,10 +31,13 @@ export default class BubbleGumTheme extends Theme {
     accent1: this.hsl(200, 45, 40),
     fg: this.hsl(bgHue, 80, 25),
     bg: this.bg,
+    titlebarBG: this.gray(88),
+    sidebarBG: this.gray(92),
+    statusbarBG: this.hsl(bgHue, 80, 25),
+    statusbarFG: this.gray(96),
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     accentFocusBG: this.hsl(this.tre, 50, 80),
@@ -53,7 +56,7 @@ export default class BubbleGumTheme extends Theme {
       this.hsl(hue, 75, 45),
       this.hsl(hue, 50, 60),
       this.hsl(hue, 35, 70),
-    ];
+    ] as const;
   }
 
   themeType() {

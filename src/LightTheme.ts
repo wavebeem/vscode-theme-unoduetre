@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const black = "#000000";
@@ -7,14 +7,14 @@ const red = "#cc0000";
 const cyan = "#00bcd4";
 const transparent = "#00000000";
 
-export default class LightTheme extends Theme {
+export class LightTheme extends Theme {
   uno = 320;
   due = 215;
   tre = 125;
 
-  bg = this.gray(96);
+  bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",
@@ -30,10 +30,13 @@ export default class LightTheme extends Theme {
     accent1: red,
     fg: this.gray(20),
     bg: this.bg,
+    titlebarBG: this.gray(88),
+    sidebarBG: this.gray(92),
+    statusbarBG: this.gray(20),
+    statusbarFG: this.gray(96),
     inputBG: white,
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    activeSelectionBG: this.hsl(this.tre, 50, 50),
     inactiveSelectionBG: this.hsl(this.tre, 40, 80),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     accentFocusBG: this.hsl(this.tre, 50, 80),
@@ -48,7 +51,7 @@ export default class LightTheme extends Theme {
       this.hsl(hue, 75, 45),
       this.hsl(hue, 50, 60),
       this.hsl(hue, 35, 70),
-    ];
+    ] as const;
   }
 
   themeType() {

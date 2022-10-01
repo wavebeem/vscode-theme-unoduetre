@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const yellow = "#f1c40f";
@@ -8,14 +8,14 @@ const transparent = "#00000000";
 
 const bgHue = 160;
 
-export default class NatureTheme extends Theme {
+export class NatureTheme extends Theme {
   uno = 200;
   due = 70;
   tre = 310;
 
   bg = this.gray(94);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#e67e22",
     blue: "#3498db",
@@ -31,10 +31,13 @@ export default class NatureTheme extends Theme {
     accent1: this.hsl(200, 80, 40),
     fg: this.hsl(bgHue, 75, 20),
     bg: this.bg,
+    titlebarBG: this.gray(88),
+    sidebarBG: this.gray(92),
+    statusbarBG: this.hsl(bgHue, 75, 20),
+    statusbarFG: this.gray(96),
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
     bracketMatchBorder: transparent,
-    activeSelectionBG: this.hsla(this.due, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.due, 50, 50, 30),
     textSelectionBG: this.hsla(this.due, 50, 50, 30),
     accentFocusBG: this.hsl(this.due, 50, 80),
@@ -53,7 +56,7 @@ export default class NatureTheme extends Theme {
       this.hsl(hue + 4, 75, 45),
       this.hsl(hue + 12, 50, 60),
       this.hsl(hue + 16, 35, 70),
-    ];
+    ] as const;
   }
 
   themeType() {

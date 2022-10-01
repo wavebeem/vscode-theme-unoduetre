@@ -1,4 +1,4 @@
-import Theme, { ThemeType, Palette } from "./Theme";
+import { Theme, ThemeType, ThemePalette } from "./Theme";
 
 const white = "#ffffff";
 const cyan = "#5bf1ff";
@@ -8,14 +8,14 @@ const hueAccent2 = 170;
 
 const bgHue = 280;
 
-export default class SprinklesTheme extends Theme {
+export class SprinklesTheme extends Theme {
   uno = 320;
   due = 45;
   tre = 170;
 
-  bg = this.gray(18);
+  bg = this.gray(20);
 
-  palette: Palette = {
+  palette: ThemePalette = {
     yellow: yellow,
     orange: "#f79e51",
     blue: "#8cd1ff",
@@ -31,10 +31,13 @@ export default class SprinklesTheme extends Theme {
     accent1: this.hsl(hueAccent2, 100, 60),
     fg: this.hsl(bgHue, 80, 90),
     bg: this.bg,
+    titlebarBG: this.gray(12),
+    sidebarBG: this.gray(16),
+    statusbarBG: this.gray(12),
+    statusbarFG: this.gray(96),
     inputBG: this.gray(14),
     bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
     bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    activeSelectionBG: this.hsla(this.tre, 50, 50, 60),
     inactiveSelectionBG: this.hsla(this.tre, 50, 50, 30),
     textSelectionBG: this.hsla(this.tre, 50, 50, 30),
     accentFocusBG: this.hsl(this.tre, 35, 35),
@@ -53,7 +56,7 @@ export default class SprinklesTheme extends Theme {
       this.hsl(hue, 60, 65),
       this.hsl(hue, 50, 55),
       this.hsl(hue, 40, 50),
-    ];
+    ] as const;
   }
 
   themeType() {

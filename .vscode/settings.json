@@ -1,4 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "breadcrumbs.enabled": false
+  "editor.formatOnSave": true
 }
