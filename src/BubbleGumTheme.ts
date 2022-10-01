@@ -9,8 +9,8 @@ const transparent = "#00000000";
 const bgHue = 300;
 
 export class BubbleGumTheme extends Theme {
-  uno = 290;
-  due = 330;
+  uno = 270;
+  due = 350;
   tre = 180;
 
   bg = this.gray(94);

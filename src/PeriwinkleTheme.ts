@@ -9,7 +9,7 @@ const transparent = "#00000000";
 const bgHue = 240;
 
 export class PeriwinkleTheme extends Theme {
-  uno = 290;
+  uno = 330;
   due = 200;
   tre = 110;
 

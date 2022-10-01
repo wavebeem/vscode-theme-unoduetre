@@ -31,10 +31,10 @@
     "editor.selectionBackground": "#55bf404d",
     "editor.wordHighlightBackground": "#258cd026",
     "editor.wordHighlightStrongBackground": "#9b58b633",
-    "editorBracketHighlight.foreground1": "#ac1dc9",
+    "editorBracketHighlight.foreground1": "#c91d73",
     "editorBracketHighlight.foreground2": "#16709c",
     "editorBracketHighlight.foreground3": "#227811",
-    "editorBracketHighlight.foreground4": "#ac1dc9",
+    "editorBracketHighlight.foreground4": "#c91d73",
     "editorBracketHighlight.foreground5": "#16709c",
     "editorBracketHighlight.foreground6": "#227811",
     "editorBracketHighlight.unexpectedBracket.foreground": "#cc0000",
@@ -167,7 +167,7 @@
       "name": "Uno1",
       "scope": "keyword.operator, storage.type.function.arrow",
       "settings": {
-        "foreground": "#9204af",
+        "foreground": "#af0459",
         "fontStyle": ""
       }
     },
@@ -175,7 +175,7 @@
       "name": "Uno2",
       "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
-        "foreground": "#ac1dc9",
+        "foreground": "#c91d73",
         "fontStyle": ""
       }
     },
@@ -183,7 +183,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#a33db8",
+        "foreground": "#b43c78",
         "fontStyle": ""
       }
     },
@@ -191,7 +191,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#944ea2",
+        "foreground": "#a24e79",
         "fontStyle": ""
       }
     },
@@ -199,7 +199,7 @@
       "name": "Uno1Bold",
       "scope": "keyword.control, keyword.import, keyword.function, keyword.package, keyword.interface, keyword.map, keyword.var, keyword.other, keyword.type, storage",
       "settings": {
-        "foreground": "#9204af",
+        "foreground": "#af0459",
         "fontStyle": "bold"
       }
     },
@@ -207,7 +207,7 @@
       "name": "Uno2Bold",
       "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class, meta.selector entity.other.attribute-name.pseudo-class, meta.selector entity.name.tag",
       "settings": {
-        "foreground": "#ac1dc9",
+        "foreground": "#c91d73",
         "fontStyle": "bold"
       }
     },
@@ -215,7 +215,7 @@
       "name": "Uno2Italic",
       "scope": "markup.italic",
       "settings": {
-        "foreground": "#ac1dc9",
+        "foreground": "#c91d73",
         "fontStyle": "italic"
       }
     },
