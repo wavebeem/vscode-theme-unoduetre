@@ -33,7 +33,7 @@ export class BubbleGumTheme extends Theme {
     bg: this.bg,
     titlebarBG: this.gray(88),
     sidebarBG: this.gray(92),
-    statusbarBG: this.gray(20),
+    statusbarBG: this.hsl(bgHue, 80, 25),
     statusbarFG: this.gray(96),
     inputBG: this.gray(98),
     bracketMatchBG: this.dilute(cyan, 35),
