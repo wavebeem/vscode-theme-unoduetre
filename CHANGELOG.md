@@ -1,3 +1,7 @@
+# v4.0.1
+
+- Update README images to stay up to date automatically
+
 # v4.0.0
 
 - Adds more colors to the UI
