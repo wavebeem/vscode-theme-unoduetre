@@ -9,35 +9,35 @@ tastes.
 
 ## Dark
 
-![dark screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-dark.svg?language=javascript)
+![dark screenshot](img/theme-dark.png)
 
 ## Ocean
 
-![ocean screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-ocean.svg?language=javascript)
+![ocean screenshot](img/theme-ocean.png)
 
 ## Midnight
 
-![midnight screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-midnight.svg?language=javascript)
+![midnight screenshot](img/theme-midnight.png)
 
 ## Sprinkles
 
-![sprinkles screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-sprinkles.svg?language=javascript)
+![sprinkles screenshot](img/theme-sprinkles.png)
 
 ## Light
 
-![light screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre.svg?language=javascript)
+![light screenshot](img/theme-light.png)
 
 ## Nature
 
-![nature screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-nature.svg?language=javascript)
+![nature screenshot](img/theme-nature.png)
 
 ## Bubble Gum
 
-![bubblegum screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-bubble-gum.svg?language=javascript)
+![bubblegum screenshot](img/theme-bubblegum.png)
 
 ## Periwinkle
 
-![periwinkle screenshot](https://vscodethemes.com/e/wavebeem.theme-unoduetre/uno-due-tre-periwinkle.svg?language=javascript)
+![periwinkle screenshot](img/theme-periwinkle.png)
 
 # License
 

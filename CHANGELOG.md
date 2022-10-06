@@ -1,6 +1,10 @@
-# v4.0.1
+# v4.0.2
 
 - Update README images to stay up to date automatically
+
+# v4.0.1
+
+- Failed to publish because SVGs aren't allowed in
 
 # v4.0.0
 
