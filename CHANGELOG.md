@@ -1,3 +1,8 @@
+# v4.1.0
+
+- Add borders to sidebar section headers
+- Remove shadow from tab bar
+
 # v4.0.2
 
 - Update README images to stay up to date automatically

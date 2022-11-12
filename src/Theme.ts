@@ -5,6 +5,8 @@
 import fs from "fs";
 import { colord } from "colord";
 
+const transparent = "#00000000";
+
 // WCAG AA minimum contrast values
 // https://webaim.org/resources/contrastchecker/
 const Contrast = {
@@ -329,7 +331,7 @@ export abstract class Theme {
   themeScrollbar() {
     const p = this.palette;
     return {
-      "scrollbar.shadow": this.shadow0(),
+      "scrollbar.shadow": transparent,
       "scrollbarSlider.background": this.dilute(p.fg, 50),
       "scrollbarSlider.hoverBackground": this.dilute(p.fg, 60),
       "scrollbarSlider.activeBackground": this.dilute(p.fg, 70),
@@ -540,6 +542,7 @@ export abstract class Theme {
       "sideBar.border": this.border0(),
       "sideBar.background": p.sidebarBG,
       "sideBarSectionHeader.background": p.titlebarBG,
+      "sideBarSectionHeader.border": this.border0(),
       // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
       "tree.indentGuidesStroke": this.border0(),
       ...this.themeTabs(),
