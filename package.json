@@ -65,8 +65,7 @@
 	"homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
 	"scripts": {
 		"upgrade": "npm-check -u",
-		"prebuild": "tsc",
-		"build": "node build/main.js",
+		"build": "ts-node src/main.ts",
 		"package": "npm run build && vsce package",
 		"postversion": "git push --follow-tags && vsce publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -85,6 +84,7 @@
 		"publisherId": "dd905317-d989-4b98-9bc3-3cc12206629d"
 	},
 	"dependencies": {
-		"colord": "^2.9.3"
+		"colord": "^2.9.3",
+		"ts-node": "^10.9.1"
 	}
 }

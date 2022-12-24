@@ -1,6 +1,6 @@
-import "./extend-colord";
 import { BubbleGumTheme } from "./BubbleGumTheme";
 import { DarkTheme } from "./DarkTheme";
+import "./extend-colord";
 import { LightTheme } from "./LightTheme";
 import { MidnightTheme } from "./MidnightTheme";
 import { NatureTheme } from "./NatureTheme";

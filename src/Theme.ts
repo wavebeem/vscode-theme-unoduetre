@@ -3,7 +3,7 @@
 // https://code.visualstudio.com/api/references/theme-color
 
 import fs from "fs";
-import { colord } from "colord";
+import { colord, getFormat } from "colord";
 
 const transparent = "#00000000";
 
@@ -884,7 +884,44 @@ export abstract class Theme {
   }
 
   saveAs(name: string): void {
-    const json = JSON.stringify(this.config(), null, 2);
+    const config = this.config();
+    console.log(
+      name.padEnd(12),
+      "|",
+      "colors",
+      countColors(config.colors),
+      "|",
+      "tokenColors",
+      countColors(config.tokenColors)
+    );
+    const json = JSON.stringify(config, null, 2);
     fs.writeFileSync(`themes/${name}.json`, json);
+  }
+}
+
+function countColors(data: any): number {
+  const map = new Map<string, number>();
+  for (const color of findColors(data)) {
+    const n = map.get(color) ?? 0;
+    map.set(color, n + 1);
+  }
+  return [...map.keys()].length;
+}
+
+function* findColors(data: any): Generator<string> {
+  if (!data) {
+    return;
+  } else if (Array.isArray(data)) {
+    for (const d of data) {
+      yield* findColors(d);
+    }
+  } else if (typeof data === "object") {
+    for (const d of Object.values(data)) {
+      yield* findColors(d);
+    }
+  } else if (typeof data === "string") {
+    if (getFormat(data)) {
+      yield data;
+    }
   }
 }
