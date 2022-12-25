@@ -20,42 +20,47 @@
 			{
 				"label": "Uno Due Tre",
 				"uiTheme": "vs",
-				"path": "./themes/light.json"
+				"path": "./themes/light-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Dark)",
 				"uiTheme": "vs-dark",
-				"path": "./themes/dark.json"
+				"path": "./themes/dark-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Nature)",
 				"uiTheme": "vs",
-				"path": "./themes/nature.json"
+				"path": "./themes/nature-color-theme.json"
+			},
+			{
+				"label": "Uno Due Tre (Nature 2)",
+				"uiTheme": "vs",
+				"path": "./themes/nature2-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Bubble Gum)",
 				"uiTheme": "vs",
-				"path": "./themes/bubblegum.json"
+				"path": "./themes/bubblegum-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Periwinkle)",
 				"uiTheme": "vs",
-				"path": "./themes/periwinkle.json"
+				"path": "./themes/periwinkle-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Sprinkles)",
 				"uiTheme": "vs-dark",
-				"path": "./themes/sprinkles.json"
+				"path": "./themes/sprinkles-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Midnight)",
 				"uiTheme": "vs-dark",
-				"path": "./themes/midnight.json"
+				"path": "./themes/midnight-color-theme.json"
 			},
 			{
 				"label": "Uno Due Tre (Ocean)",
 				"uiTheme": "vs-dark",
-				"path": "./themes/ocean.json"
+				"path": "./themes/ocean-color-theme.json"
 			}
 		]
 	},
