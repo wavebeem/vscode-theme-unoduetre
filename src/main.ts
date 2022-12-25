@@ -4,6 +4,7 @@ import { DarkTheme } from "./DarkTheme";
 import "./extend-colord";
 import { LightTheme } from "./LightTheme";
 import { MidnightTheme } from "./MidnightTheme";
+import { MidnightTheme2 } from "./MidnightTheme2";
 import { NatureTheme } from "./NatureTheme";
 import { NatureTheme2 } from "./NatureTheme2";
 import { OceanTheme } from "./OceanTheme";
@@ -26,7 +27,7 @@ new BubbleGumTheme().saveAs("bubblegum");
 new BubbleGumTheme2().saveAs("bubblegum2");
 
 new MidnightTheme().saveAs("midnight");
-// TODO
+new MidnightTheme2().saveAs("midnight2");
 
 new OceanTheme().saveAs("ocean");
 new OceanTheme2().saveAs("ocean2");

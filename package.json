@@ -73,6 +73,11 @@
 				"path": "./themes/midnight-color-theme.json"
 			},
 			{
+				"label": "Uno Due Tre (Midnight 2)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/midnight2-color-theme.json"
+			},
+			{
 				"label": "Uno Due Tre (Ocean)",
 				"uiTheme": "vs-dark",
 				"path": "./themes/ocean-color-theme.json"
