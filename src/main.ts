@@ -3,6 +3,7 @@ import { BubbleGumTheme2 } from "./BubbleGumTheme2";
 import { DarkTheme } from "./DarkTheme";
 import "./extend-colord";
 import { LightTheme } from "./LightTheme";
+import { LightTheme2 } from "./LightTheme2";
 import { MidnightTheme } from "./MidnightTheme";
 import { MidnightTheme2 } from "./MidnightTheme2";
 import { NatureTheme } from "./NatureTheme";
@@ -15,7 +16,7 @@ import { SprinklesTheme } from "./SprinklesTheme";
 import { SprinklesTheme2 } from "./SprinklesTheme2";
 
 new LightTheme().saveAs("light");
-// TODO
+new LightTheme2().saveAs("light2");
 
 new DarkTheme().saveAs("dark");
 // TODO
