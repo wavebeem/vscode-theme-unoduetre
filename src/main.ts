@@ -1,4 +1,5 @@
 import { BubbleGumTheme } from "./BubbleGumTheme";
+import { BubbleGumTheme2 } from "./BubbleGumTheme2";
 import { DarkTheme } from "./DarkTheme";
 import "./extend-colord";
 import { LightTheme } from "./LightTheme";
@@ -12,13 +13,21 @@ import { PeriwinkleTheme2 } from "./PeriwinkleTheme2";
 import { SprinklesTheme } from "./SprinklesTheme";
 
 new LightTheme().saveAs("light");
+
 new DarkTheme().saveAs("dark");
+
 new NatureTheme().saveAs("nature");
+new NatureTheme2().saveAs("nature2");
+
 new BubbleGumTheme().saveAs("bubblegum");
+new BubbleGumTheme2().saveAs("bubblegum2");
+
 new MidnightTheme().saveAs("midnight");
+
 new OceanTheme().saveAs("ocean");
 new OceanTheme2().saveAs("ocean2");
+
 new PeriwinkleTheme().saveAs("periwinkle");
 new PeriwinkleTheme2().saveAs("periwinkle2");
+
 new SprinklesTheme().saveAs("sprinkles");
-new NatureTheme2().saveAs("nature2");

@@ -43,6 +43,11 @@
 				"path": "./themes/bubblegum-color-theme.json"
 			},
 			{
+				"label": "Uno Due Tre (Bubble Gum 2)",
+				"uiTheme": "vs",
+				"path": "./themes/bubblegum2-color-theme.json"
+			},
+			{
 				"label": "Uno Due Tre (Periwinkle)",
 				"uiTheme": "vs",
 				"path": "./themes/periwinkle-color-theme.json"
