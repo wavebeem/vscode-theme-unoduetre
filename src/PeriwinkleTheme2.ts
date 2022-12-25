@@ -1,12 +1,12 @@
 import { BaseThemeLight } from "./Theme2";
 
 export class PeriwinkleTheme2 extends BaseThemeLight {
-  colorBG0 = this.hsl(240, 30, 94);
+  colorBG0 = this.hsl(240, 40, 94);
   colorBG1 = this.hsl(240, 40, 90);
   colorBG2 = this.hsl(240, 40, 82);
   colorFG = this.hsl(240, 80, 25);
 
-  colorSubtle = this.hsl(240, 20, 50);
+  colorSubtle = this.hsl(240, 20, 48);
   colorUno = this.hsl(330, 80, 35);
   colorDue = this.hsl(200, 80, 30);
   colorTre = this.hsl(110, 80, 25);

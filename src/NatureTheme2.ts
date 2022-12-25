@@ -1,7 +1,7 @@
 import { BaseThemeLight } from "./Theme2";
 
 export class NatureTheme2 extends BaseThemeLight {
-  colorBG0 = this.hsl(160, 30, 94);
+  colorBG0 = this.hsl(160, 40, 94);
   colorBG1 = this.hsl(160, 40, 90);
   colorBG2 = this.hsl(160, 40, 82);
   colorFG = this.hsl(160, 75, 20);
@@ -15,5 +15,5 @@ export class NatureTheme2 extends BaseThemeLight {
   colorBorder1 = this.hsl(160, 40, 30);
   colorStatusBG = this.colorFG;
   colorStatusFG = this.colorBG0;
-  colorWidgetBG = this.hsl(160, 30, 98);
+  colorWidgetBG = this.hsl(160, 40, 98);
 }
