@@ -228,7 +228,10 @@ export abstract class Theme2 {
   themeStatusBar() {
     const bg = this.colorStatusBG;
     const fg = this.colorStatusFG;
-    const border = this.themeType === "light" ? bg : this.colorBorder0;
+    const border =
+      this.themeType === "light"
+        ? this.alpha("#000000", 25)
+        : this.colorBorder0;
     return {
       "statusBar.border": border,
       "statusBarItem.activeBackground": this.alpha(fg, 20),

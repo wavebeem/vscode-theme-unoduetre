@@ -109,7 +109,7 @@
     "sideBarSectionHeader.background": "#ead7ea",
     "sideBarSectionHeader.border": "#dbbddb",
     "statusBar.background": "#730d73",
-    "statusBar.border": "#730d73",
+    "statusBar.border": "#00000040",
     "statusBar.debuggingBackground": "#730d73",
     "statusBar.foreground": "#f4ebf4",
     "statusBar.noFolderBackground": "#730d73",
