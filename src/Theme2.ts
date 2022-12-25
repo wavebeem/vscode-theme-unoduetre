@@ -56,32 +56,32 @@ interface AlmostTokenColor {
 }
 
 export abstract class Theme2 {
-  abstract themeType(): ThemeType;
+  abstract themeType: ThemeType;
 
-  abstract colorBG0(): string;
-  abstract colorBG1(): string;
-  abstract colorBG2(): string;
+  abstract colorBG0: string;
+  abstract colorBG1: string;
+  abstract colorBG2: string;
 
-  abstract colorFG(): string;
+  abstract colorFG: string;
 
-  abstract colorSubtle(): string;
+  abstract colorSubtle: string;
 
-  abstract colorUno(): string;
-  abstract colorDue(): string;
-  abstract colorTre(): string;
+  abstract colorUno: string;
+  abstract colorDue: string;
+  abstract colorTre: string;
 
-  abstract colorBorder0(): string;
-  abstract colorBorder1(): string;
+  abstract colorBorder0: string;
+  abstract colorBorder1: string;
 
-  abstract colorStatusBG(): string;
-  abstract colorStatusFG(): string;
-  abstract colorStatusBorder(): string;
+  abstract colorStatusBG: string;
+  abstract colorStatusFG: string;
+  abstract colorStatusBorder: string;
 
-  abstract colorShadow0(): string;
-  abstract colorShadow1(): string;
+  abstract colorShadow0: string;
+  abstract colorShadow1: string;
 
-  abstract colorWidgetBG(): string;
-  abstract colorWidgetBorder(): string;
+  abstract colorWidgetBG: string;
+  abstract colorWidgetBorder: string;
 
   hsl(h: number, s: number, l: number): string {
     return colord({ h, s, l }).toHex();
