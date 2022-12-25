@@ -75,13 +75,8 @@ export abstract class Theme2 {
 
   abstract colorStatusBG: string;
   abstract colorStatusFG: string;
-  abstract colorStatusBorder: string;
-
-  abstract colorShadow0: string;
-  abstract colorShadow1: string;
 
   abstract colorWidgetBG: string;
-  abstract colorWidgetBorder: string;
 
   hsl(h: number, s: number, l: number): string {
     return colord({ h, s, l }).toHex();
@@ -96,40 +91,23 @@ export abstract class Theme2 {
     return colord(hsl).toHex();
   }
 
-  cyan() {
-    return "#00bcd4";
-  }
-
-  red() {
-    return "#cc0000";
-  }
-
-  yellow() {
-    return "#f1c40f";
-  }
-
-  orange() {
-    return "#e67e22";
-  }
-
-  blue() {
-    return "#3498db";
-  }
-
-  purple() {
-    return "#9b59b6";
-  }
+  cyan = "#00bcd4";
+  red = "#cc0000";
+  yellow = "#f1c40f";
+  orange = "#e67e22";
+  blue = "#3498db";
+  purple = "#9b59b6";
 
   accent0() {
-    return this.colorDue();
+    return this.colorTre;
   }
 
   accent1() {
-    return this.colorTre();
+    return this.colorTre;
   }
 
   inactiveSelectionBG() {
-    return this.dilute(this.colorFG(), 15);
+    return this.dilute(this.colorFG, 15);
   }
 
   config(): {
@@ -141,7 +119,7 @@ export abstract class Theme2 {
     tokenColors: TokenColor[];
   } {
     return {
-      type: this.themeType(),
+      type: this.themeType,
       colors: sortedObject(this.colors()),
       tokenColors: this.tokenColors(),
     };
@@ -149,15 +127,15 @@ export abstract class Theme2 {
 
   themeActivityBar() {
     return {
-      "activityBar.border": this.colorBorder0(),
-      "activityBar.background": this.colorBG1(),
-      "activityBar.foreground": this.colorFG(),
-      "activityBar.inactiveForeground": this.dilute(this.colorFG(), 50),
-      "activityBarBadge.background": this.colorFG(),
-      "activityBarBadge.foreground": this.colorBG0(),
-      "activityBar.activeBorder": this.colorFG(),
-      "tab.activeBorder": this.colorFG(),
-      "activityBar.activeBackground": this.dilute(this.colorFG(), 10),
+      "activityBar.border": this.colorBorder0,
+      "activityBar.background": this.colorBG1,
+      "activityBar.foreground": this.colorFG,
+      "activityBar.inactiveForeground": this.dilute(this.colorFG, 50),
+      "activityBarBadge.background": this.colorFG,
+      "activityBarBadge.foreground": this.colorBG0,
+      "activityBar.activeBorder": this.colorFG,
+      "tab.activeBorder": this.colorFG,
+      "activityBar.activeBackground": this.dilute(this.colorFG, 10),
     };
   }
 
@@ -166,51 +144,51 @@ export abstract class Theme2 {
       // Notification Center border color.
       "notificationCenter.border": undefined,
       // Notification Center header foreground color.
-      "notificationCenterHeader.foreground": this.colorFG(),
+      "notificationCenterHeader.foreground": this.colorFG,
       // Notification Center header background color.
-      "notificationCenterHeader.background": this.colorWidgetBG(),
+      "notificationCenterHeader.background": this.colorWidgetBG,
       // Notification toast border color.
-      "notificationToast.border": this.colorWidgetBorder(),
+      "notificationToast.border": this.colorBorder1,
       // Notifications foreground color.
-      "notifications.foreground": this.colorFG(),
+      "notifications.foreground": this.colorFG,
       // Notifications background color.
-      "notifications.background": this.colorWidgetBG(),
+      "notifications.background": this.colorWidgetBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
       "notifications.border": undefined,
       // Notification links foreground color.
-      "notificationLink.foreground": this.cyan(),
+      "notificationLink.foreground": this.cyan,
     };
   }
 
   themeList() {
     return {
-      "list.errorForeground": this.red(),
-      "list.warningForeground": this.yellow(),
-      "list.highlightForeground": this.accent1(),
-      "list.focusHighlightForeground": this.colorBG0(),
-      "list.activeSelectionIconForeground": this.colorBG0(),
-      "list.activeSelectionForeground": this.colorBG0(),
-      "list.activeSelectionBackground": this.colorFG(),
-      "list.focusSelectionForeground": this.colorBG0(),
-      "list.focusSelectionBackground": this.colorFG(),
-      "list.inactiveSelectionForeground": this.colorFG(),
+      "list.errorForeground": this.red,
+      "list.warningForeground": this.yellow,
+      "list.highlightForeground": this.colorTre,
+      "list.focusHighlightForeground": this.colorBG0,
+      "list.activeSelectionIconForeground": this.colorBG0,
+      "list.activeSelectionForeground": this.colorBG0,
+      "list.activeSelectionBackground": this.colorFG,
+      // "list.focusSelectionForeground": this.colorBG0,
+      // "list.focusSelectionBackground": this.colorFG,
+      "list.inactiveSelectionForeground": this.colorFG,
       "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
-      "quickInputList.focusBackground": this.colorFG(),
-      "quickInputList.focusForeground": this.colorBG0(),
-      "quickInputList.focusIconForeground": this.colorBG0(),
-      "list.hoverBackground": this.dilute(this.accent0(), 10),
+      "quickInputList.focusBackground": this.colorFG,
+      "quickInputList.focusForeground": this.colorBG0,
+      "quickInputList.focusIconForeground": this.colorBG0,
+      "list.hoverBackground": this.dilute(this.colorTre, 10),
     };
   }
 
   themeTerminal() {
     const p =
-      this.themeType() === "light"
-        ? this.tintedAnsiLight(this.colorBG0(), this.colorFG())
-        : this.tintedAnsiDark(this.colorBG0(), this.colorFG());
+      this.themeType === "light"
+        ? this.tintedAnsiLight(this.colorBG0, this.colorFG)
+        : this.tintedAnsiDark(this.colorBG0, this.colorFG);
     return {
-      "terminal.foreground": this.colorFG(),
-      "terminal.background": this.colorBG0(),
+      "terminal.foreground": this.colorFG,
+      "terminal.background": this.colorBG0,
       "terminal.ansiBlack": p.tBlack,
       "terminal.ansiBlue": p.tBlue,
       "terminal.ansiBrightBlack": p.tBlack,
@@ -234,36 +212,36 @@ export abstract class Theme2 {
     return {};
     // return {
     //   "gitDecoration.modifiedResourceForeground": this.mix(
-    //     this.orange(),
-    //     this.colorFG(),
+    //     this.orange,
+    //     this.colorFG,
     //     20
     //   ),
     //   "gitDecoration.deletedResourceForeground": this.mix(
-    //     this.red(),
-    //     this.colorFG(),
+    //     this.red,
+    //     this.colorFG,
     //     20
     //   ),
     //   "gitDecoration.untrackedResourceForeground": this.mix(
-    //     this.blue(),
-    //     this.colorFG(),
+    //     this.blue,
+    //     this.colorFG,
     //     20
     //   ),
     //   "gitDecoration.conflictingResourceForeground": this.mix(
-    //     this.cyan(),
-    //     this.colorFG(),
+    //     this.cyan,
+    //     this.colorFG,
     //     20
     //   ),
     //   "gitDecoration.ignoredResourceForeground": this.dilute(
-    //     this.colorFG(),
+    //     this.colorFG,
     //     40
     //   ),
     // };
   }
 
   themeStatusBar() {
-    const bg = this.colorStatusBG();
-    const fg = this.colorStatusFG();
-    const border = this.colorStatusBorder();
+    const bg = this.colorStatusBG;
+    const fg = this.colorStatusFG;
+    const border = this.themeType === "light" ? bg : this.colorBorder0;
     return {
       "statusBar.border": border,
       "statusBarItem.activeBackground": this.dilute(fg, 20),
@@ -278,8 +256,8 @@ export abstract class Theme2 {
 
   themeBadge() {
     return {
-      "badge.foreground": this.colorBG0(),
-      "badge.background": this.colorFG(),
+      "badge.foreground": this.colorBG0,
+      "badge.background": this.colorFG,
     };
   }
 
@@ -308,18 +286,18 @@ export abstract class Theme2 {
   themeScrollbar() {
     return {
       "scrollbar.shadow": transparent,
-      "scrollbarSlider.background": this.dilute(this.colorFG(), 50),
-      "scrollbarSlider.hoverBackground": this.dilute(this.colorFG(), 60),
-      "scrollbarSlider.activeBackground": this.dilute(this.colorFG(), 70),
+      "scrollbarSlider.background": this.dilute(this.colorFG, 50),
+      "scrollbarSlider.hoverBackground": this.dilute(this.colorFG, 60),
+      "scrollbarSlider.activeBackground": this.dilute(this.colorFG, 70),
     };
   }
 
   themeDropdown() {
     return {
-      "dropdown.background": this.colorWidgetBG(),
-      "dropdown.listBackground": this.colorWidgetBG(),
-      "dropdown.border": this.colorWidgetBorder(),
-      "dropdown.foreground": this.colorFG(),
+      "dropdown.background": this.colorWidgetBG,
+      "dropdown.listBackground": this.colorWidgetBG,
+      "dropdown.border": this.colorBorder1,
+      "dropdown.foreground": this.colorFG,
     };
   }
 
@@ -370,23 +348,23 @@ export abstract class Theme2 {
   }
 
   themeDragAndDrop() {
-    const color = this.dilute(this.accent0(), 30);
+    const color = this.dilute(this.colorTre, 30);
     return {
       "list.dropBackground": color,
-      "activityBar.dropBackground": color,
+      // "activityBar.dropBackground": color,
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
-      "panel.dropBackground": color,
-      "panel.border": this.colorBorder0(),
-      "panelSection.border": this.colorBorder0(),
-      "panelSectionHeader.border": this.colorBorder0(),
+      // "panel.dropBackground": color,
+      "panel.border": this.colorBorder0,
+      "panelSection.border": this.colorBorder0,
+      "panelSectionHeader.border": this.colorBorder0,
     };
   }
 
   themeButton() {
     return {
-      "button.background": this.colorFG(),
-      "button.foreground": this.colorBG0(),
+      "button.background": this.colorFG,
+      "button.foreground": this.colorBG0,
       "button.hoverBackground": undefined,
     };
   }
@@ -401,10 +379,9 @@ export abstract class Theme2 {
     [x, [x, [x, [x, [x, [x]]]]]];
     //
     ////////////////////////////////////////////////////////////////////////////
-    const b1 = this.colorUno();
-    const b2 = this.colorDue();
-    const b3 = this.colorTre();
-
+    const b1 = this.colorUno;
+    const b2 = this.colorDue;
+    const b3 = this.colorTre;
     return {
       "editorBracketHighlight.foreground1": b1,
       "editorBracketHighlight.foreground2": b2,
@@ -412,84 +389,82 @@ export abstract class Theme2 {
       "editorBracketHighlight.foreground4": b1,
       "editorBracketHighlight.foreground5": b2,
       "editorBracketHighlight.foreground6": b3,
-      "editorBracketHighlight.unexpectedBracket.foreground": this.red(),
+      "editorBracketHighlight.unexpectedBracket.foreground": this.red,
     };
   }
 
   themeEditor() {
     return {
-      "editorWidget.background": this.colorWidgetBG(),
-      "editorWidget.border": this.colorWidgetBorder(),
-      "editorBracketMatch.background": this.dilute(this.accent0(), 15),
-      "editorBracketMatch.border": this.dilute(this.accent0(), 50),
-      "editor.findMatchBackground": this.dilute(this.orange(), 50),
-      "editor.findMatchHighlightBackground": this.dilute(this.yellow(), 50),
-      "editor.findRangeHighlightBackground": this.dilute(this.orange(), 50),
-      "editor.foreground": this.colorFG(),
-      "editor.background": this.colorBG0(),
-      "editorLink.activeForeground": this.cyan(),
-      "editor.lineHighlightBackground": this.colorBG1(),
-      "editor.rangeHighlightBackground": this.dilute(this.orange(), 10),
-      "editor.selectionBackground": this.dilute(this.colorFG(), 10),
-      "editor.inactiveSelectionBackground": this.dilute(this.colorFG(), 10),
-      "editor.wordHighlightBackground": this.dilute(this.blue(), 15),
-      "editor.wordHighlightStrongBackground": this.dilute(this.purple(), 20),
-      "editorOverviewRuler.border": this.colorBorder0(),
-      "editorCursor.foreground": this.accent1(),
-      "editorGroup.border": this.colorBorder0(),
-      "editorRuler.foreground": this.colorBorder0(),
-      "editorIndentGuide.background": this.colorBorder0(),
-      "editorIndentGuide.activeBackground": this.dilute(this.colorFG(), 30),
-      "editorLineNumber.foreground": this.dilute(this.colorFG(), 30),
-      "editorLineNumber.activeForeground": this.colorFG(),
+      "editorWidget.background": this.colorWidgetBG,
+      "editorWidget.border": this.colorBorder1,
+      "editorBracketMatch.background": this.dilute(this.colorTre, 15),
+      "editorBracketMatch.border": this.dilute(this.colorTre, 50),
+      "editor.findMatchBackground": this.dilute(this.orange, 50),
+      "editor.findMatchHighlightBackground": this.dilute(this.yellow, 50),
+      "editor.findRangeHighlightBackground": this.dilute(this.orange, 50),
+      "editor.foreground": this.colorFG,
+      "editor.background": this.colorBG0,
+      "editorLink.activeForeground": this.cyan,
+      "editor.lineHighlightBackground": this.colorBG1,
+      "editor.rangeHighlightBackground": this.dilute(this.orange, 10),
+      "editor.selectionBackground": this.dilute(this.colorFG, 10),
+      "editor.inactiveSelectionBackground": this.dilute(this.colorFG, 10),
+      "editor.wordHighlightBackground": this.dilute(this.blue, 15),
+      "editor.wordHighlightStrongBackground": this.dilute(this.purple, 20),
+      "editorOverviewRuler.border": this.dilute(this.colorBorder0, 50),
+      "editorCursor.foreground": this.colorTre,
+      "editorGroup.border": this.colorBorder0,
+      "editorRuler.foreground": this.dilute(this.colorBorder0, 50),
+      "editorIndentGuide.background": this.dilute(this.colorBorder0, 50),
+      "editorIndentGuide.activeBackground": this.colorBorder0,
+      "editorLineNumber.foreground": this.dilute(this.colorFG, 30),
+      "editorLineNumber.activeForeground": this.colorFG,
     };
   }
 
   themeTitlebar() {
     return {
-      "titleBar.activeBackground": this.colorBG2(),
-      "titleBar.activeForeground": this.colorFG(),
-      "titleBar.inactiveBackground": this.colorBG2(),
-      "titleBar.inactiveForeground": this.dilute(this.colorFG(), 70),
-      "titleBar.border": this.colorBorder0(),
+      "titleBar.activeBackground": this.colorBG2,
+      "titleBar.activeForeground": this.colorFG,
+      "titleBar.inactiveBackground": this.colorBG2,
+      "titleBar.inactiveForeground": this.dilute(this.colorFG, 70),
+      "titleBar.border": this.colorBorder0,
     };
   }
 
   themeTabs() {
     return {
-      "tab.border": this.colorBG0(),
-      "editorGroupHeader.tabsBorder": this.colorBorder0(),
-      "editorGroupHeader.border": this.colorBorder0(),
-      "breadcrumb.background": this.colorBG0(),
-      "editorGroupHeader.noTabsBackground": this.colorBG0(),
-      "editorGroupHeader.tabsBackground": this.colorBG0(),
-      "tab.hoverBackground": this.dilute(this.accent0(), 10),
-      "tab.activeBorder": this.accent0(),
-      "tab.unfocusedActiveBorder": this.accent0(),
+      "tab.border": this.colorBG0,
+      "editorGroupHeader.tabsBorder": this.colorBorder0,
+      "editorGroupHeader.border": this.colorBorder0,
+      "breadcrumb.background": this.colorBG0,
+      "editorGroupHeader.noTabsBackground": this.colorBG0,
+      "editorGroupHeader.tabsBackground": this.colorBG0,
+      "tab.hoverBackground": this.dilute(this.colorTre, 10),
+      "tab.activeBorder": this.colorTre,
+      "tab.unfocusedActiveBorder": this.colorTre,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
       "tab.activeBackground": this.inactiveSelectionBG(),
-      "tab.activeForeground": this.colorFG(),
-      "tab.inactiveBackground": this.colorBG0(),
-      "tab.inactiveForeground": this.dilute(this.colorFG(), 80),
+      "tab.activeForeground": this.colorFG,
+      "tab.inactiveBackground": this.colorBG0,
+      "tab.inactiveForeground": this.dilute(this.colorFG, 80),
     };
   }
 
   colors(): Record<string, string | undefined> {
     return {
-      // contrastBorder: this.colorBorder0(),
-      // contrastActiveBorder: undefined,
-      focusBorder: this.accent0(),
-      "icon.foreground": this.colorFG(),
-      "toolbar.hoverBackground": this.dilute(this.colorFG(), 10),
-      "toolbar.activeBackground": this.colorShadow0(),
-      "widget.shadow": this.colorShadow1(),
+      focusBorder: this.colorTre,
+      "icon.foreground": this.colorFG,
+      "toolbar.hoverBackground": this.dilute(this.colorFG, 10),
+      "toolbar.activeBackground": this.dilute(this.colorFG, 15),
+      "widget.shadow": this.dilute(this.colorFG, 25),
       ...this.themeScrollbar(),
-      "input.border": this.colorBorder1(),
-      "input.background": this.colorWidgetBG(),
-      "input.placeholderForeground": this.dilute(this.colorFG(), 40),
-      "progressBar.background": this.colorFG(),
-      "inputOption.activeBorder": this.colorFG(),
+      "input.border": this.colorBorder1,
+      "input.background": this.colorWidgetBG,
+      "input.placeholderForeground": this.dilute(this.colorFG, 40),
+      "progressBar.background": this.colorFG,
+      "inputOption.activeBorder": this.colorFG,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
@@ -499,25 +474,24 @@ export abstract class Theme2 {
       ...this.themeNotifications(),
       ...this.themeDragAndDrop(),
       ...this.themeButton(),
-      foreground: this.colorFG(),
-      "panel.background": this.colorBG0(),
-      "panel.border": this.colorBorder0(),
-      "panelTitle.activeBorder": this.dilute(this.colorFG(), 50),
-      "panelTitle.activeForeground": this.colorFG(),
-      "panelTitle.inactiveForeground": this.dilute(this.colorFG(), 60),
-      "peekViewEditor.matchHighlightBackground": this.dilute(this.yellow(), 50),
-      "peekViewResult.matchHighlightBackground": this.dilute(this.yellow(), 50),
-      "sideBar.border": this.colorBorder0(),
-      "sideBar.background": this.colorBG1(),
-      "sideBarSectionHeader.background": this.colorBG2(),
-      "sideBarSectionHeader.border": this.colorBorder0(),
-      // "tree.indentGuidesStroke": this.dilute(this.colorFG(), 50),
-      "tree.indentGuidesStroke": this.colorBorder0(),
+      foreground: this.colorFG,
+      "panel.background": this.colorBG0,
+      "panel.border": this.colorBorder0,
+      "panelTitle.activeBorder": this.dilute(this.colorFG, 50),
+      "panelTitle.activeForeground": this.colorFG,
+      "panelTitle.inactiveForeground": this.dilute(this.colorFG, 60),
+      "peekViewEditor.matchHighlightBackground": this.dilute(this.yellow, 50),
+      "peekViewResult.matchHighlightBackground": this.dilute(this.yellow, 50),
+      "sideBar.border": this.colorBorder0,
+      "sideBar.background": this.colorBG1,
+      "sideBarSectionHeader.background": this.colorBG2,
+      "sideBarSectionHeader.border": this.colorBorder0,
+      "tree.indentGuidesStroke": this.dilute(this.colorBorder0, 50),
       ...this.themeTabs(),
-      "pickerGroup.border": this.colorBorder0(),
+      "pickerGroup.border": this.colorBorder0,
       ...this.themeGit(),
       ...this.themeTitlebar(),
-      "debugToolBar.background": this.colorWidgetBG(),
+      "debugToolBar.background": this.colorWidgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
       ...this.themeTerminal(),
@@ -552,7 +526,7 @@ export abstract class Theme2 {
     const tc: AlmostTokenColor[] = [
       {
         name: "Default",
-        settings: this.style(this.colorFG()),
+        settings: this.style(this.colorFG),
         scopes: [
           // Function call
           "meta.function-call entity.name.function",
@@ -561,7 +535,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno1",
-        settings: this.style(this.colorUno()),
+        settings: this.style(this.colorUno),
         scopes: [
           // Operators
           "keyword.operator",
@@ -570,7 +544,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno2",
-        settings: this.style(this.colorUno()),
+        settings: this.style(this.colorUno),
         scopes: [
           // Code
           "markup.raw.inline",
@@ -609,7 +583,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno3",
-        settings: this.style(this.colorUno()),
+        settings: this.style(this.colorUno),
         scopes: [
           // Escape characters
           "constant.character.escape",
@@ -650,7 +624,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno4",
-        settings: this.style(this.colorSubtle()),
+        settings: this.style(this.colorSubtle),
         scopes: [
           // Comment
           "comment",
@@ -659,7 +633,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno1Bold",
-        settings: this.style(this.colorUno(), "bold"),
+        settings: this.style(this.colorUno, "bold"),
         scopes: [
           // Keywords
           "keyword.control",
@@ -678,7 +652,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno2Bold",
-        settings: this.style(this.colorUno(), "bold"),
+        settings: this.style(this.colorUno, "bold"),
         scopes: [
           // Bold
           "markup.bold",
@@ -693,7 +667,7 @@ export abstract class Theme2 {
       },
       {
         name: "Uno2Italic",
-        settings: this.style(this.colorUno(), "italic"),
+        settings: this.style(this.colorUno, "italic"),
         scopes: [
           // Italic
           "markup.italic",
@@ -701,7 +675,7 @@ export abstract class Theme2 {
       },
       {
         name: "Due1",
-        settings: this.style(this.colorDue()),
+        settings: this.style(this.colorDue),
         scopes: [
           // Symbols
           "constant.other.symbol",
@@ -733,7 +707,7 @@ export abstract class Theme2 {
       },
       {
         name: "Due2",
-        settings: this.style(this.colorDue()),
+        settings: this.style(this.colorDue),
         scopes: [
           // Variable definition
           "meta.definition",
@@ -755,7 +729,7 @@ export abstract class Theme2 {
       },
       {
         name: "Due1Bold",
-        settings: this.style(this.colorDue(), "bold"),
+        settings: this.style(this.colorDue, "bold"),
         scopes: [
           // Headings
           "markup.heading punctuation.definition.heading",
@@ -776,7 +750,7 @@ export abstract class Theme2 {
       },
       {
         name: "Tre1",
-        settings: this.style(this.colorTre()),
+        settings: this.style(this.colorTre),
         scopes: [
           // Strings
           "string",
@@ -786,7 +760,7 @@ export abstract class Theme2 {
       },
       {
         name: "Default",
-        settings: this.style(this.colorFG()),
+        settings: this.style(this.colorFG),
         scopes: [
           // String interpolation
           "meta.embedded",
@@ -794,7 +768,7 @@ export abstract class Theme2 {
       },
       {
         name: "Broken",
-        settings: this.style(this.red(), "bold"),
+        settings: this.style(this.red, "bold"),
         scopes: [
           // Broken stuff
           "invalid.broken",
@@ -835,6 +809,14 @@ export abstract class Theme2 {
   }
 }
 
+export abstract class BaseThemeLight extends Theme2 {
+  themeType = "light" as ThemeType;
+}
+
+export abstract class BaseThemeDark extends Theme2 {
+  themeType = "dark" as ThemeType;
+}
+
 function countColors(data: any): number {
   const map = new Map<string, number>();
   for (const color of findColors(data)) {
@@ -857,7 +839,10 @@ function* findColors(data: any): Generator<string> {
     }
   } else if (typeof data === "string") {
     if (getFormat(data)) {
-      yield data;
+      // Yield color without alpha channel since that's not a "unique" color
+      const color = colord(data).toRgb();
+      color.a = 1;
+      yield colord(color).toHex();
     }
   }
 }

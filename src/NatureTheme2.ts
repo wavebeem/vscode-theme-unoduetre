@@ -1,7 +1,6 @@
-import { Theme2, ThemeType } from "./Theme2";
+import { BaseThemeLight } from "./Theme2";
 
-export class NatureTheme2 extends Theme2 {
-  themeType = "light" as ThemeType;
+export class NatureTheme2 extends BaseThemeLight {
   colorBG0 = this.hsl(160, 30, 94);
   colorBG1 = this.hsl(160, 30, 92);
   colorBG2 = this.hsl(160, 30, 88);
@@ -14,9 +13,5 @@ export class NatureTheme2 extends Theme2 {
   colorBorder1 = this.hsl(160, 30, 46);
   colorStatusBG = this.colorFG;
   colorStatusFG = this.colorBG0;
-  colorStatusBorder = this.colorStatusBG;
-  colorShadow0 = this.dilute(this.colorFG, 10);
-  colorShadow1 = this.dilute(this.colorFG, 50);
   colorWidgetBG = this.hsl(160, 30, 98);
-  colorWidgetBorder = this.colorBorder1;
 }
