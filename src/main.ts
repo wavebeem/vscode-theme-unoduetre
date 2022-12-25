@@ -1,6 +1,7 @@
 import { BubbleGumTheme } from "./BubbleGumTheme";
 import { BubbleGumTheme2 } from "./BubbleGumTheme2";
 import { DarkTheme } from "./DarkTheme";
+import { DarkTheme2 } from "./DarkTheme2";
 import "./extend-colord";
 import { LightTheme } from "./LightTheme";
 import { LightTheme2 } from "./LightTheme2";
@@ -19,7 +20,7 @@ new LightTheme().saveAs("light");
 new LightTheme2().saveAs("light2");
 
 new DarkTheme().saveAs("dark");
-// TODO
+new DarkTheme2().saveAs("dark2");
 
 new NatureTheme().saveAs("nature");
 new NatureTheme2().saveAs("nature2");

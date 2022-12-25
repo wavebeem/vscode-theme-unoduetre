@@ -33,6 +33,11 @@
 				"path": "./themes/dark-color-theme.json"
 			},
 			{
+				"label": "Uno Due Tre (Dark 2)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/dark2-color-theme.json"
+			},
+			{
 				"label": "Uno Due Tre (Nature)",
 				"uiTheme": "vs",
 				"path": "./themes/nature-color-theme.json"

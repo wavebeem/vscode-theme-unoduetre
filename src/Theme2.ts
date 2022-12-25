@@ -14,6 +14,7 @@ const Contrast = {
   ui: 3,
   decoration: 1.75,
 } as const;
+type ContrastLevel = keyof typeof Contrast;
 
 // Sort the JSON object so things always come out in the same order, and minor
 // refactoring doesn't cause the build files to change
@@ -164,7 +165,7 @@ export abstract class Theme2 {
       "list.activeSelectionForeground": this.colorBG0,
       "list.activeSelectionBackground": this.colorFG,
       "list.inactiveSelectionForeground": this.colorFG,
-      "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
+      "list.inactiveSelectionBackground": this.colorBG2,
       "quickInputList.focusBackground": this.colorFG,
       "quickInputList.focusForeground": this.colorBG0,
       "quickInputList.focusIconForeground": this.colorBG0,
@@ -225,12 +226,18 @@ export abstract class Theme2 {
     };
   }
 
+  darken(color: string, amount: number): string {
+    const hsl = colord(color).toHsl();
+    hsl.l -= amount;
+    return colord(hsl).toHex();
+  }
+
   themeStatusBar() {
     const bg = this.colorStatusBG;
     const fg = this.colorStatusFG;
     const border =
       this.themeType === "light"
-        ? this.alpha("#000000", 25)
+        ? this.darken(this.colorStatusBG, 5)
         : this.colorBorder0;
     return {
       "statusBar.border": border,
@@ -412,9 +419,9 @@ export abstract class Theme2 {
 
   themeTitlebar() {
     return {
-      "titleBar.activeBackground": this.colorBG2,
+      "titleBar.activeBackground": this.colorBG1,
       "titleBar.activeForeground": this.colorFG,
-      "titleBar.inactiveBackground": this.colorBG2,
+      "titleBar.inactiveBackground": this.colorBG1,
       "titleBar.inactiveForeground": this.alpha(this.colorFG, 70),
       "titleBar.border": this.colorBorder0,
     };
@@ -428,12 +435,12 @@ export abstract class Theme2 {
       "breadcrumb.background": this.colorBG0,
       "editorGroupHeader.noTabsBackground": this.colorBG0,
       "editorGroupHeader.tabsBackground": this.colorBG0,
-      "tab.hoverBackground": this.alpha(this.colorTre, 10),
-      "tab.activeBorder": this.colorTre,
+      "tab.hoverBackground": this.colorBG1,
+      "tab.activeBorder": this.colorBorder1,
       "tab.unfocusedActiveBorder": this.colorTre,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": this.inactiveSelectionBG(),
+      "tab.activeBackground": this.colorBG2,
       "tab.activeForeground": this.colorFG,
       "tab.inactiveBackground": this.colorBG0,
       "tab.inactiveForeground": this.alpha(this.colorFG, 80),
@@ -475,7 +482,7 @@ export abstract class Theme2 {
       "peekViewResult.matchHighlightBackground": this.alpha(this.yellow, 50),
       "sideBar.border": this.colorBorder0,
       "sideBar.background": this.colorBG1,
-      "sideBarSectionHeader.background": this.colorBG2,
+      "sideBarSectionHeader.background": this.colorBG1,
       "sideBarSectionHeader.border": this.colorBorder0,
       "tree.indentGuidesStroke": this.alpha(this.colorBorder0, 50),
       ...this.themeTabs(),
@@ -784,17 +791,43 @@ export abstract class Theme2 {
     };
   }
 
+  showContrast(level: ContrastLevel, fg: keyof this, bg: keyof this): void {
+    const contrast = colord(this[fg] as any).contrast(this[bg] as any);
+    const fail = contrast < Contrast[level];
+    if (!fail) {
+      return;
+    }
+    console.log(
+      "[!]",
+      contrast.toString().padStart(6),
+      ":",
+      this[fg],
+      "[on]",
+      this[bg],
+      ":",
+      fg,
+      "[on]",
+      bg
+    );
+  }
+
   saveAs(name: string): void {
     const config = this.config();
-    console.log(
-      name.padEnd(12),
-      "|",
-      "colors",
-      countColors(config.colors),
-      "|",
-      "tokenColors",
-      countColors(config.tokenColors)
-    );
+    console.log();
+    console.log(`--- ${name} `.padEnd(60, "-"));
+    console.log();
+    console.log("colors", countColors(config.colors));
+    console.log("tokenColors", countColors(config.tokenColors));
+    this.showContrast("text", "colorFG", "colorBG0");
+    this.showContrast("text", "colorFG", "colorBG1");
+    this.showContrast("text", "colorFG", "colorBG2");
+    this.showContrast("ui", "colorBorder1", "colorBG0");
+    this.showContrast("ui", "colorBorder1", "colorBG1");
+    this.showContrast("ui", "colorBorder1", "colorBG2");
+    this.showContrast("text", "colorSubtle", "colorBG0");
+    this.showContrast("text", "colorUno", "colorBG0");
+    this.showContrast("text", "colorDue", "colorBG0");
+    this.showContrast("text", "colorTre", "colorBG0");
     const json = JSON.stringify(config, null, 2);
     fs.writeFileSync(`themes/${name}-color-theme.json`, json);
   }
