@@ -57,6 +57,11 @@
     "editorWidget.border": "#529881",
     "focusBorder": "#ae0492",
     "foreground": "#0d5940",
+    "gitDecoration.conflictingResourceForeground": "#0ea7b4",
+    "gitDecoration.deletedResourceForeground": "#af350f",
+    "gitDecoration.ignoredResourceForeground": "#0d594066",
+    "gitDecoration.modifiedResourceForeground": "#c0792b",
+    "gitDecoration.untrackedResourceForeground": "#318bba",
     "icon.foreground": "#0d5940",
     "input.background": "#f8fbfa",
     "input.border": "#529881",
@@ -90,6 +95,7 @@
     "peekViewResult.matchHighlightBackground": "#f1c40e80",
     "pickerGroup.border": "#9cc9ba",
     "progressBar.background": "#0d5940",
+    "quickInput.background": "#ebf4f1",
     "quickInputList.focusBackground": "#0d5940",
     "quickInputList.focusForeground": "#ebf4f1",
     "quickInputList.focusIconForeground": "#ebf4f1",
@@ -144,7 +150,7 @@
     "toolbar.activeBackground": "#0d594026",
     "toolbar.hoverBackground": "#0d59401a",
     "tree.indentGuidesStroke": "#9cc9ba80",
-    "widget.shadow": "#0d594040"
+    "widget.shadow": "#0d594080"
   },
   "tokenColors": [
     {
@@ -183,7 +189,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#127d59",
+        "foreground": "#60a991",
         "fontStyle": ""
       }
     },

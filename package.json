@@ -48,6 +48,11 @@
 				"path": "./themes/periwinkle-color-theme.json"
 			},
 			{
+				"label": "Uno Due Tre (Periwinkle 2)",
+				"uiTheme": "vs",
+				"path": "./themes/periwinkle2-color-theme.json"
+			},
+			{
 				"label": "Uno Due Tre (Sprinkles)",
 				"uiTheme": "vs-dark",
 				"path": "./themes/sprinkles-color-theme.json"
@@ -61,6 +66,11 @@
 				"label": "Uno Due Tre (Ocean)",
 				"uiTheme": "vs-dark",
 				"path": "./themes/ocean-color-theme.json"
+			},
+			{
+				"label": "Uno Due Tre (Ocean 2)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/ocean2-color-theme.json"
 			}
 		]
 	},

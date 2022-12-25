@@ -82,7 +82,7 @@ export abstract class Theme2 {
     return colord({ h, s, l }).toHex();
   }
 
-  dilute(color: string, percent: number): string {
+  alpha(color: string, percent: number): string {
     if (percent >= 100) {
       return color;
     }
@@ -98,16 +98,8 @@ export abstract class Theme2 {
   blue = "#3498db";
   purple = "#9b59b6";
 
-  accent0() {
-    return this.colorTre;
-  }
-
-  accent1() {
-    return this.colorTre;
-  }
-
   inactiveSelectionBG() {
-    return this.dilute(this.colorFG, 15);
+    return this.alpha(this.colorFG, 15);
   }
 
   config(): {
@@ -130,12 +122,12 @@ export abstract class Theme2 {
       "activityBar.border": this.colorBorder0,
       "activityBar.background": this.colorBG1,
       "activityBar.foreground": this.colorFG,
-      "activityBar.inactiveForeground": this.dilute(this.colorFG, 50),
+      "activityBar.inactiveForeground": this.alpha(this.colorFG, 50),
       "activityBarBadge.background": this.colorFG,
       "activityBarBadge.foreground": this.colorBG0,
       "activityBar.activeBorder": this.colorFG,
       "tab.activeBorder": this.colorFG,
-      "activityBar.activeBackground": this.dilute(this.colorFG, 10),
+      "activityBar.activeBackground": this.alpha(this.colorFG, 10),
     };
   }
 
@@ -163,6 +155,7 @@ export abstract class Theme2 {
 
   themeList() {
     return {
+      "quickInput.background": this.colorBG0,
       "list.errorForeground": this.red,
       "list.warningForeground": this.yellow,
       "list.highlightForeground": this.colorTre,
@@ -170,14 +163,12 @@ export abstract class Theme2 {
       "list.activeSelectionIconForeground": this.colorBG0,
       "list.activeSelectionForeground": this.colorBG0,
       "list.activeSelectionBackground": this.colorFG,
-      // "list.focusSelectionForeground": this.colorBG0,
-      // "list.focusSelectionBackground": this.colorFG,
       "list.inactiveSelectionForeground": this.colorFG,
       "list.inactiveSelectionBackground": this.inactiveSelectionBG(),
       "quickInputList.focusBackground": this.colorFG,
       "quickInputList.focusForeground": this.colorBG0,
       "quickInputList.focusIconForeground": this.colorBG0,
-      "list.hoverBackground": this.dilute(this.colorTre, 10),
+      "list.hoverBackground": this.alpha(this.colorTre, 10),
     };
   }
 
@@ -209,33 +200,29 @@ export abstract class Theme2 {
   }
 
   themeGit() {
-    return {};
-    // return {
-    //   "gitDecoration.modifiedResourceForeground": this.mix(
-    //     this.orange,
-    //     this.colorFG,
-    //     20
-    //   ),
-    //   "gitDecoration.deletedResourceForeground": this.mix(
-    //     this.red,
-    //     this.colorFG,
-    //     20
-    //   ),
-    //   "gitDecoration.untrackedResourceForeground": this.mix(
-    //     this.blue,
-    //     this.colorFG,
-    //     20
-    //   ),
-    //   "gitDecoration.conflictingResourceForeground": this.mix(
-    //     this.cyan,
-    //     this.colorFG,
-    //     20
-    //   ),
-    //   "gitDecoration.ignoredResourceForeground": this.dilute(
-    //     this.colorFG,
-    //     40
-    //   ),
-    // };
+    return {
+      "gitDecoration.modifiedResourceForeground": this.mix(
+        this.orange,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.deletedResourceForeground": this.mix(
+        this.red,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.untrackedResourceForeground": this.mix(
+        this.blue,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.conflictingResourceForeground": this.mix(
+        this.cyan,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.ignoredResourceForeground": this.alpha(this.colorFG, 40),
+    };
   }
 
   themeStatusBar() {
@@ -244,9 +231,9 @@ export abstract class Theme2 {
     const border = this.themeType === "light" ? bg : this.colorBorder0;
     return {
       "statusBar.border": border,
-      "statusBarItem.activeBackground": this.dilute(fg, 20),
-      "statusBarItem.hoverBackground": this.dilute(fg, 10),
-      "statusBarItem.prominentBackground": this.dilute(fg, 30),
+      "statusBarItem.activeBackground": this.alpha(fg, 20),
+      "statusBarItem.hoverBackground": this.alpha(fg, 10),
+      "statusBarItem.prominentBackground": this.alpha(fg, 30),
       "statusBar.background": bg,
       "statusBar.debuggingBackground": bg,
       "statusBar.noFolderBackground": bg,
@@ -286,9 +273,9 @@ export abstract class Theme2 {
   themeScrollbar() {
     return {
       "scrollbar.shadow": transparent,
-      "scrollbarSlider.background": this.dilute(this.colorFG, 50),
-      "scrollbarSlider.hoverBackground": this.dilute(this.colorFG, 60),
-      "scrollbarSlider.activeBackground": this.dilute(this.colorFG, 70),
+      "scrollbarSlider.background": this.alpha(this.colorFG, 50),
+      "scrollbarSlider.hoverBackground": this.alpha(this.colorFG, 60),
+      "scrollbarSlider.activeBackground": this.alpha(this.colorFG, 70),
     };
   }
 
@@ -348,13 +335,11 @@ export abstract class Theme2 {
   }
 
   themeDragAndDrop() {
-    const color = this.dilute(this.colorTre, 30);
+    const color = this.alpha(this.colorTre, 30);
     return {
       "list.dropBackground": color,
-      // "activityBar.dropBackground": color,
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
-      // "panel.dropBackground": color,
       "panel.border": this.colorBorder0,
       "panelSection.border": this.colorBorder0,
       "panelSectionHeader.border": this.colorBorder0,
@@ -397,27 +382,27 @@ export abstract class Theme2 {
     return {
       "editorWidget.background": this.colorWidgetBG,
       "editorWidget.border": this.colorBorder1,
-      "editorBracketMatch.background": this.dilute(this.colorTre, 15),
-      "editorBracketMatch.border": this.dilute(this.colorTre, 50),
-      "editor.findMatchBackground": this.dilute(this.orange, 50),
-      "editor.findMatchHighlightBackground": this.dilute(this.yellow, 50),
-      "editor.findRangeHighlightBackground": this.dilute(this.orange, 50),
+      "editorBracketMatch.background": this.alpha(this.colorTre, 15),
+      "editorBracketMatch.border": this.alpha(this.colorTre, 50),
+      "editor.findMatchBackground": this.alpha(this.orange, 50),
+      "editor.findMatchHighlightBackground": this.alpha(this.yellow, 50),
+      "editor.findRangeHighlightBackground": this.alpha(this.orange, 50),
       "editor.foreground": this.colorFG,
       "editor.background": this.colorBG0,
       "editorLink.activeForeground": this.cyan,
       "editor.lineHighlightBackground": this.colorBG1,
-      "editor.rangeHighlightBackground": this.dilute(this.orange, 10),
-      "editor.selectionBackground": this.dilute(this.colorFG, 10),
-      "editor.inactiveSelectionBackground": this.dilute(this.colorFG, 10),
-      "editor.wordHighlightBackground": this.dilute(this.blue, 15),
-      "editor.wordHighlightStrongBackground": this.dilute(this.purple, 20),
-      "editorOverviewRuler.border": this.dilute(this.colorBorder0, 50),
+      "editor.rangeHighlightBackground": this.alpha(this.orange, 10),
+      "editor.selectionBackground": this.alpha(this.colorFG, 10),
+      "editor.inactiveSelectionBackground": this.alpha(this.colorFG, 10),
+      "editor.wordHighlightBackground": this.alpha(this.blue, 15),
+      "editor.wordHighlightStrongBackground": this.alpha(this.purple, 20),
+      "editorOverviewRuler.border": this.alpha(this.colorBorder0, 50),
       "editorCursor.foreground": this.colorTre,
       "editorGroup.border": this.colorBorder0,
-      "editorRuler.foreground": this.dilute(this.colorBorder0, 50),
-      "editorIndentGuide.background": this.dilute(this.colorBorder0, 50),
+      "editorRuler.foreground": this.alpha(this.colorBorder0, 50),
+      "editorIndentGuide.background": this.alpha(this.colorBorder0, 50),
       "editorIndentGuide.activeBackground": this.colorBorder0,
-      "editorLineNumber.foreground": this.dilute(this.colorFG, 30),
+      "editorLineNumber.foreground": this.alpha(this.colorFG, 30),
       "editorLineNumber.activeForeground": this.colorFG,
     };
   }
@@ -427,7 +412,7 @@ export abstract class Theme2 {
       "titleBar.activeBackground": this.colorBG2,
       "titleBar.activeForeground": this.colorFG,
       "titleBar.inactiveBackground": this.colorBG2,
-      "titleBar.inactiveForeground": this.dilute(this.colorFG, 70),
+      "titleBar.inactiveForeground": this.alpha(this.colorFG, 70),
       "titleBar.border": this.colorBorder0,
     };
   }
@@ -440,7 +425,7 @@ export abstract class Theme2 {
       "breadcrumb.background": this.colorBG0,
       "editorGroupHeader.noTabsBackground": this.colorBG0,
       "editorGroupHeader.tabsBackground": this.colorBG0,
-      "tab.hoverBackground": this.dilute(this.colorTre, 10),
+      "tab.hoverBackground": this.alpha(this.colorTre, 10),
       "tab.activeBorder": this.colorTre,
       "tab.unfocusedActiveBorder": this.colorTre,
       "tab.activeBorderTop": undefined,
@@ -448,7 +433,7 @@ export abstract class Theme2 {
       "tab.activeBackground": this.inactiveSelectionBG(),
       "tab.activeForeground": this.colorFG,
       "tab.inactiveBackground": this.colorBG0,
-      "tab.inactiveForeground": this.dilute(this.colorFG, 80),
+      "tab.inactiveForeground": this.alpha(this.colorFG, 80),
     };
   }
 
@@ -456,13 +441,16 @@ export abstract class Theme2 {
     return {
       focusBorder: this.colorTre,
       "icon.foreground": this.colorFG,
-      "toolbar.hoverBackground": this.dilute(this.colorFG, 10),
-      "toolbar.activeBackground": this.dilute(this.colorFG, 15),
-      "widget.shadow": this.dilute(this.colorFG, 25),
+      "toolbar.hoverBackground": this.alpha(this.colorFG, 10),
+      "toolbar.activeBackground": this.alpha(this.colorFG, 15),
+      "widget.shadow":
+        this.themeType === "light"
+          ? this.alpha(this.colorFG, 50)
+          : this.alpha(this.colorBG2, 90),
       ...this.themeScrollbar(),
       "input.border": this.colorBorder1,
       "input.background": this.colorWidgetBG,
-      "input.placeholderForeground": this.dilute(this.colorFG, 40),
+      "input.placeholderForeground": this.alpha(this.colorFG, 40),
       "progressBar.background": this.colorFG,
       "inputOption.activeBorder": this.colorFG,
       ...this.themeList(),
@@ -477,16 +465,16 @@ export abstract class Theme2 {
       foreground: this.colorFG,
       "panel.background": this.colorBG0,
       "panel.border": this.colorBorder0,
-      "panelTitle.activeBorder": this.dilute(this.colorFG, 50),
+      "panelTitle.activeBorder": this.alpha(this.colorFG, 50),
       "panelTitle.activeForeground": this.colorFG,
-      "panelTitle.inactiveForeground": this.dilute(this.colorFG, 60),
-      "peekViewEditor.matchHighlightBackground": this.dilute(this.yellow, 50),
-      "peekViewResult.matchHighlightBackground": this.dilute(this.yellow, 50),
+      "panelTitle.inactiveForeground": this.alpha(this.colorFG, 60),
+      "peekViewEditor.matchHighlightBackground": this.alpha(this.yellow, 50),
+      "peekViewResult.matchHighlightBackground": this.alpha(this.yellow, 50),
       "sideBar.border": this.colorBorder0,
       "sideBar.background": this.colorBG1,
       "sideBarSectionHeader.background": this.colorBG2,
       "sideBarSectionHeader.border": this.colorBorder0,
-      "tree.indentGuidesStroke": this.dilute(this.colorBorder0, 50),
+      "tree.indentGuidesStroke": this.alpha(this.colorBorder0, 50),
       ...this.themeTabs(),
       "pickerGroup.border": this.colorBorder0,
       ...this.themeGit(),

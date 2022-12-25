@@ -6,7 +6,9 @@ import { MidnightTheme } from "./MidnightTheme";
 import { NatureTheme } from "./NatureTheme";
 import { NatureTheme2 } from "./NatureTheme2";
 import { OceanTheme } from "./OceanTheme";
+import { OceanTheme2 } from "./OceanTheme2";
 import { PeriwinkleTheme } from "./PeriwinkleTheme";
+import { PeriwinkleTheme2 } from "./PeriwinkleTheme2";
 import { SprinklesTheme } from "./SprinklesTheme";
 
 new LightTheme().saveAs("light");
@@ -15,6 +17,8 @@ new NatureTheme().saveAs("nature");
 new BubbleGumTheme().saveAs("bubblegum");
 new MidnightTheme().saveAs("midnight");
 new OceanTheme().saveAs("ocean");
+new OceanTheme2().saveAs("ocean2");
 new PeriwinkleTheme().saveAs("periwinkle");
+new PeriwinkleTheme2().saveAs("periwinkle2");
 new SprinklesTheme().saveAs("sprinkles");
 new NatureTheme2().saveAs("nature2");
