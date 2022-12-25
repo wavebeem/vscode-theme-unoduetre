@@ -1,9 +1,9 @@
 import { BaseThemeDark } from "./Theme2";
 
 export class OceanTheme2 extends BaseThemeDark {
-  colorBG0 = this.hsl(220, 40, 20);
-  colorBG1 = this.hsl(220, 40, 16);
-  colorBG2 = this.hsl(220, 40, 12);
+  colorBG0 = this.hsl(220, 50, 20);
+  colorBG1 = this.hsl(220, 50, 16);
+  colorBG2 = this.hsl(220, 50, 26);
   colorFG = this.hsl(220, 80, 90);
 
   colorSubtle = this.hsl(220, 20, 66);
@@ -11,9 +11,9 @@ export class OceanTheme2 extends BaseThemeDark {
   colorDue = this.hsl(200, 80, 65);
   colorTre = this.hsl(30, 80, 65);
 
-  colorBorder0 = this.hsl(220, 40, 40);
-  colorBorder1 = this.hsl(220, 40, 52);
-  colorStatusBG = this.hsl(220, 40, 12);
+  colorBorder0 = this.hsl(220, 50, 40);
+  colorBorder1 = this.hsl(220, 50, 58);
+  colorStatusBG = this.hsl(220, 50, 12);
   colorStatusFG = this.colorFG;
-  colorWidgetBG = this.hsl(220, 40, 15);
+  colorWidgetBG = this.hsl(220, 50, 15);
 }

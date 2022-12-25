@@ -3,7 +3,7 @@ import { BaseThemeDark } from "./Theme2";
 export class DarkTheme2 extends BaseThemeDark {
   colorBG0 = this.hsl(0, 0, 20);
   colorBG1 = this.hsl(0, 0, 16);
-  colorBG2 = this.hsl(0, 0, 12);
+  colorBG2 = this.hsl(0, 0, 26);
   colorFG = this.hsl(0, 0, 90);
 
   colorSubtle = this.hsl(0, 0, 62);
@@ -12,7 +12,7 @@ export class DarkTheme2 extends BaseThemeDark {
   colorTre = this.hsl(30, 80, 65);
 
   colorBorder0 = this.hsl(0, 0, 30);
-  colorBorder1 = this.hsl(0, 0, 52);
+  colorBorder1 = this.hsl(0, 0, 58);
   colorStatusBG = this.hsl(0, 0, 12);
   colorStatusFG = this.colorFG;
   colorWidgetBG = this.hsl(0, 0, 15);

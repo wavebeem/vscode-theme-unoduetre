@@ -429,20 +429,19 @@ export abstract class Theme2 {
 
   themeTabs() {
     return {
-      "tab.border": this.colorBG0,
+      "tab.border": this.colorBG1,
       "editorGroupHeader.tabsBorder": this.colorBorder0,
       "editorGroupHeader.border": this.colorBorder0,
       "breadcrumb.background": this.colorBG0,
-      "editorGroupHeader.noTabsBackground": this.colorBG0,
-      "editorGroupHeader.tabsBackground": this.colorBG0,
-      "tab.hoverBackground": this.colorBG1,
+      "editorGroupHeader.noTabsBackground": this.colorBG1,
+      "editorGroupHeader.tabsBackground": this.colorBG1,
       "tab.activeBorder": this.colorBorder1,
       "tab.unfocusedActiveBorder": this.colorTre,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
       "tab.activeBackground": this.colorBG2,
       "tab.activeForeground": this.colorFG,
-      "tab.inactiveBackground": this.colorBG0,
+      "tab.inactiveBackground": this.colorBG1,
       "tab.inactiveForeground": this.alpha(this.colorFG, 80),
     };
   }
@@ -456,7 +455,7 @@ export abstract class Theme2 {
       "widget.shadow":
         this.themeType === "light"
           ? this.alpha(this.colorFG, 50)
-          : this.alpha(this.colorBG2, 90),
+          : this.alpha(this.darken(this.colorBG1, 10), 90),
       ...this.themeScrollbar(),
       "input.border": this.colorBorder1,
       "input.background": this.colorWidgetBG,
