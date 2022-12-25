@@ -1,65 +1,19 @@
-import { Theme, ThemeType, ThemePalette } from "./Theme";
+import { BaseThemeDark } from "./Theme";
 
-const white = "#ffffff";
-const cyan = "#5bf1ff";
-const yellow = "#fcd435";
-const transparent = "#00000000";
-const hueAccent2 = 40;
+export class OceanTheme extends BaseThemeDark {
+  colorBG0 = this.hsl(220, 45, 20);
+  colorBG1 = this.hsl(220, 45, 16);
+  colorBG2 = this.hsl(220, 45, 26);
+  colorFG = this.hsl(220, 80, 90);
 
-const bgHue = 220;
+  colorSubtle = this.hsl(220, 20, 66);
+  colorUno = this.hsl(160, 60, 50);
+  colorDue = this.hsl(200, 80, 65);
+  colorTre = this.hsl(30, 80, 65);
 
-export class OceanTheme extends Theme {
-  uno = 160;
-  due = 200;
-  tre = 30;
-
-  bg = this.gray(20);
-
-  palette: ThemePalette = {
-    yellow: yellow,
-    orange: "#f79e51",
-    blue: "#8cd1ff",
-    purple: "#e1a2f9",
-    white: white,
-    red: "#ff6666",
-    cyan: cyan,
-    transparent: transparent,
-    __NO__: "#ff00ff",
-    tFG: this.hsl(bgHue, 90, 90),
-    ...this.tintedAnsiDark(this.bg, this.hsl(bgHue, 80, 50)),
-    accent0: this.hsl(this.due, 70, 40),
-    accent1: this.hsl(hueAccent2, 100, 60),
-    fg: this.hsl(bgHue, 80, 90),
-    bg: this.bg,
-    titlebarBG: this.gray(12),
-    sidebarBG: this.gray(16),
-    statusbarBG: this.gray(12),
-    statusbarFG: this.gray(96),
-    inputBG: this.gray(14),
-    bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
-    bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    inactiveSelectionBG: this.hsla(this.due, 50, 50, 30),
-    textSelectionBG: this.hsla(this.due, 50, 50, 30),
-    accentFocusBG: this.hsl(this.due, 35, 35),
-    widgetBG: this.gray(25),
-    widgetBorder: this.gray(60),
-    ruler: this.hsla(bgHue, 60, 70, 10),
-  };
-
-  gray(l: number) {
-    return this.hsl(bgHue, 40, l);
-  }
-
-  ramp(hue: number) {
-    return [
-      this.hsl(hue, 80, 65),
-      this.hsl(hue + 4, 70, 60),
-      this.hsl(hue + 12, 40, 50),
-      this.hsl(hue + 16, 30, 45),
-    ] as const;
-  }
-
-  themeType() {
-    return ThemeType.DARK;
-  }
+  colorBorder0 = this.hsl(220, 45, 35);
+  colorBorder1 = this.hsl(220, 45, 58);
+  colorStatusBG = this.hsl(220, 45, 12);
+  colorStatusFG = this.colorFG;
+  colorWidgetBG = this.hsl(220, 45, 15);
 }
