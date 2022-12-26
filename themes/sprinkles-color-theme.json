@@ -30,12 +30,12 @@
     "editor.selectionBackground": "#653a7880",
     "editor.wordHighlightBackground": "#3398db26",
     "editor.wordHighlightStrongBackground": "#9b58b633",
-    "editorBracketHighlight.foreground1": "#e4c567",
-    "editorBracketHighlight.foreground2": "#f28cd0",
-    "editorBracketHighlight.foreground3": "#5cd6c2",
-    "editorBracketHighlight.foreground4": "#e4c567",
-    "editorBracketHighlight.foreground5": "#f28cd0",
-    "editorBracketHighlight.foreground6": "#5cd6c2",
+    "editorBracketHighlight.foreground1": "#af8e60",
+    "editorBracketHighlight.foreground2": "#c07caf",
+    "editorBracketHighlight.foreground3": "#5c9d9c",
+    "editorBracketHighlight.foreground4": "#af8e60",
+    "editorBracketHighlight.foreground5": "#c07caf",
+    "editorBracketHighlight.foreground6": "#5c9d9c",
     "editorBracketHighlight.unexpectedBracket.foreground": "#cc0000",
     "editorBracketMatch.background": "#5cd6c226",
     "editorBracketMatch.border": "#5cd6c280",
@@ -178,7 +178,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, keyword.operator.type.annotation, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#a58bb1",
         "fontStyle": ""

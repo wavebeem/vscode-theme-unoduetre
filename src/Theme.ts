@@ -56,7 +56,7 @@ interface AlmostTokenColor {
   settings: Style;
 }
 
-export abstract class Theme {
+abstract class Theme {
   abstract themeType: ThemeType;
 
   abstract colorBG0: string;
@@ -373,9 +373,16 @@ export abstract class Theme {
     [x, [x, [x, [x, [x, [x]]]]]];
     //
     ////////////////////////////////////////////////////////////////////////////
-    const b1 = this.colorUno;
-    const b2 = this.colorDue;
-    const b3 = this.colorTre;
+    const tweakColor = (color: string): string => {
+      return this.fixContrast({
+        type: "text",
+        fg: this.mix(color, this.colorBG0, 30),
+        bg: this.colorBG0,
+      });
+    };
+    const b1 = tweakColor(this.colorUno);
+    const b2 = tweakColor(this.colorDue);
+    const b3 = tweakColor(this.colorTre);
     return {
       "editorBracketHighlight.foreground1": b1,
       "editorBracketHighlight.foreground2": b2,
@@ -599,6 +606,8 @@ export abstract class Theme {
           "punctuation.definition.parameters",
           "punctuation.definition.string",
           "punctuation.definition.array",
+          "punctuation.definition.typeparameters",
+          "keyword.operator.type.annotation",
           "punctuation.terminator",
 
           // Punctuation
@@ -789,75 +798,137 @@ export abstract class Theme {
     };
   }
 
-  showContrast(level: ContrastLevel, fg: keyof this, bg: keyof this): void {
-    const contrast = colord(this[fg] as any).contrast(this[bg] as any);
+  showContrast(
+    level: ContrastLevel,
+    fg: string,
+    bg: string,
+    fgStr: string,
+    bgStr: string
+  ): void {
+    const contrast = colord(fg).contrast(bg);
     const fail = contrast < Contrast[level];
     console.log(
       fail ? "[!]" : "   ",
       contrast.toFixed(1).toString().padStart(6),
       ":",
-      this[fg],
-      "[on]",
-      this[bg],
-      ":",
       fg,
       "[on]",
-      bg
+      bg,
+      ":",
+      fgStr,
+      "[on]",
+      bgStr
     );
   }
 
   saveAs(name: string): void {
     const config = this.config();
-    console.log(`--- ${name} `.padEnd(60, "-"));
-    this.showContrast("text", "colorFG", "colorBG0");
-    this.showContrast("text", "colorFG", "colorBG1");
-    this.showContrast("text", "colorFG", "colorBG2");
-    this.showContrast("ui", "colorBorder1", "colorBG0");
-    this.showContrast("ui", "colorBorder1", "colorBG1");
-    this.showContrast("ui", "colorBorder1", "colorBG2");
-    this.showContrast("text", "colorSubtle", "colorBG0");
-    this.showContrast("text", "colorUno", "colorBG0");
-    this.showContrast("text", "colorDue", "colorBG0");
-    this.showContrast("text", "colorTre", "colorBG0");
+    this.printContrastReport(name);
     const json = JSON.stringify(config, null, 2);
     fs.writeFileSync(`themes/${name}-color-theme.json`, json);
+  }
+
+  private printContrastReport(name: string) {
+    console.log(`--- ${name} `.padEnd(60, "-"));
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG0,
+      "colorFG",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG1,
+      "colorFG",
+      "colorBG1"
+    );
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG2,
+      "colorFG",
+      "colorBG2"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG0,
+      "colorBorder1",
+      "colorBG0"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG1,
+      "colorBorder1",
+      "colorBG1"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG2,
+      "colorBorder1",
+      "colorBG2"
+    );
+    this.showContrast(
+      "text",
+      this.colorSubtle,
+      this.colorBG0,
+      "colorSubtle",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorUno,
+      this.colorBG0,
+      "colorUno",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorDue,
+      this.colorBG0,
+      "colorDue",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorTre,
+      this.colorBG0,
+      "colorTre",
+      "colorBG0"
+    );
+    const brackets = this.themeBracketColors();
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground1"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground1",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground2"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground2",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground3"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground3",
+      "colorBG0"
+    );
   }
 }
 
 export abstract class BaseThemeLight extends Theme {
-  themeType = "light" as ThemeType;
+  themeType: ThemeType = "light";
 }
 
 export abstract class BaseThemeDark extends Theme {
-  themeType = "dark" as ThemeType;
+  themeType: ThemeType = "dark";
 }
-
-// function countColors(data: any): number {
-//   const map = new Map<string, number>();
-//   for (const color of findColors(data)) {
-//     const n = map.get(color) ?? 0;
-//     map.set(color, n + 1);
-//   }
-//   return [...map.keys()].length;
-// }
-
-// function* findColors(data: any): Generator<string> {
-//   if (!data) {
-//     return;
-//   } else if (Array.isArray(data)) {
-//     for (const d of data) {
-//       yield* findColors(d);
-//     }
-//   } else if (typeof data === "object") {
-//     for (const d of Object.values(data)) {
-//       yield* findColors(d);
-//     }
-//   } else if (typeof data === "string") {
-//     if (getFormat(data)) {
-//       // Yield color without alpha channel since that's not a "unique" color
-//       const color = colord(data).toRgb();
-//       color.a = 1;
-//       yield colord(color).toHex();
-//     }
-//   }
-// }
