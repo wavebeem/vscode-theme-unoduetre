@@ -150,7 +150,7 @@ abstract class Theme {
       // the Notification Center.
       "notifications.border": undefined,
       // Notification links foreground color.
-      "notificationLink.foreground": this.cyan,
+      "notificationLink.foreground": this.colorSubtle,
     };
   }
 
@@ -169,7 +169,7 @@ abstract class Theme {
       "quickInputList.focusBackground": this.colorFG,
       "quickInputList.focusForeground": this.colorBG0,
       "quickInputList.focusIconForeground": this.colorBG0,
-      "list.hoverBackground": this.alpha(this.colorTre, 10),
+      "list.hoverBackground": this.colorBG0,
     };
   }
 
@@ -395,6 +395,7 @@ abstract class Theme {
     };
   }
 
+  // blah blah https://cool.com
   themeEditor() {
     return {
       "editorWidget.background": this.colorWidgetBG,
@@ -406,7 +407,7 @@ abstract class Theme {
       "editor.findRangeHighlightBackground": this.alpha(this.orange, 50),
       "editor.foreground": this.colorFG,
       "editor.background": this.colorBG0,
-      "editorLink.activeForeground": this.cyan,
+      "editorLink.activeForeground": this.colorSubtle,
       "editor.lineHighlightBackground": this.colorBG1,
       "editor.rangeHighlightBackground": this.alpha(this.orange, 10),
       "editor.selectionBackground": this.alpha(this.colorBorder0, 50),
