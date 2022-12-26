@@ -1,3 +1,8 @@
+# v5.0.0
+
+- Simplified syntax highlighting and tweaked colors slightly for contrast
+- Reworked UI theme to be more understated and consistent
+
 # v4.1.0
 
 - Add borders to sidebar section headers

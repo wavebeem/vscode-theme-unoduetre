@@ -188,7 +188,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#45685c",
+        "foreground": "#347962",
         "fontStyle": ""
       }
     },
