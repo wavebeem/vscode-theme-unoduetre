@@ -69,6 +69,7 @@
 		"prepackage": "rm -rf *.vsix",
 		"package": "npm run build && vsce package",
 		"load": "npm run package && code --install-extension *.vsix",
+		"version": "npm run build",
 		"postversion": "git push --follow-tags && vsce publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
