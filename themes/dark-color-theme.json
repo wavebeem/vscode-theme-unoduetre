@@ -180,7 +180,7 @@
       "name": "Uno3",
       "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, keyword.operator.type.annotation, punctuation.terminator, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
-        "foreground": "#9e9e9e",
+        "foreground": "#a5a894",
         "fontStyle": ""
       }
     },
@@ -188,7 +188,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#9e9e9e",
+        "foreground": "#a5a894",
         "fontStyle": ""
       }
     },

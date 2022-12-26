@@ -6,10 +6,10 @@ export class PeriwinkleTheme extends BaseThemeLight {
   colorBG2 = this.hsl(240, 40, 82);
   colorFG = this.hsl(240, 80, 25);
 
-  colorSubtle = this.hsl(240, 20, 48);
-  colorUno = this.hsl(330, 80, 35);
-  colorDue = this.hsl(200, 80, 30);
-  colorTre = this.hsl(110, 80, 22);
+  colorSubtle = this.hsl(310, 40, 45);
+  colorUno = this.hsl(310, 80, 35);
+  colorDue = this.hsl(195, 80, 30);
+  colorTre = this.hsl(120, 80, 22);
 
   colorBorder0 = this.hsl(240, 40, 70);
   colorBorder1 = this.hsl(240, 40, 50);

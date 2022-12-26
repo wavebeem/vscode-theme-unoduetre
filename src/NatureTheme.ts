@@ -4,9 +4,9 @@ export class NatureTheme extends BaseThemeLight {
   colorBG0 = this.hsl(160, 40, 94);
   colorBG1 = this.hsl(160, 40, 90);
   colorBG2 = this.hsl(160, 40, 82);
-  colorFG = this.hsl(160, 75, 20);
+  colorFG = this.hsl(160, 100, 21);
 
-  colorSubtle = this.hsl(160, 40, 34);
+  colorSubtle = this.hsl(205, 50, 42);
   colorUno = this.hsl(205, 85, 37);
   colorDue = this.hsl(50, 80, 27);
   colorTre = this.hsl(310, 95, 35);

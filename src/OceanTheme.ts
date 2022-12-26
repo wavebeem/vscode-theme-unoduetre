@@ -6,7 +6,7 @@ export class OceanTheme extends BaseThemeDark {
   colorBG2 = this.hsl(220, 45, 26);
   colorFG = this.hsl(220, 80, 90);
 
-  colorSubtle = this.hsl(220, 20, 66);
+  colorSubtle = this.hsl(220, 40, 66);
   colorUno = this.hsl(160, 60, 50);
   colorDue = this.hsl(200, 80, 65);
   colorTre = this.hsl(30, 80, 65);

@@ -6,7 +6,7 @@ export class SprinklesTheme extends BaseThemeDark {
   colorBG2 = this.hsl(280, 40, 26);
   colorFG = this.hsl(280, 80, 90);
 
-  colorSubtle = this.hsl(280, 20, 62);
+  colorSubtle = this.hsl(280, 30, 65);
   colorUno = this.hsl(45, 70, 65);
   colorDue = this.hsl(320, 80, 75);
   colorTre = this.hsl(170, 60, 60);

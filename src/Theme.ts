@@ -4,6 +4,7 @@
 
 import fs from "fs";
 import { colord } from "colord";
+import * as ANSI from "ansi-colors";
 
 const transparent = "#00000000";
 
@@ -807,9 +808,9 @@ abstract class Theme {
   ): void {
     const contrast = colord(fg).contrast(bg);
     const fail = contrast < Contrast[level];
-    console.log(
+    const str = [
       fail ? "[!]" : "   ",
-      contrast.toFixed(1).toString().padStart(6),
+      ANSI.bold.cyan(contrast.toFixed(1).toString().padStart(6)),
       ":",
       fg,
       "[on]",
@@ -817,8 +818,14 @@ abstract class Theme {
       ":",
       fgStr,
       "[on]",
-      bgStr
-    );
+      bgStr,
+    ].join(" ");
+    if (fail) {
+      console.error(ANSI.bold.red(str));
+      process.exit(1);
+    } else {
+      console.log(str);
+    }
   }
 
   saveAs(name: string): void {
@@ -829,7 +836,7 @@ abstract class Theme {
   }
 
   private printContrastReport(name: string) {
-    console.log(`--- ${name} `.padEnd(60, "-"));
+    console.log(ANSI.bold(`--- ${name} `.padEnd(60, "-")));
     this.showContrast(
       "text",
       this.colorFG,
