@@ -122,7 +122,7 @@
     "tab.border": "#16233b",
     "tab.inactiveBackground": "#16233b",
     "tab.inactiveForeground": "#d1dffacc",
-    "tab.unfocusedActiveBorder": "#eda65e",
+    "tab.unfocusedActiveBorder": "#6484c4",
     "terminal.ansiBlack": "#333333",
     "terminal.ansiBlue": "#a89df1",
     "terminal.ansiBrightBlack": "#333333",

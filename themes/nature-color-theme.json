@@ -122,7 +122,7 @@
     "tab.border": "#dbf0e9",
     "tab.inactiveBackground": "#dbf0e9",
     "tab.inactiveForeground": "#0d5940cc",
-    "tab.unfocusedActiveBorder": "#ae0492",
+    "tab.unfocusedActiveBorder": "#2e6b57",
     "terminal.ansiBlack": "#0c1813",
     "terminal.ansiBlue": "#5044c1",
     "terminal.ansiBrightBlack": "#0c1813",
@@ -188,7 +188,7 @@
       "name": "Uno4",
       "scope": "comment, punctuation.definition.comment",
       "settings": {
-        "foreground": "#347962",
+        "foreground": "#45685c",
         "fontStyle": ""
       }
     },

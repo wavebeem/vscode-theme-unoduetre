@@ -127,7 +127,6 @@ export abstract class Theme {
       "activityBarBadge.background": this.colorFG,
       "activityBarBadge.foreground": this.colorBG0,
       "activityBar.activeBorder": this.colorFG,
-      "tab.activeBorder": this.colorFG,
       "activityBar.activeBackground": this.alpha(this.colorFG, 10),
     };
   }
@@ -436,7 +435,7 @@ export abstract class Theme {
       "editorGroupHeader.noTabsBackground": this.colorBG1,
       "editorGroupHeader.tabsBackground": this.colorBG1,
       "tab.activeBorder": this.colorBorder1,
-      "tab.unfocusedActiveBorder": this.colorTre,
+      "tab.unfocusedActiveBorder": this.colorBorder1,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
       "tab.activeBackground": this.colorBG2,

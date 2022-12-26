@@ -9,7 +9,7 @@ export class BubbleGumTheme extends BaseThemeLight {
   colorSubtle = this.hsl(300, 20, 45);
   colorUno = this.hsl(270, 70, 45);
   colorDue = this.hsl(350, 80, 35);
-  colorTre = this.hsl(180, 80, 26);
+  colorTre = this.hsl(180, 80, 22);
 
   colorBorder0 = this.hsl(300, 40, 70);
   colorBorder1 = this.hsl(300, 40, 45);

@@ -9,7 +9,7 @@ export class MidnightTheme extends BaseThemeDark {
   colorSubtle = this.hsl(260, 40, 68);
   colorUno = this.hsl(140, 60, 65);
   colorDue = this.hsl(190, 80, 65);
-  colorTre = this.hsl(330, 80, 65);
+  colorTre = this.hsl(330, 100, 73);
 
   colorBorder0 = this.hsl(260, 40, 35);
   colorBorder1 = this.hsl(260, 40, 62);
