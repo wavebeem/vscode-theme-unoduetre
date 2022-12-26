@@ -579,7 +579,7 @@ export abstract class Theme {
       },
       {
         name: "Uno3",
-        settings: this.style(this.colorUno),
+        settings: this.style(this.colorSubtle),
         scopes: [
           // Escape characters
           "constant.character.escape",
