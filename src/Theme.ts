@@ -3,7 +3,8 @@
 // https://code.visualstudio.com/api/references/theme-color
 
 import fs from "fs";
-import { colord, getFormat } from "colord";
+import { colord } from "colord";
+import * as ANSI from "ansi-colors";
 
 const transparent = "#00000000";
 
@@ -14,6 +15,7 @@ const Contrast = {
   ui: 3,
   decoration: 1.75,
 } as const;
+type ContrastLevel = keyof typeof Contrast;
 
 // Sort the JSON object so things always come out in the same order, and minor
 // refactoring doesn't cause the build files to change
@@ -30,10 +32,7 @@ interface Style {
   fontStyle: string;
 }
 
-export enum ThemeType {
-  LIGHT = "light",
-  DARK = "dark",
-}
+export type ThemeType = "light" | "dark";
 
 interface AnsiColors {
   tBlack: string;
@@ -44,44 +43,6 @@ interface AnsiColors {
   tMagenta: string;
   tCyan: string;
   tWhite: string;
-}
-
-export interface ThemePalette {
-  yellow: string;
-  orange: string;
-  blue: string;
-  purple: string;
-  white: string;
-  red: string;
-  cyan: string;
-  transparent: string;
-  __NO__: string;
-  tFG: string;
-  tBlack: string;
-  tRed: string;
-  tGreen: string;
-  tYellow: string;
-  tBlue: string;
-  tMagenta: string;
-  tCyan: string;
-  tWhite: string;
-  accent0: string;
-  accent1: string;
-  fg: string;
-  bg: string;
-  inputBG: string;
-  titlebarBG: string;
-  sidebarBG: string;
-  statusbarBG: string;
-  statusbarFG: string;
-  inactiveSelectionBG: string;
-  textSelectionBG: string;
-  accentFocusBG: string;
-  widgetBG: string;
-  widgetBorder: string;
-  bracketMatchBG: string;
-  bracketMatchBorder: string;
-  ruler: string;
 }
 
 interface TokenColor {
@@ -96,58 +57,51 @@ interface AlmostTokenColor {
   settings: Style;
 }
 
-export abstract class Theme {
-  abstract uno: number;
-  abstract due: number;
-  abstract tre: number;
-  abstract bg: string;
-  abstract palette: ThemePalette;
-  abstract themeType(): ThemeType;
-  abstract ramp(hue: number): readonly [string, string, string, string];
+abstract class Theme {
+  abstract themeType: ThemeType;
+
+  abstract colorBG0: string;
+  abstract colorBG1: string;
+  abstract colorBG2: string;
+
+  abstract colorFG: string;
+
+  abstract colorSubtle: string;
+
+  abstract colorUno: string;
+  abstract colorDue: string;
+  abstract colorTre: string;
+
+  abstract colorBorder0: string;
+  abstract colorBorder1: string;
+
+  abstract colorStatusBG: string;
+  abstract colorStatusFG: string;
+
+  abstract colorWidgetBG: string;
 
   hsl(h: number, s: number, l: number): string {
     return colord({ h, s, l }).toHex();
   }
 
-  hsla(h: number, s: number, l: number, a: number): string {
-    return this.dilute(this.hsl(h, s, l), a);
-  }
-
-  gray(l: number): string {
-    return this.hsl(0, 0, l);
-  }
-
-  dilute(color: string, percent: number) {
-    if (percent === 100) {
+  alpha(color: string, percent: number): string {
+    if (percent >= 100) {
       return color;
     }
-    const rgba = colord(color).toRgb();
-    rgba.a = percent / 100;
-    return colord(rgba).toHex();
+    const hsl = colord(color).toHsl();
+    hsl.a = percent / 100;
+    return colord(hsl).toHex();
   }
 
-  border0(): string {
-    return this.fixContrast({
-      fg: this.palette.bg,
-      bg: this.palette.bg,
-      type: "decoration",
-    });
-  }
+  cyan = "#00bcd4";
+  red = "#cc0000";
+  yellow = "#f1c40f";
+  orange = "#e67e22";
+  blue = "#3498db";
+  purple = "#9b59b6";
 
-  border1(): string {
-    return this.fixContrast({
-      fg: this.palette.bg,
-      bg: this.palette.bg,
-      type: "ui",
-    });
-  }
-
-  borderStatus(): string {
-    return this.fixContrast({
-      fg: this.palette.bg,
-      bg: this.palette.statusbarBG,
-      type: "decoration",
-    });
+  inactiveSelectionBG() {
+    return this.alpha(this.colorFG, 15);
   }
 
   config(): {
@@ -158,99 +112,75 @@ export abstract class Theme {
     /** Syntax highlighting colors */
     tokenColors: TokenColor[];
   } {
-    const p = this.palette;
-    const uiColorKeys: (keyof ThemePalette)[] = [
-      "cyan",
-      "yellow",
-      "orange",
-      "blue",
-      "purple",
-      "red",
-      "cyan",
-    ];
-    for (const k of uiColorKeys) {
-      p[k] = this.fixContrast({
-        fg: p[k],
-        bg: this.bg,
-        type: "ui",
-      });
-    }
-    this.palette.tFG = this.fixContrast({
-      fg: this.palette.bg,
-      bg: this.palette.bg,
-      type: "text",
-    });
     return {
-      type: this.themeType(),
+      type: this.themeType,
       colors: sortedObject(this.colors()),
       tokenColors: this.tokenColors(),
     };
   }
 
   themeActivityBar() {
-    const p = this.palette;
     return {
-      "activityBar.border": this.border0(),
-      "activityBar.background": p.sidebarBG,
-      "activityBar.foreground": p.fg,
-      "activityBar.inactiveForeground": this.dilute(p.fg, 50),
-      "activityBarBadge.background": p.fg,
-      "activityBarBadge.foreground": p.bg,
-      "activityBar.activeBorder": p.fg,
-      "tab.activeBorder": p.fg,
-      "activityBar.activeBackground": this.dilute(p.fg, 10),
+      "activityBar.border": this.colorBorder0,
+      "activityBar.background": this.colorBG1,
+      "activityBar.foreground": this.colorFG,
+      "activityBar.inactiveForeground": this.alpha(this.colorFG, 50),
+      "activityBarBadge.background": this.colorFG,
+      "activityBarBadge.foreground": this.colorBG0,
+      "activityBar.activeBorder": this.colorFG,
+      "activityBar.activeBackground": this.alpha(this.colorFG, 10),
     };
   }
 
   themeNotifications() {
-    const p = this.palette;
     return {
       // Notification Center border color.
       "notificationCenter.border": undefined,
       // Notification Center header foreground color.
-      "notificationCenterHeader.foreground": p.fg,
+      "notificationCenterHeader.foreground": this.colorFG,
       // Notification Center header background color.
-      "notificationCenterHeader.background": p.widgetBG,
+      "notificationCenterHeader.background": this.colorWidgetBG,
       // Notification toast border color.
-      "notificationToast.border": p.widgetBorder,
+      "notificationToast.border": this.colorBorder1,
       // Notifications foreground color.
-      "notifications.foreground": p.fg,
+      "notifications.foreground": this.colorFG,
       // Notifications background color.
-      "notifications.background": p.widgetBG,
+      "notifications.background": this.colorWidgetBG,
       // Notifications border color separating from other notifications in
       // the Notification Center.
       "notifications.border": undefined,
       // Notification links foreground color.
-      "notificationLink.foreground": p.cyan,
+      "notificationLink.foreground": this.colorSubtle,
     };
   }
 
   themeList() {
-    const p = this.palette;
     return {
-      "list.errorForeground": p.red,
-      "list.warningForeground": p.yellow,
-      "list.highlightForeground": p.accent1,
-      "list.focusHighlightForeground": p.bg,
-      "list.activeSelectionIconForeground": p.bg,
-      "list.activeSelectionForeground": p.bg,
-      "list.activeSelectionBackground": p.fg,
-      "list.focusSelectionForeground": p.bg,
-      "list.focusSelectionBackground": p.fg,
-      "list.inactiveSelectionForeground": p.fg,
-      "list.inactiveSelectionBackground": p.inactiveSelectionBG,
-      "quickInputList.focusBackground": p.fg,
-      "quickInputList.focusForeground": p.bg,
-      "quickInputList.focusIconForeground": p.bg,
-      "list.hoverBackground": this.dilute(p.accent0, 10),
+      "quickInput.background": this.colorBG0,
+      "list.errorForeground": this.red,
+      "list.warningForeground": this.yellow,
+      "list.highlightForeground": this.colorTre,
+      "list.focusHighlightForeground": this.colorBG0,
+      "list.activeSelectionIconForeground": this.colorBG0,
+      "list.activeSelectionForeground": this.colorBG0,
+      "list.activeSelectionBackground": this.colorFG,
+      "list.inactiveSelectionForeground": this.colorFG,
+      "list.inactiveSelectionBackground": this.colorBG2,
+      "quickInputList.focusBackground": this.colorFG,
+      "quickInputList.focusForeground": this.colorBG0,
+      "quickInputList.focusIconForeground": this.colorBG0,
+      "list.hoverBackground": this.colorBG0,
     };
   }
 
   themeTerminal() {
-    const p = this.palette;
+    const p =
+      this.themeType === "light"
+        ? this.tintedAnsiLight(this.colorBG0, this.colorFG)
+        : this.tintedAnsiDark(this.colorBG0, this.colorFG);
     return {
-      "terminal.foreground": p.tFG,
-      "terminal.background": p.bg,
+      "terminal.foreground": this.colorFG,
+      "terminal.background": this.colorBG0,
       "terminal.ansiBlack": p.tBlack,
       "terminal.ansiBlue": p.tBlue,
       "terminal.ansiBrightBlack": p.tBlack,
@@ -271,26 +201,49 @@ export abstract class Theme {
   }
 
   themeGit() {
-    const p = this.palette;
     return {
-      "gitDecoration.modifiedResourceForeground": this.mix(p.orange, p.fg, 20),
-      "gitDecoration.deletedResourceForeground": this.mix(p.red, p.fg, 20),
-      "gitDecoration.untrackedResourceForeground": this.mix(p.blue, p.fg, 20),
-      "gitDecoration.conflictingResourceForeground": this.mix(p.cyan, p.fg, 20),
-      "gitDecoration.ignoredResourceForeground": this.dilute(p.fg, 40),
+      "gitDecoration.modifiedResourceForeground": this.mix(
+        this.orange,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.deletedResourceForeground": this.mix(
+        this.red,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.untrackedResourceForeground": this.mix(
+        this.blue,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.conflictingResourceForeground": this.mix(
+        this.cyan,
+        this.colorFG,
+        20
+      ),
+      "gitDecoration.ignoredResourceForeground": this.alpha(this.colorFG, 40),
     };
   }
 
+  darken(color: string, amount: number): string {
+    const hsl = colord(color).toHsl();
+    hsl.l -= amount;
+    return colord(hsl).toHex();
+  }
+
   themeStatusBar() {
-    const p = this.palette;
-    const bg = p.statusbarBG;
-    const fg = p.statusbarFG;
-    const border = this.borderStatus();
+    const bg = this.colorStatusBG;
+    const fg = this.colorStatusFG;
+    const border =
+      this.themeType === "light"
+        ? this.darken(this.colorStatusBG, 5)
+        : this.colorBorder0;
     return {
       "statusBar.border": border,
-      "statusBarItem.activeBackground": this.dilute(fg, 20),
-      "statusBarItem.hoverBackground": this.dilute(fg, 10),
-      "statusBarItem.prominentBackground": this.dilute(fg, 30),
+      "statusBarItem.activeBackground": this.alpha(fg, 20),
+      "statusBarItem.hoverBackground": this.alpha(fg, 10),
+      "statusBarItem.prominentBackground": this.alpha(fg, 30),
       "statusBar.background": bg,
       "statusBar.debuggingBackground": bg,
       "statusBar.noFolderBackground": bg,
@@ -299,10 +252,9 @@ export abstract class Theme {
   }
 
   themeBadge() {
-    const p = this.palette;
     return {
-      "badge.foreground": p.bg,
-      "badge.background": p.fg,
+      "badge.foreground": this.colorBG0,
+      "badge.background": this.colorFG,
     };
   }
 
@@ -329,22 +281,20 @@ export abstract class Theme {
   }
 
   themeScrollbar() {
-    const p = this.palette;
     return {
       "scrollbar.shadow": transparent,
-      "scrollbarSlider.background": this.dilute(p.fg, 50),
-      "scrollbarSlider.hoverBackground": this.dilute(p.fg, 60),
-      "scrollbarSlider.activeBackground": this.dilute(p.fg, 70),
+      "scrollbarSlider.background": this.alpha(this.colorFG, 50),
+      "scrollbarSlider.hoverBackground": this.alpha(this.colorFG, 60),
+      "scrollbarSlider.activeBackground": this.alpha(this.colorFG, 70),
     };
   }
 
   themeDropdown() {
-    const p = this.palette;
     return {
-      "dropdown.background": p.inputBG,
-      "dropdown.listBackground": p.widgetBG,
-      "dropdown.border": this.border1(),
-      "dropdown.foreground": p.fg,
+      "dropdown.background": this.colorWidgetBG,
+      "dropdown.listBackground": this.colorWidgetBG,
+      "dropdown.border": this.colorBorder1,
+      "dropdown.foreground": this.colorFG,
     };
   }
 
@@ -395,25 +345,21 @@ export abstract class Theme {
   }
 
   themeDragAndDrop() {
-    const p = this.palette;
-    const color = this.dilute(p.accent0, 30);
+    const color = this.alpha(this.colorTre, 30);
     return {
       "list.dropBackground": color,
-      "activityBar.dropBackground": color,
       "sideBar.dropBackground": color,
       "editorGroup.dropBackground": color,
-      "panel.dropBackground": color,
-      "panel.border": this.border0(),
-      "panelSection.border": this.border0(),
-      "panelSectionHeader.border": this.border0(),
+      "panel.border": this.colorBorder0,
+      "panelSection.border": this.colorBorder0,
+      "panelSectionHeader.border": this.colorBorder0,
     };
   }
 
   themeButton() {
-    const p = this.palette;
     return {
-      "button.background": p.fg,
-      "button.foreground": p.bg,
+      "button.background": this.colorFG,
+      "button.foreground": this.colorBG0,
       "button.hoverBackground": undefined,
     };
   }
@@ -428,10 +374,16 @@ export abstract class Theme {
     [x, [x, [x, [x, [x, [x]]]]]];
     //
     ////////////////////////////////////////////////////////////////////////////
-    const b1 = this.safeRamp(this.uno)[1];
-    const b2 = this.safeRamp(this.due)[1];
-    const b3 = this.safeRamp(this.tre)[1];
-    const p = this.palette;
+    const tweakColor = (color: string): string => {
+      return this.fixContrast({
+        type: "text",
+        fg: this.mix(color, this.colorBG0, 30),
+        bg: this.colorBG0,
+      });
+    };
+    const b1 = tweakColor(this.colorUno);
+    const b2 = tweakColor(this.colorDue);
+    const b3 = tweakColor(this.colorTre);
     return {
       "editorBracketHighlight.foreground1": b1,
       "editorBracketHighlight.foreground2": b2,
@@ -439,89 +391,85 @@ export abstract class Theme {
       "editorBracketHighlight.foreground4": b1,
       "editorBracketHighlight.foreground5": b2,
       "editorBracketHighlight.foreground6": b3,
-      "editorBracketHighlight.unexpectedBracket.foreground": p.red,
+      "editorBracketHighlight.unexpectedBracket.foreground": this.red,
     };
   }
 
+  // blah blah https://cool.com
   themeEditor() {
-    const p = this.palette;
     return {
-      "editorWidget.background": p.widgetBG,
-      "editorWidget.border": p.widgetBorder,
-      "editorBracketMatch.background": p.bracketMatchBG,
-      "editorBracketMatch.border": p.bracketMatchBorder,
-      "editor.findMatchBackground": this.dilute(p.orange, 50),
-      "editor.findMatchHighlightBackground": this.dilute(p.yellow, 50),
-      "editor.findRangeHighlightBackground": this.dilute(p.orange, 50),
-      "editor.foreground": p.fg,
-      "editor.background": p.bg,
-      "editorLink.activeForeground": p.cyan,
-      "editor.lineHighlightBackground": p.sidebarBG,
-      "editor.rangeHighlightBackground": this.dilute(p.orange, 10),
-      "editor.selectionBackground": p.textSelectionBG,
-      "editor.inactiveSelectionBackground": p.textSelectionBG,
-      "editor.wordHighlightBackground": this.dilute(p.blue, 15),
-      "editor.wordHighlightStrongBackground": this.dilute(p.purple, 20),
-      "editorOverviewRuler.border": p.ruler,
-      "editorCursor.foreground": p.accent1,
-      "editorGroup.border": this.border0(),
-      "editorRuler.foreground": p.ruler,
-      "editorIndentGuide.background": p.ruler,
-      "editorIndentGuide.activeBackground": this.dilute(p.fg, 30),
-      "editorLineNumber.foreground": this.dilute(p.fg, 30),
-      "editorLineNumber.activeForeground": p.fg,
+      "editorWidget.background": this.colorWidgetBG,
+      "editorWidget.border": this.colorBorder1,
+      "editorBracketMatch.background": this.alpha(this.colorTre, 15),
+      "editorBracketMatch.border": this.alpha(this.colorTre, 50),
+      "editor.findMatchBackground": this.alpha(this.orange, 50),
+      "editor.findMatchHighlightBackground": this.alpha(this.yellow, 50),
+      "editor.findRangeHighlightBackground": this.alpha(this.orange, 50),
+      "editor.foreground": this.colorFG,
+      "editor.background": this.colorBG0,
+      "editorLink.activeForeground": this.colorSubtle,
+      "editor.lineHighlightBackground": this.colorBG1,
+      "editor.rangeHighlightBackground": this.alpha(this.orange, 10),
+      "editor.selectionBackground": this.alpha(this.colorBorder0, 50),
+      "editor.inactiveSelectionBackground": this.alpha(this.colorBorder0, 50),
+      "editor.wordHighlightBackground": this.alpha(this.blue, 15),
+      "editor.wordHighlightStrongBackground": this.alpha(this.purple, 20),
+      "editorOverviewRuler.border": this.alpha(this.colorBorder0, 50),
+      "editorCursor.foreground": this.colorTre,
+      "editorGroup.border": this.colorBorder0,
+      "editorRuler.foreground": this.alpha(this.colorBorder0, 50),
+      "editorIndentGuide.background": this.alpha(this.colorBorder0, 50),
+      "editorIndentGuide.activeBackground": this.colorBorder0,
+      "editorLineNumber.foreground": this.alpha(this.colorFG, 30),
+      "editorLineNumber.activeForeground": this.colorFG,
     };
   }
 
   themeTitlebar() {
-    const p = this.palette;
     return {
-      "titleBar.activeBackground": p.titlebarBG,
-      "titleBar.activeForeground": p.fg,
-      "titleBar.inactiveBackground": p.titlebarBG,
-      "titleBar.inactiveForeground": this.dilute(p.fg, 70),
-      "titleBar.border": this.border0(),
+      "titleBar.activeBackground": this.colorBG1,
+      "titleBar.activeForeground": this.colorFG,
+      "titleBar.inactiveBackground": this.colorBG1,
+      "titleBar.inactiveForeground": this.alpha(this.colorFG, 70),
+      "titleBar.border": this.colorBorder0,
     };
   }
 
   themeTabs() {
-    const p = this.palette;
-    const bg = p.bg;
     return {
-      "tab.border": bg,
-      "editorGroupHeader.tabsBorder": this.border0(),
-      "editorGroupHeader.border": this.border0(),
-      "breadcrumb.background": bg,
-      "editorGroupHeader.noTabsBackground": bg,
-      "editorGroupHeader.tabsBackground": bg,
-      "tab.hoverBackground": this.dilute(p.accent0, 10),
-      "tab.activeBorder": p.accent0,
-      "tab.unfocusedActiveBorder": p.accent0,
+      "tab.border": this.colorBG1,
+      "editorGroupHeader.tabsBorder": this.colorBorder0,
+      "editorGroupHeader.border": this.colorBorder0,
+      "breadcrumb.background": this.colorBG0,
+      "editorGroupHeader.noTabsBackground": this.colorBG1,
+      "editorGroupHeader.tabsBackground": this.colorBG1,
+      "tab.activeBorder": this.colorBorder1,
+      "tab.unfocusedActiveBorder": this.colorBorder1,
       "tab.activeBorderTop": undefined,
       "tab.unfocusedActiveBorderTop": undefined,
-      "tab.activeBackground": p.inactiveSelectionBG,
-      "tab.activeForeground": p.fg,
-      "tab.inactiveBackground": bg,
-      "tab.inactiveForeground": this.dilute(p.fg, 80),
+      "tab.activeBackground": this.colorBG2,
+      "tab.activeForeground": this.colorFG,
+      "tab.inactiveBackground": this.colorBG1,
+      "tab.inactiveForeground": this.alpha(this.colorFG, 80),
     };
   }
 
-  colors() {
-    const p = this.palette;
+  colors(): Record<string, string | undefined> {
     return {
-      // contrastBorder: this.border0(),
-      // contrastActiveBorder: undefined,
-      focusBorder: p.accent0,
-      "icon.foreground": p.fg,
-      "toolbar.hoverBackground": this.dilute(p.fg, 10),
-      "toolbar.activeBackground": this.shadow0(),
-      "widget.shadow": this.shadow1(),
+      focusBorder: this.colorTre,
+      "icon.foreground": this.colorFG,
+      "toolbar.hoverBackground": this.alpha(this.colorFG, 10),
+      "toolbar.activeBackground": this.alpha(this.colorFG, 15),
+      "widget.shadow":
+        this.themeType === "light"
+          ? this.alpha(this.colorFG, 50)
+          : this.alpha(this.darken(this.colorBG1, 10), 90),
       ...this.themeScrollbar(),
-      "input.border": this.border1(),
-      "input.background": p.inputBG,
-      "input.placeholderForeground": this.dilute(p.fg, 40),
-      "progressBar.background": p.fg,
-      "inputOption.activeBorder": p.fg,
+      "input.border": this.colorBorder1,
+      "input.background": this.colorWidgetBG,
+      "input.placeholderForeground": this.alpha(this.colorFG, 40),
+      "progressBar.background": this.colorFG,
+      "inputOption.activeBorder": this.colorFG,
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
@@ -531,25 +479,24 @@ export abstract class Theme {
       ...this.themeNotifications(),
       ...this.themeDragAndDrop(),
       ...this.themeButton(),
-      foreground: p.fg,
-      "panel.background": p.bg,
-      "panel.border": this.border0(),
-      "panelTitle.activeBorder": this.dilute(p.fg, 50),
-      "panelTitle.activeForeground": p.fg,
-      "panelTitle.inactiveForeground": this.dilute(p.fg, 60),
-      "peekViewEditor.matchHighlightBackground": this.dilute(p.yellow, 50),
-      "peekViewResult.matchHighlightBackground": this.dilute(p.yellow, 50),
-      "sideBar.border": this.border0(),
-      "sideBar.background": p.sidebarBG,
-      "sideBarSectionHeader.background": p.titlebarBG,
-      "sideBarSectionHeader.border": this.border0(),
-      // "tree.indentGuidesStroke": this.dilute(p.fg, 50),
-      "tree.indentGuidesStroke": this.border0(),
+      foreground: this.colorFG,
+      "panel.background": this.colorBG0,
+      "panel.border": this.colorBorder0,
+      "panelTitle.activeBorder": this.alpha(this.colorFG, 50),
+      "panelTitle.activeForeground": this.colorFG,
+      "panelTitle.inactiveForeground": this.alpha(this.colorFG, 60),
+      "peekViewEditor.matchHighlightBackground": this.alpha(this.yellow, 50),
+      "peekViewResult.matchHighlightBackground": this.alpha(this.yellow, 50),
+      "sideBar.border": this.colorBorder0,
+      "sideBar.background": this.colorBG1,
+      "sideBarSectionHeader.background": this.colorBG1,
+      "sideBarSectionHeader.border": this.colorBorder0,
+      "tree.indentGuidesStroke": this.alpha(this.colorBorder0, 50),
       ...this.themeTabs(),
-      "pickerGroup.border": this.border0(),
+      "pickerGroup.border": this.colorBorder0,
       ...this.themeGit(),
       ...this.themeTitlebar(),
-      "debugToolBar.background": p.widgetBG,
+      "debugToolBar.background": this.colorWidgetBG,
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
       ...this.themeTerminal(),
@@ -580,43 +527,11 @@ export abstract class Theme {
     return colord(hsl).toHex();
   }
 
-  shadow0(): string {
-    const hsl = colord(this.palette.bg).toHsl();
-    const isDark = colord(hsl).isDark();
-    if (isDark) {
-      hsl.l -= 50;
-      hsl.a = 0.8;
-    } else {
-      hsl.l -= 30;
-      hsl.a = 0.8;
-    }
-    return colord(hsl).toHex();
-  }
-
-  shadow1(): string {
-    const hsl = colord(this.palette.bg).toHsl();
-    hsl.l -= 50;
-    hsl.a = 0.6;
-    return colord(hsl).toHex();
-  }
-
-  safeRamp(hue: number): readonly [string, string, string, string] {
-    const fix = (color: string): string => {
-      return this.fixContrast({ fg: color, bg: this.bg, type: "text" });
-    };
-    const [c1, c2, c3, c4] = this.ramp(hue);
-    return [fix(c1), fix(c2), fix(c3), fix(c4)];
-  }
-
   tokenColors(): TokenColor[] {
-    const [uno1, uno2, uno3, uno4] = this.safeRamp(this.uno);
-    const [due1, due2] = this.safeRamp(this.due);
-    const [tre1] = this.safeRamp(this.tre);
-    const p = this.palette;
     const tc: AlmostTokenColor[] = [
       {
         name: "Default",
-        settings: this.style(p.fg),
+        settings: this.style(this.colorFG),
         scopes: [
           // Function call
           "meta.function-call entity.name.function",
@@ -625,7 +540,7 @@ export abstract class Theme {
       },
       {
         name: "Uno1",
-        settings: this.style(uno1),
+        settings: this.style(this.colorUno),
         scopes: [
           // Operators
           "keyword.operator",
@@ -634,7 +549,7 @@ export abstract class Theme {
       },
       {
         name: "Uno2",
-        settings: this.style(uno2),
+        settings: this.style(this.colorUno),
         scopes: [
           // Code
           "markup.raw.inline",
@@ -673,7 +588,7 @@ export abstract class Theme {
       },
       {
         name: "Uno3",
-        settings: this.style(uno3),
+        settings: this.style(this.colorSubtle),
         scopes: [
           // Escape characters
           "constant.character.escape",
@@ -693,6 +608,8 @@ export abstract class Theme {
           "punctuation.definition.parameters",
           "punctuation.definition.string",
           "punctuation.definition.array",
+          "punctuation.definition.typeparameters",
+          "keyword.operator.type.annotation",
           "punctuation.terminator",
 
           // Punctuation
@@ -714,7 +631,7 @@ export abstract class Theme {
       },
       {
         name: "Uno4",
-        settings: this.style(uno4),
+        settings: this.style(this.colorSubtle),
         scopes: [
           // Comment
           "comment",
@@ -723,7 +640,7 @@ export abstract class Theme {
       },
       {
         name: "Uno1Bold",
-        settings: this.style(uno1, "bold"),
+        settings: this.style(this.colorUno, "bold"),
         scopes: [
           // Keywords
           "keyword.control",
@@ -742,7 +659,7 @@ export abstract class Theme {
       },
       {
         name: "Uno2Bold",
-        settings: this.style(uno2, "bold"),
+        settings: this.style(this.colorUno, "bold"),
         scopes: [
           // Bold
           "markup.bold",
@@ -757,7 +674,7 @@ export abstract class Theme {
       },
       {
         name: "Uno2Italic",
-        settings: this.style(uno2, "italic"),
+        settings: this.style(this.colorUno, "italic"),
         scopes: [
           // Italic
           "markup.italic",
@@ -765,7 +682,7 @@ export abstract class Theme {
       },
       {
         name: "Due1",
-        settings: this.style(due1),
+        settings: this.style(this.colorDue),
         scopes: [
           // Symbols
           "constant.other.symbol",
@@ -797,7 +714,7 @@ export abstract class Theme {
       },
       {
         name: "Due2",
-        settings: this.style(due2),
+        settings: this.style(this.colorDue),
         scopes: [
           // Variable definition
           "meta.definition",
@@ -819,7 +736,7 @@ export abstract class Theme {
       },
       {
         name: "Due1Bold",
-        settings: this.style(due1, "bold"),
+        settings: this.style(this.colorDue, "bold"),
         scopes: [
           // Headings
           "markup.heading punctuation.definition.heading",
@@ -840,7 +757,7 @@ export abstract class Theme {
       },
       {
         name: "Tre1",
-        settings: this.style(tre1),
+        settings: this.style(this.colorTre),
         scopes: [
           // Strings
           "string",
@@ -850,7 +767,7 @@ export abstract class Theme {
       },
       {
         name: "Default",
-        settings: this.style(p.fg),
+        settings: this.style(this.colorFG),
         scopes: [
           // String interpolation
           "meta.embedded",
@@ -858,7 +775,7 @@ export abstract class Theme {
       },
       {
         name: "Broken",
-        settings: this.style(p.red, "bold"),
+        settings: this.style(this.red, "bold"),
         scopes: [
           // Broken stuff
           "invalid.broken",
@@ -883,45 +800,143 @@ export abstract class Theme {
     };
   }
 
+  showContrast(
+    level: ContrastLevel,
+    fg: string,
+    bg: string,
+    fgStr: string,
+    bgStr: string
+  ): void {
+    const contrast = colord(fg).contrast(bg);
+    const fail = contrast < Contrast[level];
+    const str = [
+      fail ? "[!]" : "   ",
+      ANSI.bold.cyan(contrast.toFixed(1).toString().padStart(6)),
+      ":",
+      fg,
+      "[on]",
+      bg,
+      ":",
+      fgStr,
+      "[on]",
+      bgStr,
+    ].join(" ");
+    if (fail) {
+      console.error(ANSI.bold.red(str));
+      process.exit(1);
+    } else {
+      console.log(str);
+    }
+  }
+
   saveAs(name: string): void {
     const config = this.config();
-    console.log(
-      name.padEnd(12),
-      "|",
-      "colors",
-      countColors(config.colors),
-      "|",
-      "tokenColors",
-      countColors(config.tokenColors)
-    );
+    this.printContrastReport(name);
     const json = JSON.stringify(config, null, 2);
-    fs.writeFileSync(`themes/${name}.json`, json);
+    fs.writeFileSync(`themes/${name}-color-theme.json`, json);
+  }
+
+  private printContrastReport(name: string) {
+    console.log(ANSI.bold(`--- ${name} `.padEnd(60, "-")));
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG0,
+      "colorFG",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG1,
+      "colorFG",
+      "colorBG1"
+    );
+    this.showContrast(
+      "text",
+      this.colorFG,
+      this.colorBG2,
+      "colorFG",
+      "colorBG2"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG0,
+      "colorBorder1",
+      "colorBG0"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG1,
+      "colorBorder1",
+      "colorBG1"
+    );
+    this.showContrast(
+      "ui",
+      this.colorBorder1,
+      this.colorBG2,
+      "colorBorder1",
+      "colorBG2"
+    );
+    this.showContrast(
+      "text",
+      this.colorSubtle,
+      this.colorBG0,
+      "colorSubtle",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorUno,
+      this.colorBG0,
+      "colorUno",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorDue,
+      this.colorBG0,
+      "colorDue",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      this.colorTre,
+      this.colorBG0,
+      "colorTre",
+      "colorBG0"
+    );
+    const brackets = this.themeBracketColors();
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground1"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground1",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground2"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground2",
+      "colorBG0"
+    );
+    this.showContrast(
+      "text",
+      brackets["editorBracketHighlight.foreground3"],
+      this.colorBG0,
+      "editorBracketHighlight.foreground3",
+      "colorBG0"
+    );
   }
 }
 
-function countColors(data: any): number {
-  const map = new Map<string, number>();
-  for (const color of findColors(data)) {
-    const n = map.get(color) ?? 0;
-    map.set(color, n + 1);
-  }
-  return [...map.keys()].length;
+export abstract class BaseThemeLight extends Theme {
+  themeType: ThemeType = "light";
 }
 
-function* findColors(data: any): Generator<string> {
-  if (!data) {
-    return;
-  } else if (Array.isArray(data)) {
-    for (const d of data) {
-      yield* findColors(d);
-    }
-  } else if (typeof data === "object") {
-    for (const d of Object.values(data)) {
-      yield* findColors(d);
-    }
-  } else if (typeof data === "string") {
-    if (getFormat(data)) {
-      yield data;
-    }
-  }
+export abstract class BaseThemeDark extends Theme {
+  themeType: ThemeType = "dark";
 }

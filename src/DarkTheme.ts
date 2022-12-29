@@ -1,59 +1,19 @@
-import { Theme, ThemeType, ThemePalette } from "./Theme";
+import { BaseThemeDark } from "./Theme";
 
-const white = "#ffffff";
-const cyan = "#5bf1ff";
-const yellow = "#fcd435";
-const transparent = "#00000000";
-const red = "#ff6666";
+export class DarkTheme extends BaseThemeDark {
+  colorBG0 = this.hsl(0, 0, 20);
+  colorBG1 = this.hsl(0, 0, 16);
+  colorBG2 = this.hsl(0, 0, 26);
+  colorFG = this.hsl(0, 0, 90);
 
-export class DarkTheme extends Theme {
-  uno = 70;
-  due = 175;
-  tre = 30;
+  colorSubtle = this.hsl(70, 10, 62);
+  colorUno = this.hsl(70, 60, 65);
+  colorDue = this.hsl(175, 60, 65);
+  colorTre = this.hsl(30, 80, 65);
 
-  bg = this.gray(20);
-
-  palette: ThemePalette = {
-    yellow: yellow,
-    orange: "#f79e51",
-    blue: "#8cd1ff",
-    purple: "#e1a2f9",
-    white: white,
-    red: red,
-    cyan: cyan,
-    transparent: transparent,
-    __NO__: "#ff00ff",
-    tFG: this.gray(80),
-    ...this.tintedAnsiDark(this.bg, "#000000"),
-    accent0: this.hsl(this.due, 70, 40),
-    accent1: this.hsl(this.tre, 100, 60),
-    fg: this.gray(90),
-    bg: this.bg,
-    titlebarBG: this.gray(12),
-    sidebarBG: this.gray(16),
-    statusbarBG: this.gray(12),
-    statusbarFG: this.gray(96),
-    inputBG: this.gray(14),
-    bracketMatchBG: this.hsla(this.tre, 100, 60, 20),
-    bracketMatchBorder: this.hsla(this.tre, 100, 60, 80),
-    inactiveSelectionBG: this.hsl(this.due, 10, 30),
-    textSelectionBG: this.hsla(this.due, 50, 50, 30),
-    accentFocusBG: this.hsl(this.due, 35, 35),
-    widgetBG: this.gray(30),
-    widgetBorder: this.gray(60),
-    ruler: this.gray(24),
-  };
-
-  ramp(hue: number) {
-    return [
-      this.hsl(hue, 80, 65),
-      this.hsl(hue + 4, 70, 60),
-      this.hsl(hue + 12, 40, 50),
-      this.hsl(hue + 16, 30, 45),
-    ] as const;
-  }
-
-  themeType() {
-    return ThemeType.DARK;
-  }
+  colorBorder0 = this.hsl(0, 0, 30);
+  colorBorder1 = this.hsl(0, 0, 58);
+  colorStatusBG = this.hsl(0, 0, 12);
+  colorStatusFG = this.colorFG;
+  colorWidgetBG = this.hsl(0, 0, 15);
 }
