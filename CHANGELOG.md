@@ -1,3 +1,7 @@
+# v5.0.1
+
+- Fixed an issue where hover styles weren't showing for the quick picker
+
 # v5.0.0
 
 - Simplified syntax highlighting and tweaked colors slightly for contrast

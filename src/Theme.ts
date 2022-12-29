@@ -169,7 +169,7 @@ abstract class Theme {
       "quickInputList.focusBackground": this.colorFG,
       "quickInputList.focusForeground": this.colorBG0,
       "quickInputList.focusIconForeground": this.colorBG0,
-      "list.hoverBackground": this.colorBG0,
+      "list.hoverBackground": this.alpha(this.colorFG, 5),
     };
   }
 
@@ -395,11 +395,12 @@ abstract class Theme {
     };
   }
 
-  // blah blah https://cool.com
   themeEditor() {
     return {
+      "editorWidget.foreground": this.colorFG,
       "editorWidget.background": this.colorWidgetBG,
       "editorWidget.border": this.colorBorder1,
+      "editorWidget.resizeBorder": this.colorBorder1,
       "editorBracketMatch.background": this.alpha(this.colorTre, 15),
       "editorBracketMatch.border": this.alpha(this.colorTre, 50),
       "editor.findMatchBackground": this.alpha(this.orange, 50),
@@ -458,7 +459,7 @@ abstract class Theme {
     return {
       focusBorder: this.colorTre,
       "icon.foreground": this.colorFG,
-      "toolbar.hoverBackground": this.alpha(this.colorFG, 10),
+      "toolbar.hoverBackground": this.alpha(this.colorFG, 5),
       "toolbar.activeBackground": this.alpha(this.colorFG, 15),
       "widget.shadow":
         this.themeType === "light"
