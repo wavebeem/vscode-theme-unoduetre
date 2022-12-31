@@ -1,3 +1,9 @@
+# v5.1.0
+
+- Improved menu styles (for Windows)
+- Improved styles for keyboard shortcut previews
+- Subtler selection state for menus since VS Code forces bad foreground color choices completely ruining readability... sigh
+
 # v5.0.1
 
 - Fixed an issue where hover styles weren't showing for the quick picker

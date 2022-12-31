@@ -160,15 +160,15 @@ abstract class Theme {
       "list.errorForeground": this.red,
       "list.warningForeground": this.yellow,
       "list.highlightForeground": this.colorTre,
-      "list.focusHighlightForeground": this.colorBG0,
-      "list.activeSelectionIconForeground": this.colorBG0,
-      "list.activeSelectionForeground": this.colorBG0,
-      "list.activeSelectionBackground": this.colorFG,
+      "list.focusHighlightForeground": this.colorFG,
+      "list.activeSelectionIconForeground": this.colorFG,
+      "list.activeSelectionForeground": this.colorFG,
+      "list.activeSelectionBackground": this.colorBG2,
       "list.inactiveSelectionForeground": this.colorFG,
       "list.inactiveSelectionBackground": this.colorBG2,
-      "quickInputList.focusBackground": this.colorFG,
-      "quickInputList.focusForeground": this.colorBG0,
-      "quickInputList.focusIconForeground": this.colorBG0,
+      "quickInputList.focusBackground": this.colorBG2,
+      "quickInputList.focusForeground": this.colorFG,
+      "quickInputList.focusIconForeground": this.colorFG,
       "list.hoverBackground": this.alpha(this.colorFG, 5),
     };
   }
@@ -255,6 +255,23 @@ abstract class Theme {
     return {
       "badge.foreground": this.colorBG0,
       "badge.background": this.colorFG,
+    };
+  }
+
+  themeMenu() {
+    return {
+      "menu.background": this.colorBG0,
+      "menu.foreground": this.colorFG,
+      "menu.separatorBackground": this.alpha(this.colorBorder0, 50),
+    };
+  }
+
+  themeKeybinding() {
+    return {
+      "keybindingLabel.background": this.colorBG1,
+      "keybindingLabel.foreground": this.colorFG,
+      "keybindingLabel.border": this.colorBorder0,
+      "keybindingLabel.bottomBorder": this.colorBorder0,
     };
   }
 
@@ -474,6 +491,8 @@ abstract class Theme {
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
+      ...this.themeMenu(),
+      ...this.themeKeybinding(),
       ...this.themeActivityBar(),
       ...this.themeBracketColors(),
       ...this.themeEditor(),
@@ -494,7 +513,7 @@ abstract class Theme {
       "sideBarSectionHeader.border": this.colorBorder0,
       "tree.indentGuidesStroke": this.alpha(this.colorBorder0, 50),
       ...this.themeTabs(),
-      "pickerGroup.border": this.colorBorder0,
+      "pickerGroup.border": this.alpha(this.colorBorder0, 50),
       ...this.themeGit(),
       ...this.themeTitlebar(),
       "debugToolBar.background": this.colorWidgetBG,
