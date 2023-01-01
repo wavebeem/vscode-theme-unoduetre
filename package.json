@@ -33,6 +33,11 @@
 				"path": "./themes/nature-color-theme.json"
 			},
 			{
+				"label": "Uno Due Tre (Miasma)",
+				"uiTheme": "vs-dark",
+				"path": "./themes/miasma-color-theme.json"
+			},
+			{
 				"label": "Uno Due Tre (Bubble Gum)",
 				"uiTheme": "vs",
 				"path": "./themes/bubblegum-color-theme.json"

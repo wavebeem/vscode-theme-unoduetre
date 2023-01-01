@@ -78,8 +78,6 @@
     "keybindingLabel.border": "#4d4d4d",
     "keybindingLabel.bottomBorder": "#4d4d4d",
     "keybindingLabel.foreground": "#e6e6e6",
-    "keybindingTable.headerBackground": "#424242",
-    "keybindingTable.rowsBackground": "#292929",
     "list.activeSelectionBackground": "#e6e6e6",
     "list.activeSelectionForeground": "#333333",
     "list.activeSelectionIconForeground": "#333333",

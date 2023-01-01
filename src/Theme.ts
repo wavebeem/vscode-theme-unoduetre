@@ -280,8 +280,6 @@ abstract class Theme {
       "keybindingLabel.foreground": this.colorFG,
       "keybindingLabel.border": this.colorBorder0,
       "keybindingLabel.bottomBorder": this.colorBorder0,
-      "keybindingTable.headerBackground": this.colorBG2,
-      "keybindingTable.rowsBackground": this.colorBG1,
     };
   }
 
