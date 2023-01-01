@@ -1,6 +1,9 @@
-# v5.2.0
+# v5.3.0
 
 - Added new theme: Miasma
+
+# v5.2.0
+
 - Reverted menu changes because they're even worse
 - Fixed some of the wrong colors due to high contrast menu items
 
