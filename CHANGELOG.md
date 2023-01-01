@@ -1,3 +1,9 @@
+# v5.4.0
+
+- Fix Miasma widget background
+- Changed editor completion background for contrast
+- Changed notifications background for contrast
+
 # v5.3.0
 
 - Added new theme: Miasma

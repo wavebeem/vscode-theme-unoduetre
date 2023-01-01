@@ -15,5 +15,5 @@ export class MiasmaTheme extends BaseThemeDark {
   colorBorder1 = this.hsl(160, 50, 50);
   colorStatusBG = this.hsl(160, 40, 12);
   colorStatusFG = this.colorFG;
-  colorWidgetBG = this.hsl(160, 35, 15);
+  colorWidgetBG = this.hsl(160, 35, 12);
 }

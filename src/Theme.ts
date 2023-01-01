@@ -139,13 +139,13 @@ abstract class Theme {
       // Notification Center header foreground color.
       "notificationCenterHeader.foreground": this.colorFG,
       // Notification Center header background color.
-      "notificationCenterHeader.background": this.colorWidgetBG,
+      "notificationCenterHeader.background": this.colorBG1,
       // Notification toast border color.
-      "notificationToast.border": this.colorBorder1,
+      "notificationToast.border": this.colorBorder0,
       // Notifications foreground color.
       "notifications.foreground": this.colorFG,
       // Notifications background color.
-      "notifications.background": this.colorWidgetBG,
+      "notifications.background": this.colorBG1,
       // Notifications border color separating from other notifications in
       // the Notification Center.
       "notifications.border": undefined,
@@ -427,8 +427,8 @@ abstract class Theme {
   themeEditor() {
     return {
       "editorWidget.foreground": this.colorFG,
-      "editorWidget.background": this.colorWidgetBG,
-      "editorWidget.border": this.colorBorder1,
+      "editorWidget.background": this.colorBG1,
+      "editorWidget.border": this.colorBorder0,
       "editorWidget.resizeBorder": this.colorBorder1,
       "editorBracketMatch.background": this.alpha(this.colorTre, 15),
       "editorBracketMatch.border": this.alpha(this.colorTre, 50),
@@ -493,7 +493,7 @@ abstract class Theme {
       "widget.shadow":
         this.themeType === "light"
           ? this.alpha(this.colorFG, 50)
-          : this.alpha(this.darken(this.colorBG1, 10), 90),
+          : this.alpha(this.darken(this.colorBG1, 5), 50),
       ...this.themeScrollbar(),
       "input.border": this.colorBorder1,
       "input.background": this.colorWidgetBG,

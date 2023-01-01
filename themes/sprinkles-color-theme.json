@@ -58,8 +58,8 @@
     "editorLink.activeForeground": "#af8bc1",
     "editorOverviewRuler.border": "#653a7880",
     "editorRuler.foreground": "#653a7880",
-    "editorWidget.background": "#2b1934",
-    "editorWidget.border": "#a06eb9",
+    "editorWidget.background": "#2e1839",
+    "editorWidget.border": "#643a78",
     "editorWidget.foreground": "#ecd1fa",
     "editorWidget.resizeBorder": "#a06eb9",
     "focusBorder": "#5cd6c2",
@@ -94,11 +94,11 @@
     "menu.background": "#3a1f47",
     "menu.foreground": "#ecd1fa",
     "menu.separatorBackground": "#653a7880",
-    "notificationCenterHeader.background": "#2b1934",
+    "notificationCenterHeader.background": "#2e1839",
     "notificationCenterHeader.foreground": "#ecd1fa",
     "notificationLink.foreground": "#af8bc1",
-    "notificationToast.border": "#a06eb9",
-    "notifications.background": "#2b1934",
+    "notificationToast.border": "#643a78",
+    "notifications.background": "#2e1839",
     "notifications.foreground": "#ecd1fa",
     "panel.background": "#3a1f47",
     "panel.border": "#643a78",
@@ -165,7 +165,7 @@
     "toolbar.activeBackground": "#ecd1fa26",
     "toolbar.hoverBackground": "#ecd1fa0d",
     "tree.indentGuidesStroke": "#653a7880",
-    "widget.shadow": "#110916e6"
+    "widget.shadow": "#1f112780"
   },
   "tokenColors": [
     {

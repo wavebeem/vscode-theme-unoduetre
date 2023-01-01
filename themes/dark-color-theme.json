@@ -58,8 +58,8 @@
     "editorLink.activeForeground": "#a5a894",
     "editorOverviewRuler.border": "#4d4d4d80",
     "editorRuler.foreground": "#4d4d4d80",
-    "editorWidget.background": "#262626",
-    "editorWidget.border": "#949494",
+    "editorWidget.background": "#292929",
+    "editorWidget.border": "#4d4d4d",
     "editorWidget.foreground": "#e6e6e6",
     "editorWidget.resizeBorder": "#949494",
     "focusBorder": "#eda65e",
@@ -94,11 +94,11 @@
     "menu.background": "#333333",
     "menu.foreground": "#e6e6e6",
     "menu.separatorBackground": "#4d4d4d80",
-    "notificationCenterHeader.background": "#262626",
+    "notificationCenterHeader.background": "#292929",
     "notificationCenterHeader.foreground": "#e6e6e6",
     "notificationLink.foreground": "#a5a894",
-    "notificationToast.border": "#949494",
-    "notifications.background": "#262626",
+    "notificationToast.border": "#4d4d4d",
+    "notifications.background": "#292929",
     "notifications.foreground": "#e6e6e6",
     "panel.background": "#333333",
     "panel.border": "#4d4d4d",
@@ -165,7 +165,7 @@
     "toolbar.activeBackground": "#e6e6e626",
     "toolbar.hoverBackground": "#e6e6e60d",
     "tree.indentGuidesStroke": "#4d4d4d80",
-    "widget.shadow": "#0f0f0fe6"
+    "widget.shadow": "#1c1c1c80"
   },
   "tokenColors": [
     {
