@@ -157,18 +157,26 @@ abstract class Theme {
   themeList() {
     return {
       "quickInput.background": this.colorBG0,
-      "list.errorForeground": this.red,
-      "list.warningForeground": this.yellow,
+
+      "list.errorForeground": this.mix(this.red, this.colorFG, 50),
+      "list.warningForeground": this.mix(this.yellow, this.colorFG, 50),
       "list.highlightForeground": this.colorTre,
-      "list.focusHighlightForeground": this.colorFG,
-      "list.activeSelectionIconForeground": this.colorFG,
-      "list.activeSelectionForeground": this.colorFG,
-      "list.activeSelectionBackground": this.colorBG2,
+
+      "list.focusForeground": this.colorFG,
+      "list.focusHighlightForeground": this.colorBG0,
+
+      "list.activeSelectionIconForeground": this.colorBG0,
+      "list.activeSelectionForeground": this.colorBG0,
+      "list.activeSelectionBackground": this.colorFG,
+
+      "list.inactiveSelectionIconForeground": this.colorFG,
       "list.inactiveSelectionForeground": this.colorFG,
-      "list.inactiveSelectionBackground": this.colorBG2,
-      "quickInputList.focusBackground": this.colorBG2,
-      "quickInputList.focusForeground": this.colorFG,
-      "quickInputList.focusIconForeground": this.colorFG,
+      "list.inactiveSelectionBackground": this.colorBG1,
+
+      "quickInputList.focusIconForeground": this.colorBG0,
+      "quickInputList.focusForeground": this.colorBG0,
+      "quickInputList.focusBackground": this.colorFG,
+
       "list.hoverBackground": this.alpha(this.colorFG, 5),
     };
   }
@@ -268,10 +276,12 @@ abstract class Theme {
 
   themeKeybinding() {
     return {
-      "keybindingLabel.background": this.colorBG1,
+      "keybindingLabel.background": transparent,
       "keybindingLabel.foreground": this.colorFG,
       "keybindingLabel.border": this.colorBorder0,
       "keybindingLabel.bottomBorder": this.colorBorder0,
+      "keybindingTable.headerBackground": this.colorBG2,
+      "keybindingTable.rowsBackground": this.colorBG1,
     };
   }
 
@@ -377,7 +387,11 @@ abstract class Theme {
     return {
       "button.background": this.colorFG,
       "button.foreground": this.colorBG0,
-      "button.hoverBackground": undefined,
+      "button.hoverBackground": this.alpha(this.colorFG, 95),
+      "button.separator": this.alpha(this.colorBG0, 30),
+      "button.secondaryBackground": this.colorTre,
+      "button.secondaryForeground": this.colorBG0,
+      "button.secondaryHoverBackground": this.alpha(this.colorTre, 95),
     };
   }
 
@@ -428,10 +442,10 @@ abstract class Theme {
       "editorLink.activeForeground": this.colorSubtle,
       "editor.lineHighlightBackground": this.colorBG1,
       "editor.rangeHighlightBackground": this.alpha(this.orange, 10),
-      "editor.selectionBackground": this.alpha(this.colorBorder0, 50),
-      "editor.inactiveSelectionBackground": this.alpha(this.colorBorder0, 50),
-      "editor.wordHighlightBackground": this.alpha(this.blue, 15),
-      "editor.wordHighlightStrongBackground": this.alpha(this.purple, 20),
+      "editor.selectionBackground": this.alpha(this.colorTre, 30),
+      "editor.inactiveSelectionBackground": this.alpha(this.colorTre, 30),
+      "editor.wordHighlightBackground": this.alpha(this.blue, 25),
+      "editor.wordHighlightStrongBackground": this.alpha(this.purple, 30),
       "editorOverviewRuler.border": this.alpha(this.colorBorder0, 50),
       "editorCursor.foreground": this.colorTre,
       "editorGroup.border": this.colorBorder0,
