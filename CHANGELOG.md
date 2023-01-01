@@ -1,3 +1,7 @@
+# v5.5.0
+
+- Improved colors for HTML/JSX tags
+
 # v5.4.0
 
 - Fix Miasma widget background

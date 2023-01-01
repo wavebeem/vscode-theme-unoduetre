@@ -607,6 +607,7 @@ abstract class Theme {
 
           // JSX tags
           "support.class.component",
+          "entity.name.tag",
 
           // Decorators
           "meta.decorator",
@@ -729,10 +730,6 @@ abstract class Theme {
           "constant",
           "support.constant",
           "variable.language",
-
-          // Tags
-          "entity.name.tag",
-          "punctuation.definition.tag",
 
           // Attributes
           "entity.other.attribute-name",

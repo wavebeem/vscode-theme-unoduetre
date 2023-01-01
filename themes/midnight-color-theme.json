@@ -186,7 +186,7 @@
     },
     {
       "name": "Uno2",
-      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, punctuation.section.embedded, variable.interpolation, support.class.component, entity.name.tag, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#70db94",
         "fontStyle": ""
@@ -234,7 +234,7 @@
     },
     {
       "name": "Due1",
-      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.name.tag, punctuation.definition.tag, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
+      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
       "settings": {
         "foreground": "#5ed5ed",
         "fontStyle": ""
