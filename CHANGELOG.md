@@ -1,3 +1,7 @@
+# v5.6.0
+
+- Correctly mark more items as punctuation for syntax highlighting
+
 # v5.5.0
 
 - Improved colors for HTML/JSX tags

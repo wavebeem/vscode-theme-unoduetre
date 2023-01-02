@@ -602,7 +602,6 @@ abstract class Theme {
           "meta.property-name",
 
           // Interpolation stuff
-          "punctuation.section.embedded",
           "variable.interpolation",
 
           // JSX tags
@@ -644,6 +643,7 @@ abstract class Theme {
           "punctuation.definition.typeparameters",
           "keyword.operator.type.annotation",
           "punctuation.terminator",
+          "punctuation.accessor",
 
           // Punctuation
           "punctuation.other.comma",
