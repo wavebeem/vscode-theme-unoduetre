@@ -1,3 +1,7 @@
+# v5.8.0
+
+- Highlight shell builtins since shell script doesn't get very colorful
+
 # v5.7.0
 
 - Improve CSS styles a bit with more color variation
@@ -16,6 +20,7 @@
 - Fix Miasma widget background
 - Changed editor completion background for contrast
 - Changed notifications background for contrast
+  h
 
 # v5.3.0
 

@@ -760,6 +760,9 @@ abstract class Theme {
           "variable.parameter",
           "variable.other.assignment",
 
+          // Shell builtins
+          "support.function.builtin.shell",
+
           // Lists
           "beginning.punctuation.definition.list",
 
