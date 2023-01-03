@@ -1,3 +1,8 @@
+# v5.7.0
+
+- Improve CSS styles a bit with more color variation
+- Improve shell styles a bit too
+
 # v5.6.0
 
 - Correctly mark more items as punctuation for syntax highlighting
