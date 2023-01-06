@@ -1,3 +1,7 @@
+# v5.8.1
+
+- Fix bug where Markdown links were using the same color as comments
+
 # v5.8.0
 
 - Highlight shell builtins since shell script doesn't get very colorful

@@ -195,7 +195,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, punctuation.definition.subshell, punctuation.definition.arguments, punctuation.definition.logical-expression, keyword.operator.type.annotation, punctuation.definition.group, punctuation.terminator, punctuation.accessor, punctuation.definition.entity, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, punctuation.definition.subshell, punctuation.definition.arguments, punctuation.definition.logical-expression, keyword.operator.type.annotation, punctuation.definition.group, punctuation.terminator, punctuation.accessor, punctuation.definition.entity, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, meta.separator",
       "settings": {
         "foreground": "#a38dce",
         "fontStyle": ""
@@ -235,7 +235,7 @@
     },
     {
       "name": "Due1",
-      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, variable.argument.css, entity.other.attribute-name, entity.other.attribute-name.id, meta.link, markup.underline.link",
+      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, variable.argument.css, entity.other.attribute-name, entity.other.attribute-name.id, meta.link, markup.underline.link, string.other.link, markup.quote",
       "settings": {
         "foreground": "#5ed5ed",
         "fontStyle": ""
