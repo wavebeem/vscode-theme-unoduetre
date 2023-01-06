@@ -652,12 +652,6 @@ abstract class Theme {
           "meta.brace",
           "meta.delimiter",
 
-          // Markdown link text
-          "string.other.link",
-
-          // Quotes
-          "markup.quote",
-
           // Separator
           "meta.separator",
         ],
@@ -739,6 +733,12 @@ abstract class Theme {
           // Link URL
           "meta.link",
           "markup.underline.link",
+
+          // Markdown link text
+          "string.other.link",
+
+          // Quotes
+          "markup.quote",
         ],
       },
       {
