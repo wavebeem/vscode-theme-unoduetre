@@ -28,6 +28,7 @@
     "editor.findMatchBackground": "#e77e2380",
     "editor.findMatchHighlightBackground": "#f1c40e80",
     "editor.findRangeHighlightBackground": "#e77e2380",
+    "editor.foldBackground": "#00000000",
     "editor.foreground": "#333333",
     "editor.inactiveSelectionBackground": "#036d0c4d",
     "editor.lineHighlightBackground": "#e6e6e6",
@@ -170,7 +171,7 @@
   "tokenColors": [
     {
       "name": "Default",
-      "scope": "meta.function-call entity.name.function, source.go entity.name.function",
+      "scope": "meta.function-call entity.name.function, source.go entity.name.function, meta.property-name.css",
       "settings": {
         "foreground": "#333333",
         "fontStyle": ""
@@ -186,7 +187,7 @@
     },
     {
       "name": "Uno2",
-      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, meta.object-literal.key, support.type.property-name, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, variable.interpolation, support.class.component, entity.name.tag, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, punctuation.definition.group, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, support.type.property-name.json, meta.object-literal.key, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, variable.interpolation, support.class.component, entity.name.tag, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#ae0476",
         "fontStyle": ""
@@ -194,7 +195,7 @@
     },
     {
       "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, keyword.operator.type.annotation, punctuation.terminator, punctuation.accessor, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, punctuation.definition.subshell, punctuation.definition.arguments, punctuation.definition.logical-expression, keyword.operator.type.annotation, punctuation.definition.group, punctuation.terminator, punctuation.accessor, punctuation.definition.entity, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, string.other.link, markup.quote, meta.separator",
       "settings": {
         "foreground": "#8f3d74",
         "fontStyle": ""
@@ -218,7 +219,7 @@
     },
     {
       "name": "Uno2Bold",
-      "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class, meta.selector entity.other.attribute-name.pseudo-class, meta.selector entity.name.tag",
+      "scope": "markup.bold, punctuation.definition.bold, meta.selector entity.other.attribute-name.id, meta.selector entity.other.attribute-name.class",
       "settings": {
         "foreground": "#ae0476",
         "fontStyle": "bold"
@@ -234,7 +235,7 @@
     },
     {
       "name": "Due1",
-      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, entity.other.attribute-name, entity.other.attribute-name.id, punctuation.definition.entity, meta.link, markup.underline.link",
+      "scope": "constant.other.symbol, constant.numeric, constant.language.boolean, constant, support.constant, variable.language, variable.argument.css, entity.other.attribute-name, entity.other.attribute-name.id, meta.link, markup.underline.link",
       "settings": {
         "foreground": "#044bae",
         "fontStyle": ""
@@ -242,7 +243,7 @@
     },
     {
       "name": "Due2",
-      "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, beginning.punctuation.definition.list, constant.other.color",
+      "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, support.function.builtin.shell, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
         "foreground": "#044bae",
         "fontStyle": ""

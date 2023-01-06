@@ -437,6 +437,7 @@ abstract class Theme {
       "editor.findRangeHighlightBackground": this.alpha(this.orange, 50),
       "editor.foreground": this.colorFG,
       "editor.background": this.colorBG0,
+      "editor.foldBackground": transparent,
       "editorLink.activeForeground": this.colorSubtle,
       "editor.lineHighlightBackground": this.colorBG1,
       "editor.rangeHighlightBackground": this.alpha(this.orange, 10),
@@ -568,6 +569,7 @@ abstract class Theme {
           // Function call
           "meta.function-call entity.name.function",
           "source.go entity.name.function",
+          "meta.property-name.css",
         ],
       },
       {
@@ -589,8 +591,8 @@ abstract class Theme {
           "punctuation.definition.markdown",
 
           // Object keys
+          "support.type.property-name.json",
           "meta.object-literal.key",
-          "support.type.property-name",
           "punctuation.curlybrace",
           "punctuation.squarebracket",
           "punctuation.parenthesis",
@@ -614,7 +616,6 @@ abstract class Theme {
 
           // Regexp fancy stuff
           "punctuation.definition.character-class",
-          "punctuation.definition.group",
           "keyword.control.anchor.regexp",
         ],
       },
@@ -641,9 +642,14 @@ abstract class Theme {
           "punctuation.definition.string",
           "punctuation.definition.array",
           "punctuation.definition.typeparameters",
+          "punctuation.definition.subshell",
+          "punctuation.definition.arguments",
+          "punctuation.definition.logical-expression",
           "keyword.operator.type.annotation",
+          "punctuation.definition.group",
           "punctuation.terminator",
           "punctuation.accessor",
+          "punctuation.definition.entity",
 
           // Punctuation
           "punctuation.other.comma",
@@ -695,8 +701,6 @@ abstract class Theme {
           // CSS blocks
           "meta.selector entity.other.attribute-name.id",
           "meta.selector entity.other.attribute-name.class",
-          "meta.selector entity.other.attribute-name.pseudo-class",
-          "meta.selector entity.name.tag",
         ],
       },
       {
@@ -724,11 +728,11 @@ abstract class Theme {
           "constant",
           "support.constant",
           "variable.language",
+          "variable.argument.css",
 
           // Attributes
           "entity.other.attribute-name",
           "entity.other.attribute-name.id",
-          "punctuation.definition.entity",
 
           // Link URL
           "meta.link",
@@ -755,6 +759,9 @@ abstract class Theme {
           "variable.declaration",
           "variable.parameter",
           "variable.other.assignment",
+
+          // Shell builtins
+          "support.function.builtin.shell",
 
           // Lists
           "beginning.punctuation.definition.list",
