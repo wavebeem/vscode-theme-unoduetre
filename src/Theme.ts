@@ -84,7 +84,7 @@ abstract class Theme {
     return colord({ h, s, l }).toHex();
   }
 
-  alpha(color: string, percent: number): string {
+  private alpha(color: string, percent: number): string {
     if (percent >= 100) {
       return color;
     }
@@ -93,18 +93,14 @@ abstract class Theme {
     return colord(hsl).toHex();
   }
 
-  cyan = "#00bcd4";
-  red = "#cc0000";
-  yellow = "#f1c40f";
-  orange = "#e67e22";
-  blue = "#3498db";
-  purple = "#9b59b6";
+  private cyan = "#00bcd4";
+  private red = "#cc0000";
+  private yellow = "#f1c40f";
+  private orange = "#e67e22";
+  private blue = "#3498db";
+  private purple = "#9b59b6";
 
-  inactiveSelectionBG() {
-    return this.alpha(this.colorFG, 15);
-  }
-
-  config(): {
+  private config(): {
     /** Base theme (e.g. light/dark/high contrast) */
     type: ThemeType;
     /** UI colors */
@@ -119,7 +115,7 @@ abstract class Theme {
     };
   }
 
-  themeActivityBar() {
+  private themeActivityBar() {
     return {
       "activityBar.border": this.colorBorder0,
       "activityBar.background": this.colorBG1,
@@ -132,7 +128,7 @@ abstract class Theme {
     };
   }
 
-  themeNotifications() {
+  private themeNotifications() {
     return {
       // Notification Center border color.
       "notificationCenter.border": undefined,
@@ -154,7 +150,7 @@ abstract class Theme {
     };
   }
 
-  themeList() {
+  private themeList() {
     return {
       "quickInput.background": this.colorBG0,
 
@@ -181,7 +177,7 @@ abstract class Theme {
     };
   }
 
-  themeTerminal() {
+  private themeTerminal() {
     const p =
       this.themeType === "light"
         ? this.tintedAnsiLight(this.colorBG0, this.colorFG)
@@ -208,7 +204,7 @@ abstract class Theme {
     };
   }
 
-  themeGit() {
+  private themeGit() {
     return {
       "gitDecoration.modifiedResourceForeground": this.mix(
         this.orange,
@@ -240,7 +236,7 @@ abstract class Theme {
     return colord(hsl).toHex();
   }
 
-  themeStatusBar() {
+  private themeStatusBar() {
     const bg = this.colorStatusBG;
     const fg = this.colorStatusFG;
     const border =
@@ -259,14 +255,14 @@ abstract class Theme {
     };
   }
 
-  themeBadge() {
+  private themeBadge() {
     return {
       "badge.foreground": this.colorBG0,
       "badge.background": this.colorFG,
     };
   }
 
-  themeMenu() {
+  private themeMenu() {
     return {
       "menu.background": this.colorBG0,
       "menu.foreground": this.colorFG,
@@ -274,7 +270,7 @@ abstract class Theme {
     };
   }
 
-  themeKeybinding() {
+  private themeKeybinding() {
     return {
       "keybindingLabel.background": transparent,
       "keybindingLabel.foreground": this.colorFG,
@@ -283,7 +279,7 @@ abstract class Theme {
     };
   }
 
-  themeHighlightBorders() {
+  private themeHighlightBorders() {
     return {
       // Border color for regions with the same content as the selection.
       "editor.selectionHighlightBorder": undefined,
@@ -305,16 +301,16 @@ abstract class Theme {
     };
   }
 
-  themeScrollbar() {
+  private themeScrollbar() {
     return {
       "scrollbar.shadow": transparent,
-      "scrollbarSlider.background": this.alpha(this.colorFG, 50),
+      "scrollbarSlider.background": this.alpha(this.colorFG, 30),
       "scrollbarSlider.hoverBackground": this.alpha(this.colorFG, 60),
       "scrollbarSlider.activeBackground": this.alpha(this.colorFG, 70),
     };
   }
 
-  themeDropdown() {
+  private themeDropdown() {
     return {
       "dropdown.background": this.colorWidgetBG,
       "dropdown.listBackground": this.colorWidgetBG,
@@ -323,7 +319,7 @@ abstract class Theme {
     };
   }
 
-  tintedAnsiLight(bg: string, color: string): AnsiColors {
+  private tintedAnsiLight(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
       return this.fixContrast({
         fg: this.mix(this.hsl(h, s, l), color, 20),
@@ -343,7 +339,7 @@ abstract class Theme {
     };
   }
 
-  tintedAnsiDark(bg: string, color: string): AnsiColors {
+  private tintedAnsiDark(bg: string, color: string): AnsiColors {
     const tintedHsl = (h: number, s: number, l: number) => {
       return this.fixContrast({
         fg: this.mix(this.hsl(h, s, l), color, 20),
@@ -363,13 +359,13 @@ abstract class Theme {
     };
   }
 
-  mix(a: string, b: string, percent: number): string {
+  private mix(a: string, b: string, percent: number): string {
     return colord(a)
       .mix(b, percent / 100)
       .toHex();
   }
 
-  themeDragAndDrop() {
+  private themeDragAndDrop() {
     const color = this.alpha(this.colorTre, 30);
     return {
       "list.dropBackground": color,
@@ -381,7 +377,7 @@ abstract class Theme {
     };
   }
 
-  themeButton() {
+  private themeButton() {
     return {
       "button.background": this.colorFG,
       "button.foreground": this.colorBG0,
@@ -393,7 +389,7 @@ abstract class Theme {
     };
   }
 
-  themeBracketColors() {
+  private themeBracketColors() {
     ////////////////////////////////////////////////////////////////////////////
     //
     // Code just for looking at the colorized braces... sorry!
@@ -424,7 +420,7 @@ abstract class Theme {
     };
   }
 
-  themeEditor() {
+  private themeEditor() {
     return {
       "editorWidget.foreground": this.colorFG,
       "editorWidget.background": this.colorBG1,
@@ -445,10 +441,10 @@ abstract class Theme {
       "editor.inactiveSelectionBackground": this.alpha(this.colorTre, 30),
       "editor.wordHighlightBackground": this.alpha(this.blue, 25),
       "editor.wordHighlightStrongBackground": this.alpha(this.purple, 30),
-      "editorOverviewRuler.border": this.alpha(this.colorBorder0, 50),
+      "editorOverviewRuler.border": this.alpha(this.colorBorder0, 25),
       "editorCursor.foreground": this.colorTre,
       "editorGroup.border": this.colorBorder0,
-      "editorRuler.foreground": this.alpha(this.colorBorder0, 50),
+      "editorRuler.foreground": this.alpha(this.colorBorder0, 25),
       "editorIndentGuide.background": this.alpha(this.colorBorder0, 50),
       "editorIndentGuide.activeBackground": this.colorBorder0,
       "editorLineNumber.foreground": this.alpha(this.colorFG, 30),
@@ -456,7 +452,7 @@ abstract class Theme {
     };
   }
 
-  themeTitlebar() {
+  private themeTitlebar() {
     return {
       "titleBar.activeBackground": this.colorBG1,
       "titleBar.activeForeground": this.colorFG,
@@ -466,7 +462,7 @@ abstract class Theme {
     };
   }
 
-  themeTabs() {
+  private themeTabs() {
     return {
       "tab.border": this.colorBG1,
       "editorGroupHeader.tabsBorder": this.colorBorder0,
@@ -485,7 +481,7 @@ abstract class Theme {
     };
   }
 
-  colors(): Record<string, string | undefined> {
+  private colors(): Record<string, string | undefined> {
     return {
       focusBorder: this.colorTre,
       "icon.foreground": this.colorFG,
@@ -536,7 +532,7 @@ abstract class Theme {
     };
   }
 
-  fixContrast({
+  private fixContrast({
     fg,
     bg,
     type,
@@ -560,7 +556,7 @@ abstract class Theme {
     return colord(hsl).toHex();
   }
 
-  tokenColors(): TokenColor[] {
+  private tokenColors(): TokenColor[] {
     const tc: AlmostTokenColor[] = [
       {
         name: "Default",
@@ -582,6 +578,16 @@ abstract class Theme {
         ],
       },
       {
+        name: "Tre1",
+        settings: this.style(this.colorTre),
+        scopes: [
+          // Strings
+          "string",
+          "punctuation.definition.string",
+          "support.constant.property-value",
+        ],
+      },
+      {
         name: "Uno2",
         settings: this.style(this.colorUno),
         scopes: [
@@ -593,12 +599,6 @@ abstract class Theme {
           // Object keys
           "support.type.property-name.json",
           "meta.object-literal.key",
-          "punctuation.curlybrace",
-          "punctuation.squarebracket",
-          "punctuation.parenthesis",
-          "punctuation.definition.begin",
-          "punctuation.definition.end",
-          "punctuation.definition.bracket",
 
           // CSS properties
           "meta.property-name",
@@ -620,6 +620,15 @@ abstract class Theme {
         ],
       },
       {
+        name: "Uno4",
+        settings: this.style(this.colorSubtle),
+        scopes: [
+          // Comment
+          "comment",
+          "punctuation.definition.comment",
+        ],
+      },
+      {
         name: "Uno3",
         settings: this.style(this.colorSubtle),
         scopes: [
@@ -628,28 +637,12 @@ abstract class Theme {
           "punctuation.definition.template-expression",
 
           // Punctuation
-          "punctuation.definition.imports",
-          "punctuation.definition.scope",
-          "punctuation.definition.dictionary",
-          "punctuation.definition.tag",
-          "punctuation.definition.binding-pattern.array",
-          "punctuation.definition.binding-pattern.object",
-          "punctuation.definition.block",
-          "punctuation.definition.string",
-          "punctuation.definition.variable",
-          "punctuation.definition.string",
-          "punctuation.definition.parameters",
-          "punctuation.definition.string",
-          "punctuation.definition.array",
-          "punctuation.definition.typeparameters",
-          "punctuation.definition.subshell",
-          "punctuation.definition.arguments",
-          "punctuation.definition.logical-expression",
+          "punctuation.definition",
+          "punctuation.parenthesis",
           "keyword.operator.type.annotation",
-          "punctuation.definition.group",
           "punctuation.terminator",
           "punctuation.accessor",
-          "punctuation.definition.entity",
+          "keyword.generator.asterisk",
 
           // Punctuation
           "punctuation.other.comma",
@@ -660,15 +653,6 @@ abstract class Theme {
 
           // Separator
           "meta.separator",
-        ],
-      },
-      {
-        name: "Uno4",
-        settings: this.style(this.colorSubtle),
-        scopes: [
-          // Comment
-          "comment",
-          "punctuation.definition.comment",
         ],
       },
       {
@@ -792,16 +776,6 @@ abstract class Theme {
         ],
       },
       {
-        name: "Tre1",
-        settings: this.style(this.colorTre),
-        scopes: [
-          // Strings
-          "string",
-          "punctuation.definition.string",
-          "support.constant.property-value",
-        ],
-      },
-      {
         name: "Default",
         settings: this.style(this.colorFG),
         scopes: [
@@ -829,14 +803,14 @@ abstract class Theme {
       .filter((x) => x.scope);
   }
 
-  style(color: string, ...fontStyle: string[]): Style {
+  private style(color: string, ...fontStyle: string[]): Style {
     return {
       foreground: color,
       fontStyle: fontStyle.join(" "),
     };
   }
 
-  showContrast(
+  private showContrast(
     level: ContrastLevel,
     fg: string,
     bg: string,

@@ -57,8 +57,8 @@
     "editorLineNumber.activeForeground": "#e6e6e6",
     "editorLineNumber.foreground": "#e6e6e64d",
     "editorLink.activeForeground": "#a5a894",
-    "editorOverviewRuler.border": "#4d4d4d80",
-    "editorRuler.foreground": "#4d4d4d80",
+    "editorOverviewRuler.border": "#4d4d4d40",
+    "editorRuler.foreground": "#4d4d4d40",
     "editorWidget.background": "#292929",
     "editorWidget.border": "#4d4d4d",
     "editorWidget.foreground": "#e6e6e6",
@@ -118,7 +118,7 @@
     "quickInputList.focusIconForeground": "#333333",
     "scrollbar.shadow": "#00000000",
     "scrollbarSlider.activeBackground": "#e6e6e6b3",
-    "scrollbarSlider.background": "#e6e6e680",
+    "scrollbarSlider.background": "#e6e6e64d",
     "scrollbarSlider.hoverBackground": "#e6e6e699",
     "sideBar.background": "#292929",
     "sideBar.border": "#4d4d4d",
@@ -186,24 +186,32 @@
       }
     },
     {
+      "name": "Tre1",
+      "scope": "string, punctuation.definition.string, support.constant.property-value",
+      "settings": {
+        "foreground": "#eda65e",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Uno2",
-      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, support.type.property-name.json, meta.object-literal.key, punctuation.curlybrace, punctuation.squarebracket, punctuation.parenthesis, punctuation.definition.begin, punctuation.definition.end, punctuation.definition.bracket, meta.property-name, variable.interpolation, support.class.component, entity.name.tag, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, keyword.control.anchor.regexp",
+      "scope": "markup.raw.inline, markup.inline, punctuation.definition.markdown, support.type.property-name.json, meta.object-literal.key, meta.property-name, variable.interpolation, support.class.component, entity.name.tag, meta.decorator, entity.name.function.decorator, punctuation.definition.character-class, keyword.control.anchor.regexp",
       "settings": {
         "foreground": "#c9db70",
         "fontStyle": ""
       }
     },
     {
-      "name": "Uno3",
-      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition.imports, punctuation.definition.scope, punctuation.definition.dictionary, punctuation.definition.tag, punctuation.definition.binding-pattern.array, punctuation.definition.binding-pattern.object, punctuation.definition.block, punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array, punctuation.definition.typeparameters, punctuation.definition.subshell, punctuation.definition.arguments, punctuation.definition.logical-expression, keyword.operator.type.annotation, punctuation.definition.group, punctuation.terminator, punctuation.accessor, punctuation.definition.entity, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, meta.separator",
+      "name": "Uno4",
+      "scope": "comment, punctuation.definition.comment",
       "settings": {
         "foreground": "#a5a894",
         "fontStyle": ""
       }
     },
     {
-      "name": "Uno4",
-      "scope": "comment, punctuation.definition.comment",
+      "name": "Uno3",
+      "scope": "constant.character.escape, punctuation.definition.template-expression, punctuation.definition, punctuation.parenthesis, keyword.operator.type.annotation, punctuation.terminator, punctuation.accessor, keyword.generator.asterisk, punctuation.other.comma, punctuation.separator, punctuation.section, meta.brace, meta.delimiter, meta.separator",
       "settings": {
         "foreground": "#a5a894",
         "fontStyle": ""
@@ -255,14 +263,6 @@
       "settings": {
         "foreground": "#70dbd2",
         "fontStyle": "bold"
-      }
-    },
-    {
-      "name": "Tre1",
-      "scope": "string, punctuation.definition.string, support.constant.property-value",
-      "settings": {
-        "foreground": "#eda65e",
-        "fontStyle": ""
       }
     },
     {

@@ -1,3 +1,8 @@
+# v5.8.2
+
+- Fixed some missing syntax rules for Python (dict, list, tuple)
+- Fixed a missing syntax rule for generator asterisks in JS
+
 # v5.8.1
 
 - Fix bug where Markdown links were using the same color as comments
