@@ -93,6 +93,7 @@
 		"publisherId": "dd905317-d989-4b98-9bc3-3cc12206629d"
 	},
 	"dependencies": {
+		"@vscode/vsce": "^2.18.0",
 		"colord": "^2.9.3",
 		"ts-node": "^10.9.1"
 	}
