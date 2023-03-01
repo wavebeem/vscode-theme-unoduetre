@@ -237,12 +237,9 @@ abstract class Theme {
   }
 
   private themeStatusBar() {
-    const bg = this.colorStatusBG;
-    const fg = this.colorStatusFG;
-    const border =
-      this.themeType === "light"
-        ? this.darken(this.colorStatusBG, 5)
-        : this.colorBorder0;
+    const bg = this.colorBG1;
+    const fg = this.colorFG;
+    const border = this.colorBorder0;
     return {
       "statusBar.border": border,
       "statusBarItem.activeBackground": this.alpha(fg, 20),
