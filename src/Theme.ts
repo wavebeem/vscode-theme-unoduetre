@@ -167,7 +167,7 @@ abstract class Theme {
 
       "list.inactiveSelectionIconForeground": this.colorFG,
       "list.inactiveSelectionForeground": this.colorFG,
-      "list.inactiveSelectionBackground": this.colorBG1,
+      "list.inactiveSelectionBackground": this.colorBG2,
 
       "quickInputList.focusIconForeground": this.colorBG0,
       "quickInputList.focusForeground": this.colorBG0,

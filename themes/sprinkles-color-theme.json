@@ -88,7 +88,7 @@
     "list.focusHighlightForeground": "#3a1f47",
     "list.highlightForeground": "#5cd6c2",
     "list.hoverBackground": "#ecd1fa0d",
-    "list.inactiveSelectionBackground": "#2e1839",
+    "list.inactiveSelectionBackground": "#4b285d",
     "list.inactiveSelectionForeground": "#ecd1fa",
     "list.inactiveSelectionIconForeground": "#ecd1fa",
     "list.warningForeground": "#f5ca96",

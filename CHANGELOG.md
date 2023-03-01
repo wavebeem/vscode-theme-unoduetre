@@ -1,3 +1,8 @@
+# v5.9.0
+
+- Fixed issue with sidebar selected items not being highlighted
+- Changed statusbar to match general UI color
+
 # v5.8.2
 
 - Fixed some missing syntax rules for Python (dict, list, tuple)
