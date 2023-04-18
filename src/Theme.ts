@@ -494,6 +494,7 @@ abstract class Theme {
       "input.placeholderForeground": this.alpha(this.colorFG, 40),
       "progressBar.background": this.colorFG,
       "inputOption.activeBorder": this.colorFG,
+      ...this.themeCommandCenter(),
       ...this.themeList(),
       ...this.themeStatusBar(),
       ...this.themeBadge(),
@@ -526,6 +527,18 @@ abstract class Theme {
       ...this.themeDropdown(),
       ...this.themeHighlightBorders(),
       ...this.themeTerminal(),
+    };
+  }
+
+  private themeCommandCenter(): Record<string, string | undefined> {
+    return {
+      "commandCenter.foreground": this.colorFG,
+      "commandCenter.inactiveForeground": this.alpha(this.colorFG, 50),
+      "commandCenter.background": this.colorBG1,
+      "commandCenter.border": this.colorBorder0,
+      "commandCenter.inactiveBorder": this.colorBorder0,
+      "commandCenter.activeBackground": this.colorBG0,
+      "commandCenter.activeBorder": this.colorBorder0,
     };
   }
 

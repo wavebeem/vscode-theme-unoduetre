@@ -1,3 +1,7 @@
+# v5.10.0
+
+- More subtle styling of the command center
+
 # v5.9.0
 
 - Fixed issue with sidebar selected items not being highlighted
