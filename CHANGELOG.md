@@ -1,3 +1,7 @@
+# v5.11.0
+
+- Added support for patch/diff files
+
 # v5.10.0
 
 - More subtle styling of the command center

@@ -177,6 +177,38 @@
   },
   "tokenColors": [
     {
+      "name": "Diff Headers",
+      "scope": "meta.diff.header.git, meta.diff.index, meta.diff.range, punctuation.definition.range.diff",
+      "settings": {
+        "foreground": "#ecd1fa",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Diff Remove",
+      "scope": "punctuation.definition.deleted.diff, markup.deleted.diff, meta.diff.header.from-file, punctuation.definition.from-file.diff",
+      "settings": {
+        "foreground": "#ff5757",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Diff Add",
+      "scope": "punctuation.definition.inserted.diff, markup.inserted.diff, meta.diff.header.to-file, punctuation.definition.to-file.diff",
+      "settings": {
+        "foreground": "#00bdd6",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Diff Other",
+      "scope": "source.diff",
+      "settings": {
+        "foreground": "#af8bc1",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Default",
       "scope": "meta.function-call entity.name.function, source.go entity.name.function, meta.property-name.css",
       "settings": {

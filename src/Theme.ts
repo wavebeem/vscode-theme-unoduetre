@@ -29,6 +29,7 @@ function sortedObject<T>(obj: Record<string, T>) {
 
 interface Style {
   foreground: string;
+  background?: string;
   fontStyle: string;
 }
 
@@ -202,6 +203,10 @@ abstract class Theme {
       "terminal.ansiWhite": p.tWhite,
       "terminal.ansiYellow": p.tYellow,
     };
+  }
+
+  private themeDiff() {
+    return {};
   }
 
   private themeGit() {
@@ -521,6 +526,7 @@ abstract class Theme {
       "tree.indentGuidesStroke": this.alpha(this.colorBorder0, 50),
       ...this.themeTabs(),
       "pickerGroup.border": this.alpha(this.colorBorder0, 50),
+      ...this.themeDiff(),
       ...this.themeGit(),
       ...this.themeTitlebar(),
       "debugToolBar.background": this.colorWidgetBG,
@@ -568,6 +574,47 @@ abstract class Theme {
 
   private tokenColors(): TokenColor[] {
     const tc: AlmostTokenColor[] = [
+      {
+        name: "Diff Headers",
+        settings: this.style(this.colorFG, "bold"),
+        scopes: [
+          "meta.diff.header.git",
+          "meta.diff.index",
+          "meta.diff.range",
+          "punctuation.definition.range.diff",
+        ],
+      },
+      {
+        name: "Diff Remove",
+        settings: this.style(
+          this.fixContrast({ fg: this.red, bg: this.colorBG0, type: "text" }),
+          "bold"
+        ),
+        scopes: [
+          "punctuation.definition.deleted.diff",
+          "markup.deleted.diff",
+          "meta.diff.header.from-file",
+          "punctuation.definition.from-file.diff",
+        ],
+      },
+      {
+        name: "Diff Add",
+        settings: this.style(
+          this.fixContrast({ fg: this.cyan, bg: this.colorBG0, type: "text" }),
+          "bold"
+        ),
+        scopes: [
+          "punctuation.definition.inserted.diff",
+          "markup.inserted.diff",
+          "meta.diff.header.to-file",
+          "punctuation.definition.to-file.diff",
+        ],
+      },
+      {
+        name: "Diff Other",
+        settings: this.style(this.colorSubtle),
+        scopes: ["source.diff"],
+      },
       {
         name: "Default",
         settings: this.style(this.colorFG),
