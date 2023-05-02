@@ -53,10 +53,10 @@ const colorBG1 = hsl(hueBG, 50, 10);
 const colorBG2 = hsl(hueBG, 50, 20);
 const colorFG = hsl(hueBG, 60, 80);
 
-const colorSubtle = hsl(hueBG, 5, 62);
-const colorUno = hsl(hueUno, 60, 60);
-const colorDue = hsl(hueDue, 80, 75);
-const colorTre = hsl(hueTre, 80, 80);
+const colorSubtle = hsl(hueBG, 30, 50);
+const colorUno = hsl(hueUno, 50, 60);
+const colorDue = hsl(hueDue, 60, 75);
+const colorTre = hsl(hueTre, 60, 80);
 
 const colorBorder0 = hsl(hueBG, 40, 25);
 const colorBorder1 = hsl(hueBG, 50, 50);
@@ -75,6 +75,7 @@ function alpha(color: string, percent: number): string {
   return colord(hsl).toHex();
 }
 
+// TODO: Don't make weird generic colors like this
 const cyan = "#00bcd4";
 const red = "#cc0000";
 const yellow = "#f1c40f";
@@ -186,6 +187,7 @@ function themeDiff() {
 }
 
 function themeGit() {
+  // TODO: Redesign these colors
   return {
     "gitDecoration.modifiedResourceForeground": mix(orange, colorFG, 20),
     "gitDecoration.deletedResourceForeground": mix(red, colorFG, 20),
@@ -528,17 +530,17 @@ function tokenColors(): TokenColor[] {
       scope: "constant.language",
       settings: tokens.due,
     },
-    {
-      scope: [
-        "variable.other.enummember",
-        "keyword.operator.plus.exponent",
-        "keyword.operator.minus.exponent",
-      ],
-      settings: tokens.default,
-    },
+    // {
+    //   scope: [
+    //     "variable.other.enummember",
+    //     "keyword.operator.plus.exponent",
+    //     "keyword.operator.minus.exponent",
+    //   ],
+    //   settings: tokens.default,
+    // },
     {
       scope: "constant.regexp",
-      settings: tokens.due,
+      settings: tokens.tre,
     },
     {
       scope: "entity.name.tag",
@@ -673,6 +675,10 @@ function tokenColors(): TokenColor[] {
       },
     },
     {
+      scope: ["source.java storage.type", "source.go storage.type"],
+      settings: tokens.dueBold,
+    },
+    {
       scope: "storage.type",
       settings: tokens.unoBold,
     },
@@ -681,7 +687,7 @@ function tokenColors(): TokenColor[] {
       settings: tokens.unoBold,
     },
     {
-      scope: ["string", "meta.embedded.assembly"],
+      scope: ["string", "meta.embedded.assembly", "constant.other.symbol"],
       settings: tokens.tre,
     },
     {
@@ -694,7 +700,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "string.regexp",
-      settings: tokens.due,
+      settings: tokens.tre,
     },
     {
       name: "String interpolation",
@@ -792,9 +798,10 @@ function tokenColors(): TokenColor[] {
       settings: tokens.uno,
     },
     {
-      name: "Function declarations",
+      name: "Functions",
       scope: [
         "entity.name.function",
+        "meta.function-call.generic",
         "support.function",
         "support.constant.handlebars",
         "source.powershell variable.other.member",
@@ -813,31 +820,31 @@ function tokenColors(): TokenColor[] {
         "entity.other.attribute",
         "entity.name.scope-resolution",
         "entity.name.class",
-        "storage.type.numeric.go",
-        "storage.type.byte.go",
-        "storage.type.boolean.go",
-        "storage.type.string.go",
-        "storage.type.uintptr.go",
-        "storage.type.error.go",
-        "storage.type.rune.go",
-        "storage.type.cs",
-        "storage.type.generic.cs",
-        "storage.type.modifier.cs",
-        "storage.type.variable.cs",
-        "storage.type.annotation.java",
-        "storage.type.generic.java",
-        "storage.type.java",
-        "storage.type.object.array.java",
-        "storage.type.primitive.array.java",
-        "storage.type.primitive.java",
-        "storage.type.token.java",
-        "storage.type.groovy",
-        "storage.type.annotation.groovy",
-        "storage.type.parameters.groovy",
-        "storage.type.generic.groovy",
-        "storage.type.object.array.groovy",
-        "storage.type.primitive.array.groovy",
-        "storage.type.primitive.groovy",
+        // "storage.type.numeric.go",
+        // "storage.type.byte.go",
+        // "storage.type.boolean.go",
+        // "storage.type.string.go",
+        // "storage.type.uintptr.go",
+        // "storage.type.error.go",
+        // "storage.type.rune.go",
+        // "storage.type.cs",
+        // "storage.type.generic.cs",
+        // "storage.type.modifier.cs",
+        // "storage.type.variable.cs",
+        // "storage.type.annotation.java",
+        // "storage.type.generic.java",
+        // "storage.type.java",
+        // "storage.type.object.array.java",
+        // "storage.type.primitive.array.java",
+        // "storage.type.primitive.java",
+        // "storage.type.token.java",
+        // "storage.type.groovy",
+        // "storage.type.annotation.groovy",
+        // "storage.type.parameters.groovy",
+        // "storage.type.generic.groovy",
+        // "storage.type.object.array.groovy",
+        // "storage.type.primitive.array.groovy",
+        // "storage.type.primitive.groovy",
       ],
       settings: tokens.due,
     },
@@ -872,19 +879,17 @@ function tokenColors(): TokenColor[] {
         "meta.definition.variable.name",
         "support.variable",
         "entity.name.variable",
-        // placeholders in strings
-        "constant.other.placeholder",
-      ],
-      settings: tokens.due,
-    },
-    {
-      name: "Constants and enums",
-      scope: [
-        // "variable.other.constant",
-        "variable.other.enummember",
       ],
       settings: tokens.default,
     },
+    // {
+    //   name: "Constants and enums",
+    //   scope: [
+    //     "variable.other.constant",
+    //     "variable.other.enummember",
+    //   ],
+    //   settings: tokens.default,
+    // },
     {
       name: "Object keys, TS grammar specific",
       scope: ["meta.object-literal.key"],
@@ -900,6 +905,14 @@ function tokenColors(): TokenColor[] {
         "constant.other.color.rgb-value",
         "constant.other.rgb-value",
         "support.constant.color",
+      ],
+      settings: tokens.uno,
+    },
+    {
+      name: "String placeholders",
+      scope: [
+        // placeholders in strings
+        "constant.other.placeholder",
       ],
       settings: tokens.uno,
     },
@@ -963,14 +976,14 @@ function showContrast(
   const fail = contrast < Contrast[level];
   const str = [
     fail ? "[!]" : "   ",
-    ANSI.bold.cyan(contrast.toFixed(1).toString().padStart(6)),
-    ":",
+    ANSI.bold.yellow(contrast.toFixed(1).toString().padStart(6)),
+    ANSI.bold.magenta(":"),
     fg,
-    "[on]",
+    ANSI.bold.magenta("->"),
     bg,
-    ":",
+    ANSI.bold.magenta(":"),
     fgStr,
-    "[on]",
+    ANSI.bold.magenta("->"),
     bgStr,
   ].join(" ");
   if (fail) {
@@ -1018,8 +1031,8 @@ function printContrastReport() {
         "text",
         token.settings.foreground,
         colorBG0,
-        scope,
-        "colorBG0"
+        scope.slice(0, 60),
+        "..."
       );
     }
   }
