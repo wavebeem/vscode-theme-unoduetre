@@ -147,22 +147,22 @@
     "tab.inactiveBackground": "#0d261e",
     "tab.inactiveForeground": "#adebd6cc",
     "tab.unfocusedActiveBorder": "#40bf95",
-    "terminal.ansiBlack": "#333333",
-    "terminal.ansiBlue": "#a5a2eb",
-    "terminal.ansiBrightBlack": "#333333",
-    "terminal.ansiBrightBlue": "#a5a2eb",
-    "terminal.ansiBrightCyan": "#77e9e5",
-    "terminal.ansiBrightGreen": "#79e297",
-    "terminal.ansiBrightMagenta": "#e5a4de",
-    "terminal.ansiBrightRed": "#e48277",
+    "terminal.ansiBlack": "#2b594a",
+    "terminal.ansiBlue": "#77e8d4",
+    "terminal.ansiBrightBlack": "#2b594a",
+    "terminal.ansiBrightBlue": "#77e8d4",
+    "terminal.ansiBrightCyan": "#ade88d",
+    "terminal.ansiBrightGreen": "#dce279",
+    "terminal.ansiBrightMagenta": "#e5a4da",
+    "terminal.ansiBrightRed": "#e4779d",
     "terminal.ansiBrightWhite": "#e4f1ec",
-    "terminal.ansiBrightYellow": "#e5c99e",
-    "terminal.ansiCyan": "#77e9e5",
-    "terminal.ansiGreen": "#79e297",
-    "terminal.ansiMagenta": "#e5a4de",
-    "terminal.ansiRed": "#e48277",
+    "terminal.ansiBrightYellow": "#e5c19e",
+    "terminal.ansiCyan": "#ade88d",
+    "terminal.ansiGreen": "#dce279",
+    "terminal.ansiMagenta": "#e5a4da",
+    "terminal.ansiRed": "#e4779d",
     "terminal.ansiWhite": "#e4f1ec",
-    "terminal.ansiYellow": "#e5c99e",
+    "terminal.ansiYellow": "#e5c19e",
     "terminal.background": "#19342b",
     "terminal.foreground": "#adebd6",
     "titleBar.activeBackground": "#0d261e",
@@ -202,7 +202,8 @@
     {
       "scope": "header",
       "settings": {
-        "foreground": "#000080"
+        "foreground": "#d6d65c",
+        "fontStyle": "normal"
       }
     },
     {
@@ -215,7 +216,7 @@
     {
       "scope": "constant.language",
       "settings": {
-        "foreground": "#e4a667",
+        "foreground": "#f2bf8c",
         "fontStyle": "normal"
       }
     },
@@ -277,7 +278,7 @@
     {
       "scope": "invalid",
       "settings": {
-        "foreground": "#cc0000"
+        "foreground": "#ff6161"
       }
     },
     {
@@ -580,10 +581,10 @@
       }
     },
     {
-      "name": "this.self",
+      "name": "self",
       "scope": "variable.language",
       "settings": {
-        "foreground": "#bfbf40",
+        "foreground": "#d6d65c",
         "fontStyle": "normal"
       }
     },
@@ -638,7 +639,7 @@
         "storage.type.primitive.groovy"
       ],
       "settings": {
-        "foreground": "#e4a667",
+        "foreground": "#f2bf8c",
         "fontStyle": "normal"
       }
     },
@@ -675,7 +676,9 @@
     {
       "name": "Variable and parameter name",
       "scope": [
+        "variable",
         "meta.definition.variable.name",
+        "support.variable",
         "entity.name.variable",
         "constant.other.placeholder"
       ],
@@ -699,6 +702,22 @@
       "name": "Object keys, TS grammar specific",
       "scope": [
         "meta.object-literal.key"
+      ],
+      "settings": {
+        "foreground": "#d6d65c",
+        "fontStyle": "normal"
+      }
+    },
+    {
+      "name": "CSS property value",
+      "scope": [
+        "support.constant.property-value",
+        "support.constant.font-name",
+        "support.constant.media-type",
+        "support.constant.media",
+        "constant.other.color.rgb-value",
+        "constant.other.rgb-value",
+        "support.constant.color"
       ],
       "settings": {
         "foreground": "#d6d65c",
