@@ -215,7 +215,7 @@
     {
       "scope": "constant.language",
       "settings": {
-        "foreground": "#f2bf8c",
+        "foreground": "#e4a667",
         "fontStyle": "normal"
       }
     },
@@ -382,7 +382,7 @@
         "meta.preprocessor.numeric"
       ],
       "settings": {
-        "foreground": "#f2bf8c",
+        "foreground": "#f5a3e7",
         "fontStyle": "normal"
       }
     },
@@ -583,7 +583,7 @@
       "name": "this.self",
       "scope": "variable.language",
       "settings": {
-        "foreground": "#99a3a0",
+        "foreground": "#bfbf40",
         "fontStyle": "normal"
       }
     },
@@ -638,8 +638,8 @@
         "storage.type.primitive.groovy"
       ],
       "settings": {
-        "foreground": "#f2bf8c",
-        "fontStyle": "bold"
+        "foreground": "#e4a667",
+        "fontStyle": "normal"
       }
     },
     {

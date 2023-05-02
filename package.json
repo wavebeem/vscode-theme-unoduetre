@@ -1,11 +1,11 @@
 {
-	"name": "theme-unoduetre",
-	"displayName": "Uno Due Tre",
-	"description": "A collection of themes with three colors each",
-	"version": "5.11.0",
+	"name": "theme-miasma",
+	"displayName": "Miasma",
+	"description": "wavebeem's dark green color theme",
+	"version": "1.0.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wavebeem/vscode-theme-unoduetre.git"
+		"url": "https://github.com/wavebeem/miasma-vscode.git"
 	},
 	"icon": "img/icon.png",
 	"publisher": "wavebeem",
@@ -18,56 +18,16 @@
 	"contributes": {
 		"themes": [
 			{
-				"label": "Uno Due Tre",
-				"uiTheme": "vs",
-				"path": "./themes/light-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Dark)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/dark-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Nature)",
-				"uiTheme": "vs",
-				"path": "./themes/nature-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Miasma)",
+				"label": "Miasma",
 				"uiTheme": "vs-dark",
 				"path": "./themes/miasma-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Bubble Gum)",
-				"uiTheme": "vs",
-				"path": "./themes/bubblegum-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Periwinkle)",
-				"uiTheme": "vs",
-				"path": "./themes/periwinkle-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Sprinkles)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/sprinkles-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Midnight)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/midnight-color-theme.json"
-			},
-			{
-				"label": "Uno Due Tre (Ocean)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/ocean-color-theme.json"
 			}
 		]
 	},
 	"bugs": {
-		"url": "https://github.com/wavebeem/vscode-theme-unoduetre/issues"
+		"url": "https://github.com/wavebeem/miasma-vscode/issues"
 	},
-	"homepage": "https://github.com/wavebeem/vscode-theme-unoduetre#readme",
+	"homepage": "https://github.com/wavebeem/miasma-vscode#readme",
 	"scripts": {
 		"upgrade": "npm-check -u",
 		"build": "ts-node src/main.ts",
