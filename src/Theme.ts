@@ -27,11 +27,7 @@ function sortedObject<T>(obj: Record<string, T>) {
   return ret;
 }
 
-interface Style {
-  foreground: string;
-  background?: string;
-  fontStyle: string;
-}
+type FontStyle = "normal" | "bold" | "italic" | "underline" | "strikethrough";
 
 export type ThemeType = "light" | "dark";
 
@@ -46,16 +42,21 @@ interface AnsiColors {
   tWhite: string;
 }
 
-interface TokenColor {
-  name: string;
-  scope: string;
-  settings: Style;
+interface TokenSettingColor {
+  fontStyle?: FontStyle;
+  foreground: string;
 }
 
-interface AlmostTokenColor {
-  name: string;
-  scopes: string[];
-  settings: Style;
+interface TokenSettingStyle {
+  fontStyle: FontStyle;
+}
+
+type TokenSetting = TokenSettingColor | TokenSettingStyle;
+
+interface TokenColor {
+  name?: string;
+  scope: string | string[];
+  settings: TokenSetting;
 }
 
 abstract class Theme {
@@ -573,298 +574,475 @@ abstract class Theme {
   }
 
   private tokenColors(): TokenColor[] {
-    const tc: AlmostTokenColor[] = [
+    function color(
+      foreground: string,
+      fontStyle: FontStyle = "normal"
+    ): TokenSettingColor {
+      return { foreground, fontStyle };
+    }
+    const tokens = {
+      default: color(this.colorFG),
+      uno: color(this.colorUno),
+      unoBold: color(this.colorUno, "bold"),
+      due: color(this.colorDue),
+      dueBold: color(this.colorDue, "bold"),
+      tre: color(this.colorTre),
+      subtle: color(this.colorSubtle),
+    } as const;
+    return [
       {
-        name: "Diff Headers",
-        settings: this.style(this.colorFG, "bold"),
-        scopes: [
-          "meta.diff.header.git",
-          "meta.diff.index",
-          "meta.diff.range",
-          "punctuation.definition.range.diff",
+        scope: [
+          "meta.embedded",
+          "source.groovy.embedded",
+          "string meta.image.inline.markdown",
         ],
+        settings: tokens.default,
       },
       {
-        name: "Diff Remove",
-        settings: this.style(
-          this.fixContrast({ fg: this.red, bg: this.colorBG0, type: "text" }),
-          "bold"
-        ),
-        scopes: [
-          "punctuation.definition.deleted.diff",
-          "markup.deleted.diff",
-          "meta.diff.header.from-file",
-          "punctuation.definition.from-file.diff",
+        scope: "emphasis",
+        settings: {
+          fontStyle: "italic",
+        },
+      },
+      {
+        scope: "strong",
+        settings: {
+          fontStyle: "bold",
+        },
+      },
+      {
+        scope: "header",
+        settings: {
+          foreground: "#000080",
+        },
+      },
+      {
+        scope: "comment",
+        settings: tokens.subtle,
+      },
+      {
+        scope: "constant.language",
+        settings: tokens.due,
+      },
+      {
+        scope: [
+          "variable.other.enummember",
+          "keyword.operator.plus.exponent",
+          "keyword.operator.minus.exponent",
         ],
+        settings: tokens.default,
       },
       {
-        name: "Diff Add",
-        settings: this.style(
-          this.fixContrast({ fg: this.cyan, bg: this.colorBG0, type: "text" }),
-          "bold"
-        ),
-        scopes: [
-          "punctuation.definition.inserted.diff",
-          "markup.inserted.diff",
-          "meta.diff.header.to-file",
-          "punctuation.definition.to-file.diff",
+        scope: "constant.regexp",
+        settings: tokens.due,
+      },
+      {
+        scope: "entity.name.tag",
+        settings: tokens.uno,
+      },
+      {
+        scope: "entity.name.tag.css",
+        settings: tokens.default,
+      },
+      {
+        scope: "entity.other.attribute-name",
+        settings: tokens.due,
+      },
+      {
+        scope: [
+          "entity.other.attribute-name.class.css",
+          "entity.other.attribute-name.class.mixin.css",
+          "entity.other.attribute-name.id.css",
+          "entity.other.attribute-name.parent-selector.css",
+          "entity.other.attribute-name.pseudo-class.css",
+          "entity.other.attribute-name.pseudo-element.css",
+          "source.css.less entity.other.attribute-name.id",
+          "entity.other.attribute-name.scss",
         ],
+        settings: tokens.due,
       },
       {
-        name: "Diff Other",
-        settings: this.style(this.colorSubtle),
-        scopes: ["source.diff"],
+        scope: "invalid",
+        settings: {
+          foreground: this.red,
+        },
       },
       {
-        name: "Default",
-        settings: this.style(this.colorFG),
-        scopes: [
-          // Function call
-          "meta.function-call entity.name.function",
-          "source.go entity.name.function",
-          "meta.property-name.css",
+        scope: "markup.underline",
+        settings: {
+          fontStyle: "underline",
+        },
+      },
+      {
+        scope: "markup.bold",
+        settings: {
+          fontStyle: "bold",
+          foreground: this.colorDue,
+        },
+      },
+      {
+        scope: "markup.heading",
+        settings: tokens.unoBold,
+      },
+      {
+        scope: "markup.italic",
+        settings: {
+          fontStyle: "italic",
+          foreground: this.colorDue,
+        },
+      },
+      {
+        scope: "markup.strikethrough",
+        settings: {
+          fontStyle: "strikethrough",
+        },
+      },
+      {
+        scope: "markup.inserted",
+        settings: {
+          // TODO
+          foreground: "#b5cea8",
+        },
+      },
+      {
+        scope: "markup.deleted",
+        settings: {
+          // TODO
+          foreground: "#ce9178",
+        },
+      },
+      {
+        scope: "markup.changed",
+        settings: {
+          // TODO
+          foreground: "#569cd6",
+        },
+      },
+      {
+        scope: "punctuation.definition.quote.begin.markdown",
+        settings: tokens.subtle,
+      },
+      {
+        scope: "punctuation.definition.list.begin.markdown",
+        settings: tokens.subtle,
+      },
+      {
+        scope: "markup.inline.raw",
+        settings: {
+          // TODO
+          foreground: "#ce9178",
+        },
+      },
+      {
+        name: "brackets of XML/HTML tags",
+        scope: "punctuation.definition.tag",
+        settings: tokens.subtle,
+      },
+      {
+        scope: ["meta.preprocessor", "entity.name.function.preprocessor"],
+        settings: tokens.due,
+      },
+      {
+        scope: "meta.preprocessor.string",
+        settings: tokens.tre,
+      },
+      {
+        scope: ["constant.numeric", "meta.preprocessor.numeric"],
+        settings: tokens.due,
+      },
+      {
+        scope: "meta.structure.dictionary.key.python",
+        settings: tokens.uno,
+      },
+      {
+        scope: "meta.diff.header",
+        settings: {
+          // TODO
+          foreground: "#569cd6",
+        },
+      },
+      {
+        scope: "storage",
+        settings: {
+          // TODO
+          foreground: "#569cd6",
+        },
+      },
+      {
+        scope: "storage.type",
+        settings: tokens.unoBold,
+      },
+      {
+        scope: ["storage.modifier", "keyword.operator.noexcept"],
+        settings: tokens.unoBold,
+      },
+      {
+        scope: ["string", "meta.embedded.assembly"],
+        settings: tokens.tre,
+      },
+      {
+        scope: "string.tag",
+        settings: tokens.tre,
+      },
+      {
+        scope: "string.value",
+        settings: tokens.tre,
+      },
+      {
+        scope: "string.regexp",
+        settings: tokens.due,
+      },
+      {
+        name: "String interpolation",
+        scope: [
+          "punctuation.definition.template-expression.begin",
+          "punctuation.definition.template-expression.end",
+          "punctuation.section.embedded",
         ],
+        settings: tokens.subtle,
       },
       {
-        name: "Uno1",
-        settings: this.style(this.colorUno),
-        scopes: [
-          // Operators
-          "keyword.operator",
-          "storage.type.function.arrow",
+        name: "Reset string interpolation expression",
+        scope: ["meta.template.expression", "meta.interpolation"],
+        settings: tokens.default,
+      },
+      {
+        scope: [
+          "support.type.vendored.property-name",
+          "support.type.property-name",
+          "variable.css",
+          "variable.scss",
+          "variable.other.less",
+          "source.coffee.embedded",
         ],
+        settings: tokens.uno,
       },
       {
-        name: "Tre1",
-        settings: this.style(this.colorTre),
-        scopes: [
-          // Strings
-          "string",
-          "punctuation.definition.string",
-          "support.constant.property-value",
+        scope: "keyword",
+        settings: tokens.unoBold,
+      },
+      {
+        scope: "keyword.control",
+        settings: tokens.unoBold,
+      },
+      {
+        scope: ["keyword.operator.type.annotation"],
+        settings: tokens.subtle,
+      },
+      {
+        scope: "keyword.operator",
+        settings: tokens.uno,
+      },
+      {
+        scope: [
+          "keyword.operator.new",
+          "keyword.operator.expression",
+          "keyword.operator.cast",
+          "keyword.operator.sizeof",
+          "keyword.operator.alignof",
+          "keyword.operator.typeid",
+          "keyword.operator.alignas",
+          "keyword.operator.instanceof",
+          "keyword.operator.logical.python",
+          "keyword.operator.wordlike",
         ],
+        settings: tokens.uno,
       },
       {
-        name: "Uno2",
-        settings: this.style(this.colorUno),
-        scopes: [
-          // Code
-          "markup.raw.inline",
-          "markup.inline",
-          "punctuation.definition.markdown",
-
-          // Object keys
-          "support.type.property-name.json",
-          "meta.object-literal.key",
-
-          // CSS properties
-          "meta.property-name",
-
-          // Interpolation stuff
-          "variable.interpolation",
-
-          // JSX tags
-          "support.class.component",
-          "entity.name.tag",
-
-          // Decorators
-          "meta.decorator",
-          "entity.name.function.decorator",
-
-          // Regexp fancy stuff
-          "punctuation.definition.character-class",
-          "keyword.control.anchor.regexp",
+        scope: "keyword.other.unit",
+        settings: tokens.uno,
+      },
+      {
+        scope: [
+          "punctuation.section.embedded.begin.php",
+          "punctuation.section.embedded.end.php",
         ],
+        settings: tokens.subtle,
       },
       {
-        name: "Uno4",
-        settings: this.style(this.colorSubtle),
-        scopes: [
-          // Comment
-          "comment",
-          "punctuation.definition.comment",
+        scope: "support.function.git-rebase",
+        settings: {
+          // TODO
+          foreground: "#9cdcfe",
+        },
+      },
+      {
+        scope: "constant.sha.git-rebase",
+        settings: {
+          // TODO
+          foreground: "#b5cea8",
+        },
+      },
+      {
+        name: "coloring of the Java import and package identifiers",
+        scope: [
+          "storage.modifier.import.java",
+          "variable.language.wildcard.java",
+          "storage.modifier.package.java",
         ],
+        settings: tokens.default,
       },
       {
-        name: "Uno3",
-        settings: this.style(this.colorSubtle),
-        scopes: [
-          // Escape characters
-          "constant.character.escape",
-          "punctuation.definition.template-expression",
-
-          // Punctuation
-          "punctuation.definition",
-          "punctuation.parenthesis",
-          "keyword.operator.type.annotation",
-          "punctuation.terminator",
-          "punctuation.accessor",
-          "keyword.generator.asterisk",
-
-          // Punctuation
-          "punctuation.other.comma",
-          "punctuation.separator",
-          "punctuation.section",
-          "meta.brace",
-          "meta.delimiter",
-
-          // Separator
-          "meta.separator",
+        name: "this.self",
+        scope: "variable.language",
+        settings: tokens.subtle,
+      },
+      {
+        name: "Function declarations",
+        scope: [
+          "entity.name.function",
+          "support.function",
+          "support.constant.handlebars",
+          "source.powershell variable.other.member",
+          // See https://en.cppreference.com/w/cpp/language/user_literal
+          "entity.name.operator.custom-literal",
         ],
+        settings: tokens.due,
       },
       {
-        name: "Uno1Bold",
-        settings: this.style(this.colorUno, "bold"),
-        scopes: [
-          // Keywords
-          "keyword.control",
-          "keyword.import",
-          "keyword.function",
-          "keyword.package",
-          "keyword.interface",
-          "keyword.map",
-          "keyword.var",
-          "keyword.other",
-          "keyword.type",
-
-          // Storage (var)
-          "storage",
-        ],
-      },
-      {
-        name: "Uno2Bold",
-        settings: this.style(this.colorUno, "bold"),
-        scopes: [
-          // Bold
-          "markup.bold",
-          "punctuation.definition.bold",
-
-          // CSS blocks
-          "meta.selector entity.other.attribute-name.id",
-          "meta.selector entity.other.attribute-name.class",
-        ],
-      },
-      {
-        name: "Uno2Italic",
-        settings: this.style(this.colorUno, "italic"),
-        scopes: [
-          // Italic
-          "markup.italic",
-        ],
-      },
-      {
-        name: "Due1",
-        settings: this.style(this.colorDue),
-        scopes: [
-          // Symbols
-          "constant.other.symbol",
-
-          // Numbers
-          "constant.numeric",
-
-          // Boolean
-          "constant.language.boolean",
-
-          // Constants
-          "constant",
-          "support.constant",
-          "variable.language",
-          "variable.argument.css",
-
-          // Attributes
-          "entity.other.attribute-name",
-          "entity.other.attribute-name.id",
-
-          // Link URL
-          "meta.link",
-          "markup.underline.link",
-
-          // Markdown link text
-          "string.other.link",
-
-          // Quotes
-          "markup.quote",
-        ],
-      },
-      {
-        name: "Due2",
-        settings: this.style(this.colorDue),
-        scopes: [
-          // Variable definition
-          "meta.definition",
-
-          // Parameter
-          "variable.parameter.function",
-
-          // Variables
-          "variable.declaration",
-          "variable.parameter",
-          "variable.other.assignment",
-
-          // Shell builtins
-          "support.function.builtin.shell",
-
-          // Lists
-          "beginning.punctuation.definition.list",
-
-          // Colors
-          "constant.other.color",
-        ],
-      },
-      {
-        name: "Due1Bold",
-        settings: this.style(this.colorDue, "bold"),
-        scopes: [
-          // Headings
-          "markup.heading punctuation.definition.heading",
-          "entity.name.section",
-
-          // Functions
-          "source.go entity.name.function",
-          "meta.definition entity.name.function",
-          "meta.function entity.name.function",
-          "meta.require",
-
-          // Classes
+        name: "Types declaration and references",
+        scope: [
+          "support.class",
+          "support.type",
+          "entity.name.type",
+          "entity.name.namespace",
+          "entity.other.attribute",
+          "entity.name.scope-resolution",
           "entity.name.class",
-          "entity.name.type.class",
-          "entity.name.type.module",
+          "storage.type.numeric.go",
+          "storage.type.byte.go",
+          "storage.type.boolean.go",
+          "storage.type.string.go",
+          "storage.type.uintptr.go",
+          "storage.type.error.go",
+          "storage.type.rune.go",
+          "storage.type.cs",
+          "storage.type.generic.cs",
+          "storage.type.modifier.cs",
+          "storage.type.variable.cs",
+          "storage.type.annotation.java",
+          "storage.type.generic.java",
+          "storage.type.java",
+          "storage.type.object.array.java",
+          "storage.type.primitive.array.java",
+          "storage.type.primitive.java",
+          "storage.type.token.java",
+          "storage.type.groovy",
+          "storage.type.annotation.groovy",
+          "storage.type.parameters.groovy",
+          "storage.type.generic.groovy",
+          "storage.type.object.array.groovy",
+          "storage.type.primitive.array.groovy",
+          "storage.type.primitive.groovy",
+        ],
+        settings: tokens.dueBold,
+      },
+      {
+        name: "Types declaration and references, TS grammar specific",
+        scope: [
+          "meta.type.cast.expr",
+          "meta.type.new.expr",
+          "support.constant.math",
+          "support.constant.dom",
+          "support.constant.json",
           "entity.other.inherited-class",
         ],
+        settings: tokens.dueBold,
       },
       {
-        name: "Default",
-        settings: this.style(this.colorFG),
-        scopes: [
-          // String interpolation
-          "meta.embedded",
+        name: "Control flow / Special keywords",
+        scope: [
+          "keyword.control",
+          "source.cpp keyword.operator.new",
+          "keyword.operator.delete",
+          "keyword.other.using",
+          "keyword.other.operator",
+          "entity.name.operator",
         ],
+        settings: tokens.unoBold,
       },
       {
-        name: "Broken",
-        settings: this.style(this.red, "bold"),
-        scopes: [
-          // Broken stuff
-          "invalid.broken",
-          "invalid.deprecated",
-          "invalid.unimplemented",
+        name: "Variable and parameter name",
+        scope: [
+          // "variable",
+          "meta.definition.variable.name",
+          // "support.variable",
+          "entity.name.variable",
+          // placeholders in strings
+          "constant.other.placeholder",
         ],
+        settings: tokens.due,
+      },
+      {
+        name: "Constants and enums",
+        scope: ["variable.other.constant", "variable.other.enummember"],
+        settings: tokens.default,
+      },
+      {
+        name: "Object keys, TS grammar specific",
+        scope: ["meta.object-literal.key"],
+        settings: tokens.uno,
+      },
+      // {
+      //   name: "CSS property value",
+      //   scope: [
+      //     "support.constant.property-value",
+      //     "support.constant.font-name",
+      //     "support.constant.media-type",
+      //     "support.constant.media",
+      //     "constant.other.color.rgb-value",
+      //     "constant.other.rgb-value",
+      //     "support.constant.color",
+      //   ],
+      //   settings: tokens.uno,
+      // },
+      {
+        name: "Regular expression groups",
+        scope: [
+          "punctuation.definition.group.regexp",
+          "punctuation.definition.group.assertion.regexp",
+          "punctuation.definition.character-class.regexp",
+          "punctuation.character.set.begin.regexp",
+          "punctuation.character.set.end.regexp",
+          "keyword.operator.negation.regexp",
+          "support.other.parenthesis.regexp",
+        ],
+        settings: tokens.subtle,
+      },
+      {
+        scope: [
+          "constant.character.character-class.regexp",
+          "constant.other.character-class.set.regexp",
+          "constant.other.character-class.regexp",
+          "constant.character.set.regexp",
+        ],
+        settings: tokens.uno,
+      },
+      {
+        scope: ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
+        settings: tokens.uno,
+      },
+      {
+        scope: "keyword.operator.quantifier.regexp",
+        settings: tokens.uno,
+      },
+      {
+        scope: ["constant.character", "constant.other.option"],
+        settings: tokens.uno,
+      },
+      {
+        scope: "constant.character.escape",
+        settings: tokens.uno,
+      },
+      {
+        scope: "entity.name.label",
+        settings: tokens.subtle,
+      },
+      {
+        scope: ["punctuation", "meta.brace"],
+        settings: tokens.subtle,
       },
     ];
-    return tc
-      .map((x) => ({
-        name: x.name,
-        scope: x.scopes.join(", "),
-        settings: x.settings,
-      }))
-      .filter((x) => x.scope);
-  }
-
-  private style(color: string, ...fontStyle: string[]): Style {
-    return {
-      foreground: color,
-      fontStyle: fontStyle.join(" "),
-    };
   }
 
   private showContrast(
