@@ -43,33 +43,40 @@ interface TokenColor {
   settings: TokenSetting;
 }
 
-const hueBG = 160;
-const hueUno = 60;
-const hueDue = 30;
-const hueTre = 310;
+const hue = {
+  bg: 160,
+  uno: 60,
+  due: 30,
+  tre: 310,
+} as const;
 
-const colorBG0 = hsl(hueBG, 35, 15);
-const colorBG1 = hsl(hueBG, 50, 10);
-const colorBG2 = hsl(hueBG, 50, 20);
-const colorFG = hsl(hueBG, 60, 80);
+const ui = {
+  bg0: hsl(hue.bg, 35, 15),
+  bg1: hsl(hue.bg, 50, 10),
+  bg2: hsl(hue.bg, 50, 20),
+  fg: hsl(hue.bg, 60, 80),
+  border0: hsl(hue.bg, 40, 25),
+  border1: hsl(hue.bg, 50, 50),
+  widget: hsl(hue.bg, 35, 12),
+} as const;
 
-const colorSubtle = hsl(hueBG, 30, 50);
-const colorUno = hsl(hueUno, 50, 60);
-const colorDue = hsl(hueDue, 60, 75);
-const colorTre = hsl(hueTre, 60, 80);
+const syntax = {
+  alt: hsl(hue.bg, 30, 50),
+  uno: hsl(hue.uno, 50, 60),
+  due: hsl(hue.due, 60, 75),
+  tre: hsl(hue.tre, 60, 80),
+} as const;
 
-const colorBorder0 = hsl(hueBG, 40, 25);
-const colorBorder1 = hsl(hueBG, 50, 50);
-const colorWidgetBG = hsl(hueBG, 35, 12);
-
-const terminalBlack = "#2b594a";
-const terminalRed = "#e4779d";
-const terminalGreen = "#dce279";
-const terminalYellow = "#e5c19e";
-const terminalBlue = "#77e8d4";
-const terminalMagenta = "#e5a4da";
-const terminalCyan = "#ade88d";
-const terminalWhite = "#e4f1ec";
+const terminal = {
+  black: "#2b594a",
+  red: "#e4779d",
+  green: "#dce279",
+  yellow: "#e5c19e",
+  blue: "#77e8d4",
+  magenta: "#e5a4da",
+  cyan: "#ade88d",
+  white: "#e4f1ec",
+} as const;
 
 function hsl(h: number, s: number, l: number): string {
   return colord({ h, s, l }).toHex();
@@ -116,77 +123,77 @@ function config(): {
 
 function themeActivityBar() {
   return {
-    "activityBar.border": colorBorder0,
-    "activityBar.background": colorBG1,
-    "activityBar.foreground": colorFG,
-    "activityBar.inactiveForeground": alpha(colorFG, 50),
-    "activityBarBadge.background": colorFG,
-    "activityBarBadge.foreground": colorBG0,
-    "activityBar.activeBorder": colorFG,
-    "activityBar.activeBackground": alpha(colorFG, 10),
+    "activityBar.border": ui.border0,
+    "activityBar.background": ui.bg1,
+    "activityBar.foreground": ui.fg,
+    "activityBar.inactiveForeground": alpha(ui.fg, 50),
+    "activityBarBadge.background": ui.fg,
+    "activityBarBadge.foreground": ui.bg0,
+    "activityBar.activeBorder": ui.fg,
+    "activityBar.activeBackground": alpha(ui.fg, 10),
   };
 }
 
 function themeNotifications() {
   return {
     "notificationCenter.border": undefined,
-    "notificationCenterHeader.foreground": colorFG,
-    "notificationCenterHeader.background": colorBG1,
-    "notificationToast.border": colorBorder0,
-    "notifications.foreground": colorFG,
-    "notifications.background": colorBG1,
+    "notificationCenterHeader.foreground": ui.fg,
+    "notificationCenterHeader.background": ui.bg1,
+    "notificationToast.border": ui.border0,
+    "notifications.foreground": ui.fg,
+    "notifications.background": ui.bg1,
     "notifications.border": undefined,
-    "notificationLink.foreground": colorSubtle,
+    "notificationLink.foreground": syntax.alt,
   };
 }
 
 function themeList() {
   return {
-    "quickInput.background": colorBG0,
+    "quickInput.background": ui.bg0,
 
-    "list.errorForeground": mix(red, colorFG, 50),
-    "list.warningForeground": mix(yellow, colorFG, 50),
-    "list.highlightForeground": colorTre,
+    "list.errorForeground": mix(red, ui.fg, 50),
+    "list.warningForeground": mix(yellow, ui.fg, 50),
+    "list.highlightForeground": syntax.tre,
 
-    "list.focusForeground": colorFG,
-    "list.focusHighlightForeground": colorBG0,
+    "list.focusForeground": ui.fg,
+    "list.focusHighlightForeground": ui.bg0,
 
-    "list.activeSelectionIconForeground": colorBG0,
-    "list.activeSelectionForeground": colorBG0,
-    "list.activeSelectionBackground": colorFG,
+    "list.activeSelectionIconForeground": ui.bg0,
+    "list.activeSelectionForeground": ui.bg0,
+    "list.activeSelectionBackground": ui.fg,
 
-    "list.inactiveSelectionIconForeground": colorFG,
-    "list.inactiveSelectionForeground": colorFG,
-    "list.inactiveSelectionBackground": colorBG2,
+    "list.inactiveSelectionIconForeground": ui.fg,
+    "list.inactiveSelectionForeground": ui.fg,
+    "list.inactiveSelectionBackground": ui.bg2,
 
-    "quickInputList.focusIconForeground": colorBG0,
-    "quickInputList.focusForeground": colorBG0,
-    "quickInputList.focusBackground": colorFG,
+    "quickInputList.focusIconForeground": ui.bg0,
+    "quickInputList.focusForeground": ui.bg0,
+    "quickInputList.focusBackground": ui.fg,
 
-    "list.hoverBackground": alpha(colorFG, 5),
+    "list.hoverBackground": alpha(ui.fg, 5),
   };
 }
 
 function themeTerminal() {
   return {
-    "terminal.foreground": colorFG,
-    "terminal.background": colorBG0,
-    "terminal.ansiBlack": terminalBlack,
-    "terminal.ansiBlue": terminalBlue,
-    "terminal.ansiBrightBlack": terminalBlack,
-    "terminal.ansiBrightBlue": terminalBlue,
-    "terminal.ansiBrightCyan": terminalCyan,
-    "terminal.ansiBrightGreen": terminalGreen,
-    "terminal.ansiBrightMagenta": terminalMagenta,
-    "terminal.ansiBrightRed": terminalRed,
-    "terminal.ansiBrightWhite": terminalWhite,
-    "terminal.ansiBrightYellow": terminalYellow,
-    "terminal.ansiCyan": terminalCyan,
-    "terminal.ansiGreen": terminalGreen,
-    "terminal.ansiMagenta": terminalMagenta,
-    "terminal.ansiRed": terminalRed,
-    "terminal.ansiWhite": terminalWhite,
-    "terminal.ansiYellow": terminalYellow,
+    "terminal.foreground": ui.fg,
+    "terminal.background": ui.bg0,
+    "terminal.ansiBlack": terminal.black,
+    "terminal.ansiBlue": terminal.blue,
+    "terminal.ansiBrightBlack": terminal.black,
+    "terminal.ansiBrightBlue": terminal.blue,
+    "terminal.ansiBrightCyan": terminal.cyan,
+    "terminal.ansiBrightGreen": terminal.green,
+    "terminal.ansiBrightMagenta": terminal.magenta,
+    "terminal.ansiBrightRed": terminal.red,
+    "terminal.ansiBrightWhite": terminal.white,
+    "terminal.ansiBrightYellow": terminal.yellow,
+    "terminal.ansiCyan": terminal.cyan,
+    "terminal.ansiGreen": terminal.green,
+    "terminal.ansiMagenta": terminal.magenta,
+    "terminal.ansiRed": terminal.red,
+    "terminal.ansiWhite": terminal.white,
+    "terminal.ansiYellow": terminal.yellow,
   };
 }
 
@@ -198,11 +205,11 @@ function themeDiff() {
 function themeGit() {
   // TODO: Redesign these colors
   return {
-    "gitDecoration.modifiedResourceForeground": mix(orange, colorFG, 20),
-    "gitDecoration.deletedResourceForeground": mix(red, colorFG, 20),
-    "gitDecoration.untrackedResourceForeground": mix(blue, colorFG, 20),
-    "gitDecoration.conflictingResourceForeground": mix(cyan, colorFG, 20),
-    "gitDecoration.ignoredResourceForeground": alpha(colorFG, 40),
+    "gitDecoration.modifiedResourceForeground": mix(orange, ui.fg, 20),
+    "gitDecoration.deletedResourceForeground": mix(red, ui.fg, 20),
+    "gitDecoration.untrackedResourceForeground": mix(blue, ui.fg, 20),
+    "gitDecoration.conflictingResourceForeground": mix(cyan, ui.fg, 20),
+    "gitDecoration.ignoredResourceForeground": alpha(ui.fg, 40),
   };
 }
 
@@ -214,38 +221,38 @@ function darken(color: string, amount: number): string {
 
 function themeStatusBar() {
   return {
-    "statusBar.border": colorBorder0,
-    "statusBarItem.activeBackground": alpha(colorFG, 20),
-    "statusBarItem.hoverBackground": alpha(colorFG, 10),
-    "statusBarItem.prominentBackground": alpha(colorFG, 30),
-    "statusBar.background": colorBG1,
-    "statusBar.debuggingBackground": colorBG1,
-    "statusBar.noFolderBackground": colorBG1,
-    "statusBar.foreground": colorFG,
+    "statusBar.border": ui.border0,
+    "statusBarItem.activeBackground": alpha(ui.fg, 20),
+    "statusBarItem.hoverBackground": alpha(ui.fg, 10),
+    "statusBarItem.prominentBackground": alpha(ui.fg, 30),
+    "statusBar.background": ui.bg1,
+    "statusBar.debuggingBackground": ui.bg1,
+    "statusBar.noFolderBackground": ui.bg1,
+    "statusBar.foreground": ui.fg,
   };
 }
 
 function themeBadge() {
   return {
-    "badge.foreground": colorBG0,
-    "badge.background": colorFG,
+    "badge.foreground": ui.bg0,
+    "badge.background": ui.fg,
   };
 }
 
 function themeMenu() {
   return {
-    "menu.background": colorBG0,
-    "menu.foreground": colorFG,
-    "menu.separatorBackground": alpha(colorBorder0, 50),
+    "menu.background": ui.bg0,
+    "menu.foreground": ui.fg,
+    "menu.separatorBackground": alpha(ui.border0, 50),
   };
 }
 
 function themeKeybinding() {
   return {
     "keybindingLabel.background": transparent,
-    "keybindingLabel.foreground": colorFG,
-    "keybindingLabel.border": colorBorder0,
-    "keybindingLabel.bottomBorder": colorBorder0,
+    "keybindingLabel.foreground": ui.fg,
+    "keybindingLabel.border": ui.border0,
+    "keybindingLabel.bottomBorder": ui.border0,
   };
 }
 
@@ -264,50 +271,50 @@ function themeHighlightBorders() {
 function themeScrollbar() {
   return {
     "scrollbar.shadow": transparent,
-    "scrollbarSlider.background": alpha(colorFG, 30),
-    "scrollbarSlider.hoverBackground": alpha(colorFG, 60),
-    "scrollbarSlider.activeBackground": alpha(colorFG, 70),
+    "scrollbarSlider.background": alpha(ui.fg, 30),
+    "scrollbarSlider.hoverBackground": alpha(ui.fg, 60),
+    "scrollbarSlider.activeBackground": alpha(ui.fg, 70),
   };
 }
 
 function themeDropdown() {
   return {
-    "dropdown.background": colorWidgetBG,
-    "dropdown.listBackground": colorWidgetBG,
-    "dropdown.border": colorBorder1,
-    "dropdown.foreground": colorFG,
+    "dropdown.background": ui.widget,
+    "dropdown.listBackground": ui.widget,
+    "dropdown.border": ui.border1,
+    "dropdown.foreground": ui.fg,
   };
 }
 
 function themeDragAndDrop() {
-  const color = alpha(colorTre, 30);
+  const color = alpha(syntax.tre, 30);
   return {
     "list.dropBackground": color,
     "sideBar.dropBackground": color,
     "editorGroup.dropBackground": color,
-    "panel.border": colorBorder0,
-    "panelSection.border": colorBorder0,
-    "panelSectionHeader.border": colorBorder0,
+    "panel.border": ui.border0,
+    "panelSection.border": ui.border0,
+    "panelSectionHeader.border": ui.border0,
   };
 }
 
 function themeButton() {
   return {
-    "button.background": colorFG,
-    "button.foreground": colorBG0,
-    "button.hoverBackground": alpha(colorFG, 95),
-    "button.separator": alpha(colorBG0, 30),
-    "button.secondaryBackground": colorTre,
-    "button.secondaryForeground": colorBG0,
-    "button.secondaryHoverBackground": alpha(colorTre, 95),
+    "button.background": ui.fg,
+    "button.foreground": ui.bg0,
+    "button.hoverBackground": alpha(ui.fg, 95),
+    "button.separator": alpha(ui.bg0, 30),
+    "button.secondaryBackground": syntax.tre,
+    "button.secondaryForeground": ui.bg0,
+    "button.secondaryHoverBackground": alpha(syntax.tre, 95),
   };
 }
 
 function tweakColor(color: string): string {
   return fixContrast({
     type: "text",
-    fg: mix(color, colorBG0, 30),
-    bg: colorBG0,
+    fg: mix(color, ui.bg0, 30),
+    bg: ui.bg0,
   });
 }
 
@@ -321,9 +328,9 @@ function themeBracketColors() {
   [x, [x, [x, [x, [x, [x]]]]]];
   //
   ////////////////////////////////////////////////////////////////////////////
-  const b1 = tweakColor(colorUno);
-  const b2 = tweakColor(colorDue);
-  const b3 = tweakColor(colorTre);
+  const b1 = tweakColor(syntax.uno);
+  const b2 = tweakColor(syntax.due);
+  const b3 = tweakColor(syntax.tre);
   return {
     "editorBracketHighlight.foreground1": b1,
     "editorBracketHighlight.foreground2": b2,
@@ -331,84 +338,88 @@ function themeBracketColors() {
     "editorBracketHighlight.foreground4": b1,
     "editorBracketHighlight.foreground5": b2,
     "editorBracketHighlight.foreground6": b3,
-    "editorBracketHighlight.unexpectedBracket.foreground": red,
+    "editorBracketHighlight.unexpectedBracket.foreground": fixContrast({
+      fg: red,
+      bg: ui.bg0,
+      type: "text",
+    }),
   };
 }
 
 function themeEditor() {
   return {
-    "editorWidget.foreground": colorFG,
-    "editorWidget.background": colorBG1,
-    "editorWidget.border": colorBorder0,
-    "editorWidget.resizeBorder": colorBorder1,
-    "editorBracketMatch.background": alpha(colorTre, 15),
-    "editorBracketMatch.border": alpha(colorTre, 50),
+    "editorWidget.foreground": ui.fg,
+    "editorWidget.background": ui.bg1,
+    "editorWidget.border": ui.border0,
+    "editorWidget.resizeBorder": ui.border1,
+    "editorBracketMatch.background": alpha(syntax.tre, 15),
+    "editorBracketMatch.border": alpha(syntax.tre, 50),
     "editor.findMatchBackground": alpha(orange, 50),
     "editor.findMatchHighlightBackground": alpha(yellow, 50),
     "editor.findRangeHighlightBackground": alpha(orange, 50),
-    "editor.foreground": colorFG,
-    "editor.background": colorBG0,
+    "editor.foreground": ui.fg,
+    "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
-    "editorLink.activeForeground": colorSubtle,
-    "editor.lineHighlightBackground": colorBG1,
+    "editorLink.activeForeground": syntax.alt,
+    "editor.lineHighlightBackground": ui.bg1,
     "editor.rangeHighlightBackground": alpha(orange, 10),
-    "editor.selectionBackground": alpha(colorTre, 30),
-    "editor.inactiveSelectionBackground": alpha(colorTre, 30),
+    "editor.selectionBackground": alpha(syntax.tre, 30),
+    "editor.inactiveSelectionBackground": alpha(syntax.tre, 30),
     "editor.wordHighlightBackground": alpha(blue, 25),
     "editor.wordHighlightStrongBackground": alpha(purple, 30),
-    "editorOverviewRuler.border": alpha(colorBorder0, 25),
-    "editorCursor.foreground": colorTre,
-    "editorGroup.border": colorBorder0,
-    "editorRuler.foreground": alpha(colorBorder0, 25),
-    "editorIndentGuide.background": alpha(colorBorder0, 50),
-    "editorIndentGuide.activeBackground": colorBorder0,
-    "editorLineNumber.foreground": alpha(colorFG, 30),
-    "editorLineNumber.activeForeground": colorFG,
+    "editorOverviewRuler.border": alpha(ui.border0, 25),
+    "editorCursor.foreground": syntax.tre,
+    "editorGroup.border": ui.border0,
+    "editorRuler.foreground": alpha(ui.border0, 25),
+    "editorIndentGuide.background": alpha(ui.border0, 50),
+    "editorIndentGuide.activeBackground": ui.border0,
+    "editorLineNumber.foreground": alpha(ui.fg, 30),
+    "editorLineNumber.activeForeground": ui.fg,
   };
 }
 
 function themeTitlebar() {
   return {
-    "titleBar.activeBackground": colorBG1,
-    "titleBar.activeForeground": colorFG,
-    "titleBar.inactiveBackground": colorBG1,
-    "titleBar.inactiveForeground": alpha(colorFG, 70),
-    "titleBar.border": colorBorder0,
+    "titleBar.activeBackground": ui.bg1,
+    "titleBar.activeForeground": ui.fg,
+    "titleBar.inactiveBackground": ui.bg1,
+    "titleBar.inactiveForeground": alpha(ui.fg, 70),
+    "titleBar.border": ui.border0,
   };
 }
 
 function themeTabs() {
   return {
-    "tab.border": colorBG1,
-    "editorGroupHeader.tabsBorder": colorBorder0,
-    "editorGroupHeader.border": colorBorder0,
-    "breadcrumb.background": colorBG0,
-    "editorGroupHeader.noTabsBackground": colorBG1,
-    "editorGroupHeader.tabsBackground": colorBG1,
-    "tab.activeBorder": colorBorder1,
-    "tab.unfocusedActiveBorder": colorBorder1,
+    "tab.border": ui.bg1,
+    "editorGroupHeader.tabsBorder": ui.border0,
+    "editorGroupHeader.border": ui.border0,
+    "breadcrumb.background": ui.bg0,
+    "editorGroupHeader.noTabsBackground": ui.bg1,
+    "editorGroupHeader.tabsBackground": ui.bg1,
+    "tab.activeBorder": ui.border1,
+    "tab.unfocusedActiveBorder": ui.border1,
     "tab.activeBorderTop": undefined,
     "tab.unfocusedActiveBorderTop": undefined,
-    "tab.activeBackground": colorBG2,
-    "tab.activeForeground": colorFG,
-    "tab.inactiveBackground": colorBG1,
-    "tab.inactiveForeground": alpha(colorFG, 80),
+    "tab.activeBackground": ui.bg2,
+    "tab.activeForeground": ui.fg,
+    "tab.inactiveBackground": ui.bg1,
+    "tab.inactiveForeground": alpha(ui.fg, 80),
   };
 }
 
 function colors() {
   return {
-    focusBorder: colorTre,
-    "icon.foreground": colorFG,
-    "toolbar.hoverBackground": alpha(colorFG, 5),
-    "toolbar.activeBackground": alpha(colorFG, 15),
-    "widget.shadow": alpha(darken(colorBG1, 5), 50),
+    focusBorder: syntax.tre,
+    "icon.foreground": ui.fg,
+    "toolbar.hoverBackground": alpha(ui.fg, 5),
+    "toolbar.activeBackground": alpha(ui.fg, 15),
+    "widget.shadow": alpha(darken(ui.bg1, 5), 50),
     ...themeScrollbar(),
-    "input.border": colorBorder1,
-    "input.background": colorWidgetBG,
-    "input.placeholderForeground": alpha(colorFG, 40),
-    "progressBar.background": colorFG,
-    "inputOption.activeBorder": colorFG,
+    "input.border": ui.border1,
+    "input.background": ui.widget,
+    "input.placeholderForeground": alpha(ui.fg, 40),
+    "progressBar.background": ui.fg,
+    "inputOption.activeBorder": ui.fg,
     ...themeCommandCenter(),
     ...themeList(),
     ...themeStatusBar(),
@@ -421,25 +432,25 @@ function colors() {
     ...themeNotifications(),
     ...themeDragAndDrop(),
     ...themeButton(),
-    foreground: colorFG,
-    "panel.background": colorBG0,
-    "panel.border": colorBorder0,
-    "panelTitle.activeBorder": alpha(colorFG, 50),
-    "panelTitle.activeForeground": colorFG,
-    "panelTitle.inactiveForeground": alpha(colorFG, 60),
+    foreground: ui.fg,
+    "panel.background": ui.bg0,
+    "panel.border": ui.border0,
+    "panelTitle.activeBorder": alpha(ui.fg, 50),
+    "panelTitle.activeForeground": ui.fg,
+    "panelTitle.inactiveForeground": alpha(ui.fg, 60),
     "peekViewEditor.matchHighlightBackground": alpha(yellow, 50),
     "peekViewResult.matchHighlightBackground": alpha(yellow, 50),
-    "sideBar.border": colorBorder0,
-    "sideBar.background": colorBG1,
-    "sideBarSectionHeader.background": colorBG1,
-    "sideBarSectionHeader.border": colorBorder0,
-    "tree.indentGuidesStroke": alpha(colorBorder0, 50),
+    "sideBar.border": ui.border0,
+    "sideBar.background": ui.bg1,
+    "sideBarSectionHeader.background": ui.bg1,
+    "sideBarSectionHeader.border": ui.border0,
+    "tree.indentGuidesStroke": alpha(ui.border0, 50),
     ...themeTabs(),
-    "pickerGroup.border": alpha(colorBorder0, 50),
+    "pickerGroup.border": alpha(ui.border0, 50),
     ...themeDiff(),
     ...themeGit(),
     ...themeTitlebar(),
-    "debugToolBar.background": colorWidgetBG,
+    "debugToolBar.background": ui.widget,
     ...themeDropdown(),
     ...themeHighlightBorders(),
     ...themeTerminal(),
@@ -448,13 +459,13 @@ function colors() {
 
 function themeCommandCenter() {
   return {
-    "commandCenter.foreground": colorFG,
-    "commandCenter.inactiveForeground": alpha(colorFG, 50),
-    "commandCenter.background": colorBG1,
-    "commandCenter.border": colorBorder0,
-    "commandCenter.inactiveBorder": colorBorder0,
-    "commandCenter.activeBackground": colorBG0,
-    "commandCenter.activeBorder": colorBorder0,
+    "commandCenter.foreground": ui.fg,
+    "commandCenter.inactiveForeground": alpha(ui.fg, 50),
+    "commandCenter.background": ui.bg1,
+    "commandCenter.border": ui.border0,
+    "commandCenter.inactiveBorder": ui.border0,
+    "commandCenter.activeBackground": ui.bg0,
+    "commandCenter.activeBorder": ui.border0,
   };
 }
 
@@ -491,13 +502,13 @@ function tokenColors(): TokenColor[] {
   }
 
   const tokens = {
-    default: createToken(colorFG),
-    uno: createToken(colorUno),
-    unoBold: createToken(colorUno, "bold"),
-    due: createToken(colorDue),
-    dueBold: createToken(colorDue, "bold"),
-    tre: createToken(colorTre),
-    subtle: createToken(colorSubtle),
+    default: createToken(ui.fg),
+    uno: createToken(syntax.uno),
+    unoBold: createToken(syntax.uno, "bold"),
+    due: createToken(syntax.due),
+    dueBold: createToken(syntax.due, "bold"),
+    tre: createToken(syntax.tre),
+    subtle: createToken(syntax.alt),
   } as const;
 
   return [
@@ -573,7 +584,7 @@ function tokenColors(): TokenColor[] {
     {
       scope: "invalid",
       settings: {
-        foreground: fixContrast({ fg: red, bg: colorBG0, type: "text" }),
+        foreground: fixContrast({ fg: red, bg: ui.bg0, type: "text" }),
       },
     },
     {
@@ -586,7 +597,7 @@ function tokenColors(): TokenColor[] {
       scope: "markup.bold",
       settings: {
         fontStyle: "bold",
-        foreground: colorDue,
+        foreground: syntax.due,
       },
     },
     {
@@ -597,7 +608,7 @@ function tokenColors(): TokenColor[] {
       scope: "markup.italic",
       settings: {
         fontStyle: "italic",
-        foreground: colorDue,
+        foreground: syntax.due,
       },
     },
     {
@@ -959,7 +970,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "entity.name.label",
-      settings: tokens.subtle,
+      settings: tokens.default,
     },
     {
       scope: ["punctuation", "meta.brace"],
@@ -979,15 +990,15 @@ function showContrast(
   const fail = contrast < Contrast[level];
   const str = [
     fail ? "[!]" : "   ",
-    ANSI.bold.yellow(contrast.toFixed(1).toString().padStart(6)),
-    ANSI.bold.magenta(":"),
-    fg,
-    ANSI.bold.magenta("->"),
-    bg,
-    ANSI.bold.magenta(":"),
-    fgStr,
-    ANSI.bold.magenta("->"),
+    ANSI.bold.yellow(contrast.toFixed(1).toString().padStart(4)),
+    // ANSI.bold.magenta(":"),
+    // fg,
+    // ANSI.bold.magenta("<-"),
+    // bg,
+    ANSI.bold.magenta(" :: "),
     bgStr,
+    ANSI.bold.magenta(" <- "),
+    fgStr,
   ].join(" ");
   if (fail) {
     console.error(ANSI.bold.red(str));
@@ -1004,63 +1015,25 @@ function save(): void {
 }
 
 function printContrastReport() {
-  showContrast("text", colorFG, colorBG0, "colorFG", "colorBG0");
-  showContrast("text", colorFG, colorBG1, "colorFG", "colorBG1");
-  showContrast("text", colorFG, colorBG2, "colorFG", "colorBG2");
-  showContrast("ui", colorBorder1, colorBG0, "colorBorder1", "colorBG0");
-  showContrast("ui", colorBorder1, colorBG1, "colorBorder1", "colorBG1");
-  showContrast("ui", colorBorder1, colorBG2, "colorBorder1", "colorBG2");
-  showContrast("text", colorSubtle, colorBG0, "colorSubtle", "colorBG0");
-  showContrast("text", colorUno, colorBG0, "colorUno", "colorBG0");
-  showContrast("text", colorDue, colorBG0, "colorDue", "colorBG0");
-  showContrast("text", colorTre, colorBG0, "colorTre", "colorBG0");
-  for (const [name, color] of Object.entries(themeTerminal())) {
-    if (
-      name === "terminal.background" ||
-      name === "terminal.ansiBlack" ||
-      name === "terminal.ansiBrightBlack"
-    ) {
+  showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
+  showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
+  showContrast("text", ui.fg, ui.bg2, "ui.fg", "ui.bg2");
+  showContrast("ui", ui.border1, ui.bg0, "ui.border1", "ui.bg0");
+  showContrast("ui", ui.border1, ui.bg1, "ui.border1", "ui.bg1");
+  showContrast("ui", ui.border1, ui.bg2, "ui.border1", "ui.bg2");
+  showContrast("text", syntax.alt, ui.bg0, "syntax.alt", "ui.bg0");
+  for (const [name, color] of Object.entries(syntax)) {
+    showContrast("text", color, ui.bg0, `syntax.${name}`, "ui.bg0");
+  }
+  for (const [name, color] of Object.entries(terminal)) {
+    if (name === "black") {
       continue;
     }
-    showContrast("text", color, colorBG0, name, "colorBG0");
+    showContrast("text", color, ui.bg0, `terminal.${name}`, "ui.bg0");
   }
-  // TODO: Check contrast of terminal colors
-  // TODO: Check contrast of token colors
-  for (const token of config().tokenColors) {
-    if ("foreground" in token.settings) {
-      const scope =
-        typeof token.scope === "string" ? token.scope : token.scope.join(" ");
-      showContrast(
-        "text",
-        token.settings.foreground,
-        colorBG0,
-        scope.slice(0, 60),
-        "..."
-      );
-    }
+  for (const [name, color] of Object.entries(themeBracketColors())) {
+    showContrast("text", color, ui.bg0, name, "ui.bg0");
   }
-  const brackets = themeBracketColors();
-  showContrast(
-    "text",
-    brackets["editorBracketHighlight.foreground1"],
-    colorBG0,
-    "editorBracketHighlight.foreground1",
-    "colorBG0"
-  );
-  showContrast(
-    "text",
-    brackets["editorBracketHighlight.foreground2"],
-    colorBG0,
-    "editorBracketHighlight.foreground2",
-    "colorBG0"
-  );
-  showContrast(
-    "text",
-    brackets["editorBracketHighlight.foreground3"],
-    colorBG0,
-    "editorBracketHighlight.foreground3",
-    "colorBG0"
-  );
 }
 
 save();
