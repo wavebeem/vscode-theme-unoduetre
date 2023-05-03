@@ -62,6 +62,15 @@ const colorBorder0 = hsl(hueBG, 40, 25);
 const colorBorder1 = hsl(hueBG, 50, 50);
 const colorWidgetBG = hsl(hueBG, 35, 12);
 
+const terminalBlack = "#2b594a";
+const terminalRed = "#e4779d";
+const terminalGreen = "#dce279";
+const terminalYellow = "#e5c19e";
+const terminalBlue = "#77e8d4";
+const terminalMagenta = "#e5a4da";
+const terminalCyan = "#ade88d";
+const terminalWhite = "#e4f1ec";
+
 function hsl(h: number, s: number, l: number): string {
   return colord({ h, s, l }).toHex();
 }
@@ -73,6 +82,13 @@ function alpha(color: string, percent: number): string {
   const hsl = colord(color).toHsl();
   hsl.a = percent / 100;
   return colord(hsl).toHex();
+}
+
+// TODO: Stop using this
+function mix(a: string, b: string, percent: number): string {
+  return colord(a)
+    .mix(b, percent / 100)
+    .toHex();
 }
 
 // TODO: Don't make weird generic colors like this
@@ -152,37 +168,30 @@ function themeList() {
 }
 
 function themeTerminal() {
-  const tBlack = "#2b594a";
-  const tRed = "#e4779d";
-  const tGreen = "#dce279";
-  const tYellow = "#e5c19e";
-  const tBlue = "#77e8d4";
-  const tMagenta = "#e5a4da";
-  const tCyan = "#ade88d";
-  const tWhite = "#e4f1ec";
   return {
     "terminal.foreground": colorFG,
     "terminal.background": colorBG0,
-    "terminal.ansiBlack": tBlack,
-    "terminal.ansiBlue": tBlue,
-    "terminal.ansiBrightBlack": tBlack,
-    "terminal.ansiBrightBlue": tBlue,
-    "terminal.ansiBrightCyan": tCyan,
-    "terminal.ansiBrightGreen": tGreen,
-    "terminal.ansiBrightMagenta": tMagenta,
-    "terminal.ansiBrightRed": tRed,
-    "terminal.ansiBrightWhite": tWhite,
-    "terminal.ansiBrightYellow": tYellow,
-    "terminal.ansiCyan": tCyan,
-    "terminal.ansiGreen": tGreen,
-    "terminal.ansiMagenta": tMagenta,
-    "terminal.ansiRed": tRed,
-    "terminal.ansiWhite": tWhite,
-    "terminal.ansiYellow": tYellow,
+    "terminal.ansiBlack": terminalBlack,
+    "terminal.ansiBlue": terminalBlue,
+    "terminal.ansiBrightBlack": terminalBlack,
+    "terminal.ansiBrightBlue": terminalBlue,
+    "terminal.ansiBrightCyan": terminalCyan,
+    "terminal.ansiBrightGreen": terminalGreen,
+    "terminal.ansiBrightMagenta": terminalMagenta,
+    "terminal.ansiBrightRed": terminalRed,
+    "terminal.ansiBrightWhite": terminalWhite,
+    "terminal.ansiBrightYellow": terminalYellow,
+    "terminal.ansiCyan": terminalCyan,
+    "terminal.ansiGreen": terminalGreen,
+    "terminal.ansiMagenta": terminalMagenta,
+    "terminal.ansiRed": terminalRed,
+    "terminal.ansiWhite": terminalWhite,
+    "terminal.ansiYellow": terminalYellow,
   };
 }
 
 function themeDiff() {
+  // TODO: Theme these
   return {};
 }
 
@@ -268,12 +277,6 @@ function themeDropdown() {
     "dropdown.border": colorBorder1,
     "dropdown.foreground": colorFG,
   };
-}
-
-function mix(a: string, b: string, percent: number): string {
-  return colord(a)
-    .mix(b, percent / 100)
-    .toHex();
 }
 
 function themeDragAndDrop() {
