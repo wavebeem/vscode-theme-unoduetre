@@ -306,19 +306,19 @@
     {
       "scope": "markup.inserted",
       "settings": {
-        "foreground": "#b5cea8"
+        "foreground": "#00bcd4"
       }
     },
     {
       "scope": "markup.deleted",
       "settings": {
-        "foreground": "#ce9178"
+        "foreground": "#cc0000"
       }
     },
     {
       "scope": "markup.changed",
       "settings": {
-        "foreground": "#569cd6"
+        "foreground": "#e67e22"
       }
     },
     {
@@ -338,7 +338,8 @@
     {
       "scope": "markup.inline.raw",
       "settings": {
-        "foreground": "#ce9178"
+        "foreground": "#e6bf99",
+        "fontStyle": "normal"
       }
     },
     {
@@ -386,13 +387,15 @@
     {
       "scope": "meta.diff.header",
       "settings": {
-        "foreground": "#569cd6"
+        "foreground": "#cccc66",
+        "fontStyle": "normal"
       }
     },
     {
       "scope": "storage",
       "settings": {
-        "foreground": "#569cd6"
+        "foreground": "#adebd6",
+        "fontStyle": "normal"
       }
     },
     {
@@ -554,18 +557,6 @@
       "settings": {
         "foreground": "#59a68c",
         "fontStyle": "normal"
-      }
-    },
-    {
-      "scope": "support.function.git-rebase",
-      "settings": {
-        "foreground": "#9cdcfe"
-      }
-    },
-    {
-      "scope": "constant.sha.git-rebase",
-      "settings": {
-        "foreground": "#b5cea8"
       }
     },
     {

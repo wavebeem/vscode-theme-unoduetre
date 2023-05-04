@@ -99,12 +99,14 @@ function mix(a: string, b: string, percent: number): string {
 }
 
 // TODO: Don't make weird generic colors like this
-const cyan = "#00bcd4";
-const red = "#cc0000";
-const yellow = "#f1c40f";
-const orange = "#e67e22";
-const blue = "#3498db";
-const purple = "#9b59b6";
+const misc = {
+  cyan: "#00bcd4",
+  red: "#cc0000",
+  yellow: "#f1c40f",
+  orange: "#e67e22",
+  blue: "#3498db",
+  purple: "#9b59b6",
+} as const;
 
 function config(): {
   /** Base theme (e.g. light/dark/high contrast) */
@@ -151,8 +153,8 @@ function themeList() {
   return {
     "quickInput.background": ui.bg0,
 
-    "list.errorForeground": mix(red, ui.fg, 50),
-    "list.warningForeground": mix(yellow, ui.fg, 50),
+    "list.errorForeground": mix(misc.red, ui.fg, 50),
+    "list.warningForeground": mix(misc.yellow, ui.fg, 50),
     "list.highlightForeground": syntax.tre,
 
     "list.focusForeground": ui.fg,
@@ -205,10 +207,10 @@ function themeDiff() {
 function themeGit() {
   // TODO: Redesign these colors
   return {
-    "gitDecoration.modifiedResourceForeground": mix(orange, ui.fg, 20),
-    "gitDecoration.deletedResourceForeground": mix(red, ui.fg, 20),
-    "gitDecoration.untrackedResourceForeground": mix(blue, ui.fg, 20),
-    "gitDecoration.conflictingResourceForeground": mix(cyan, ui.fg, 20),
+    "gitDecoration.modifiedResourceForeground": mix(misc.orange, ui.fg, 20),
+    "gitDecoration.deletedResourceForeground": mix(misc.red, ui.fg, 20),
+    "gitDecoration.untrackedResourceForeground": mix(misc.blue, ui.fg, 20),
+    "gitDecoration.conflictingResourceForeground": mix(misc.cyan, ui.fg, 20),
     "gitDecoration.ignoredResourceForeground": alpha(ui.fg, 40),
   };
 }
@@ -339,7 +341,7 @@ function themeBracketColors() {
     "editorBracketHighlight.foreground5": b2,
     "editorBracketHighlight.foreground6": b3,
     "editorBracketHighlight.unexpectedBracket.foreground": fixContrast({
-      fg: red,
+      fg: misc.red,
       bg: ui.bg0,
       type: "text",
     }),
@@ -354,19 +356,19 @@ function themeEditor() {
     "editorWidget.resizeBorder": ui.border1,
     "editorBracketMatch.background": alpha(syntax.tre, 15),
     "editorBracketMatch.border": alpha(syntax.tre, 50),
-    "editor.findMatchBackground": alpha(orange, 50),
-    "editor.findMatchHighlightBackground": alpha(yellow, 50),
-    "editor.findRangeHighlightBackground": alpha(orange, 50),
+    "editor.findMatchBackground": alpha(misc.orange, 50),
+    "editor.findMatchHighlightBackground": alpha(misc.yellow, 50),
+    "editor.findRangeHighlightBackground": alpha(misc.orange, 50),
     "editor.foreground": ui.fg,
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
     "editorLink.activeForeground": syntax.alt,
     "editor.lineHighlightBackground": ui.bg1,
-    "editor.rangeHighlightBackground": alpha(orange, 10),
+    "editor.rangeHighlightBackground": alpha(misc.orange, 10),
     "editor.selectionBackground": alpha(syntax.tre, 30),
     "editor.inactiveSelectionBackground": alpha(syntax.tre, 30),
-    "editor.wordHighlightBackground": alpha(blue, 25),
-    "editor.wordHighlightStrongBackground": alpha(purple, 30),
+    "editor.wordHighlightBackground": alpha(misc.blue, 25),
+    "editor.wordHighlightStrongBackground": alpha(misc.purple, 30),
     "editorOverviewRuler.border": alpha(ui.border0, 25),
     "editorCursor.foreground": syntax.tre,
     "editorGroup.border": ui.border0,
@@ -438,8 +440,8 @@ function colors() {
     "panelTitle.activeBorder": alpha(ui.fg, 50),
     "panelTitle.activeForeground": ui.fg,
     "panelTitle.inactiveForeground": alpha(ui.fg, 60),
-    "peekViewEditor.matchHighlightBackground": alpha(yellow, 50),
-    "peekViewResult.matchHighlightBackground": alpha(yellow, 50),
+    "peekViewEditor.matchHighlightBackground": alpha(misc.yellow, 50),
+    "peekViewResult.matchHighlightBackground": alpha(misc.yellow, 50),
     "sideBar.border": ui.border0,
     "sideBar.background": ui.bg1,
     "sideBarSectionHeader.background": ui.bg1,
@@ -584,7 +586,7 @@ function tokenColors(): TokenColor[] {
     {
       scope: "invalid",
       settings: {
-        foreground: fixContrast({ fg: red, bg: ui.bg0, type: "text" }),
+        foreground: fixContrast({ fg: misc.red, bg: ui.bg0, type: "text" }),
       },
     },
     {
@@ -620,22 +622,19 @@ function tokenColors(): TokenColor[] {
     {
       scope: "markup.inserted",
       settings: {
-        // TODO
-        foreground: "#b5cea8",
+        foreground: misc.cyan,
       },
     },
     {
       scope: "markup.deleted",
       settings: {
-        // TODO
-        foreground: "#ce9178",
+        foreground: misc.red,
       },
     },
     {
       scope: "markup.changed",
       settings: {
-        // TODO
-        foreground: "#569cd6",
+        foreground: misc.orange,
       },
     },
     {
@@ -648,10 +647,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "markup.inline.raw",
-      settings: {
-        // TODO
-        foreground: "#ce9178",
-      },
+      settings: tokens.due,
     },
     {
       name: "brackets of XML/HTML tags",
@@ -676,17 +672,11 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "meta.diff.header",
-      settings: {
-        // TODO
-        foreground: "#569cd6",
-      },
+      settings: tokens.uno,
     },
     {
       scope: "storage",
-      settings: {
-        // TODO
-        foreground: "#569cd6",
-      },
+      settings: tokens.default,
     },
     {
       scope: ["source.java storage.type", "source.go storage.type"],
@@ -783,20 +773,18 @@ function tokenColors(): TokenColor[] {
       ],
       settings: tokens.subtle,
     },
-    {
-      scope: "support.function.git-rebase",
-      settings: {
-        // TODO
-        foreground: "#9cdcfe",
-      },
-    },
-    {
-      scope: "constant.sha.git-rebase",
-      settings: {
-        // TODO
-        foreground: "#b5cea8",
-      },
-    },
+    // {
+    //   scope: "support.function.git-rebase",
+    //   settings: {
+    //     foreground: "#9cdcfe",
+    //   },
+    // },
+    // {
+    //   scope: "constant.sha.git-rebase",
+    //   settings: {
+    //     foreground: "#b5cea8",
+    //   },
+    // },
     {
       name: "coloring of the Java import and package identifiers",
       scope: [
@@ -1014,7 +1002,7 @@ function save(): void {
   fs.writeFileSync("themes/miasma-color-theme.json", json);
 }
 
-function printContrastReport() {
+function printContrastReport(): void {
   showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
   showContrast("text", ui.fg, ui.bg2, "ui.fg", "ui.bg2");
