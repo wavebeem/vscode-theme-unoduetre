@@ -61,21 +61,33 @@ const ui = {
 } as const;
 
 const syntax = {
-  alt: hsl(hue.bg, 30, 50),
-  uno: hsl(hue.uno, 50, 60),
-  due: hsl(hue.due, 60, 75),
-  tre: hsl(hue.tre, 60, 80),
+  default: ui.fg,
+
+  alt0: hsl(hue.bg, 15, 60),
+  alt1: hsl(hue.bg, 30, 50),
+
+  uno0: hsl(hue.uno, 50, 73),
+  uno1: hsl(hue.uno, 60, 49),
+  uno2: hsl(hue.uno, 30, 46.5),
+
+  due0: hsl(hue.due, 100, 82),
+  due1: hsl(hue.due, 90, 70.5),
+  due2: hsl(hue.due, 80, 57),
+
+  tre0: hsl(hue.tre, 100, 89.5),
+  tre1: hsl(hue.tre, 90, 81.75),
+  tre2: hsl(hue.tre, 70, 71),
 } as const;
 
 const terminal = {
-  black: "#2b594a",
-  red: "#e4779d",
-  green: "#dce279",
-  yellow: "#e5c19e",
-  blue: "#77e8d4",
-  magenta: "#e5a4da",
-  cyan: "#ade88d",
-  white: "#e4f1ec",
+  black: hsl(hue.bg, 35, 26),
+  red: hsl(339, 67, 68),
+  green: hsl(hue.uno, 64, 68),
+  yellow: hsl(30, 58, 76),
+  blue: hsl(169, 71, 69),
+  magenta: hsl(hue.tre, 56, 77),
+  cyan: hsl(99, 66, 73),
+  white: hsl(hue.bg, 32, 92),
 } as const;
 
 function hsl(h: number, s: number, l: number): string {
@@ -145,7 +157,7 @@ function themeNotifications() {
     "notifications.foreground": ui.fg,
     "notifications.background": ui.bg1,
     "notifications.border": undefined,
-    "notificationLink.foreground": syntax.alt,
+    "notificationLink.foreground": syntax.alt1,
   };
 }
 
@@ -155,7 +167,7 @@ function themeList() {
 
     "list.errorForeground": mix(misc.red, ui.fg, 50),
     "list.warningForeground": mix(misc.yellow, ui.fg, 50),
-    "list.highlightForeground": syntax.tre,
+    "list.highlightForeground": syntax.tre1,
 
     "list.focusForeground": ui.fg,
     "list.focusHighlightForeground": ui.bg0,
@@ -289,7 +301,7 @@ function themeDropdown() {
 }
 
 function themeDragAndDrop() {
-  const color = alpha(syntax.tre, 30);
+  const color = alpha(syntax.tre1, 30);
   return {
     "list.dropBackground": color,
     "sideBar.dropBackground": color,
@@ -306,9 +318,9 @@ function themeButton() {
     "button.foreground": ui.bg0,
     "button.hoverBackground": alpha(ui.fg, 95),
     "button.separator": alpha(ui.bg0, 30),
-    "button.secondaryBackground": syntax.tre,
+    "button.secondaryBackground": syntax.tre1,
     "button.secondaryForeground": ui.bg0,
-    "button.secondaryHoverBackground": alpha(syntax.tre, 95),
+    "button.secondaryHoverBackground": alpha(syntax.tre1, 95),
   };
 }
 
@@ -330,9 +342,9 @@ function themeBracketColors() {
   [x, [x, [x, [x, [x, [x]]]]]];
   //
   ////////////////////////////////////////////////////////////////////////////
-  const b1 = tweakColor(syntax.uno);
-  const b2 = tweakColor(syntax.due);
-  const b3 = tweakColor(syntax.tre);
+  const b1 = tweakColor(syntax.uno1);
+  const b2 = tweakColor(syntax.due1);
+  const b3 = tweakColor(syntax.tre1);
   return {
     "editorBracketHighlight.foreground1": b1,
     "editorBracketHighlight.foreground2": b2,
@@ -354,23 +366,23 @@ function themeEditor() {
     "editorWidget.background": ui.bg1,
     "editorWidget.border": ui.border0,
     "editorWidget.resizeBorder": ui.border1,
-    "editorBracketMatch.background": alpha(syntax.tre, 15),
-    "editorBracketMatch.border": alpha(syntax.tre, 50),
+    "editorBracketMatch.background": alpha(syntax.tre1, 15),
+    "editorBracketMatch.border": alpha(syntax.tre1, 50),
     "editor.findMatchBackground": alpha(misc.orange, 50),
     "editor.findMatchHighlightBackground": alpha(misc.yellow, 50),
     "editor.findRangeHighlightBackground": alpha(misc.orange, 50),
     "editor.foreground": ui.fg,
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
-    "editorLink.activeForeground": syntax.alt,
+    "editorLink.activeForeground": syntax.alt1,
     "editor.lineHighlightBackground": ui.bg1,
     "editor.rangeHighlightBackground": alpha(misc.orange, 10),
-    "editor.selectionBackground": alpha(syntax.tre, 30),
-    "editor.inactiveSelectionBackground": alpha(syntax.tre, 30),
+    "editor.selectionBackground": alpha(syntax.tre1, 30),
+    "editor.inactiveSelectionBackground": alpha(syntax.tre1, 30),
     "editor.wordHighlightBackground": alpha(misc.blue, 25),
     "editor.wordHighlightStrongBackground": alpha(misc.purple, 30),
     "editorOverviewRuler.border": alpha(ui.border0, 25),
-    "editorCursor.foreground": syntax.tre,
+    "editorCursor.foreground": syntax.tre1,
     "editorGroup.border": ui.border0,
     "editorRuler.foreground": alpha(ui.border0, 25),
     "editorIndentGuide.background": alpha(ui.border0, 50),
@@ -411,7 +423,7 @@ function themeTabs() {
 
 function colors() {
   return {
-    focusBorder: syntax.tre,
+    focusBorder: syntax.tre1,
     "icon.foreground": ui.fg,
     "toolbar.hoverBackground": alpha(ui.fg, 5),
     "toolbar.activeBackground": alpha(ui.fg, 15),
@@ -504,13 +516,22 @@ function tokenColors(): TokenColor[] {
   }
 
   const tokens = {
-    default: createToken(ui.fg),
-    uno: createToken(syntax.uno),
-    unoBold: createToken(syntax.uno, "bold"),
-    due: createToken(syntax.due),
-    dueBold: createToken(syntax.due, "bold"),
-    tre: createToken(syntax.tre),
-    subtle: createToken(syntax.alt),
+    default: createToken(syntax.default),
+
+    alt0: createToken(syntax.alt0),
+    alt1: createToken(syntax.alt1),
+
+    uno0: createToken(syntax.uno0),
+    uno1: createToken(syntax.uno1),
+    uno2: createToken(syntax.uno2),
+
+    due0: createToken(syntax.due0),
+    due1: createToken(syntax.due1),
+    due2: createToken(syntax.due2),
+
+    tre0: createToken(syntax.tre0),
+    tre1: createToken(syntax.tre1),
+    tre2: createToken(syntax.tre2),
   } as const;
 
   return [
@@ -536,15 +557,16 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "header",
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
-      scope: "comment",
-      settings: tokens.subtle,
+      scope: ["comment", "punctuation.definition.comment"],
+      // TODO: Maybe a nicer color for comments?
+      settings: tokens.alt0,
     },
     {
       scope: "constant.language",
-      settings: tokens.due,
+      settings: tokens.tre2,
     },
     // {
     //   scope: [
@@ -556,11 +578,12 @@ function tokenColors(): TokenColor[] {
     // },
     {
       scope: "constant.regexp",
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
-      scope: "entity.name.tag",
-      settings: tokens.uno,
+      name: "JSX tags",
+      scope: ["support.class.component", "entity.name.tag"],
+      settings: tokens.uno0,
     },
     {
       scope: "entity.name.tag.css",
@@ -568,7 +591,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "entity.other.attribute-name",
-      settings: tokens.due,
+      settings: tokens.due1,
     },
     {
       scope: [
@@ -576,12 +599,17 @@ function tokenColors(): TokenColor[] {
         "entity.other.attribute-name.class.mixin.css",
         "entity.other.attribute-name.id.css",
         "entity.other.attribute-name.parent-selector.css",
-        "entity.other.attribute-name.pseudo-class.css",
-        "entity.other.attribute-name.pseudo-element.css",
         "source.css.less entity.other.attribute-name.id",
         "entity.other.attribute-name.scss",
       ],
-      settings: tokens.due,
+      settings: tokens.due1,
+    },
+    {
+      scope: [
+        "entity.other.attribute-name.pseudo-class.css",
+        "entity.other.attribute-name.pseudo-element.css",
+      ],
+      settings: tokens.due2,
     },
     {
       scope: "invalid",
@@ -599,18 +627,21 @@ function tokenColors(): TokenColor[] {
       scope: "markup.bold",
       settings: {
         fontStyle: "bold",
-        foreground: syntax.due,
+        foreground: syntax.due1,
       },
     },
     {
       scope: "markup.heading",
-      settings: tokens.unoBold,
+      settings: {
+        fontStyle: "bold",
+        foreground: syntax.uno1,
+      },
     },
     {
       scope: "markup.italic",
       settings: {
         fontStyle: "italic",
-        foreground: syntax.due,
+        foreground: syntax.due1,
       },
     },
     {
@@ -639,40 +670,40 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: "punctuation.definition.quote.begin.markdown",
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     {
       scope: "punctuation.definition.list.begin.markdown",
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     {
       scope: "markup.inline.raw",
-      settings: tokens.due,
+      settings: tokens.due1,
     },
     {
       name: "brackets of XML/HTML tags",
       scope: "punctuation.definition.tag",
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     {
       scope: ["meta.preprocessor", "entity.name.function.preprocessor"],
-      settings: tokens.due,
+      settings: tokens.due1,
     },
     {
       scope: "meta.preprocessor.string",
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
       scope: ["constant.numeric", "meta.preprocessor.numeric"],
-      settings: tokens.tre,
+      settings: tokens.tre0,
     },
     {
       scope: "meta.structure.dictionary.key.python",
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
       scope: "meta.diff.header",
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
       scope: "storage",
@@ -680,31 +711,31 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: ["source.java storage.type", "source.go storage.type"],
-      settings: tokens.dueBold,
+      settings: tokens.due1,
     },
     {
       scope: "storage.type",
-      settings: tokens.unoBold,
+      settings: tokens.uno1,
     },
     {
       scope: ["storage.modifier", "keyword.operator.noexcept"],
-      settings: tokens.unoBold,
+      settings: tokens.uno1,
     },
     {
       scope: ["string", "meta.embedded.assembly", "constant.other.symbol"],
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
       scope: "string.tag",
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
       scope: "string.value",
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
       scope: "string.regexp",
-      settings: tokens.tre,
+      settings: tokens.tre1,
     },
     {
       name: "String interpolation",
@@ -713,7 +744,7 @@ function tokenColors(): TokenColor[] {
         "punctuation.definition.template-expression.end",
         "punctuation.section.embedded",
       ],
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     {
       name: "Reset string interpolation expression",
@@ -729,23 +760,23 @@ function tokenColors(): TokenColor[] {
         "variable.other.less",
         "source.coffee.embedded",
       ],
-      settings: tokens.uno,
+      settings: tokens.uno0,
     },
     {
       scope: "keyword",
-      settings: tokens.unoBold,
+      settings: tokens.uno1,
     },
     {
       scope: "keyword.control",
-      settings: tokens.unoBold,
+      settings: tokens.uno1,
     },
     {
       scope: ["keyword.operator.type.annotation"],
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     {
       scope: "keyword.operator",
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
       scope: [
@@ -760,18 +791,18 @@ function tokenColors(): TokenColor[] {
         "keyword.operator.logical.python",
         "keyword.operator.wordlike",
       ],
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
       scope: "keyword.other.unit",
-      settings: tokens.uno,
+      settings: tokens.tre2,
     },
     {
       scope: [
         "punctuation.section.embedded.begin.php",
         "punctuation.section.embedded.end.php",
       ],
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
     // {
     //   scope: "support.function.git-rebase",
@@ -797,7 +828,7 @@ function tokenColors(): TokenColor[] {
     {
       name: "self",
       scope: "variable.language",
-      settings: tokens.uno,
+      settings: tokens.due2,
     },
     {
       name: "Functions",
@@ -810,7 +841,7 @@ function tokenColors(): TokenColor[] {
         // See https://en.cppreference.com/w/cpp/language/user_literal
         "entity.name.operator.custom-literal",
       ],
-      settings: tokens.due,
+      settings: tokens.due0,
     },
     {
       name: "Types declaration and references",
@@ -848,7 +879,7 @@ function tokenColors(): TokenColor[] {
         // "storage.type.primitive.array.groovy",
         // "storage.type.primitive.groovy",
       ],
-      settings: tokens.due,
+      settings: tokens.due1,
     },
     {
       name: "Types declaration and references, TS grammar specific",
@@ -860,7 +891,7 @@ function tokenColors(): TokenColor[] {
         "support.constant.json",
         "entity.other.inherited-class",
       ],
-      settings: tokens.dueBold,
+      settings: tokens.due1,
     },
     {
       name: "Control flow / Special keywords",
@@ -872,7 +903,7 @@ function tokenColors(): TokenColor[] {
         "keyword.other.operator",
         "entity.name.operator",
       ],
-      settings: tokens.unoBold,
+      settings: tokens.uno1,
     },
     {
       name: "Variable and parameter name",
@@ -895,7 +926,7 @@ function tokenColors(): TokenColor[] {
     {
       name: "Object keys, TS grammar specific",
       scope: ["meta.object-literal.key"],
-      settings: tokens.uno,
+      settings: tokens.uno0,
     },
     {
       name: "CSS property value",
@@ -908,7 +939,7 @@ function tokenColors(): TokenColor[] {
         "constant.other.rgb-value",
         "support.constant.color",
       ],
-      settings: tokens.uno,
+      settings: tokens.due0,
     },
     {
       name: "String placeholders",
@@ -916,7 +947,7 @@ function tokenColors(): TokenColor[] {
         // placeholders in strings
         "constant.other.placeholder",
       ],
-      settings: tokens.uno,
+      settings: tokens.uno1,
     },
     {
       name: "Regular expression groups",
@@ -929,7 +960,7 @@ function tokenColors(): TokenColor[] {
         "keyword.operator.negation.regexp",
         "support.other.parenthesis.regexp",
       ],
-      settings: tokens.subtle,
+      settings: tokens.tre0,
     },
     {
       scope: [
@@ -938,23 +969,23 @@ function tokenColors(): TokenColor[] {
         "constant.other.character-class.regexp",
         "constant.character.set.regexp",
       ],
-      settings: tokens.uno,
+      settings: tokens.tre0,
     },
     {
       scope: ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
-      settings: tokens.uno,
+      settings: tokens.alt1,
     },
     {
       scope: "keyword.operator.quantifier.regexp",
-      settings: tokens.uno,
+      settings: tokens.tre0,
     },
     {
       scope: ["constant.character", "constant.other.option"],
-      settings: tokens.uno,
+      settings: tokens.tre0,
     },
     {
       scope: "constant.character.escape",
-      settings: tokens.uno,
+      settings: tokens.tre0,
     },
     {
       scope: "entity.name.label",
@@ -962,7 +993,7 @@ function tokenColors(): TokenColor[] {
     },
     {
       scope: ["punctuation", "meta.brace"],
-      settings: tokens.subtle,
+      settings: tokens.alt1,
     },
   ];
 }
@@ -1009,7 +1040,6 @@ function printContrastReport(): void {
   showContrast("ui", ui.border1, ui.bg0, "ui.border1", "ui.bg0");
   showContrast("ui", ui.border1, ui.bg1, "ui.border1", "ui.bg1");
   showContrast("ui", ui.border1, ui.bg2, "ui.border1", "ui.bg2");
-  showContrast("text", syntax.alt, ui.bg0, "syntax.alt", "ui.bg0");
   for (const [name, color] of Object.entries(syntax)) {
     showContrast("text", color, ui.bg0, `syntax.${name}`, "ui.bg0");
   }
@@ -1019,9 +1049,10 @@ function printContrastReport(): void {
     }
     showContrast("text", color, ui.bg0, `terminal.${name}`, "ui.bg0");
   }
-  for (const [name, color] of Object.entries(themeBracketColors())) {
-    showContrast("text", color, ui.bg0, name, "ui.bg0");
-  }
+  // TODO
+  // for (const [name, color] of Object.entries(themeBracketColors())) {
+  //   showContrast("text", color, ui.bg0, name, "ui.bg0");
+  // }
 }
 
 save();
