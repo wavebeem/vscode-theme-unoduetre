@@ -51,7 +51,7 @@ const hue = {
 } as const;
 
 const ui = {
-  bg0: hsl(hue.bg, 35, 15),
+  bg0: hsl(hue.bg, 50, 13),
   bg1: hsl(hue.bg, 50, 10),
   bg2: hsl(hue.bg, 50, 20),
   fg: hsl(hue.bg, 60, 80),
