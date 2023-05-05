@@ -614,6 +614,7 @@ function tokenColors(): TokenColor[] {
     {
       scope: "invalid",
       settings: {
+        // TODO: Don't do this...
         foreground: fixContrast({ fg: misc.red, bg: ui.bg0, type: "text" }),
       },
     },
@@ -1010,10 +1011,6 @@ function showContrast(
   const str = [
     fail ? "[!]" : "   ",
     ANSI.bold.yellow(contrast.toFixed(1).toString().padStart(4)),
-    // ANSI.bold.magenta(":"),
-    // fg,
-    // ANSI.bold.magenta("<-"),
-    // bg,
     ANSI.bold.magenta(" :: "),
     bgStr,
     ANSI.bold.magenta(" <- "),
