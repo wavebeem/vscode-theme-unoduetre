@@ -24,7 +24,7 @@ function sortedObject<T>(obj: Record<string, T>): Record<string, T> {
   return ret;
 }
 
-type FontStyle = "normal" | "bold" | "italic" | "underline" | "strikethrough";
+type FontStyle = "bold" | "italic" | "underline" | "strikethrough";
 
 interface TokenSettingColor {
   fontStyle?: FontStyle;
@@ -510,7 +510,7 @@ function fixContrast({
 function tokenColors(): TokenColor[] {
   function createToken(
     foreground: string,
-    fontStyle: FontStyle = "normal"
+    fontStyle?: FontStyle
   ): TokenSettingColor {
     return { foreground, fontStyle };
   }

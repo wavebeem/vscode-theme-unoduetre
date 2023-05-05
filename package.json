@@ -31,7 +31,7 @@
 	"scripts": {
 		"upgrade": "npm-check -u",
 		"build": "ts-node src/main.ts",
-		"prepackage": "rm -rf *.vsix",
+		"prepackage": "shx rm -rf *.vsix",
 		"package": "npm run build && vsce package",
 		"load": "npm run package && code --install-extension *.vsix",
 		"version": "npm run build",
@@ -56,6 +56,7 @@
 	"dependencies": {
 		"@vscode/vsce": "^2.19.0",
 		"colord": "^2.9.3",
+		"shx": "^0.3.4",
 		"ts-node": "^10.9.1"
 	}
 }
