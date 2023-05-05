@@ -79,6 +79,9 @@ const syntax = {
   tre2: hsl(hue.tre, 70, 71),
 } as const;
 
+// TODO: These are cool, but it messes up how terminal programs look too much.
+// In particular the yellow-green for "green" is way too yellow, and makes a lot
+// of benign things look dangerous.
 const terminal = {
   black: hsl(hue.bg, 35, 26),
   red: hsl(339, 67, 68),
