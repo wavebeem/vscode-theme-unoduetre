@@ -11,6 +11,8 @@ const transparent = "#00000000";
 const Contrast = {
   text: 4.5,
   ui: 3,
+  // Not a WCAG value
+  decoration: 1,
 } as const;
 type ContrastLevel = keyof typeof Contrast;
 
@@ -52,19 +54,18 @@ const hue = {
 
 const ui = {
   bg0: hsl(hue.bg, 40, 14),
-  bg1: hsl(hue.bg, 80, 8),
-  bg2: hsl(hue.bg, 80, 16),
+  bg1: hsl(hue.bg, 40, 10),
 
   fg: hsl(hue.bg, 60, 80),
 
-  border0: hsl(hue.bg, 40, 25),
-  border1: hsl(hue.bg, 50, 50),
-
-  widget: hsl(hue.bg, 35, 12),
+  border0: hsl(hue.bg, 40, 24),
+  border1: hsl(hue.bg, 40, 40),
 
   bracket1: hsl(hue.uno, 40, 45),
   bracket2: hsl(hue.due, 40, 58),
   bracket3: hsl(hue.tre, 30, 65),
+
+  error: "#ff4444",
 } as const;
 
 const syntax = {
@@ -86,9 +87,6 @@ const syntax = {
   tre2: hsl(hue.tre, 70, 71),
 } as const;
 
-// TODO: These are cool, but it messes up how terminal programs look too much.
-// In particular the yellow-green for "green" is way too yellow, and makes a lot
-// of benign things look dangerous.
 const terminal = {
   black: hsl(hue.bg, 35, 26),
   red: hsl(340, 67, 68),
@@ -113,24 +111,6 @@ function alpha(color: string, percent: number): string {
   return colord(hsl).toHex();
 }
 
-// TODO: Stop using this
-function mix(a: string, b: string, percent: number): string {
-  return colord(a)
-    .mix(b, percent / 100)
-    .toHex();
-}
-
-// TODO: Don't make weird generic colors like this
-const misc = {
-  error: "#ff4444",
-  cyan: "#00bcd4",
-  red: "#cc0000",
-  yellow: "#f1c40f",
-  orange: "#e67e22",
-  blue: "#3498db",
-  purple: "#9b59b6",
-} as const;
-
 function config(): {
   /** Base theme (e.g. light/dark/high contrast) */
   type: string;
@@ -151,11 +131,11 @@ function themeActivityBar() {
     "activityBar.border": ui.border0,
     "activityBar.background": ui.bg1,
     "activityBar.foreground": ui.fg,
-    "activityBar.inactiveForeground": alpha(ui.fg, 50),
-    "activityBarBadge.background": ui.fg,
+    "activityBar.inactiveForeground": alpha(syntax.alt1, 50),
+    "activityBarBadge.background": syntax.due1,
     "activityBarBadge.foreground": ui.bg0,
-    "activityBar.activeBorder": ui.fg,
-    "activityBar.activeBackground": alpha(ui.fg, 10),
+    "activityBar.activeBorder": syntax.tre1,
+    "activityBar.activeBackground": alpha(ui.border1, 0),
   };
 }
 
@@ -176,8 +156,8 @@ function themeList() {
   return {
     "quickInput.background": ui.bg0,
 
-    "list.errorForeground": mix(misc.red, ui.fg, 50),
-    "list.warningForeground": mix(misc.yellow, ui.fg, 50),
+    "list.errorForeground": terminal.red,
+    "list.warningForeground": terminal.yellow,
     "list.highlightForeground": syntax.tre1,
 
     "list.focusForeground": ui.fg,
@@ -189,13 +169,13 @@ function themeList() {
 
     "list.inactiveSelectionIconForeground": ui.fg,
     "list.inactiveSelectionForeground": ui.fg,
-    "list.inactiveSelectionBackground": ui.bg2,
+    "list.inactiveSelectionBackground": ui.bg0,
 
     "quickInputList.focusIconForeground": ui.bg0,
     "quickInputList.focusForeground": ui.bg0,
     "quickInputList.focusBackground": ui.fg,
 
-    "list.hoverBackground": alpha(ui.fg, 5),
+    "list.hoverBackground": alpha(ui.border1, 25),
   };
 }
 
@@ -223,17 +203,30 @@ function themeTerminal() {
 }
 
 function themeDiff() {
-  // TODO: Theme these
-  return {};
+  const red = hsl(340, 100, 30);
+  const blue = hsl(220, 100, 30);
+  return {
+    "diffEditor.insertedTextBackground": alpha(blue, 25),
+    // "diffEditor.insertedTextBorder": undefined,
+    "diffEditor.removedTextBackground": alpha(red, 25),
+    // "diffEditor.removedTextBorder": undefined,
+    "diffEditor.border": ui.border0,
+    "diffEditor.diagonalFill": alpha(syntax.default, 10),
+    "diffEditor.insertedLineBackground": alpha(blue, 25),
+    "diffEditor.removedLineBackground": alpha(red, 25),
+    "diffEditorGutter.insertedLineBackground": alpha(blue, 25),
+    "diffEditorGutter.removedLineBackground": alpha(red, 25),
+    "diffEditorOverview.insertedForeground": terminal.blue,
+    "diffEditorOverview.removedForeground": terminal.red,
+  };
 }
 
 function themeGit() {
-  // TODO: Redesign these colors
   return {
-    "gitDecoration.modifiedResourceForeground": mix(misc.orange, ui.fg, 20),
-    "gitDecoration.deletedResourceForeground": mix(misc.red, ui.fg, 20),
-    "gitDecoration.untrackedResourceForeground": mix(misc.blue, ui.fg, 20),
-    "gitDecoration.conflictingResourceForeground": mix(misc.cyan, ui.fg, 20),
+    "gitDecoration.modifiedResourceForeground": terminal.blue,
+    "gitDecoration.deletedResourceForeground": terminal.red,
+    "gitDecoration.untrackedResourceForeground": terminal.magenta,
+    "gitDecoration.conflictingResourceForeground": terminal.cyan,
     "gitDecoration.ignoredResourceForeground": alpha(ui.fg, 40),
   };
 }
@@ -241,8 +234,8 @@ function themeGit() {
 function themeStatusBar() {
   return {
     "statusBar.border": ui.border0,
-    "statusBarItem.activeBackground": alpha(ui.fg, 20),
-    "statusBarItem.hoverBackground": alpha(ui.fg, 10),
+    "statusBarItem.activeBackground": alpha(ui.border1, 40),
+    "statusBarItem.hoverBackground": alpha(ui.border1, 20),
     "statusBar.background": ui.bg1,
     "statusBar.warningBackground": ui.bg1,
     "statusBar.remoteBackground": ui.bg1,
@@ -255,7 +248,7 @@ function themeStatusBar() {
 function themeBadge() {
   return {
     "badge.foreground": ui.bg0,
-    "badge.background": ui.fg,
+    "badge.background": syntax.due1,
   };
 }
 
@@ -299,8 +292,8 @@ function themeScrollbar() {
 
 function themeDropdown() {
   return {
-    "dropdown.background": ui.widget,
-    "dropdown.listBackground": ui.widget,
+    "dropdown.background": ui.bg0,
+    "dropdown.listBackground": ui.bg0,
     "dropdown.border": ui.border1,
     "dropdown.foreground": ui.fg,
   };
@@ -320,13 +313,13 @@ function themeDragAndDrop() {
 
 function themeButton() {
   return {
-    "button.background": ui.fg,
+    "button.background": syntax.tre1,
     "button.foreground": ui.bg0,
-    "button.hoverBackground": alpha(ui.fg, 95),
+    "button.hoverBackground": alpha(syntax.tre1, 95),
     "button.separator": alpha(ui.bg0, 30),
-    "button.secondaryBackground": syntax.tre1,
+    "button.secondaryBackground": ui.fg,
     "button.secondaryForeground": ui.bg0,
-    "button.secondaryHoverBackground": alpha(syntax.tre1, 95),
+    "button.secondaryHoverBackground": alpha(ui.fg, 95),
   };
 }
 
@@ -347,39 +340,43 @@ function themeBracketColors() {
     "editorBracketHighlight.foreground4": ui.bracket1,
     "editorBracketHighlight.foreground5": ui.bracket2,
     "editorBracketHighlight.foreground6": ui.bracket3,
-    "editorBracketHighlight.unexpectedBracket.foreground": misc.error,
+    "editorBracketHighlight.unexpectedBracket.foreground": ui.error,
   };
 }
 
 function themeEditor() {
+  const orange = hsl(30, 100, 35);
+  const yellow = hsl(60, 100, 35);
+  const blue = hsl(220, 50, 60);
+  const purple = hsl(310, 40, 50);
   return {
     "editorWidget.foreground": ui.fg,
-    "editorWidget.background": ui.bg1,
+    "editorWidget.background": ui.bg0,
     "editorWidget.border": ui.border0,
     "editorWidget.resizeBorder": ui.border1,
-    "editorBracketMatch.background": alpha(syntax.tre1, 15),
-    "editorBracketMatch.border": alpha(syntax.tre1, 50),
-    "editor.findMatchBackground": alpha(misc.orange, 50),
-    "editor.findMatchHighlightBackground": alpha(misc.yellow, 50),
-    "editor.findRangeHighlightBackground": alpha(misc.orange, 50),
+    "editorBracketMatch.background": alpha(syntax.due2, 15),
+    "editorBracketMatch.border": alpha(syntax.due2, 50),
+    "editor.findMatchBackground": alpha(orange, 50),
+    "editor.findMatchHighlightBackground": alpha(orange, 50),
+    "editor.findRangeHighlightBackground": alpha(yellow, 50),
     "editor.foreground": ui.fg,
     "editor.background": ui.bg0,
     "editor.foldBackground": transparent,
-    "editorLink.activeForeground": syntax.alt1,
+    "editorLink.activeForeground": terminal.blue,
     "editor.lineHighlightBackground": ui.bg1,
-    "editor.rangeHighlightBackground": alpha(misc.orange, 10),
-    "editor.selectionBackground": alpha(syntax.tre1, 30),
-    "editor.inactiveSelectionBackground": alpha(syntax.tre1, 30),
-    "editor.wordHighlightBackground": alpha(misc.blue, 25),
-    "editor.wordHighlightStrongBackground": alpha(misc.purple, 30),
+    "editor.rangeHighlightBackground": alpha(yellow, 10),
+    "editor.selectionBackground": alpha(syntax.due2, 30),
+    "editor.inactiveSelectionBackground": alpha(syntax.due2, 30),
+    "editor.wordHighlightBackground": alpha(blue, 50),
+    "editor.wordHighlightStrongBackground": alpha(purple, 50),
     "editorOverviewRuler.border": alpha(ui.border0, 25),
     "editorCursor.foreground": syntax.tre1,
     "editorGroup.border": ui.border0,
-    "editorRuler.foreground": alpha(ui.border0, 25),
+    "editorRuler.foreground": alpha(ui.border0, 50),
     "editorIndentGuide.background": alpha(ui.border0, 50),
     "editorIndentGuide.activeBackground": ui.border0,
-    "editorLineNumber.foreground": alpha(ui.fg, 30),
-    "editorLineNumber.activeForeground": ui.fg,
+    "editorLineNumber.foreground": alpha(syntax.alt1, 50),
+    "editorLineNumber.activeForeground": syntax.default,
   };
 }
 
@@ -395,17 +392,17 @@ function themeTitlebar() {
 
 function themeTabs() {
   return {
-    "tab.border": ui.bg1,
+    "tab.border": ui.border0,
     "editorGroupHeader.tabsBorder": ui.border0,
     "editorGroupHeader.border": ui.border0,
-    "breadcrumb.background": ui.bg1,
-    "editorGroupHeader.noTabsBackground": ui.bg1,
+    "breadcrumb.background": ui.bg0,
+    "editorGroupHeader.noTabsBackground": ui.bg0,
     "editorGroupHeader.tabsBackground": ui.bg1,
-    "tab.activeBorder": ui.border1,
-    "tab.unfocusedActiveBorder": ui.border1,
-    "tab.activeBorderTop": undefined,
-    "tab.unfocusedActiveBorderTop": undefined,
-    "tab.activeBackground": ui.bg2,
+    "tab.activeBorder": ui.border0,
+    "tab.unfocusedActiveBorder": ui.border0,
+    "tab.activeBorderTop": syntax.tre1,
+    "tab.unfocusedActiveBorderTop": syntax.tre1,
+    "tab.activeBackground": ui.bg0,
     "tab.activeForeground": ui.fg,
     "tab.inactiveBackground": ui.bg1,
     "tab.inactiveForeground": alpha(ui.fg, 80),
@@ -415,6 +412,8 @@ function themeTabs() {
 function colors() {
   return {
     focusBorder: syntax.tre1,
+    errorForeground: terminal.red,
+    disabledForeground: alpha(ui.fg, 50),
     "icon.foreground": ui.fg,
     "toolbar.hoverBackground": alpha(ui.fg, 5),
     "toolbar.activeBackground": alpha(ui.fg, 15),
@@ -422,7 +421,7 @@ function colors() {
     "widget.shadow": ui.bg1,
     ...themeScrollbar(),
     "input.border": ui.border1,
-    "input.background": ui.widget,
+    "input.background": ui.bg0,
     "input.placeholderForeground": alpha(ui.fg, 40),
     "progressBar.background": ui.fg,
     "inputOption.activeBorder": ui.fg,
@@ -444,8 +443,6 @@ function colors() {
     "panelTitle.activeBorder": ui.border0,
     "panelTitle.activeForeground": ui.fg,
     "panelTitle.inactiveForeground": alpha(ui.fg, 60),
-    "peekViewEditor.matchHighlightBackground": alpha(misc.yellow, 50),
-    "peekViewResult.matchHighlightBackground": alpha(misc.yellow, 50),
     "sideBar.border": ui.border0,
     "sideBar.background": ui.bg1,
     "sideBarSectionHeader.background": ui.bg1,
@@ -456,7 +453,7 @@ function colors() {
     ...themeDiff(),
     ...themeGit(),
     ...themeTitlebar(),
-    "debugToolBar.background": ui.widget,
+    "debugToolBar.background": ui.bg0,
     ...themeDropdown(),
     ...themeHighlightBorders(),
     ...themeTerminal(),
@@ -470,7 +467,7 @@ function themeCommandCenter() {
     "commandCenter.background": ui.bg1,
     "commandCenter.border": ui.border0,
     "commandCenter.inactiveBorder": ui.border0,
-    "commandCenter.activeBackground": ui.bg0,
+    "commandCenter.activeBackground": alpha(ui.border1, 10),
     "commandCenter.activeBorder": ui.border0,
   };
 }
@@ -582,8 +579,7 @@ function tokenColors(): TokenColor[] {
     {
       scope: "invalid",
       settings: {
-        // TODO: Don't do this...
-        foreground: misc.error,
+        foreground: ui.error,
       },
     },
     {
@@ -671,8 +667,14 @@ function tokenColors(): TokenColor[] {
       settings: tokens.uno1,
     },
     {
+      scope: "source.diff",
+      settings: tokens.alt1,
+    },
+    {
       scope: "meta.diff.header",
-      settings: tokens.uno1,
+      settings: {
+        foreground: terminal.white,
+      },
     },
     {
       scope: "storage",
@@ -1001,10 +1003,10 @@ function save(): void {
 function printContrastReport(): void {
   showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
-  showContrast("text", ui.fg, ui.bg2, "ui.fg", "ui.bg2");
+  showContrast("decoration", ui.border0, ui.bg0, "ui.border0", "ui.bg0");
+  showContrast("decoration", ui.border0, ui.bg1, "ui.border0", "ui.bg1");
   showContrast("ui", ui.border1, ui.bg0, "ui.border1", "ui.bg0");
   showContrast("ui", ui.border1, ui.bg1, "ui.border1", "ui.bg1");
-  showContrast("ui", ui.border1, ui.bg2, "ui.border1", "ui.bg2");
   for (const [name, color] of Object.entries(syntax)) {
     showContrast("text", color, ui.bg0, `syntax.${name}`, "ui.bg0");
   }
