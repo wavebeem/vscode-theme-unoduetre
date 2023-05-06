@@ -411,6 +411,10 @@ function themeEditor(): Partial<ThemeUIColors> {
     "editorLineNumber.foreground": alpha(syntax.alt1, 50),
     "editorLineNumber.activeForeground": syntax.default,
 
+    "editorCodeLens.foreground": syntax.alt0,
+    "editorLightBulb.foreground": syntax.uno1,
+    "editorLightBulbAutoFix.foreground": syntax.due1,
+
     "editorRuler.foreground": alpha(ui.border0, 50),
 
     "editorGutter.background": undefined,
