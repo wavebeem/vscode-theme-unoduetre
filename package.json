@@ -1,57 +1,57 @@
 {
-	"name": "theme-miasma",
-	"displayName": "Miasma",
-	"description": "wavebeem's dark green color theme",
-	"version": "1.0.0",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/wavebeem/miasma-vscode.git"
-	},
-	"icon": "img/icon.png",
-	"publisher": "wavebeem",
-	"engines": {
-		"vscode": "^1.5.0"
-	},
-	"categories": [
-		"Themes"
-	],
-	"contributes": {
-		"themes": [
-			{
-				"label": "Miasma",
-				"uiTheme": "vs-dark",
-				"path": "./themes/miasma-color-theme.json"
-			}
-		]
-	},
-	"bugs": {
-		"url": "https://github.com/wavebeem/miasma-vscode/issues"
-	},
-	"homepage": "https://github.com/wavebeem/miasma-vscode#readme",
-	"scripts": {
-		"upgrade": "npm-check -u",
-		"build": "ts-node src/main.ts",
-		"prepackage": "shx rm -rf *.vsix",
-		"package": "npm run build && vsce package",
-		"load": "npm run package && code --install-extension *.vsix",
-		"version": "npm run build",
-		"postversion": "git push --follow-tags && vsce publish",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [],
-	"author": "Brian Mock <brian@wavebeem.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"@types/node": "^18.16.3",
-		"ansi-colors": "^4.1.3",
-		"npm-check": "^6.0.1",
-		"prettier": "^2.8.8",
-		"typescript": "^5.0.4"
-	},
-	"dependencies": {
-		"@vscode/vsce": "^2.19.0",
-		"colord": "^2.9.3",
-		"shx": "^0.3.4",
-		"ts-node": "^10.9.1"
-	}
+  "name": "theme-miasma",
+  "displayName": "Miasma",
+  "description": "wavebeem's dark green color theme",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wavebeem/miasma-vscode.git"
+  },
+  "icon": "img/icon.png",
+  "publisher": "wavebeem",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Miasma",
+        "uiTheme": "vs-dark",
+        "path": "./themes/miasma-color-theme.json"
+      }
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/wavebeem/miasma-vscode/issues"
+  },
+  "homepage": "https://github.com/wavebeem/miasma-vscode#readme",
+  "scripts": {
+    "upgrade": "npm-check -u",
+    "build": "ts-node src/main.ts",
+    "prepackage": "shx rm -rf *.vsix",
+    "package": "npm run build && vsce package",
+    "load": "npm run package && code --install-extension *.vsix",
+    "version": "npm run build",
+    "postversion": "git push --follow-tags && vsce publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Brian Mock <brian@wavebeem.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "ansi-colors": "^4.1.3",
+    "npm-check": "^6.0.1",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^2.19.0",
+    "colord": "^2.9.3",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.1"
+  }
 }

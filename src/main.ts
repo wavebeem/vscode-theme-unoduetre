@@ -185,6 +185,16 @@ function themeList(): Partial<ThemeUIColors> {
   };
 }
 
+function themeWelcome(): Partial<ThemeUIColors> {
+  return {
+    "textLink.foreground": syntax.tre1,
+    "textLink.activeForeground": syntax.tre0,
+    "textBlockQuote.background": transparent,
+    "textBlockQuote.border": syntax.default,
+    "textPreformat.foreground": syntax.due1,
+  };
+}
+
 function themeTerminal(): Partial<ThemeUIColors> {
   return {
     "terminal.foreground": ui.fg,
@@ -334,13 +344,14 @@ function themeDragAndDrop(): Partial<ThemeUIColors> {
 
 function themeButton(): Partial<ThemeUIColors> {
   return {
+    "button.border": ui.fg,
     "button.background": ui.fg,
     "button.foreground": ui.bg0,
     "button.hoverBackground": alpha(ui.fg, 95),
     "button.separator": alpha(ui.bg0, 30),
-    "button.secondaryBackground": syntax.alt1,
-    "button.secondaryForeground": ui.bg0,
-    "button.secondaryHoverBackground": alpha(syntax.alt1, 95),
+    "button.secondaryBackground": ui.bg0,
+    "button.secondaryForeground": ui.fg,
+    "button.secondaryHoverBackground": alpha(ui.bg0, 95),
   };
 }
 
@@ -507,6 +518,7 @@ function colors() {
     ...themeDropdown(),
     ...themeHighlightBorders(),
     ...themeTerminal(),
+    ...themeWelcome(),
   };
 }
 
