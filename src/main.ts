@@ -1,3 +1,4 @@
+// https://code.visualstudio.com/api/references/theme-color
 import "./extend-colord";
 import fs from "fs";
 import { colord } from "colord";
@@ -10,7 +11,6 @@ const transparent = "#00000000";
 const Contrast = {
   text: 4.5,
   ui: 3,
-  decoration: 1.75,
 } as const;
 type ContrastLevel = keyof typeof Contrast;
 
@@ -51,20 +51,27 @@ const hue = {
 } as const;
 
 const ui = {
-  bg0: hsl(hue.bg, 50, 13),
-  bg1: hsl(hue.bg, 50, 10),
-  bg2: hsl(hue.bg, 50, 20),
+  bg0: hsl(hue.bg, 40, 14),
+  bg1: hsl(hue.bg, 80, 8),
+  bg2: hsl(hue.bg, 80, 16),
+
   fg: hsl(hue.bg, 60, 80),
+
   border0: hsl(hue.bg, 40, 25),
   border1: hsl(hue.bg, 50, 50),
+
   widget: hsl(hue.bg, 35, 12),
+
+  bracket1: hsl(hue.uno, 40, 45),
+  bracket2: hsl(hue.due, 40, 58),
+  bracket3: hsl(hue.tre, 30, 65),
 } as const;
 
 const syntax = {
   default: ui.fg,
 
   alt0: hsl(hue.bg, 15, 60),
-  alt1: hsl(hue.bg, 30, 50),
+  alt1: hsl(hue.bg, 40, 46),
 
   uno0: hsl(hue.uno, 50, 73),
   uno1: hsl(hue.uno, 60, 49),
@@ -84,13 +91,13 @@ const syntax = {
 // of benign things look dangerous.
 const terminal = {
   black: hsl(hue.bg, 35, 26),
-  red: hsl(339, 67, 68),
-  green: hsl(hue.uno, 64, 68),
-  yellow: hsl(30, 58, 76),
-  blue: hsl(169, 71, 69),
+  red: hsl(340, 67, 68),
+  green: hsl(hue.bg, 64, 68),
+  yellow: hsl(hue.uno, 58, 76),
+  blue: hsl(220, 71, 69),
   magenta: hsl(hue.tre, 56, 77),
-  cyan: hsl(99, 66, 73),
-  white: hsl(hue.bg, 32, 92),
+  cyan: hsl(180, 64, 68),
+  white: hsl(hue.due, 80, 92),
 } as const;
 
 function hsl(h: number, s: number, l: number): string {
@@ -115,6 +122,7 @@ function mix(a: string, b: string, percent: number): string {
 
 // TODO: Don't make weird generic colors like this
 const misc = {
+  error: "#ff4444",
   cyan: "#00bcd4",
   red: "#cc0000",
   yellow: "#f1c40f",
@@ -230,19 +238,14 @@ function themeGit() {
   };
 }
 
-function darken(color: string, amount: number): string {
-  const hsl = colord(color).toHsl();
-  hsl.l -= amount;
-  return colord(hsl).toHex();
-}
-
 function themeStatusBar() {
   return {
     "statusBar.border": ui.border0,
     "statusBarItem.activeBackground": alpha(ui.fg, 20),
     "statusBarItem.hoverBackground": alpha(ui.fg, 10),
-    "statusBarItem.prominentBackground": alpha(ui.fg, 30),
     "statusBar.background": ui.bg1,
+    "statusBar.warningBackground": ui.bg1,
+    "statusBar.remoteBackground": ui.bg1,
     "statusBar.debuggingBackground": ui.bg1,
     "statusBar.noFolderBackground": ui.bg1,
     "statusBar.foreground": ui.fg,
@@ -288,9 +291,9 @@ function themeHighlightBorders() {
 function themeScrollbar() {
   return {
     "scrollbar.shadow": transparent,
-    "scrollbarSlider.background": alpha(ui.fg, 30),
-    "scrollbarSlider.hoverBackground": alpha(ui.fg, 60),
-    "scrollbarSlider.activeBackground": alpha(ui.fg, 70),
+    "scrollbarSlider.background": alpha(ui.border1, 40),
+    "scrollbarSlider.hoverBackground": alpha(ui.border1, 50),
+    "scrollbarSlider.activeBackground": alpha(ui.border1, 60),
   };
 }
 
@@ -304,7 +307,7 @@ function themeDropdown() {
 }
 
 function themeDragAndDrop() {
-  const color = alpha(syntax.tre1, 30);
+  const color = alpha(syntax.due2, 30);
   return {
     "list.dropBackground": color,
     "sideBar.dropBackground": color,
@@ -327,14 +330,6 @@ function themeButton() {
   };
 }
 
-function tweakColor(color: string): string {
-  return fixContrast({
-    type: "text",
-    fg: mix(color, ui.bg0, 30),
-    bg: ui.bg0,
-  });
-}
-
 function themeBracketColors() {
   ////////////////////////////////////////////////////////////////////////////
   //
@@ -345,21 +340,14 @@ function themeBracketColors() {
   [x, [x, [x, [x, [x, [x]]]]]];
   //
   ////////////////////////////////////////////////////////////////////////////
-  const b1 = tweakColor(syntax.uno1);
-  const b2 = tweakColor(syntax.due1);
-  const b3 = tweakColor(syntax.tre1);
   return {
-    "editorBracketHighlight.foreground1": b1,
-    "editorBracketHighlight.foreground2": b2,
-    "editorBracketHighlight.foreground3": b3,
-    "editorBracketHighlight.foreground4": b1,
-    "editorBracketHighlight.foreground5": b2,
-    "editorBracketHighlight.foreground6": b3,
-    "editorBracketHighlight.unexpectedBracket.foreground": fixContrast({
-      fg: misc.red,
-      bg: ui.bg0,
-      type: "text",
-    }),
+    "editorBracketHighlight.foreground1": ui.bracket1,
+    "editorBracketHighlight.foreground2": ui.bracket2,
+    "editorBracketHighlight.foreground3": ui.bracket3,
+    "editorBracketHighlight.foreground4": ui.bracket1,
+    "editorBracketHighlight.foreground5": ui.bracket2,
+    "editorBracketHighlight.foreground6": ui.bracket3,
+    "editorBracketHighlight.unexpectedBracket.foreground": misc.error,
   };
 }
 
@@ -410,7 +398,7 @@ function themeTabs() {
     "tab.border": ui.bg1,
     "editorGroupHeader.tabsBorder": ui.border0,
     "editorGroupHeader.border": ui.border0,
-    "breadcrumb.background": ui.bg0,
+    "breadcrumb.background": ui.bg1,
     "editorGroupHeader.noTabsBackground": ui.bg1,
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border1,
@@ -430,7 +418,8 @@ function colors() {
     "icon.foreground": ui.fg,
     "toolbar.hoverBackground": alpha(ui.fg, 5),
     "toolbar.activeBackground": alpha(ui.fg, 15),
-    "widget.shadow": alpha(darken(ui.bg1, 5), 50),
+    "widget.border": ui.border0,
+    "widget.shadow": ui.bg1,
     ...themeScrollbar(),
     "input.border": ui.border1,
     "input.background": ui.widget,
@@ -452,7 +441,7 @@ function colors() {
     foreground: ui.fg,
     "panel.background": ui.bg0,
     "panel.border": ui.border0,
-    "panelTitle.activeBorder": alpha(ui.fg, 50),
+    "panelTitle.activeBorder": ui.border0,
     "panelTitle.activeForeground": ui.fg,
     "panelTitle.inactiveForeground": alpha(ui.fg, 60),
     "peekViewEditor.matchHighlightBackground": alpha(misc.yellow, 50),
@@ -484,30 +473,6 @@ function themeCommandCenter() {
     "commandCenter.activeBackground": ui.bg0,
     "commandCenter.activeBorder": ui.border0,
   };
-}
-
-function fixContrast({
-  fg,
-  bg,
-  type,
-}: {
-  fg: string;
-  bg: string;
-  type: keyof typeof Contrast;
-}): string {
-  const isDark = colord(bg).isDark();
-  const step = 1;
-  const hsl = colord(fg).toHsl();
-  if (isDark) {
-    while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l < 100) {
-      hsl.l += step;
-    }
-  } else {
-    while (colord(hsl).contrast(bg) < Contrast[type] && hsl.l > 0) {
-      hsl.l -= step;
-    }
-  }
-  return colord(hsl).toHex();
 }
 
 function tokenColors(): TokenColor[] {
@@ -618,7 +583,7 @@ function tokenColors(): TokenColor[] {
       scope: "invalid",
       settings: {
         // TODO: Don't do this...
-        foreground: fixContrast({ fg: misc.red, bg: ui.bg0, type: "text" }),
+        foreground: misc.error,
       },
     },
     {
@@ -657,19 +622,19 @@ function tokenColors(): TokenColor[] {
     {
       scope: "markup.inserted",
       settings: {
-        foreground: misc.cyan,
+        foreground: terminal.blue,
       },
     },
     {
       scope: "markup.deleted",
       settings: {
-        foreground: misc.red,
+        foreground: terminal.red,
       },
     },
     {
       scope: "markup.changed",
       settings: {
-        foreground: misc.orange,
+        foreground: terminal.yellow,
       },
     },
     {
@@ -1049,10 +1014,9 @@ function printContrastReport(): void {
     }
     showContrast("text", color, ui.bg0, `terminal.${name}`, "ui.bg0");
   }
-  // TODO
-  // for (const [name, color] of Object.entries(themeBracketColors())) {
-  //   showContrast("text", color, ui.bg0, name, "ui.bg0");
-  // }
+  showContrast("text", ui.bracket1, ui.bg0, "ui.bracket1", "ui.bg0");
+  showContrast("text", ui.bracket2, ui.bg0, "ui.bracket2", "ui.bg0");
+  showContrast("text", ui.bracket3, ui.bg0, "ui.bracket3", "ui.bg0");
 }
 
 save();
