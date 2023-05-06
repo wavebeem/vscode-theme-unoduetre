@@ -3,6 +3,7 @@ import "./extend-colord";
 import fs from "fs";
 import { colord } from "colord";
 import * as ANSI from "ansi-colors";
+import { ThemeUIColors } from "./types";
 
 const transparent = "#00000000";
 
@@ -98,6 +99,11 @@ const terminal = {
   white: hsl(hue.due, 80, 92),
 } as const;
 
+const diff = {
+  red: hsl(340, 100, 30),
+  blue: hsl(220, 100, 30),
+} as const;
+
 function hsl(h: number, s: number, l: number): string {
   return colord({ h, s, l }).toHex();
 }
@@ -115,7 +121,7 @@ function config(): {
   /** Base theme (e.g. light/dark/high contrast) */
   type: string;
   /** UI colors */
-  colors: Record<string, string | undefined>;
+  colors: ThemeUIColors;
   /** Syntax highlighting colors */
   tokenColors: TokenColor[];
 } {
@@ -126,7 +132,7 @@ function config(): {
   };
 }
 
-function themeActivityBar() {
+function themeActivityBar(): Partial<ThemeUIColors> {
   return {
     "activityBar.border": ui.border0,
     "activityBar.background": ui.bg1,
@@ -139,7 +145,7 @@ function themeActivityBar() {
   };
 }
 
-function themeNotifications() {
+function themeNotifications(): Partial<ThemeUIColors> {
   return {
     "notificationCenter.border": undefined,
     "notificationCenterHeader.foreground": ui.fg,
@@ -152,7 +158,7 @@ function themeNotifications() {
   };
 }
 
-function themeList() {
+function themeList(): Partial<ThemeUIColors> {
   return {
     "quickInput.background": ui.bg0,
 
@@ -179,7 +185,7 @@ function themeList() {
   };
 }
 
-function themeTerminal() {
+function themeTerminal(): Partial<ThemeUIColors> {
   return {
     "terminal.foreground": ui.fg,
     "terminal.background": ui.bg0,
@@ -202,26 +208,43 @@ function themeTerminal() {
   };
 }
 
-function themeDiff() {
-  const red = hsl(340, 100, 30);
-  const blue = hsl(220, 100, 30);
+function themeDiff(): Partial<ThemeUIColors> {
   return {
-    "diffEditor.insertedTextBackground": alpha(blue, 25),
+    "diffEditor.insertedTextBackground": alpha(diff.blue, 25),
     // "diffEditor.insertedTextBorder": undefined,
-    "diffEditor.removedTextBackground": alpha(red, 25),
+    "diffEditor.removedTextBackground": alpha(diff.red, 25),
     // "diffEditor.removedTextBorder": undefined,
     "diffEditor.border": ui.border0,
     "diffEditor.diagonalFill": alpha(syntax.default, 10),
-    "diffEditor.insertedLineBackground": alpha(blue, 25),
-    "diffEditor.removedLineBackground": alpha(red, 25),
-    "diffEditorGutter.insertedLineBackground": alpha(blue, 25),
-    "diffEditorGutter.removedLineBackground": alpha(red, 25),
+    "diffEditor.insertedLineBackground": alpha(diff.blue, 25),
+    "diffEditor.removedLineBackground": alpha(diff.red, 25),
+    "diffEditorGutter.insertedLineBackground": alpha(diff.blue, 25),
+    "diffEditorGutter.removedLineBackground": alpha(diff.red, 25),
     "diffEditorOverview.insertedForeground": terminal.blue,
     "diffEditorOverview.removedForeground": terminal.red,
   };
 }
 
-function themeGit() {
+function themeMerge(): Partial<ThemeUIColors> {
+  return {
+    // Current header background in inline merge conflicts.
+    "merge.currentHeaderBackground": alpha(diff.blue, 65),
+    // Current content background in inline merge conflicts.
+    "merge.currentContentBackground": alpha(diff.blue, 25),
+    // Incoming header background in inline merge conflicts.
+    "merge.incomingHeaderBackground": alpha(diff.red, 65),
+    // Incoming content background in inline merge conflicts.
+    "merge.incomingContentBackground": alpha(diff.red, 25),
+    // Border color on headers and the splitter in inline merge conflicts.
+    "merge.border": undefined,
+    // Common ancestor content background in inline merge-conflicts.
+    "merge.commonContentBackground": undefined,
+    // Common ancestor header background in inline merge-conflicts.
+    "merge.commonHeaderBackground": undefined,
+  };
+}
+
+function themeGit(): Partial<ThemeUIColors> {
   return {
     "gitDecoration.modifiedResourceForeground": terminal.blue,
     "gitDecoration.deletedResourceForeground": terminal.red,
@@ -231,28 +254,26 @@ function themeGit() {
   };
 }
 
-function themeStatusBar() {
+function themeStatusBar(): Partial<ThemeUIColors> {
   return {
     "statusBar.border": ui.border0,
     "statusBarItem.activeBackground": alpha(ui.border1, 40),
     "statusBarItem.hoverBackground": alpha(ui.border1, 20),
     "statusBar.background": ui.bg1,
-    "statusBar.warningBackground": ui.bg1,
-    "statusBar.remoteBackground": ui.bg1,
     "statusBar.debuggingBackground": ui.bg1,
     "statusBar.noFolderBackground": ui.bg1,
     "statusBar.foreground": ui.fg,
   };
 }
 
-function themeBadge() {
+function themeBadge(): Partial<ThemeUIColors> {
   return {
     "badge.foreground": ui.bg0,
     "badge.background": syntax.due1,
   };
 }
 
-function themeMenu() {
+function themeMenu(): Partial<ThemeUIColors> {
   return {
     "menu.background": ui.bg0,
     "menu.foreground": ui.fg,
@@ -260,7 +281,7 @@ function themeMenu() {
   };
 }
 
-function themeKeybinding() {
+function themeKeybinding(): Partial<ThemeUIColors> {
   return {
     "keybindingLabel.background": transparent,
     "keybindingLabel.foreground": ui.fg,
@@ -269,7 +290,7 @@ function themeKeybinding() {
   };
 }
 
-function themeHighlightBorders() {
+function themeHighlightBorders(): Partial<ThemeUIColors> {
   return {
     "editor.selectionHighlightBorder": undefined,
     "editor.wordHighlightBorder": undefined,
@@ -281,7 +302,7 @@ function themeHighlightBorders() {
   };
 }
 
-function themeScrollbar() {
+function themeScrollbar(): Partial<ThemeUIColors> {
   return {
     "scrollbar.shadow": transparent,
     "scrollbarSlider.background": alpha(ui.border1, 40),
@@ -290,7 +311,7 @@ function themeScrollbar() {
   };
 }
 
-function themeDropdown() {
+function themeDropdown(): Partial<ThemeUIColors> {
   return {
     "dropdown.background": ui.bg0,
     "dropdown.listBackground": ui.bg0,
@@ -299,7 +320,7 @@ function themeDropdown() {
   };
 }
 
-function themeDragAndDrop() {
+function themeDragAndDrop(): Partial<ThemeUIColors> {
   const color = alpha(syntax.due2, 30);
   return {
     "list.dropBackground": color,
@@ -311,19 +332,19 @@ function themeDragAndDrop() {
   };
 }
 
-function themeButton() {
+function themeButton(): Partial<ThemeUIColors> {
   return {
-    "button.background": syntax.tre1,
+    "button.background": ui.fg,
     "button.foreground": ui.bg0,
-    "button.hoverBackground": alpha(syntax.tre1, 95),
+    "button.hoverBackground": alpha(ui.fg, 95),
     "button.separator": alpha(ui.bg0, 30),
-    "button.secondaryBackground": ui.fg,
+    "button.secondaryBackground": syntax.alt1,
     "button.secondaryForeground": ui.bg0,
-    "button.secondaryHoverBackground": alpha(ui.fg, 95),
+    "button.secondaryHoverBackground": alpha(syntax.alt1, 95),
   };
 }
 
-function themeBracketColors() {
+function themeBracketColors(): Partial<ThemeUIColors> {
   ////////////////////////////////////////////////////////////////////////////
   //
   // Code just for looking at the colorized braces... sorry!
@@ -344,7 +365,20 @@ function themeBracketColors() {
   };
 }
 
-function themeEditor() {
+function themePeekView(): Partial<ThemeUIColors> {
+  return {
+    "peekView.border": ui.border1,
+    "peekViewTitle.background": ui.bg0,
+    "peekViewTitleLabel.foreground": ui.fg,
+    "peekViewTitleDescription.foreground": syntax.alt1,
+    "peekViewEditor.background": ui.bg0,
+    "peekViewResult.background": ui.bg0,
+    "peekViewResult.fileForeground": ui.fg,
+    "peekViewResult.lineForeground": ui.fg,
+  };
+}
+
+function themeEditor(): Partial<ThemeUIColors> {
   const orange = hsl(30, 100, 35);
   const yellow = hsl(60, 100, 35);
   const blue = hsl(220, 50, 60);
@@ -372,15 +406,25 @@ function themeEditor() {
     "editorOverviewRuler.border": alpha(ui.border0, 25),
     "editorCursor.foreground": syntax.tre1,
     "editorGroup.border": ui.border0,
-    "editorRuler.foreground": alpha(ui.border0, 50),
     "editorIndentGuide.background": alpha(ui.border0, 50),
     "editorIndentGuide.activeBackground": ui.border0,
     "editorLineNumber.foreground": alpha(syntax.alt1, 50),
     "editorLineNumber.activeForeground": syntax.default,
+
+    "editorRuler.foreground": alpha(ui.border0, 50),
+
+    "editorGutter.background": undefined,
+    "editorGutter.modifiedBackground": terminal.magenta,
+    "editorGutter.addedBackground": terminal.blue,
+    "editorGutter.deletedBackground": terminal.red,
+    "editorGutter.commentRangeForeground": undefined,
+    "editorGutter.commentGlyphForeground": undefined,
+    "editorGutter.commentUnresolvedGlyphForeground": undefined,
+    "editorGutter.foldingControlForeground": undefined,
   };
 }
 
-function themeTitlebar() {
+function themeTitlebar(): Partial<ThemeUIColors> {
   return {
     "titleBar.activeBackground": ui.bg1,
     "titleBar.activeForeground": ui.fg,
@@ -390,7 +434,7 @@ function themeTitlebar() {
   };
 }
 
-function themeTabs() {
+function themeTabs(): Partial<ThemeUIColors> {
   return {
     "tab.border": ui.border0,
     "editorGroupHeader.tabsBorder": ui.border0,
@@ -415,8 +459,8 @@ function colors() {
     errorForeground: terminal.red,
     disabledForeground: alpha(ui.fg, 50),
     "icon.foreground": ui.fg,
-    "toolbar.hoverBackground": alpha(ui.fg, 5),
-    "toolbar.activeBackground": alpha(ui.fg, 15),
+    "toolbar.hoverBackground": alpha(ui.border1, 30),
+    "toolbar.activeBackground": alpha(ui.border1, 50),
     "widget.border": ui.border0,
     "widget.shadow": ui.bg1,
     ...themeScrollbar(),
@@ -434,6 +478,7 @@ function colors() {
     ...themeActivityBar(),
     ...themeBracketColors(),
     ...themeEditor(),
+    ...themePeekView(),
     ...themeNotifications(),
     ...themeDragAndDrop(),
     ...themeButton(),
@@ -451,6 +496,7 @@ function colors() {
     ...themeTabs(),
     "pickerGroup.border": alpha(ui.border0, 50),
     ...themeDiff(),
+    ...themeMerge(),
     ...themeGit(),
     ...themeTitlebar(),
     "debugToolBar.background": ui.bg0,
@@ -460,7 +506,7 @@ function colors() {
   };
 }
 
-function themeCommandCenter() {
+function themeCommandCenter(): Partial<ThemeUIColors> {
   return {
     "commandCenter.foreground": ui.fg,
     "commandCenter.inactiveForeground": alpha(ui.fg, 50),
