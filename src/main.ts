@@ -19,8 +19,8 @@ type ContrastLevel = keyof typeof Contrast;
 
 // Sort the JSON object so things always come out in the same order, and minor
 // refactoring doesn't cause the build files to change
-function sortedObject<T>(obj: Record<string, T>): Record<string, T> {
-  const ret: Record<string, T> = {};
+function sortedObject<TObj extends Record<string, any>>(obj: TObj): TObj {
+  const ret: any = {};
   for (const key of Object.keys(obj).sort()) {
     ret[key] = obj[key];
   }
@@ -132,20 +132,20 @@ function config(): {
   };
 }
 
-function themeActivityBar(): Partial<ThemeUIColors> {
+function themeActivityBar(): ThemeUIColors {
   return {
     "activityBar.border": ui.border0,
     "activityBar.background": ui.bg1,
-    "activityBar.foreground": ui.fg,
-    "activityBar.inactiveForeground": alpha(syntax.alt1, 50),
+    "activityBar.foreground": syntax.tre2,
+    "activityBar.inactiveForeground": ui.fg,
     "activityBarBadge.background": syntax.due1,
     "activityBarBadge.foreground": ui.bg0,
-    "activityBar.activeBorder": syntax.tre1,
+    "activityBar.activeBorder": syntax.tre2,
     "activityBar.activeBackground": alpha(ui.border1, 0),
   };
 }
 
-function themeNotifications(): Partial<ThemeUIColors> {
+function themeNotifications(): ThemeUIColors {
   return {
     "notificationCenter.border": undefined,
     "notificationCenterHeader.foreground": ui.fg,
@@ -158,7 +158,7 @@ function themeNotifications(): Partial<ThemeUIColors> {
   };
 }
 
-function themeList(): Partial<ThemeUIColors> {
+function themeList(): ThemeUIColors {
   return {
     "quickInput.background": ui.bg0,
 
@@ -185,7 +185,7 @@ function themeList(): Partial<ThemeUIColors> {
   };
 }
 
-function themeWelcome(): Partial<ThemeUIColors> {
+function themeWelcome(): ThemeUIColors {
   return {
     "textLink.foreground": syntax.tre1,
     "textLink.activeForeground": syntax.tre0,
@@ -195,7 +195,19 @@ function themeWelcome(): Partial<ThemeUIColors> {
   };
 }
 
-function themeTerminal(): Partial<ThemeUIColors> {
+function themeSettings(): ThemeUIColors {
+  return {
+    "settings.headerForeground": syntax.uno1,
+    "settings.rowHoverBackground": alpha(ui.bg1, 25),
+    "settings.modifiedItemIndicator": syntax.due1,
+    "settings.dropdownBackground": ui.bg1,
+    "settings.checkboxBackground": ui.bg1,
+    "settings.textInputBackground": ui.bg1,
+    "settings.numberInputBackground": ui.bg1,
+  };
+}
+
+function themeTerminal(): ThemeUIColors {
   return {
     "terminal.foreground": ui.fg,
     "terminal.background": ui.bg0,
@@ -218,7 +230,7 @@ function themeTerminal(): Partial<ThemeUIColors> {
   };
 }
 
-function themeDiff(): Partial<ThemeUIColors> {
+function themeDiff(): ThemeUIColors {
   return {
     "diffEditor.insertedTextBackground": alpha(diff.blue, 25),
     // "diffEditor.insertedTextBorder": undefined,
@@ -235,7 +247,7 @@ function themeDiff(): Partial<ThemeUIColors> {
   };
 }
 
-function themeMerge(): Partial<ThemeUIColors> {
+function themeMerge(): ThemeUIColors {
   return {
     // Current header background in inline merge conflicts.
     "merge.currentHeaderBackground": alpha(diff.blue, 65),
@@ -254,7 +266,7 @@ function themeMerge(): Partial<ThemeUIColors> {
   };
 }
 
-function themeGit(): Partial<ThemeUIColors> {
+function themeGit(): ThemeUIColors {
   return {
     "gitDecoration.modifiedResourceForeground": terminal.blue,
     "gitDecoration.deletedResourceForeground": terminal.red,
@@ -264,7 +276,7 @@ function themeGit(): Partial<ThemeUIColors> {
   };
 }
 
-function themeStatusBar(): Partial<ThemeUIColors> {
+function themeStatusBar(): ThemeUIColors {
   return {
     "statusBar.border": ui.border0,
     "statusBarItem.activeBackground": alpha(ui.border1, 40),
@@ -276,14 +288,14 @@ function themeStatusBar(): Partial<ThemeUIColors> {
   };
 }
 
-function themeBadge(): Partial<ThemeUIColors> {
+function themeBadge(): ThemeUIColors {
   return {
     "badge.foreground": ui.bg0,
     "badge.background": syntax.due1,
   };
 }
 
-function themeMenu(): Partial<ThemeUIColors> {
+function themeMenu(): ThemeUIColors {
   return {
     "menu.background": ui.bg0,
     "menu.foreground": ui.fg,
@@ -291,7 +303,7 @@ function themeMenu(): Partial<ThemeUIColors> {
   };
 }
 
-function themeKeybinding(): Partial<ThemeUIColors> {
+function themeKeybinding(): ThemeUIColors {
   return {
     "keybindingLabel.background": transparent,
     "keybindingLabel.foreground": ui.fg,
@@ -300,7 +312,7 @@ function themeKeybinding(): Partial<ThemeUIColors> {
   };
 }
 
-function themeHighlightBorders(): Partial<ThemeUIColors> {
+function themeHighlightBorders(): ThemeUIColors {
   return {
     "editor.selectionHighlightBorder": undefined,
     "editor.wordHighlightBorder": undefined,
@@ -312,7 +324,7 @@ function themeHighlightBorders(): Partial<ThemeUIColors> {
   };
 }
 
-function themeScrollbar(): Partial<ThemeUIColors> {
+function themeScrollbar(): ThemeUIColors {
   return {
     "scrollbar.shadow": transparent,
     "scrollbarSlider.background": alpha(ui.border1, 40),
@@ -321,7 +333,7 @@ function themeScrollbar(): Partial<ThemeUIColors> {
   };
 }
 
-function themeDropdown(): Partial<ThemeUIColors> {
+function themeDropdown(): ThemeUIColors {
   return {
     "dropdown.background": ui.bg0,
     "dropdown.listBackground": ui.bg0,
@@ -330,7 +342,7 @@ function themeDropdown(): Partial<ThemeUIColors> {
   };
 }
 
-function themeDragAndDrop(): Partial<ThemeUIColors> {
+function themeDragAndDrop(): ThemeUIColors {
   const color = alpha(syntax.due2, 30);
   return {
     "list.dropBackground": color,
@@ -342,7 +354,7 @@ function themeDragAndDrop(): Partial<ThemeUIColors> {
   };
 }
 
-function themeButton(): Partial<ThemeUIColors> {
+function themeButton(): ThemeUIColors {
   return {
     "button.border": ui.fg,
     "button.background": ui.fg,
@@ -355,7 +367,7 @@ function themeButton(): Partial<ThemeUIColors> {
   };
 }
 
-function themeBracketColors(): Partial<ThemeUIColors> {
+function themeBracketColors(): ThemeUIColors {
   ////////////////////////////////////////////////////////////////////////////
   //
   // Code just for looking at the colorized braces... sorry!
@@ -376,7 +388,7 @@ function themeBracketColors(): Partial<ThemeUIColors> {
   };
 }
 
-function themePeekView(): Partial<ThemeUIColors> {
+function themePeekView(): ThemeUIColors {
   return {
     "peekView.border": ui.border1,
     "peekViewTitle.background": ui.bg0,
@@ -389,7 +401,7 @@ function themePeekView(): Partial<ThemeUIColors> {
   };
 }
 
-function themeEditor(): Partial<ThemeUIColors> {
+function themeEditor(): ThemeUIColors {
   const orange = hsl(30, 100, 35);
   const yellow = hsl(60, 100, 35);
   const blue = hsl(220, 50, 60);
@@ -428,6 +440,11 @@ function themeEditor(): Partial<ThemeUIColors> {
 
     "editorRuler.foreground": alpha(ui.border0, 50),
 
+    "editorSuggestWidget.background": ui.bg1,
+    "editorHoverWidget.background": ui.bg1,
+    "editorSuggestWidget.border": ui.border1,
+    "editorHoverWidget.border": ui.border1,
+
     "editorGutter.background": undefined,
     "editorGutter.modifiedBackground": terminal.magenta,
     "editorGutter.addedBackground": terminal.blue,
@@ -439,7 +456,7 @@ function themeEditor(): Partial<ThemeUIColors> {
   };
 }
 
-function themeTitlebar(): Partial<ThemeUIColors> {
+function themeTitlebar(): ThemeUIColors {
   return {
     "titleBar.activeBackground": ui.bg1,
     "titleBar.activeForeground": ui.fg,
@@ -449,7 +466,7 @@ function themeTitlebar(): Partial<ThemeUIColors> {
   };
 }
 
-function themeTabs(): Partial<ThemeUIColors> {
+function themeTabs(): ThemeUIColors {
   return {
     "tab.border": ui.border0,
     "editorGroupHeader.tabsBorder": ui.border0,
@@ -459,8 +476,8 @@ function themeTabs(): Partial<ThemeUIColors> {
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border0,
     "tab.unfocusedActiveBorder": ui.border0,
-    "tab.activeBorderTop": syntax.tre1,
-    "tab.unfocusedActiveBorderTop": syntax.tre1,
+    "tab.activeBorderTop": syntax.tre2,
+    "tab.unfocusedActiveBorderTop": syntax.tre2,
     "tab.activeBackground": ui.bg0,
     "tab.activeForeground": ui.fg,
     "tab.inactiveBackground": ui.bg1,
@@ -468,7 +485,7 @@ function themeTabs(): Partial<ThemeUIColors> {
   };
 }
 
-function colors() {
+function colors(): ThemeUIColors {
   return {
     focusBorder: syntax.tre1,
     errorForeground: terminal.red,
@@ -519,10 +536,11 @@ function colors() {
     ...themeHighlightBorders(),
     ...themeTerminal(),
     ...themeWelcome(),
+    ...themeSettings(),
   };
 }
 
-function themeCommandCenter(): Partial<ThemeUIColors> {
+function themeCommandCenter(): ThemeUIColors {
   return {
     "commandCenter.foreground": ui.fg,
     "commandCenter.inactiveForeground": alpha(ui.fg, 50),
