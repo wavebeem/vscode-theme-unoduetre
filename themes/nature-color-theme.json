@@ -290,7 +290,7 @@
     },
     {
       "name": "Due2",
-      "scope": "meta.definition, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, support.function.builtin.shell, beginning.punctuation.definition.list, constant.other.color",
+      "scope": "meta.definition.variable variable, variable.parameter.function, variable.declaration, variable.parameter, variable.other.assignment, support.function.builtin.shell, beginning.punctuation.definition.list, constant.other.color",
       "settings": {
         "foreground": "#7c6a0e",
         "fontStyle": ""

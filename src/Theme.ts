@@ -791,7 +791,7 @@ abstract class Theme {
         settings: this.style(this.colorDue),
         scopes: [
           // Variable definition
-          "meta.definition",
+          "meta.definition.variable variable",
 
           // Parameter
           "variable.parameter.function",

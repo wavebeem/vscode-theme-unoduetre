@@ -1,3 +1,7 @@
+# v5.11.1
+
+- Fixed incorrect highlighting for Swift class bodies
+
 # v5.11.0
 
 - Added support for patch/diff files
